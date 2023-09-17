@@ -1,0 +1,17 @@
+---
+const currentPath = new URL(Astro.request.url).pathname;
+
+interface Props {
+  href: string;
+  name: string;
+}
+
+const { href, name } = Astro.props;
+---
+
+<a
+  class={currentPath === href
+    ? "font-bold underline hover:text-blue"
+    : "underline hover:text-blue"}
+  href={href}>{name}</a
+>
