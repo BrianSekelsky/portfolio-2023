@@ -13,18 +13,34 @@ const { title, description, year, type, size, src } = Astro.props;
 
 <div
   class={size === "small"
-    ? "w-full border-black relative text-white hover:rounded-lg hover:overflow-hidden hover:cursor-pointer transition ease-in-out"
-    : "w-full border-black col-span-2 row-span-2 relative text-white hover:rounded-lg hover:overflow-hidden hover:cursor-pointer transition ease-in-out"}
+    ? "group w-full border-black border-1 second: relative text-white transition ease-in-out hover:cursor-pointer"
+    : "group w-full border-black border-1 col-span-2 row-span-2 relative text-white transition ease-in-out hover:cursor-pointer"}
 >
   <div class="absolute p-2">
-    <p class="bg-black px-1 font-bold">{title}</p>
-    <p class="bg-black px-1 text-xs italic">{type}</p>
+    <p
+      class="bg-black px-1 group-hover:bg-blue group-hover:italic transition-all ease-in-out"
+    >
+      {title}
+    </p>
+    <p
+      class="bg-black px-1 text-xs font-light group-hover:bg-blue group-hover:italic transition-all ease-in-out"
+    >
+      {type}
+    </p>
   </div>
   <div class="absolute p-2 right-0">
-    <p class="bg-black px-1 text-xs">{year}</p>
+    <p
+      class="bg-black px-1 text-xs font-light group-hover:bg-blue group-hover:italic transition-all ease-in-out"
+    >
+      {year}
+    </p>
   </div>
   <div class="absolute p-2 bottom-0">
-    <p class="bg-black px-1 text-xs">{description}</p>
+    <p
+      class="bg-black px-1 text-xs font-light group-hover:bg-blue group-hover:italic transition-all ease-in-out"
+    >
+      {description}
+    </p>
   </div>
   <img src={src} />
 </div>
