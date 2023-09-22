@@ -3,7 +3,7 @@ interface Props {
   title: string;
   description: string;
   year: string;
-  type: string;
+  type: string[];
   size: string;
   src: string;
 }
@@ -13,33 +13,24 @@ const { title, description, year, type, size, src } = Astro.props;
 
 <div
   class={size === "small"
-    ? "group w-full border-black border-1 second: relative text-white transition ease-in-out hover:cursor-pointer"
-    : "group w-full border-black border-1 col-span-2 row-span-2 relative text-white transition ease-in-out hover:cursor-pointer"}
+    ? "group w-full relative transition ease-in-out hover:cursor-pointer"
+    : "group w-full col-span-2 row-span-2 relative transition ease-in-out hover:cursor-pointer"}
 >
-  <div class="absolute p-2">
-    <p
-      class="bg-black px-1 group-hover:bg-blue group-hover:italic transition-all ease-in-out"
-    >
-      {title}
-    </p>
-    <p
-      class="bg-black px-1 text-xs font-light group-hover:bg-blue group-hover:italic transition-all ease-in-out"
-    >
-      {type}
-    </p>
-  </div>
+<div class="absolute p-2">
+  <p class="transition-all ease-in-out bg-white px-2 group-hover:bg-blue group-hover:text-white rounded-full border-black border-solid">
+    {title}
+  </p>
+</div>
   <div class="absolute p-2 right-0">
     <p
-      class="bg-black px-1 text-xs font-light group-hover:bg-blue group-hover:italic transition-all ease-in-out"
+      class="transition-all ease-in-out bg-white px-2 font-light text-sm group-hover:bg-blue group-hover:text-white rounded-full border-black border-solid"
     >
       {year}
     </p>
   </div>
-  <div class="absolute p-2 bottom-0">
-    <p
-      class="bg-black px-1 text-xs font-light group-hover:bg-blue group-hover:italic transition-all ease-in-out"
-    >
-      {description}
+  <div class="absolute p-2 left-0 bottom-0">
+    <p class="transition-all ease-in-out bg-white px-2 font-light group-hover:bg-blue group-hover:text-white rounded-full border-black border-solid">
+      {type}
     </p>
   </div>
   <img src={src} />
