@@ -2,59 +2,105 @@
 import Card from "./Card.astro";
 ---
 
-<div class="border-black border-t">
-  <div class="container mx-auto">
-    <div
-      class="gap-10 pt-10 grid-cols-3 space-y-2 lg:space-y-0 lg:grid lg:grid-rows-3"
-    >
+<div class="border-t">
+  <div class="container mx-auto bg-black border-x">
+    <div class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
       <Card
-        title="Project 1"
-        description="this is an explanation about project 1"
-        year="2023"
-        type="Visual"
-        size="small"
-        src="/images/around.gif"
-      />
-      <Card
-        title="Project 2"
+        title="Fidelity Student Debt"
         description="this is an explanation about project 2"
         year="2023"
-        type="User Experience | Visual"
+        types={["User Experience", "User Interface", "Research"]}
         size="medium"
-        src="/images/highest-mountain.png"
+        hasVideo={false}
+        src="/images/homepage/fidelity.png"
       />
       <Card
-        title="Project 3"
+        title="Critical Images"
+        description="this is an explanation about project 4"
+        year="2023"
+        types={["Visual"]}
+        size="small"
+        hasVideo={false}
+        src="/images/homepage/designer-physical.png"
+      />
+      <Card
+        title="Imagine Public Transit"
+        description="this is an explanation about project 4"
+        year="2023"
+        types={["Visual"]}
+        size="small"
+        hasVideo={false}
+        src="/images/homepage/public-transit.png"
+      />
+      <Card
+        title="Visualizing Size & Scale"
+        description="this is an explanation about project 1"
+        year="2023"
+        types={["Research", "User Experience", "Web development"]}
+        size="medium"
+        hasVideo={true}
+        src="/images/homepage/size&scale.webm"
+      />
+      <Card
+        title="Witnessing Glaciers"
+        description="this is an explanation about project 2"
+        year="2022"
+        types={["Web Development", "Three JS"]}
+        size="medium"
+        hasVideo={true}
+        src="/images/homepage/glaciers.webm"
+      />
+      <Card
+        title="Scale Worlds"
+        description="this is an explanation about project 2"
+        year="2021 — 2023"
+        types={["User Experience", "Virtual Reality", "Research"]}
+        size="medium"
+        hasVideo={true}
+        src="/images/homepage/scale-worlds.webm"
+      />
+      <Card
+        title="Witnessing Glaciers"
         description="this is an explanation about project 3"
         year="2023"
-        type="Visual"
-        size="small"
-        src="/images/swirl.png"
+        types={["Visual"]}
+        size="medium"
+        hasVideo={false}
+        src="/images/homepage/swirl.png"
       />
       <Card
         title="Project 4"
         description="this is an explanation about project 4"
         year="2023"
-        type="Visual"
+        types={["Visual"]}
         size="small"
-        src="/images/around.gif"
+        hasVideo={false}
+        src="/images/homepage/around.gif"
       />
       <Card
         title="Project 5"
         description="this is an explanation about project 5"
         year="2023"
-        type="Visual"
+        types={["Visual"]}
         size="small"
-        src="/images/around.gif"
+        hasVideo={false}
+        src="/images/homepage/around.gif"
       />
       <Card
-        title="Project 6"
+        title="Around"
         description="this is an explanation about project 6"
-        year="2023"
-        type="Visual"
+        year="2022"
+        types={["Album Artx"]}
         size="small"
-        src="/images/around.gif"
+        hasVideo={false}
+        src="/images/homepage/around.gif"
       />
     </div>
   </div>
 </div>
+
+<style>
+  .gap-1 {
+    gap: 1px;
+  }
+</style>
