@@ -4,7 +4,9 @@ import Card from "./Card.astro";
 
 <div class="border-t">
   <div class="container mx-auto bg-black border-x">
-    <div class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+    <div
+      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr"
+    >
       <Card
         title="Visualizing Size & Scale"
         description="this is an explanation about project 1"
@@ -31,6 +33,24 @@ import Card from "./Card.astro";
         size="small"
         hasVideo={false}
         src="/images/homepage/public-transit.png"
+      />
+      <Card
+        title="Vespertine"
+        description="this is an explanation about project 4"
+        year="2023"
+        types={["Visual // ", "Web development"]}
+        size="small"
+        hasVideo={true}
+        src="/images/homepage/vespertine2.webm"
+      />
+      <Card
+        title="Nothing"
+        description="this is an explanation about project 4"
+        year="2023"
+        types={["User experience // ", "Speculative"]}
+        size="small"
+        hasVideo={false}
+        src="/images/homepage/no-content.png"
       />
       <Card
         title="Fidelity Student Debt"

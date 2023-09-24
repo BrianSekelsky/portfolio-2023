@@ -1,0 +1,95 @@
+---
+import Link from "./Link.astro";
+---
+
+<div class="">
+  <div class="container mx-auto bg-black border-x">
+    <div class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div
+        class="bg-white px-12 py-3 group w-full col-span-2 row-span-2 relative"
+      >
+        <div class="flex flex-col min-h-full py-3">
+          <div class="pb-3">
+            <p class="uppercase">Basics</p>
+          </div>
+          <p>he/him</p>
+          <p>(seh-KEL-skee)</p>
+          <p>briansekelsky@gmail.com</p>
+          <br />
+          <br />
+          <div class="pb-3">
+            <p class="uppercase">Bio</p>
+          </div>
+          <p>
+            I am a multidisciplinary designer focused on interaction, web, 3D,
+            and user experience. I currently design products which help users
+            manage and pay down their student debt at <Link
+              name="Fidelity Investments"
+              href="https://www.fidelity.com/"
+            />
+             .
+          </p>
+          <br />
+          <p>
+            I believe that good design is scaffolded by sound collaboration,
+            solid research, constant curiosity, and a holistic consideration for
+            everyone and everything affected by it.
+          </p>
+          <br />
+          <p>
+            Previously I obtained a master's degree (MGXD/MFA) in Graphic &
+            Experience Design at <Link
+              name="North Carolina State University"
+              href="https://design.ncsu.edu/graphic-design/academics/masters/"
+            />
+             . During my time there, I worked as a designer/research assistant
+            on Scale Worlds: a collaborative project between educators,
+            designers, and engineers. Before that I worked as a graphic designer
+            and frontend developer for a few different companies, spent 27
+            months teaching in Tanzania as a Peace Corps Volunteer, and studied
+            Computer Science at the University of Wisconsin – Madison.
+          </p>
+          <br />
+          <p>
+            In my free time I enjoy distance running, making art, recording
+            electronic and folk music, and exploring the great outdoors.
+          </p>
+        </div>
+      </div>
+      <div
+        class="bg-white px-12 py-3 group w-full col-span-2 row-span-2 relative"
+      >
+        <div class="py-3 flex flex-col justify-between min-h-full">
+          <img src="/images/about/brian.png" />
+        </div>
+      </div>
+      <div
+        class="bg-white px-12 py-3 group w-full col-span-4 row-span-2 relative"
+      >
+        <div class="flex flex-col min-h-full py-3">
+          <div class="pb-3">
+            <p class="uppercase">About this site</p>
+          </div>
+          <p>
+            This site is a portfolio and archive for my designs, art, and music.
+          </p>
+          <br />
+          <p>
+            This site was built with Astro JS and Tailwind CSS. It is also
+            hosted <Link
+              name="here on github"
+              href="https://github.com/BrianSekelsky/portfolio-2023"
+            />. It is open source, meaning you can feel free to clone it, remix
+            it, or reuse any part of it for your own project.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .gap-1 {
+    gap: 1px;
+  }
+</style>

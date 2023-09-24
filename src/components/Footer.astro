@@ -1,5 +1,5 @@
 ---
-import Link from "./Link.astro";
+import NavLink from "./Nav-link.astro";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
@@ -12,19 +12,19 @@ const year = new Date().getFullYear();
     <div class="flex justify-between p-3 content-center items-center">
       <p class="">© {year} BRIAN SEKELSKY</p>
       <div class="flex gap-16">
-        <Link
+        <NavLink
           href="https://www.instagram.com/briansekelsky/"
           name="INSTAGRAM"
         />
-        <Link
+        <NavLink
           href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
           name="SPOTIFY"
         />
-        <Link
+        <NavLink
           href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
           name="YOUTUBE"
         />
-        <Link
+        <NavLink
           href="https://www.linkedin.com/in/brian-sekelsky/"
           name="LINKEDIN"
         />
