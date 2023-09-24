@@ -32,8 +32,8 @@ const { title, description, year, types, size, hasVideo, src } = Astro.props;
     <div class="flex justify-between pt-3">
       <div class="flex flex-wrap gap-2">
         {
-          types.map((item) => (
-          <CardLabel value={item} , isLarge={false} />
+          types.map((type) => (
+          <CardLabel value={type} , isLarge={false} />
           ))
         }
       </div>
