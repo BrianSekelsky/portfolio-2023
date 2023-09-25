@@ -1,5 +1,8 @@
 ---
 import Link from "./Link.astro";
+
+import Image from "astro/components/Image.astro";
+import brianImage from "../images/about/brian.png";
 ---
 
 <div class="">
@@ -60,7 +63,7 @@ import Link from "./Link.astro";
         class="bg-white px-12 py-3 group w-full col-span-2 row-span-2 relative"
       >
         <div class="py-3 flex flex-col justify-between min-h-full">
-          <img src="src/images/about/brian.png" />
+          <Image src={brianImage} alt="Image of Brian Sekelsky outside" />
         </div>
       </div>
       <div
