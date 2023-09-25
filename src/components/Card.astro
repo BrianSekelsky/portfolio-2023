@@ -9,6 +9,7 @@ interface Props {
   size: string;
   hasVideo: boolean;
   src: string;
+  alt: string;
 }
 
 const { title, description, year, types, size, hasVideo, src } = Astro.props;
@@ -23,7 +24,7 @@ const { title, description, year, types, size, hasVideo, src } = Astro.props;
     <div class="pb-3 text-center">
       <CardLabel value={title} , isLarge={true} />
     </div>
-    <img class={hasVideo ? "hidden" : ""} src={src} />
+    <img class={hasVideo ? "hidden" : ""} src={src} alt={alt} />
     <div class={hasVideo ? "" : "hidden"}>
       <video width="600" height="600" playsinline autoplay muted loop>
         <source src={src} type="video/webm">
