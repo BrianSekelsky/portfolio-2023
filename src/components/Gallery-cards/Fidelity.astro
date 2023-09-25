@@ -1,18 +1,16 @@
 ---
-import CardLabel from "./Card-label.astro";
+import CardLabel from "../Card-label.astro";
+import Image from "astro/components/Image.astro";
 
-interface Props {
-  title: string;
-  description: string;
-  year: string;
-  types: string[];
-  size: string;
-  hasVideo: boolean;
-  src: string;
-  alt: string;
-}
+import myImage from "../../images/homepage/fidelity.png";
 
-const { title, description, year, types, size, hasVideo, src } = Astro.props;
+const title = "Fidelity Student Debt";
+const description = "asdf";
+const year = "2023";
+const types = ["User Experience"];
+const size="large";
+const hasVideo = false;
+const alt = "Screenshot of user experience work in figma";
 ---
 
 <div
@@ -24,12 +22,7 @@ const { title, description, year, types, size, hasVideo, src } = Astro.props;
     <div class="pb-3 text-center">
       <CardLabel value={title} , isLarge={true} />
     </div>
-    <img class={hasVideo ? "hidden" : ""} src={src} />
-    <div class={hasVideo ? "" : "hidden"}>
-      <video width="600" height="600" playsinline autoplay muted loop>
-        <source src={src} type="video/webm">
-      </video>
-    </div>
+    <Image src={myImage} alt="image of the highest mountain" />
     <div class="flex justify-between pt-3">
       <div class="flex flex-wrap gap-2">
         {
