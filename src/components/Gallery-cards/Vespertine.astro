@@ -18,7 +18,7 @@ const alt = "Video of webpage about Bjork's Vespertine. Shows text of album titl
       <CardLabel value={title} , isLarge={true} />
     </div>
     <div class={hasVideo ? "" : "hidden"}>
-        <video width="600" height="600" playsinline autoplay muted loop>
+        <video class="mx-auto" width="600" height="600" playsinline autoplay muted loop>
           <source src={webm} type="video/webm">
         </video>
       </div>
