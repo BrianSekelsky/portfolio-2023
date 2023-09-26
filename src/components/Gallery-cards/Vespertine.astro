@@ -1,0 +1,44 @@
+---
+import CardLabel from "../Card-label.astro";
+
+const title = "Vespertine";
+const description = "asdf";
+const year = "2023";
+const types = ["Web development"];
+const hasVideo = true;
+const src = "src/images/homepage/vespertine.webm";
+const alt = "Video of webpage about Bjork's Vespertine. Shows text of album title in front of three dimensional house";
+---
+
+<div
+  class="bg-white hover:bg-blue px-12 py-3 group w-full relative transition ease-in-out hover:cursor-pointer"
+>
+  <div class="flex flex-col justify-between min-h-full">
+    <div class="pb-3 text-center">
+      <CardLabel value={title} , isLarge={true} />
+    </div>
+    <div class={hasVideo ? "" : "hidden"}>
+        <video width="600" height="600" playsinline autoplay muted loop>
+          <source src={src} type="video/webm">
+        </video>
+      </div>
+    <div class="flex justify-between pt-3">
+      <div class="flex flex-wrap gap-2">
+        {
+          types.map((type) => (
+          <CardLabel value={type} , isLarge={false} />
+          ))
+        }
+      </div>
+      <div class="">
+        <CardLabel value={year} , isLarge={false} />
+      </div>
+    </div>
+</div>
+</div>
+
+<style>
+  img {
+    width: 100%;
+  }
+</style>
