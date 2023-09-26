@@ -1,12 +1,12 @@
 ---
 import CardLabel from "../Card-label.astro";
+import webm from "../../images/homepage/vespertine.webm"
 
 const title = "Vespertine";
 const description = "asdf";
 const year = "2023";
 const types = ["Web development"];
 const hasVideo = true;
-const src = "src/images/homepage/vespertine.webm";
 const alt = "Video of webpage about Bjork's Vespertine. Shows text of album title in front of three dimensional house";
 ---
 
@@ -19,7 +19,7 @@ const alt = "Video of webpage about Bjork's Vespertine. Shows text of album titl
     </div>
     <div class={hasVideo ? "" : "hidden"}>
         <video width="600" height="600" playsinline autoplay muted loop>
-          <source src={src} type="video/webm">
+          <source src={webm} type="video/webm">
         </video>
       </div>
     <div class="flex justify-between pt-3">

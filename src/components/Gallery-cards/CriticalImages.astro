@@ -1,12 +1,12 @@
 ---
 import CardLabel from "../Card-label.astro";
+import webm from "../../images/homepage/physical-manifestation.webm"
 
 const title = "Critical Images";
 const description = "asdf";
 const year = "2023";
 const types = ["Visual"];
 const hasVideo = true;
-const src = "src/images/homepage/physical-manifestation.webm";
 const alt = "3D text which reads the Designer likewise becomes the physical manifestation of the work";
 ---
 
@@ -19,7 +19,7 @@ const alt = "3D text which reads the Designer likewise becomes the physical mani
     </div>
     <div class={hasVideo ? "" : "hidden"}>
         <video width="600" height="600" playsinline autoplay muted loop>
-          <source src={src} type="video/webm">
+          <source src={webm} type="video/webm">
         </video>
       </div>
     <div class="flex justify-between pt-3">

@@ -1,5 +1,6 @@
 ---
 import CardLabel from "../Card-label.astro";
+import webm from "../../images/homepage/size&scale.webm"
 
     const title="Visualizing Size & Scale"
     const description="this is an explanation about project 1"
@@ -7,7 +8,6 @@ import CardLabel from "../Card-label.astro";
     const types=["Research // ", "User Experience // ", "Web development"]
     const size="medium"
     const hasVideo=true
-    const src="src/images/homepage/size&scale.webm"
     const alt="Clip of zooming out from astronaut perspective up to whale perspective"
 ---
 
@@ -22,7 +22,7 @@ import CardLabel from "../Card-label.astro";
     <!-- <Image src={myImage} alt="image of the highest mountain" /> -->
     <div class={hasVideo ? "" : "hidden"}>
       <video width="600" height="600" playsinline autoplay muted loop>
-        <source src={src} type="video/webm">
+        <source src={webm} type="video/webm">
       </video>
     </div>
     <div class="flex justify-between pt-3">
