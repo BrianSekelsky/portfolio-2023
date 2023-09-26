@@ -1,6 +1,6 @@
 ---
 import CardLabel from "../Card-label.astro";
-import src from "../../images/homepage/scale-worlds.webm"
+import webm from "../../images/homepage/scale-worlds.webm";
 
 const title="Scale Worlds"
 const description="this is an explanation about project 1"
@@ -23,7 +23,7 @@ class=
 <!-- <Image src={myImage} alt="image of the highest mountain" /> -->
 <div class={hasVideo ? "" : "hidden"}>
   <video width="600" height="600" playsinline autoplay muted loop>
-    <source src={src} type="video/webm">
+    <source src={webm} type="video/webm">
   </video>
 </div>
 <div class="flex justify-between pt-3">
