@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import webm from "../../images/size-and-scale/scale.webm";
+
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import SmallHeading from "../../components/SmallHeading.astro";
+---
+
+<Layout title="Brian Sekelsky">
+  <main>
+    <ProjectHeader
+      title="Visualizing Size & Scale"
+      objective="Design a website to augment and scaffold towards size and scale cognition. Master's thesis"
+      tools={["Three JS", "Javascript", "HTML/CSS", "Figma"]}
+      role="Researcher"
+      collaborators={["Dr. Matthew Peterson – Advisor"]}
+    />
+    <div class="container mx-auto border-t border-x">
+      <video playsinline autoplay muted loop>
+        <source src={webm} type="video/webm" />
+      </video>
+    </div>
+    <div class="container mx-auto border-t border-x px-12 py-3">
+      <SmallHeading text="Process" />
+      <p>asdf</p>
+    </div>
+
+    <style></style>
+  </main>
+</Layout>

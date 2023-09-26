@@ -1,5 +1,6 @@
 ---
 import Link from "./Link.astro";
+import SmallHeading from "./SmallHeading.astro";
 
 import Image from "astro/components/Image.astro";
 import brianImage from "../images/about/brian.png";
@@ -12,17 +13,13 @@ import brianImage from "../images/about/brian.png";
         class="bg-white px-12 py-3 group w-full col-span-2 row-span-2 relative"
       >
         <div class="flex flex-col min-h-full py-3">
-          <div class="pb-3">
-            <p class="uppercase font-light">Basics</p>
-          </div>
+          <SmallHeading text="Basics" />
           <p>he/him</p>
           <p>(seh-KEL-skee)</p>
           <p>briansekelsky@gmail.com</p>
           <br />
           <br />
-          <div class="pb-3">
-            <p class="uppercase font-light">Bio</p>
-          </div>
+          <SmallHeading text="Bio" />
           <p>
             I am a multidisciplinary designer focused on interaction, web, 3D,
             and user experience. I currently design products which help users
@@ -69,9 +66,7 @@ import brianImage from "../images/about/brian.png";
         class="bg-white px-12 py-3 group w-full col-span-4 row-span-2 relative"
       >
         <div class="flex flex-col min-h-full py-3">
-          <div class="pb-3">
-            <p class="uppercase font-light">About this site</p>
-          </div>
+          <SmallHeading text="About this site" />
           <p>
             This site is a portfolio and archive for my designs, art, and music.
           </p>
