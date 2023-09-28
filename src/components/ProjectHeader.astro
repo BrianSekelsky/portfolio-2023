@@ -39,7 +39,7 @@ const { title, objective, tools, role, collaborators } = Astro.props;
       <div>
         <SmallHeading text="Collaborators" />
         <ul>
-          {tools.map((tool) => <li>{tool}</li>)}
+          {collaborators.map((collaborator) => <li>{collaborator}</li>)}
         </ul>
       </div>
     </div>

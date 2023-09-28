@@ -1,15 +1,14 @@
 ---
 import CardLabel from "../Card-label.astro";
-import { Image } from "astro:assets";
 
-import myImage from "../../images/homepage/public-transit.png";
+import webm from "../../images/homepage/public-transit.webm";
 
 const title = "Imagine Public Transit";
 const description = "asdf";
 const year = "2023";
 const types = ["visual"];
 const size="small";
-const hasVideo = false;
+const hasVideo = true;
 const alt = "Billboard mocked up with design of text reading a car is great mode of transit provided that noone else has it";
 ---
 
@@ -20,7 +19,11 @@ const alt = "Billboard mocked up with design of text reading a car is great mode
     <div class="pb-3 text-center">
       <CardLabel value={title} , isLarge={true} />
     </div>
-    <Image src={myImage} alt={alt} />
+    <div class={hasVideo ? "" : "hidden"}>
+      <video width="600" height="600" playsinline autoplay muted loop>
+        <source src={webm} type="video/webm">
+      </video>
+    </div>
     <div class="flex justify-between pt-3">
       <div class="flex flex-wrap gap-2">
         {
