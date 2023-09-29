@@ -1,5 +1,6 @@
 ---
 import CardLabel from "../Card-label.astro";
+import Card from "../Card.astro";
 import { Image } from "astro:assets";
 
 import myImage from "../../images/homepage/no-content.png";
@@ -14,10 +15,7 @@ const title="Nothing"
         const alt="Fake marketing slide for Nothing social media. Text reads What if social networking was content free? With three phones next to it displaying the app."
 ---
 
-<div
-  class="bg-white hover:bg-blue px-12 py-3 group w-full relative transition ease-in-out hover:cursor-pointer"
->
-  <div class="flex flex-col justify-between min-h-full">
+<Card size="small" href="#">
     <div class="pb-3 text-center">
       <CardLabel value={title} , isLarge={true} />
     </div>
@@ -34,8 +32,7 @@ const title="Nothing"
         <CardLabel value={year} , isLarge={false} />
       </div>
     </div>
-</div>
-</div>
+</Card>
 
 <style>
   img {

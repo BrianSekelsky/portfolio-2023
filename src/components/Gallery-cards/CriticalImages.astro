@@ -1,5 +1,6 @@
 ---
 import CardLabel from "../Card-label.astro";
+import Card from "../Card.astro";
 import webm from "../../images/homepage/physical-manifestation4.webm"
 
 const title = "Critical Images";
@@ -10,10 +11,7 @@ const hasVideo = true;
 const alt = "3D text which reads the Designer likewise becomes the physical manifestation of the work";
 ---
 
-<div
-  class="bg-white hover:bg-blue px-12 py-3 group w-full relative transition ease-in-out hover:cursor-pointer"
->
-  <div class="flex flex-col justify-between min-h-full">
+<Card size="small" href="#">
     <div class="pb-3 text-center">
       <CardLabel value={title} , isLarge={true} />
     </div>
@@ -34,8 +32,7 @@ const alt = "3D text which reads the Designer likewise becomes the physical mani
         <CardLabel value={year} , isLarge={false} />
       </div>
     </div>
-</div>
-</div>
+</Card>
 
 <style>
   img {

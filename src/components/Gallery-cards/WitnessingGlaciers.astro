@@ -1,5 +1,6 @@
 ---
 import CardLabel from "../Card-label.astro";
+import Card from "../Card.astro";
 import src from "../../images/homepage/glaciers.webm"
 
 const title="Witnessing Glaciers"
@@ -11,34 +12,29 @@ const hasVideo=true
 const alt="Clip of zooming out from astronaut perspective up to whale perspective"
 ---
 
-<div
-class=
-"bg-white hover:bg-blue px-12 py-3 group w-full col-span-2 lg:row-span-2 relative transition ease-in-out hover:cursor-pointer"
->
-<div class="flex flex-col justify-between min-h-full">
-<div class="pb-3 text-center">
-  <CardLabel value={title} , isLarge={true} />
-</div>
-<!-- <Image src={myImage} alt="image of the highest mountain" /> -->
-<div class={hasVideo ? "" : "hidden"}>
-  <video class="mx-auto" width="600" height="600" playsinline autoplay muted loop>
-    <source src={src} type="video/webm">
-  </video>
-</div>
-<div class="flex justify-between pt-3">
-  <div class="flex flex-wrap gap-2">
-    {
-      types.map((type) => (
-      <CardLabel value={type} , isLarge={false} />
-      ))
-    }
+<Card size="medium" href="#">
+  <div class="pb-3 text-center">
+    <CardLabel value={title} , isLarge={true} />
   </div>
-  <div class="">
-    <CardLabel value={year} , isLarge={false} />
+  <!-- <Image src={myImage} alt="image of the highest mountain" /> -->
+  <div class={hasVideo ? "" : "hidden"}>
+    <video class="mx-auto" width="600" height="600" playsinline autoplay muted loop>
+      <source src={src} type="video/webm">
+    </video>
   </div>
-</div>
-</div>
-</div>
+  <div class="flex justify-between pt-3">
+    <div class="flex flex-wrap gap-2">
+      {
+        types.map((type) => (
+        <CardLabel value={type} , isLarge={false} />
+        ))
+      }
+    </div>
+    <div class="">
+      <CardLabel value={year} , isLarge={false} />
+    </div>
+  </div>
+</Card>
 
 <style>
 img {
