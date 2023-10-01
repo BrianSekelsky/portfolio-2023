@@ -9,8 +9,8 @@ const { isLarge, value } = Astro.props;
 
 <p
   class={isLarge
-    ? "group-hover:text-white text-sm uppercase transition-all ease-in-out px-3 py-1"
-    : "group-hover:text-white group-hover:bg-blue text-sm uppercase transition-all ease-in-out bg-white border-black border-solid"}
+    ? "py-1 group-hover:text-white uppercase transition-all ease-in-out"
+    : "py-1 group-hover:text-white group-hover:bg-blue text-xs uppercase transition-all ease-in-out bg-white border-black border-solid"}
 >
   {value}
 </p>
