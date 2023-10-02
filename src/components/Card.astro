@@ -11,8 +11,8 @@ const { size, href = "#" } = Astro.props;
 
 <div
   class={size === "small"
-    ? "bg-white hover:bg-blue px-12 py-3 group w-full relative transition ease-in-out hover:cursor-pointer"
-    : "bg-white hover:bg-blue px-12 py-3 group w-full col-span-2 row-span-2 relative transition ease-in-out hover:cursor-pointer"}
+    ? "bg-white hover:bg-blue px-8 py-2 group w-full relative transition ease-in-out hover:cursor-pointer"
+    : "bg-white hover:bg-blue px-8 py-2 group w-full md:col-span-2 md:row-span-2 relative transition ease-in-out hover:cursor-pointer"}
 >
   <a href={href}>
     <div class="flex flex-col justify-between min-h-full">
