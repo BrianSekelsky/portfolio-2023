@@ -13,7 +13,7 @@ const { size, href = "#", title, types, year } = Astro.props;
 ---
 
 <div
-  class={size === "small" ? "bg-white group w-full hover:cursor-pointer" : "bg-white group w-full hover:cursor-pointer md:col-span-2 md:row-span-2"}
+  class={size === "small" ? "bg-white group w-full hover:cursor-pointer" : "bg-white group w-full hover:cursor-pointer col-span-2 sm:row-span-2"}
 >
   <div class="relative overflow-hidden min-h-full flex content-center justify-center">
     <a href={href} class="min-h-full flex">
