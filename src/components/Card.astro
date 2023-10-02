@@ -21,7 +21,7 @@ const { size, href = "#", title, types, year } = Astro.props;
       <slot class="transition-all duration-200" />
     </div>
     <div class="bg-white absolute bottom-0 w-full border-t translate-y-40 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 px-4 py-4">
-      <div class="flex justify-between items-baseline pb-2">
+      <div class="items-baseline pb-6">
         <CardLabel value={title} , isLarge={true} />
         <CardLabel value={year} , isLarge={false} />
       </div>
