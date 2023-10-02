@@ -1,7 +1,7 @@
 ---
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 import myImage from "../../images/homepage/around.gif";
 
 const title = "Around";
@@ -13,23 +13,8 @@ const src = "src/images/homepage/around.gif";
 const alt = "Flowers swirling in and out in a psychadelic way";
 ---
 
-<Card size="small" href="#">
-    <div class="pb-3 text-center">
-      <CardLabel value={title} , isLarge={true} />
-    </div>
-    <Image src={myImage} alt={alt} />
-    <div class="flex justify-between pt-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          types.map((type) => (
-          <CardLabel value={type} , isLarge={false} />
-          ))
-        }
-      </div>
-      <div class="">
-        <CardLabel value={year} , isLarge={false} />
-      </div>
-    </div>
+<Card size="small" href="#" title={title} types={types} year={year}>
+  <Image src={myImage} alt={alt} />
 </Card>
 
 <style>

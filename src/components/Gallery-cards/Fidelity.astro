@@ -9,28 +9,13 @@ const title = "Fidelity Student Debt";
 const description = "asdf";
 const year = "2023";
 const types = ["User Experience"];
-const size="large";
+const size = "large";
 const hasVideo = false;
 const alt = "Screenshot of user experience work in figma";
 ---
 
-<Card size="medium" href="#">
-    <div class="pb-3 text-center">
-      <CardLabel value={title} , isLarge={true} />
-    </div>
-    <Image src={myImage} alt={alt} />
-    <div class="flex justify-between pt-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          types.map((type) => (
-          <CardLabel value={type} , isLarge={false} />
-          ))
-        }
-      </div>
-      <div class="">
-        <CardLabel value={year} , isLarge={false} />
-      </div>
-    </div>
+<Card size="medium" href="#" title={title} types={types} year={year}>
+  <Image src={myImage} alt={alt} />
 </Card>
 
 <style>

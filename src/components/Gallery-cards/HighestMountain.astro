@@ -9,28 +9,13 @@ const title = "Highest Mountain";
 const description = "asdf";
 const year = "2022";
 const types = ["Album Art"];
-const size="small";
+const size = "small";
 const hasVideo = false;
 const alt = "high mountain";
 ---
 
-<Card size="small" href="#">
-    <div class="pb-3 text-center">
-      <CardLabel value={title} , isLarge={true} />
-    </div>
-    <Image src={myImage} alt={alt} />
-    <div class="flex justify-between pt-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          types.map((type) => (
-          <CardLabel value={type} , isLarge={false} />
-          ))
-        }
-      </div>
-      <div class="">
-        <CardLabel value={year} , isLarge={false} />
-      </div>
-    </div>
+<Card size="small" href="#" title={title} types={types} year={year}>
+  <Image src={myImage} alt={alt} />
 </Card>
 
 <style>

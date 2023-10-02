@@ -1,44 +1,36 @@
 ---
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
-import video from "../../images/homepage/size&scale2.mp4"
-import {Image} from "astro:assets";
-import gif from "../../images/homepage/size&scale2.gif"
+import video from "../../images/homepage/size&scale2.mp4";
+import { Image } from "astro:assets";
+import gif from "../../images/homepage/size&scale2.gif";
 
-const title="Visualizing Size & Scale"
-const description="this is an explanation about project 1"
-const year="2023"
-const types=["Research // ", "User Experience // ", "Web development"]
-const size="medium"
-const hasVideo=true
-const alt="Clip of zooming out from astronaut perspective up to whale perspective"
+const title = "Visualizing Size & Scale";
+const description = "this is an explanation about project 1";
+const year = "2023";
+const types = ["Research", "User Experience", "Web development"];
+const size = "medium";
+const hasVideo = true;
+const alt =
+  "Clip of zooming out from astronaut perspective up to whale perspective";
 ---
 
-<Card size="medium" href="projects/size-and-scale">
-  <div class="pb-3 text-center">
-    <CardLabel value={title} , isLarge={true} />
-  </div>
-  <div class="video">
-    <video width="600" height="600" playsinline autoplay muted loop>
-        <source src={video} type="video/mp4">
+<Card
+  size="medium"
+  href="projects/size-and-scale"
+  title={title}
+  types={types}
+  year={year}
+>
+  <div class="video hidden md:block">
+    <video playsinline autoplay muted loop>
+      <source src={video} type="video/mp4" />
     </video>
   </div>
-  <div class="gif">
+  <div class="gif block md:hidden object-fill">
     <Image src={gif} alt={alt} />
   </div>
-    <div class="flex justify-between pt-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          types.map((type) => (
-          <CardLabel value={type} , isLarge={false} />
-          ))
-        }
-      </div>
-      <div class="">
-        <CardLabel value={year} , isLarge={false} />
-      </div>
-    </div>
-  </Card>
+</Card>
 
 <style>
   img {

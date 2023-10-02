@@ -9,28 +9,13 @@ const title = "Terrafirma Software";
 const description = "asdf";
 const year = "2021";
 const types = ["Branding"];
-const size="small";
+const size = "small";
 const hasVideo = false;
 const alt = "Terrafirma logo and other branded materials including webpages";
 ---
 
-<Card size="small" href="#">
-    <div class="pb-3 text-center">
-      <CardLabel value={title} , isLarge={true} />
-    </div>
-    <Image src={myImage} alt={alt} />
-    <div class="flex justify-between pt-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          types.map((type) => (
-          <CardLabel value={type} , isLarge={false} />
-          ))
-        }
-      </div>
-      <div class="">
-        <CardLabel value={year} , isLarge={false} />
-      </div>
-    </div>
+<Card size="small" href="#" title={title} types={types} year={year}>
+  <Image src={myImage} alt={alt} />
 </Card>
 
 <style>

@@ -1,42 +1,28 @@
 ---
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
-import video from "../../images/homepage/physical-manifestation.webm"
-import {Image} from "astro:assets";
-import gif from "../../images/homepage/physical-manifestation.gif"
+import video from "../../images/homepage/physical-manifestation.webm";
+import { Image } from "astro:assets";
+import gif from "../../images/homepage/physical-manifestation.gif";
 
 const title = "Critical Images";
 const description = "asdf";
 const year = "2023";
 const types = ["Visual"];
 const hasVideo = true;
-const alt = "3D text which reads the Designer likewise becomes the physical manifestation of the work";
+const alt =
+  "3D text which reads the Designer likewise becomes the physical manifestation of the work";
 ---
 
-<Card size="small" href="#">
-    <div class="pb-3 text-center">
-      <CardLabel value={title} , isLarge={true} />
-    </div>
-    <div class="video">
-      <video width="600" height="600" playsinline autoplay muted loop>
-          <source src={video} type="video/webm">
-      </video>
-    </div>
-    <div class="gif">
-      <Image src={gif} alt={alt} />
-    </div>
-    <div class="flex justify-between pt-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          types.map((type) => (
-          <CardLabel value={type} , isLarge={false} />
-          ))
-        }
-      </div>
-      <div class="">
-        <CardLabel value={year} , isLarge={false} />
-      </div>
-    </div>
+<Card size="small" href="#" title={title} types={types} year={year}>
+  <div class="video hidden md:block">
+    <video playsinline autoplay muted loop>
+      <source src={video} type="video/webm" />
+    </video>
+  </div>
+  <div class="gif block md:hidden">
+    <Image src={gif} alt={alt} />
+  </div>
 </Card>
 
 <style>

@@ -4,25 +4,44 @@ import CardLabel from "./Card-label.astro";
 interface Props {
   size: string;
   href: string;
+  title: string;
+  types: string[];
+  year: string;
 }
 
-const { size, href = "#" } = Astro.props;
+const { size, href = "#", title, types, year } = Astro.props;
 ---
 
 <div
-  class={size === "small"
-    ? "bg-white hover:bg-blue px-8 py-2 group w-full relative transition ease-in-out hover:cursor-pointer"
-    : "bg-white hover:bg-blue px-8 py-2 group w-full md:col-span-2 md:row-span-2 relative transition ease-in-out hover:cursor-pointer"}
+  class={size === "small" ? "bg-white group w-full hover:cursor-pointer" : "bg-white group w-full hover:cursor-pointer md:col-span-2 md:row-span-2"}
 >
-  <a href={href}>
-    <div class="flex flex-col justify-between min-h-full">
-      <slot />
+  <div class="relative overflow-hidden min-h-full flex content-center justify-center">
+    <a href={href} class="min-h-full flex">
+    <div class="m-auto p-2 group-hover:p-4 transition-all duration-200">
+      <slot class="transition-all duration-200" />
     </div>
-  </a>
+    <div class="bg-white absolute bottom-0 w-full border-t translate-y-40 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 px-4 py-4">
+      <div class="flex justify-between items-baseline pb-2">
+        <CardLabel value={title} , isLarge={true} />
+        <CardLabel value={year} , isLarge={false} />
+      </div>
+      <div class="">
+        <div class="flex flex-wrap gap-2">
+          {
+            types.map((type) => (
+            <div class="border rounded-full px-3 py-1 text-xs">
+              <CardLabel value={type} , isLarge={false} />
+            </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    </a>
+  </div>
 </div>
 
 <style>
-  img {
-    width: 100%;
-  }
+
+
 </style>

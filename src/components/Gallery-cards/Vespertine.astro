@@ -1,37 +1,28 @@
 ---
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
-import webm from "../../images/homepage/vespertine.webm"
+import video from "../../images/homepage/vespertine.webm";
+import gif from "../../images/homepage/vespertine.gif";
+import { Image } from "astro:assets";
 
 const title = "Vespertine";
 const description = "asdf";
 const year = "2023";
 const types = ["Web development"];
 const hasVideo = true;
-const alt = "Video of webpage about Bjork's Vespertine. Shows text of album title in front of three dimensional house";
+const alt =
+  "Video of webpage about Bjork's Vespertine. Shows text of album title in front of three dimensional house";
 ---
 
-<Card size="small" href="#">
-    <div class="pb-3 text-center">
-      <CardLabel value={title} , isLarge={true} />
-    </div>
-    <div class={hasVideo ? "" : "hidden"}>
-        <video class="mx-auto" width="600" height="600" playsinline autoplay muted loop>
-          <source src={webm} type="video/webm">
-        </video>
-      </div>
-    <div class="flex justify-between pt-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          types.map((type) => (
-          <CardLabel value={type} , isLarge={false} />
-          ))
-        }
-      </div>
-      <div class="">
-        <CardLabel value={year} , isLarge={false} />
-      </div>
-    </div>
+<Card size="small" href="#" title={title} types={types} year={year}>
+  <div class="video hidden md:block">
+    <video playsinline autoplay muted loop>
+      <source src={video} type="video/webm" />
+    </video>
+  </div>
+  <div class="gif block md:hidden">
+    <Image src={gif} alt={alt} />
+  </div>
 </Card>
 
 <style>

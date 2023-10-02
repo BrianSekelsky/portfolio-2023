@@ -9,28 +9,14 @@ const title = "Laboratory for Analytic Sciences";
 const description = "asdf";
 const year = "2022";
 const types = ["Album Art"];
-const size="small";
+const size = "small";
 const hasVideo = false;
-const alt = "Three images of prototypes made for this project overlayed on one another and a purple gradient background";
+const alt =
+  "Three images of prototypes made for this project overlayed on one another and a purple gradient background";
 ---
 
-<Card size="small" href="#">
-    <div class="pb-3 text-center">
-      <CardLabel value={title} , isLarge={true} />
-    </div>
-    <Image src={myImage} alt={alt} />
-    <div class="flex justify-between pt-3">
-      <div class="flex flex-wrap gap-2">
-        {
-          types.map((type) => (
-          <CardLabel value={type} , isLarge={false} />
-          ))
-        }
-      </div>
-      <div class="">
-        <CardLabel value={year} , isLarge={false} />
-      </div>
-    </div>
+<Card size="small" href="#" title={title} types={types} year={year}>
+  <Image src={myImage} alt={alt} />
 </Card>
 
 <style>
