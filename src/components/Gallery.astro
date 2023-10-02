@@ -48,6 +48,14 @@ import Animism from "./Gallery-cards/Animism.astro";
   </div>
 </div>
 
+<script>
+  let canPlay = false;
+  let v = document.createElement("video");
+  if (v.canPlayType && v.canPlayType("video/mp4").replace(/no/, "")) {
+    canPlay = true;
+  }
+</script>
+
 <style>
   .gap-1 {
     gap: 1px;

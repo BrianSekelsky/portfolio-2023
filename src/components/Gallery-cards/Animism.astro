@@ -1,27 +1,38 @@
 ---
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
+import {Image} from "astro:assets";
 
 import webm from "../../images/homepage/animism.webm";
+import gif from "../../images/homepage/animism.gif";
 
 const title="Animistic Design"
-        const description="this is an explanation about project 4"
-        const year="2022"
-        const types=["Teaching // ", "AI"]
-        const size="small"
-        const hasVideo=true
-        const src="src/images/homepage/animism.gif"
-        const alt="Slideshow of images from class on animism"
+const description="this is an explanation about project 4"
+const year="2022"
+const types=["Teaching // ", "AI"]
+const size="small"
+const hasVideo=true
+const src="src/images/homepage/animism.gif"
+const alt="Slideshow of images from class on animism"
+
+interface Props {
+  canPlayVideo: boolean;
+}
+
+const { canPlayVideo } = Astro.props;
 ---
 
 <Card size="small" href="#">
     <div class="pb-3 text-center">
       <CardLabel value={title} , isLarge={true} />
     </div>
-    <div class={hasVideo ? "" : "hidden"}>
+    <div class={hasVideo && canPlayVideo ? "" : "hidden"}>
         <video width="600" height="600" playsinline autoplay muted loop>
             <source src={webm} type="video/webm">
         </video>
+    </div>
+    <div class={!canPlayVideo ? "" : "hidden"}>
+      <Image src={gif} alt={alt} />
     </div>
     <div class="flex justify-between pt-3">
       <div class="flex flex-wrap gap-2">
