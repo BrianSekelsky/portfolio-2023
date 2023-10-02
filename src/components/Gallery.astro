@@ -53,3 +53,18 @@ import Animism from "./Gallery-cards/Animism.astro";
     gap: 1px;
   }
 </style>
+
+<script>
+  let v = document.createElement("video");
+  if (v.canPlayType && v.canPlayType("video/mp4").replace(/no/, "")) {
+    const gifs = document.getElementsByClassName("gif");
+    for (let i = 0; i < gifs.length; i++) {
+      gifs[i].classList.add("hidden");
+    }
+  } else {
+    const videos = document.getElementsByClassName("video");
+    for (let i = 0; i < videos.length; i++) {
+      videos[i].classList.add("hidden");
+    }
+  }
+</script>

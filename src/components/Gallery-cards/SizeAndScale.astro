@@ -24,7 +24,7 @@ const alt="Clip of zooming out from astronaut perspective up to whale perspectiv
         <source src={video} type="video/mp4">
     </video>
   </div>
-  <div id="gif">
+  <div class="gif">
     <Image src={gif} alt={alt} />
   </div>
     <div class="flex justify-between pt-3">
@@ -46,14 +46,3 @@ const alt="Clip of zooming out from astronaut perspective up to whale perspectiv
     width: 100%;
   }
 </style>
-
-<script>
-  let canPlay = false
-  let v = document.createElement("video");
-  if (v.canPlayType && v.canPlayType("video/mp4").replace(/no/, "")) {
-    canPlay = true;
-    document.getElementById("gif").classList.add("hidden");
-  } else {
-    document.getElementById("video").classList.add("hidden");
-  }
-</script>
