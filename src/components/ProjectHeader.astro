@@ -36,7 +36,7 @@ const { title, objective, tools, role, collaborators } = Astro.props;
         <SmallHeading text="Role" />
         <p>{role}</p>
       </div>
-      <div>
+      <div class={collaborators.length > 0 ? "" : "hidden"}>
         <SmallHeading text="Collaborators" />
         <ul>
           {collaborators.map((collaborator) => <li>{collaborator}</li>)}
