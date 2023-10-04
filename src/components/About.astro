@@ -7,17 +7,15 @@ import brianImage from "../images/about/brian.png";
 ---
 
 <div class="mx-auto bg-black">
-  <div class="grid gap-1 grid-cols-1 lg:grid-cols-2">
-    <div class="bg-white p-3">
-      <div>
+  <div class="grid gap-1 grid-cols-1 lg:flex lg:justify-stretch">
+    <div class="flex flex-col shrink gap-1 justify-stretch">
+      <div class="bg-white p-3">
         <SmallHeading text="Basics" />
         <p>he/him</p>
         <p>(seh-KEL-skee)</p>
         <p>briansekelsky@gmail.com</p>
-        <br />
-        <br />
       </div>
-      <div>
+      <div class="p-3 bg-white">
         <SmallHeading text="Bio" />
         <p>
           I am a multidisciplinary designer focused on interaction, web, 3D, and
@@ -28,14 +26,6 @@ import brianImage from "../images/about/brian.png";
           />
         </p>
         <br />
-        <p>
-          I believe that good design is scaffolded by sound collaboration, solid
-          research, constant curiosity, and a holistic consideration for
-          everyone and everything affected by it.
-        </p>
-        <br />
-        <br />
-        <SmallHeading text="Bio" />
         <p>
           In May of 2023, I graduated with an MGXD (equivalent to an MFA) from <Link
             name="North Carolina State University."
@@ -57,30 +47,30 @@ import brianImage from "../images/about/brian.png";
           electronic and folk music, and exploring the great outdoors.
         </p>
       </div>
+      <div class="bg-white p-3 grow">
+        <SmallHeading text="About this site" />
+        <p>
+          This site is a portfolio and archive for my designs, art, and music.
+        </p>
+        <br />
+        <p>
+          It was built with <Link name="Astro JS" href="https://astro.build/" />
+           and <Link name="Tailwind CSS." href="https://tailwindcss.com/" />
+           It is also hosted <Link
+            name="here on github"
+            href="https://github.com/BrianSekelsky/portfolio-2023"
+          />. It is open source, meaning you are free to clone it and reuse any
+          part of it for your own project. If you do use any of the code I just
+          ask that you credit me and link back to this site.
+        </p>
+      </div>
     </div>
-    <div class="bg-white p-3">
+    <div class="bg-white grow" style="min-width: 36%">
       <Image
-        class="mx-auto"
+        class="p-3"
         src={brianImage}
         alt="Image of Brian Sekelsky outside"
       />
-    </div>
-    <div class="bg-white p-3 relative lg:col-span-2">
-      <SmallHeading text="About this site" />
-      <p>
-        This site is a portfolio and archive for my designs, art, and music.
-      </p>
-      <br />
-      <p>
-        It was built with <Link name="Astro JS" href="https://astro.build/" />
-         and <Link name="Tailwind CSS." href="https://tailwindcss.com/" />
-         It is also hosted <Link
-          name="here on github"
-          href="https://github.com/BrianSekelsky/portfolio-2023"
-        />. It is open source, meaning you are free to clone it and reuse any
-        part of it for your own project. If you do use any of the code I just
-        ask that you credit me and link back to this site.
-      </p>
     </div>
   </div>
 </div>
