@@ -5,7 +5,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			sans: ['"NeueMontrealMono"', 'sans-serif'],
-			serif: ['"EditorialNew"', 'serif']
+			serif: ['"NeueMontreal"', 'serif']
 		},
 		colors: {
 			'blue': '#0000ff',
