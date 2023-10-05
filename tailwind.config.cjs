@@ -4,8 +4,8 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
-			sans: ['"NeueMontrealMono"', 'sans-serif'],
-			serif: ['"NeueMontreal"', 'serif']
+			sans: ['"NeueMontrealMono", "Arial"', 'sans-serif'],
+			serif: ['"NeueMontreal", "Arial"', 'serif']
 		},
 		colors: {
 			'blue': '#0000ff',
