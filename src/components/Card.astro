@@ -15,8 +15,8 @@ const { size, href = "#", title, types, year } = Astro.props;
 <div
   class={size === "small" ? "bg-white group w-full hover:cursor-pointer" : "bg-white group w-full hover:cursor-pointer col-span-2 sm:row-span-2"}
 >
-  <div class="relative overflow-hidden min-h-full flex content-center justify-center">
-    <a href={href} class="min-h-full flex">
+  <div class="relative overflow-hidden min-h-full flex items-center">
+    <a href={href} class="min-h-full">
     <div class="m-auto p-2 group-hover:p-4 group-focus:p-4 group-active:p-4 transition-all duration-200">
       <slot class="transition-all duration-200" />
     </div>
