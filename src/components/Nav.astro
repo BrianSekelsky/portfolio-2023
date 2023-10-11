@@ -5,10 +5,12 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<div class="border-b">
+<div class="">
   <div class="mx-auto">
-    <div class="flex flex-wrap justify-between p-3 font-mono">
-      <div class="w-full sm:w-1/2">
+    <div
+      class="flex flex-wrap justify-center sm:justify-between py-3 font-mono"
+    >
+      <div class="w-full sm:w-1/2 text-center sm:text-left">
         <NavLink href="/#" name="BRIAN SEKELSKY" />
       </div>
       <div class="flex flex-wrap gap-8 pt-6 sm:pt-0">

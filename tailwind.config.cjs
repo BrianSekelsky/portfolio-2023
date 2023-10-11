@@ -11,7 +11,9 @@ module.exports = {
 		colors: {
 			'blue': '#0000ff',
 			'black': '#000',
-			'white': '#fff'
+			'white': '#fff',
+			'offwhite': '#f5f5f5',
+			'gray': '#666'
 		},
 		maxWidth: {
 			'1/4': '25%',

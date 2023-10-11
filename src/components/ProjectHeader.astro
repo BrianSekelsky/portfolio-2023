@@ -10,33 +10,35 @@ interface Props {
 const { title, objective, tools, role, collaborators } = Astro.props;
 ---
 
-<div class="mx-auto bg-black">
-  <div class="grid gap-1 grid-cols-1 lg:grid-cols-2">
-    <div class="bg-white group relative">
+<div class="mx-auto border-t border-x">
+  <div class="">
+    <div class="bg-white group relative border-b p-3 lg:p-12">
       <p
-        class="font-serif font-thin text-center flex justify-center items-center h-full leading-tight text-6xl lg:text-8xl lg:leading-tight"
+        class="text-center font-serif font-thin h-full leading-tight text-6xl lg:text-8xl lg:leading-tight"
       >
         {title}
       </p>
     </div>
     <div
-      class="bg-white p-3 relative grid gap-x-12 gap-y-12 grid-cols-1 sm:grid-cols-2"
+      class="p-3 lg:p-12 lg:w-1/2 mx-auto bg-white relative grid gap-x-12 gap-y-12 grid-cols-2 sm:grid-cols-2"
     >
-      <div>
+      <div class="text-center">
         <SmallHeading text="Objective" />
         <p>{objective}</p>
       </div>
-      <div>
+      <div class="text-center">
         <SmallHeading text="Tools" />
         <ul>
           {tools.map((tool) => <li>{tool}</li>)}
         </ul>
       </div>
-      <div>
+      <div class="text-center">
         <SmallHeading text="Role" />
         <p>{role}</p>
       </div>
-      <div class={collaborators.length > 0 ? "" : "hidden"}>
+      <div
+        class={collaborators.length > 0 ? "text-center" : "hidden text-center"}
+      >
         <SmallHeading text="Collaborators" />
         <ul>
           {collaborators.map((collaborator) => <li>{collaborator}</li>)}
