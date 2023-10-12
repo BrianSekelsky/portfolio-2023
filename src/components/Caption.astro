@@ -1,0 +1,13 @@
+---
+const currentPath = new URL(Astro.request.url).pathname;
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<p class="text-xs font-mono italic pt-1">
+  {text}
+</p>
