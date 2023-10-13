@@ -11,6 +11,7 @@ const year = "2022";
 const types = [
   { text: "Web Development", special: false },
   { text: "Three JS", special: false },
+  { text: "+ case study", special: true },
 ];
 const size = "medium";
 const hasVideo = true;
@@ -18,7 +19,7 @@ const alt =
   "Clip of zooming out from astronaut perspective up to whale perspective";
 ---
 
-<Card size="medium" href="#" title={title} types={types} year={year}>
+<Card size="medium" href="projects/witnessing-glaciers" title={title} types={types} year={year}>
   <div class="video hidden md:block">
     <video playsinline autoplay muted loop>
       <source src={video} type="video/webm" />

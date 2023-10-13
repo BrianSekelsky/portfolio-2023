@@ -1,0 +1,109 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import SmallHeading from "../../components/SmallHeading.astro";
+import Link from "../../components/Link.astro";
+import Microcopy from "../../components/Microcopy.astro";
+import Caption from "../../components/Caption.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+
+import crossCuttingConcept1 from "../../images/size-and-scale/crosscutting-concept-1.png";
+import astro from "../../images/scale-worlds/astro.png";
+import one from "../../images/scale-worlds/1.png";
+import a from "../../images/scale-worlds/Scaling-A.jpeg";
+import b from "../../images/scale-worlds/Scaling-B.jpeg";
+import c from "../../images/scale-worlds/Scaling-C.jpeg";
+import d from "../../images/scale-worlds/Scaling-D.jpeg";
+import e from "../../images/scale-worlds/Scaling-E.jpeg";
+import f from "../../images/scale-worlds/Scaling-F.jpeg";
+
+import webm from "../../images/scale-worlds/scale-movement.webm";
+---
+
+<Layout title="Brian Sekelsky">
+  <main>
+    <ProjectHeader
+      title="Scale Worlds"
+      objective="Create an immersive virtual environment, where students can see various scientific entities in relation to their own bodies and conduct realistic size comparisons that cannot be replicated in everyday experience."
+      tools={["Three JS", "Javascript", "HTML/CSS", "Figma"]}
+      role="Researcher"
+      collaborators={["Dr. Matthew Peterson", "Dr. Karen Chen", "Dr. Cesar Delgado", "Linfeng Wu", "Tyler Harper-Gampp", "Amanda Williams", "Rebecca Planchert", "Meghan Jack", "Elizabeth Chen"]}
+    />
+    <div class="p-3 border-x border-b">
+        <video playsinline autoplay muted loop>
+            <source src={webm} type="video/webm" />
+        </video>
+    </div>
+    <div class="border-x">
+      <ProjectGrid>
+        <div class="col-span-1 lg:col-span-2">
+          <SmallHeading text="Background" />
+          <p>
+            Scale Worlds is a virtual learning environment which enhances participants’ conception about size and scale. It has been funded through a National Science Foundation award titled
+            <Link name="Virtual Reality to Improve Students’ Understanding of Scale in STEM." href="https://nsf.gov/awardsearch/showAward?AWD_ID=2055680" />
+
+            For two years I worked under the guidance of
+            
+            <Link href="https://textimage.org/" name="Dr. Matthew Peterson" /> and in close collaboration with professors and doctoral students from the Human Factors Engineering and STEM Education departments to design and develop this scale cognition learning environment.
+
+            In this project, I have also acted as manager for three hourly design technicians.
+          </p>
+        </div>
+        <!--////////////////////////////-->
+        <div class="col-span-1">
+          <p>
+            I was highly involved in this project, taking on diverse tasks including drafting design documents, planning out the user experience, coding in C#, 3D modeling in Blender, and developing in Unity. I have assisted in running two rounds of qualitative usability studies. Results from the first round have been published in a Human Factors journal. The majority of our design decisions have been made in response to the usability studies or are backed up by literature on the subject. Alejandra Magaña’s Framework for Size and Scale Cognition has been an invaluable resource during our design process.
+          </p>
+        </div>
+        <div class="col-span-1">
+          <Image
+            class="pb-3"
+            src={astro}
+            alt="astronaut in scale worlds"
+          />
+        </div>  
+        <!--////////////////////////////-->
+        <div class="col-span-1">
+            <SmallHeading text="Research">
+            <p>
+                When I joined the project, the team of professors had secured funding through NSF partially due to a prototype created by Grace Wonaphotimuke.
+            </p>
+          </div>
+          <div class="col-span-1 grid grid-cols-3">
+            <Image
+              class="col-span-1"
+              src={a}
+              alt="a"
+            />
+            <Image
+                class="col-span-1"
+                src={b}
+                alt="b"
+            />
+            <Image
+                class="col-span-1"
+                src={c}
+                alt="c"
+            />
+            <Image
+                class="col-span-1"
+                src={d}
+                alt="d"
+            />
+            <Image
+                class="col-span-1"
+                src={e}
+                alt="e"
+            />
+            <Image
+                class="col-span-1"
+                src={f}
+                alt="f"
+            />
+          </div>               
+      </ProjectGrid>
+    </div>
+  </main>
+</Layout>

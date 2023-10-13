@@ -35,13 +35,14 @@ import highlighting from "../../images/size-and-scale/highlighting.gif";
       tools={["Three JS", "Javascript", "HTML/CSS", "Figma"]}
       role="Researcher"
       collaborators={["Dr. Matthew Peterson – Advisor"]}
-    />
+    >
+    </ProjectHeader>
+    <div class="p-3 border-x border-b">
+      <video playsinline autoplay muted loop>
+        <source src={webm} type="video/webm" />
+      </video>
+    </div>
     <div class="border-x">
-      <div class="mx-auto border-y p-3">
-        <video playsinline autoplay muted loop>
-          <source src={webm} type="video/webm" />
-        </video>
-      </div>
       <ProjectGrid>
         <div class="col-span-1 lg:col-span-2">
           <SmallHeading text="Problem" />
