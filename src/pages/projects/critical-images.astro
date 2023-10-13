@@ -1,30 +1,41 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import webm from "../../images/size-and-scale/size&scale.webm";
 
-import ProjectHeader from "../../components/ProjectHeader.astro";
+import ProjectHeaderSmall from "../../components/ProjectHeaderSmall.astro";
 import SmallHeading from "../../components/SmallHeading.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+import { Image } from "astro:assets";
+
+import physicalManifestation from "../../images/critical-images/physical-manifestation.png";
+import programmingIsForgetting from "../../images/critical-images/programming-is-forgetting.png";
+import technologies from "../../images/critical-images/technologies.png";
+import designThinking from "../../images/critical-images/when-design-thinking.png";
+import newNewTypography from "../../images/critical-images/new-new-typography.png";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
-    <ProjectHeader
+    <ProjectHeaderSmall
       title="Critical Images"
-      objective="Design a website to augment and scaffold towards size and scale cognition. Master's thesis"
-      tools={["Three JS", "Javascript", "HTML/CSS", "Figma"]}
-      role="Researcher"
-      collaborators={[]}
+      description="Graphic reflections on readings from grad school. Mostly from a Publishing class taught by Jarrett Fuller + others from a typography discourse class taught by Denise Gonzales-Crisp."
     />
-    <div class="mx-auto border-t p-3">
-      <video playsinline autoplay muted loop>
-        <source src={webm} type="video/webm" />
-      </video>
+    <div class="border-x">
+      <div class="mx-auto border-y p-3">
+        <Image src={physicalManifestation} alt="The designer likewise becomes the physical manifestation of the content">
+      </div>
+      <div class="mx-auto border-t p-3">
+        <Image src={programmingIsForgetting} alt="Programming is forgetting">
+      </div>
+      <div class="mx-auto border-t p-3">
+        <Image src={designThinking} alt="When design thinking is used against us">
+      </div>
+      <div class="mx-auto border-t p-3">
+        <Image src={technologies} alt="technologies not as reflections of our world but shapers of it">
+      </div>
+      <div class="mx-auto border-t p-3 flex justify-center">
+        <Image src={newNewTypography} alt="The new new typography">
+      </div>
     </div>
-    <div class="mx-auto border-t p-3">
-      <SmallHeading text="Process" />
-      <p>coming soon</p>
-    </div>
-
     <style></style>
   </main>
 </Layout>

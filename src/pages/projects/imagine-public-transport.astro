@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import ProjectHeaderSmall from "../../components/ProjectHeaderSmall.astro";
+import SmallHeading from "../../components/SmallHeading.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+import { Image } from "astro:assets";
+
+import webm from "../../images/homepage/public-transit.webm";
+---
+
+<Layout title="Brian Sekelsky">
+  <main>
+    <ProjectHeaderSmall
+      title="Imagine Public Transportation"
+      description="Billboard mockups meant to insprie discourse surrounding car ownership and urban planning in the United States."
+    />
+    <div class="border-x border-t">
+      <div class="mx-auto flex justify-center p-3">
+        <video class="w-1/2" playsinline autoplay muted loop>
+            <source src={webm} type="video/webm" />
+          </video>
+      </div>
+    </div>
+    <style></style>
+  </main>
+</Layout>

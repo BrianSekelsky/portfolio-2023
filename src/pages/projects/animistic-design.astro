@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import ProjectHeaderSmall from "../../components/ProjectHeaderSmall.astro";
+import SmallHeading from "../../components/SmallHeading.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+import { Image } from "astro:assets";
+
+import webm from "../../images/homepage/animism.webm";
+---
+
+<Layout title="Brian Sekelsky">
+  <main>
+    <ProjectHeaderSmall
+      title="Animistic Design"
+      description="Grad school workshop."
+    />
+    <div class="border-x">
+      <div class="mx-auto border-t flex justify-center p-3">
+        <video class="w-1/2" playsinline autoplay muted loop>
+            <source src={webm} type="video/webm" />
+          </video>
+      </div>
+    </div>
+    <style></style>
+  </main>
+</Layout>
