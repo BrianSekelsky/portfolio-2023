@@ -5,7 +5,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			mono: ['"NeueMontrealMono", "ui-monospace"', 'sans-serif'],
-			serif: ['"EditorialNew"', 'serif'],
+			serif: ['"EditorialNew"', 'Arial', 'sans-serif'],
 			sans: ['"NeueMontreal", "Arial"', 'sans-serif']
 		},
 		colors: {

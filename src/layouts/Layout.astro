@@ -16,7 +16,6 @@ const { title } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="../../main.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -33,11 +32,11 @@ const { title } = Astro.props;
     font-family: "NeueMontrealMono";
     src: url("../font/PPNeueMontrealMono-Regular.woff") format("woff");
   }
-  @font-face {
+  /* @font-face {
     font-family: "NeueMontrealMono";
     src: url("../font/PPNeueMontrealMono-Thin.woff") format("woff");
     font-weight: 100;
-  }
+  } */
   @font-face {
     font-family: "NeueMontrealMono";
     src: url("../font/PPNeueMontrealMono-RegularItalic.woff") format("woff");

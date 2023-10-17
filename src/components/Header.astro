@@ -1,13 +1,86 @@
 <div class="p-3 py-12 lg:p-24">
   <p
+    id="manipulate"
     class="text-center font-serif leading-tight text-6xl lg:text-8xl lg:leading-tight"
   >
-    <!-- My name is Brian Sekelsky. I’m a designer, developer, researcher, &
-    musician. This is my portfolio. -->
-
-     I’m a designer, researcher, developer, & musician. This is my portfolio.
+    I’m a designer, researcher, developer, & musician. This is my portfolio.
   </p>
 </div>
 <p class="text-xs uppercase font-thin font-mono pb-3 text-center">
   currently under construction
 </p>
+
+<style>
+  #manipulate {
+    cursor: default;
+  }
+</style>
+
+<script>
+  let array = document.getElementById("manipulate").textContent.split(" ");
+  array.forEach((item) => {});
+  document.getElementById("manipulate").innerHTML = "";
+
+  array.forEach((item) => {
+    let tempSpan = document.createElement("span");
+    tempSpan.classList.add("inline-block");
+
+    let spaceSpan = document.createElement("span");
+    spaceSpan.innerHTML = " ";
+
+    let tempArray = item.split("");
+
+    tempArray.forEach((char) => {
+      let tempCharSpan = document.createElement("span");
+      tempCharSpan.innerHTML = char;
+      tempCharSpan.classList.add("manipulable");
+
+      if (tempCharSpan.textContent != " ") {
+        tempCharSpan.classList.add("inline-block");
+        tempCharSpan.classList.add("transition-all");
+      }
+
+      tempSpan.append(tempCharSpan);
+    });
+
+    if (array[array.length] != item) {
+      document.getElementById("manipulate").append(spaceSpan);
+    }
+    document.getElementById("manipulate").append(tempSpan);
+  });
+
+  function randomColor() {
+    let color = [];
+    for (let i = 0; i < 3; i++) {
+      color.push(Math.floor(Math.random() * 256));
+    }
+    return "rgb(" + color.join(", ") + ")";
+  }
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  let letters = document.getElementsByClassName("manipulable");
+
+  for (let letter of letters) {
+    letter.addEventListener("mouseenter", function () {
+      let randomInt = getRandomInt(1, 4);
+      // letter.style.transform = "translate(30px)"
+      letter.style.color = randomColor();
+      // letter.style.transform = "scale(1.4)"
+      if (randomInt === 1) {
+        letter.style.transform = "skew(10deg, 20deg)";
+      } else if (randomInt === 2) {
+        letter.style.transform = "skew(20deg, 30deg)";
+      } else if (randomInt === 3) {
+        letter.style.transform = "skew(30deg, -10deg)";
+      } else if (randomInt === 4) {
+        letter.style.transform = "skew(0deg, -20deg)";
+      }
+      setTimeout(function () {
+        letter.removeAttribute("style");
+      }, 1000);
+    });
+  }
+</script>
