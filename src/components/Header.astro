@@ -71,6 +71,7 @@
       // letter.style.transform = "scale(1.4)"
       if (randomInt === 1) {
         letter.style.transform = "skew(10deg, 20deg)";
+        // letter.classList.add("font-sans");
       } else if (randomInt === 2) {
         letter.style.transform = "skew(20deg, 30deg)";
       } else if (randomInt === 3) {
@@ -80,6 +81,7 @@
       }
       setTimeout(function () {
         letter.removeAttribute("style");
+        letter.classList.remove("font-sans");
       }, 1000);
     });
   }
