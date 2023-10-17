@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-import ProjectHeaderSmall from "../../components/ProjectHeaderSmall.astro";
+import ProjectHeader from "../../components/ProjectHeader.astro";
 import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
@@ -15,12 +15,15 @@ import newNewTypography from "../../images/critical-images/new-new-typography.pn
 
 <Layout title="Brian Sekelsky">
   <main>
-    <ProjectHeaderSmall
+    <ProjectHeader
       title="Critical Images"
-      description="Graphic reflections on readings from grad school. Mostly from a Publishing class taught by Jarrett Fuller + others from a typography discourse class taught by Denise Gonzales-Crisp."
+      objective="Graphic reflections on readings from grad school. Mostly from a Publishing class taught by Jarrett Fuller + others from a typography discourse class taught by Denise Gonzales-Crisp."
+      types={["Graphic Design"]}
+      collaborators={[]}
+      year="2023"
     />
-    <div class="border-x">
-      <div class="mx-auto border-y p-3">
+    <div class="sm:border-x">
+      <div class="mx-auto">
         <Image
           src={physicalManifestation}
           alt="The designer likewise becomes the physical manifestation of the content"
@@ -28,17 +31,17 @@ import newNewTypography from "../../images/critical-images/new-new-typography.pn
         <!-- <div class="mx-auto border-t p-3">
         <Image src={programmingIsForgetting} alt="Programming is forgetting">
       </div> -->
-        <div class="mx-auto border-t p-3">
+        <div class="mx-auto border-t">
           <Image
             src={designThinking}
             alt="When design thinking is used against us"
           />
-          <div class="mx-auto border-t p-3">
+          <div class="mx-auto">
             <Image
               src={technologies}
               alt="technologies not as reflections of our world but shapers of it"
             />
-            <div class="mx-auto border-t p-3 flex justify-center">
+            <div class="mx-auto border-t flex justify-center">
               <Image src={newNewTypography} alt="The new new typography" />
             </div>
             <style></style>

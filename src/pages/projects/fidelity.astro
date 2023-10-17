@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-import ProjectHeaderSmall from "../../components/ProjectHeaderSmall.astro";
+import ProjectHeader from "../../components/ProjectHeader.astro";
 import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
@@ -11,15 +11,22 @@ import gif from "../../images/homepage/fidelity.gif";
 
 <Layout title="Brian Sekelsky">
   <main>
-    <ProjectHeaderSmall
+    <ProjectHeader
       title="Fidelity Student Debt"
-      description="Since May, 2023 I have been working fulltime on complex user experience and frontends for Fidelity's emerging products related to helping customers pay down their student debt. Please reach out if you would like to learn more."
+      objective="Since May, 2023 I have been working fulltime on complex user experience and frontends for Fidelity's emerging products related to helping customers pay down their student debt. Please reach out if you would like to learn more."
+      types={["User Experience", "User Interface"]}
+      collaborators={[]}
+      year="2023"
     />
-    <div class="border-x">
-      <div class="mx-auto border-t flex justify-center p-3">
-        <Image class="w-1/2" src={gif} alt="Screenshot of user experience work in figma">
+    <div class="sm:border-x">
+      <div class="mx-auto flex justify-center">
+        <Image
+          class="w-1/2"
+          src={gif}
+          alt="Screenshot of user experience work in figma"
+        />
       </div>
+      <style></style>
     </div>
-    <style></style>
   </main>
 </Layout>

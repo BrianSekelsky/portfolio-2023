@@ -3,57 +3,58 @@ import SmallHeading from "./SmallHeading.astro";
 interface Props {
   title: string;
   objective: string;
-  tools: string[];
-  role: string;
+  types: string[];
   collborators: string[];
+  year: string;
 }
-const { title, objective, tools, role, collaborators } = Astro.props;
+const { title, objective, types, collaborators, year } = Astro.props;
 ---
 
-<div class="mx-auto border-t border-x">
+<div class="border-t border-b sm:border-x">
   <div class="">
-    <div class="bg-white group relative border-b p-3 lg:p-12">
-      <p
-        class="text-center font-serif font-thin h-full leading-tight text-6xl lg:text-8xl lg:leading-tight mb-0"
-      >
-        {title}
-      </p>
-    </div>
     <div
-      class={objective === ""
-        ? "hidden"
-        : "p-3 lg:px-48 lg:py-12 mx-auto bg-white relative grid gap-x-12 gap-y-12 grid-cols-1 sm:grid-cols-3 border-b"}
+      class="p-3 sm:p-8 grid sm:grid-template grid-cols-1 sm:grid-cols-2 gap-12"
     >
-      <div
-        class={objective === ""
-          ? "hidden text-left col-span-3"
-          : "text-left col-span-3"}
-      >
-        <SmallHeading text="Objective" />
-        <p>{objective}</p>
+      <div>
+        <p class="font-sans leading-tight text-4xl lg:leading-tight mb-0">
+          {title}
+        </p>
+        <p>
+          {objective}
+        </p>
       </div>
-      <div class={tools.length > 0 ? "text-left" : "hidden text-left"}>
-        <SmallHeading text="Tools" />
-        <ul>
-          {tools.map((tool) => <li>{tool}</li>)}
-        </ul>
-      </div>
-      <div class={role === "" ? "hidden text-left" : "text-left"}>
-        <SmallHeading text="Role" />
-        <p>{role}</p>
-      </div>
-      <div class={collaborators.length > 0 ? "text-left" : "hidden text-left"}>
-        <SmallHeading text="Collaborators" />
-        <ul>
-          {collaborators.map((collaborator) => <li>{collaborator}</li>)}
-        </ul>
+      <div class="grid divide-y">
+        <div class="grid grid-cols-2 py-3">
+          <p class="font-bold">Year</p>
+          <p>
+            {year}
+          </p>
+        </div>
+        <div class="grid grid-cols-2 py-3">
+          <p class="font-bold">Type</p>
+          <div>
+            {types.map((type) => <p>{type}</p>)}
+          </div>
+        </div>
+        <div
+          class={collaborators.length > 0 ? "grid grid-cols-2 py-3" : "hidden"}
+        >
+          <p class="font-bold">Collaborators</p>
+          <div>
+            {collaborators.map((collaborator) => <p>{collaborator}</p>)}
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<style>
-  .gap-1 {
-    gap: 1px;
-  }
-</style>
+  <style>
+    .gap-1 {
+      gap: 1px;
+    }
+
+    .grid-template {
+      grid-template-columns: 1fr 1fr;
+    }
+  </style>
+</div>

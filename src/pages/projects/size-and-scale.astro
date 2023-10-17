@@ -32,17 +32,16 @@ import highlighting from "../../images/size-and-scale/highlighting.gif";
     <ProjectHeader
       title="Visualizing Size & Scale"
       objective="Design a website to augment and scaffold towards size and scale cognition."
-      tools={["Three JS", "Javascript", "HTML/CSS", "Figma"]}
-      role="Researcher"
+      types={["Website", "Research"]}
       collaborators={["Dr. Matthew Peterson – Advisor"]}
-    >
-    </ProjectHeader>
-    <div class="p-3 border-x border-b">
+      year="2023"
+    />
+    <div class="sm:border-x border-b">
       <video playsinline autoplay muted loop>
         <source src={webm} type="video/webm" />
       </video>
     </div>
-    <div class="border-x">
+    <div class="sm:border-x">
       <ProjectGrid>
         <div class="col-span-1 lg:col-span-2">
           <SmallHeading text="Problem" />
@@ -99,111 +98,179 @@ import highlighting from "../../images/size-and-scale/highlighting.gif";
           </p>
         </div>
         <div class="col-span-1">
-          <Image src={magana} alt="Image of table cretaed from Magana's framework describing the 5 scale cognitive processes"/>
+          <Image
+            src={magana}
+            alt="Image of table cretaed from Magana's framework describing the 5 scale cognitive processes"
+          />
         </div>
         <!--////////////////////////////-->
         <div class="col-span-1">
           <p>
-            Secondly, I consulted literature on the design of educational multimedia. <Link
-              name='Richard Mayer – Multimedia Learning'
+            Secondly, I consulted literature on the design of educational
+            multimedia. <Link
+              name="Richard Mayer – Multimedia Learning"
               href="https://www.sciencedirect.com/science/article/abs/pii/S0079742102800056"
             />
-            is the preeminent work in this space.
+             is the preeminent work in this space.
           </p>
         </div>
         <div class="col-span-1">
-          <Image src={mayer} alt="Image of table cretaed from Mayer's framework describing the 4 of his principles for the design educational multimedia"/>
+          <Image
+            src={mayer}
+            alt="Image of table cretaed from Mayer's framework describing the 4 of his principles for the design educational multimedia"
+          />
         </div>
         <!--////////////////////////////-->
         <div class="col-span-1">
           <p>
-            Next I looked at the precedents. <Link href="https://www.nikon.com/about/sp/universcale/" name="Nikon's Universcale" /> is one of the most compelling educational websites for scale cognition out there. While it is great, user research from Magaña has shown that it has its flaws. It doesn't always align with Richard Mayer's principles either.
+            Next I looked at the precedents. <Link
+              href="https://www.nikon.com/about/sp/universcale/"
+              name="Nikon's Universcale"
+            /> is one of the most compelling educational websites for scale
+            cognition out there. While it is great, user research from Magaña
+            has shown that it has its flaws. It doesn't always align with
+            Richard Mayer's principles either.
           </p>
         </div>
         <div class="col-span-1">
-          <Image src={universcale} alt="Screenshot of Universcale"/>
+          <Image src={universcale} alt="Screenshot of Universcale" />
           <Caption text="Screenshot of Universcale" />
         </div>
         <!--////////////////////////////-->
         <div class="col-span-1 lg:col-span-2">
           <p>
-            Other precendents include Ray and Charles Eames' famous <Link href="https://www.youtube.com/watch?v=0fKBhvDjuy0&t=43s" name="Powers of Ten"> video.
-          </p>
-          <div class="w-full">
-            <Image src={powersoften} alt="Screenshots from Eames' Powers of Ten video"/>
-            <Caption text="Screenshots from Eames' Powers of Ten video" />
-          </div>
-        </div>
-        <!--////////////////////////////-->
-        <div class="col-span-1 lg:col-span-2">
-          <p>
-            Then I looked at diagrams from classroom science textbooks. Some of the diagrams that are used to teach about size, scale, and SI units of measurement contain some really great ideas. Some of ideas that I ended up pulling were the limited number of entities. In the Cell Size example one entitiy is chosen for every power of ten. Another idea I like from these is generalizing entities into groups like "can be seen with naked eye" and "can't be seen with naked eye".
-          </p>
-          <div class="flex">
-            <div>
-              <Image src={book1} alt="Image from science textbook showing various scales"/>
-              <Caption text="Diagrams from unknown science textbooks" />
+            Other precendents include Ray and Charles Eames' famous <Link
+              href="https://www.youtube.com/watch?v=0fKBhvDjuy0&t=43s"
+              name="Powers of Ten"
+            >
+              video.
+            </Link>
+            <div class="w-full">
+              <Image
+                src={powersoften}
+                alt="Screenshots from Eames' Powers of Ten video"
+              />
+              <Caption text="Screenshots from Eames' Powers of Ten video" />
             </div>
-            <div>
-              <Image src={book2} alt="Image from science textbook showing various scales"/>
+          </p>
+          <!--////////////////////////////-->
+          <div class="col-span-1 lg:col-span-2">
+            <p>
+              Then I looked at diagrams from classroom science textbooks. Some
+              of the diagrams that are used to teach about size, scale, and SI
+              units of measurement contain some really great ideas. Some of
+              ideas that I ended up pulling were the limited number of entities.
+              In the Cell Size example one entitiy is chosen for every power of
+              ten. Another idea I like from these is generalizing entities into
+              groups like "can be seen with naked eye" and "can't be seen with
+              naked eye".
+            </p>
+            <div class="flex">
+              <div>
+                <Image
+                  src={book1}
+                  alt="Image from science textbook showing various scales"
+                />
+                <Caption text="Diagrams from unknown science textbooks" />
+              </div>
+              <div>
+                <Image
+                  src={book2}
+                  alt="Image from science textbook showing various scales"
+                />
+              </div>
+            </div>
+          </div>
+          <!--////////////////////////////-->
+          <div class="col-span-1 lg:col-span-2">
+            <p>
+              I then created a tech demo for the educational scale cognition
+              website. This prototype started to do some useful things, giving
+              the user the ability to compare 3d models of entities at powers of
+              ten but was limited in many ways.
+            </p>
+            <div class="w-full">
+              <Image
+                src={prototype}
+                alt="Screenshot of original prototype shows a 3d model of a robin, doctor, and whale to scale "
+              />
+              <Caption text="Tech demo" />
+            </div>
+          </div>
+          <!--////////////////////////////-->
+          <div class="col-span-1 lg:col-span-2">
+            <p>
+              The Scale World's team has devised a technique for designing
+              educational multimedia called "Function Mapping". I've used this
+              technique to map out theoretical assertions onto specific design
+              decisions. The theoretical assertions come from Magaña’s FS2C.
+              These theoretically-derived functions are paired with principles
+              from Mayer to construct the features present in Scale Worlds Web.
+            </p>
+            <div class="w-full">
+              <Image
+                src={functionMappingIntro}
+                alt="Screenshot of the main page from the second version of the protoype"
+              />
+            </div>
+          </div>
+          <!--////////////////////////////-->
+          <div class="col-span-1 lg:col-span-2">
+            <p>
+              <b>Generalization + Segmenting</b> are used to create the overview
+              panel. Entities are grouped in a logical way by their metric
+              prefixes and segments are user-paced rather than continuous.
+            </p>
+            <div class="w-full">
+              <Image
+                src={functionMapping1}
+                alt="Screenshot of the main page from the second version of the protoype with the navigation panel at the bottom circled in purple"
+              />
+            </div>
+          </div>
+          <!--////////////////////////////-->
+          <div class="col-span-1 lg:col-span-2">
+            <p>
+              <b>Discrimination + Coherence</b> are used in the ordering of
+              entities scheme. One entity is chosen per power of ten.
+            </p>
+            <div class="w-full">
+              <Image
+                src={functionMapping2}
+                alt="Screenshot of the main page from the second version of the protoype with sections blurred out and icons enlarged"
+              />
+            </div>
+          </div>
+          <!--////////////////////////////-->
+          <div class="col-span-1 lg:col-span-2">
+            <p>
+              <b>Mathematical Reasoning + Spatial Contiguity</b> principles are
+              used to create the scheme where important measurements are placed
+              next to entities. Measurements are written out in scientific
+              notation and standard notation.
+            </p>
+            <div class="w-full">
+              <Image
+                src={functionMapping3}
+                alt="Screenshot of the main page from the second version of the protoype with everything blurred out except the main numeric panel"
+              />
+            </div>
+          </div>
+          <!--////////////////////////////-->
+          <div class="col-span-1 lg:col-span-2">
+            <p>
+              <b>Logical Proportional Reasoning + Signaling</b> are used to
+              create a highlighting system which maps out how the user moves
+              from small to large and large to small. This was later simplified.
+            </p>
+            <div class="w-full">
+              <Image
+                src={highlighting}
+                alt="Gif of the scaling in action with numbers highlighting as the scaling happens"
+              />
             </div>
           </div>
         </div>
-        <!--////////////////////////////-->
-        <div class="col-span-1 lg:col-span-2">
-          <p>
-            I then created a tech demo for the educational scale cognition website. This prototype started to do some useful things, giving the user the ability to compare 3d models of entities at powers of ten but was limited in many ways.
-          </p>
-          <div class="w-full">
-            <Image src={prototype} alt="Screenshot of original prototype shows a 3d model of a robin, doctor, and whale to scale "/>
-            <Caption text="Tech demo" />
-          </div>
-        </div>
-        <!--////////////////////////////-->
-        <div class="col-span-1 lg:col-span-2">
-          <p>
-            The Scale World's team has devised a technique for designing educational multimedia called "Function Mapping". I've used this technique to map out theoretical assertions onto specific design decisions. The theoretical assertions come from Magaña’s FS2C. These theoretically-derived functions are paired with principles from Mayer to construct the features present in Scale Worlds Web.
-          </p>
-          <div class="w-full">
-            <Image src={functionMappingIntro} alt="Screenshot of the main page from the second version of the protoype"/>
-          </div>
-        </div>
-        <!--////////////////////////////-->
-        <div class="col-span-1 lg:col-span-2">
-          <p>
-            <b>Generalization + Segmenting</b> are used to create the overview panel. Entities are grouped in a logical way by their metric prefixes and segments are user-paced rather than continuous.
-          </p>
-          <div class="w-full">
-            <Image src={functionMapping1} alt="Screenshot of the main page from the second version of the protoype with the navigation panel at the bottom circled in purple"/>
-          </div>
-        </div>
-        <!--////////////////////////////-->
-        <div class="col-span-1 lg:col-span-2">
-          <p>
-            <b>Discrimination + Coherence</b> are used in the ordering of entities scheme. One entity is chosen per power of ten.
-          </p>
-          <div class="w-full">
-            <Image src={functionMapping2} alt="Screenshot of the main page from the second version of the protoype with sections blurred out and icons enlarged"/>
-          </div>
-        </div>
-        <!--////////////////////////////-->
-        <div class="col-span-1 lg:col-span-2">
-          <p>
-            <b>Mathematical Reasoning + Spatial Contiguity</b> principles are used to create the scheme where important measurements are placed next to entities. Measurements are written out in scientific notation and standard notation.
-          </p>
-          <div class="w-full">
-            <Image src={functionMapping3} alt="Screenshot of the main page from the second version of the protoype with everything blurred out except the main numeric panel"/>
-          </div>
-        </div>   
-        <!--////////////////////////////-->
-        <div class="col-span-1 lg:col-span-2">
-          <p>
-            <b>Logical Proportional Reasoning + Signaling</b> are used to create a highlighting system which maps out how the user moves from small to large and large to small. This was later simplified.
-          </p>
-          <div class="w-full">
-            <Image src={highlighting} alt="Gif of the scaling in action with numbers highlighting as the scaling happens"/>
-          </div>
-        </div>               
       </ProjectGrid>
     </div>
   </main>

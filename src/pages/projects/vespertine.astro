@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-import ProjectHeaderSmall from "../../components/ProjectHeaderSmall.astro";
+import ProjectHeader from "../../components/ProjectHeader.astro";
 import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
@@ -11,15 +11,18 @@ import webm from "../../images/homepage/vespertine.webm";
 
 <Layout title="Brian Sekelsky">
   <main>
-    <ProjectHeaderSmall
+    <ProjectHeader
       title="Vespertine"
-      description="Three JS website made for Bjork's album Vespertine."
+      objective="Three JS website made for Bjork's album Vespertine."
+      types={["Website"]}
+      collaborators={[]}
+      year="2023"
     />
-    <div class="border-x">
-      <div class="mx-auto border-t flex justify-center p-3">
+    <div class="sm:border-x">
+      <div class="mx-auto flex justify-center">
         <video class="w-1/2" playsinline autoplay muted loop>
-            <source src={webm} type="video/webm" />
-          </video>
+          <source src={webm} type="video/webm" />
+        </video>
       </div>
     </div>
     <style></style>
