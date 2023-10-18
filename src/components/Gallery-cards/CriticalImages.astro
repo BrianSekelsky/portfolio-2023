@@ -25,7 +25,13 @@ const alt =
   year={year}
 >
   <div class="video hidden md:block">
-    <video playsinline autoplay muted loop>
+    <video
+      class="transition-all group-hover:rounded-xl"
+      playsinline
+      autoplay
+      muted
+      loop
+    >
       <source src={video} type="video/webm" />
     </video>
   </div>

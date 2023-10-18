@@ -17,7 +17,11 @@ const alt = "Flowers swirling in and out in a psychadelic way";
 ---
 
 <Card size="small" href="#" title={title} types={types} year={year}>
-  <Image src={myImage} alt={alt} />
+  <Image
+    class="transition-all group-hover:rounded-xl"
+    src={myImage}
+    alt={alt}
+  />
 </Card>
 
 <style>

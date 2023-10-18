@@ -20,14 +20,26 @@ const alt =
   "Billboard mocked up with design of text reading a car is great mode of transit provided that noone else has it";
 ---
 
-<Card size="small" href="projects/imagine-public-transport" title={title} types={types} year={year}>
+<Card
+  size="small"
+  href="projects/imagine-public-transport"
+  title={title}
+  types={types}
+  year={year}
+>
   <div class="video hidden md:block">
-    <video playsinline autoplay muted loop>
+    <video
+      class="transition-all group-hover:rounded-xl"
+      playsinline
+      autoplay
+      muted
+      loop
+    >
       <source src={video} type="video/webm" />
     </video>
   </div>
   <div class="gif block md:hidden">
-    <Image src={gif} alt={alt} />
+    <Image class="transition-all group-hover:rounded-xl" src={gif} alt={alt} />
   </div>
 </Card>
 

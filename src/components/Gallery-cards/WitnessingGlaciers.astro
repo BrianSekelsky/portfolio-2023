@@ -19,14 +19,26 @@ const alt =
   "Clip of zooming out from astronaut perspective up to whale perspective";
 ---
 
-<Card size="medium" href="projects/witnessing-glaciers" title={title} types={types} year={year}>
+<Card
+  size="medium"
+  href="projects/witnessing-glaciers"
+  title={title}
+  types={types}
+  year={year}
+>
   <div class="video hidden md:block">
-    <video playsinline autoplay muted loop>
+    <video
+      class="transition-all group-hover:rounded-xl"
+      playsinline
+      autoplay
+      muted
+      loop
+    >
       <source src={video} type="video/webm" />
     </video>
   </div>
   <div class="gif block md:hidden">
-    <Image src={gif} alt={alt} />
+    <Image class="transition-all group-hover:rounded-xl" src={gif} alt={alt} />
   </div>
 </Card>
 
