@@ -22,9 +22,56 @@ import Animism from "./Gallery-cards/Animism.astro";
 import NPCA from "./Gallery-cards/NPCA.astro";
 ---
 
+<div class="hidden md:flex justify-center gap-2 my-6">
+  <div
+    id="allButton"
+    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite"
+  >
+    All
+  </div>
+  <div
+    id="websiteButton"
+    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite"
+  >
+    Website
+  </div>
+  <div
+    id="userExperienceButton"
+    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite"
+  >
+    User Experience
+  </div>
+  <div
+    id="brandingButton"
+    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite"
+  >
+    Branding
+  </div>
+  <div
+    id="teachingButton"
+    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite"
+  >
+    Teaching
+  </div>
+  <div
+    id="writingButton"
+    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite"
+  >
+    Writing
+  </div>
+  <div
+    id="caseStudyButton"
+    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite"
+  >
+    w/ Case Study
+  </div>
+</div>
+
 <div class="border-t">
   <div class="mx-auto bg-black">
+    <!-- All -->
     <div
+      id="all"
       class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr"
     >
       <SizeAndScale />
@@ -32,7 +79,6 @@ import NPCA from "./Gallery-cards/NPCA.astro";
       <ImaginePublicTransit />
       <Animism />
       <Vespertine />
-      <!-- <Nothing /> -->
       <WitnessingGlaciers />
       <Fidelity />
       <ScaleWorlds />
@@ -40,12 +86,74 @@ import NPCA from "./Gallery-cards/NPCA.astro";
       <Around />
       <PossibleInternet />
       <SpeculativeDesignWorkshop />
-      <!-- <HighestMountain /> -->
       <LAS />
       <TerraFirma />
       <ConcertInterface />
       <NPCA />
       <PartsUnlimited />
+    </div>
+    <!-- Branding Group -->
+    <div
+      id="branding"
+      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
+    >
+      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
+      <ImaginePublicTransit />
+      <TerraFirma />
+      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
+    </div>
+    <!-- Website -->
+    <div
+      id="website"
+      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
+    >
+      <SizeAndScale />
+      <WitnessingGlaciers />
+      <Vespertine />
+      <TerraFirma />
+      <NPCA />
+      <PartsUnlimited />
+    </div>
+    <!-- User Experience -->
+    <div
+      id="userExperience"
+      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
+    >
+      <SizeAndScale />
+      <Fidelity />
+      <ScaleWorlds />
+      <DeliberateAI />
+      <PartsUnlimited />
+      <div class="hidden lg:block bg-white w-full col-span-2">&nbsp;</div>
+    </div>
+    <!-- Teaching -->
+    <div
+      id="teaching"
+      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
+    >
+      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
+      <Animism />
+      <SpeculativeDesignWorkshop />
+      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
+    </div>
+    <!-- Writing -->
+    <div
+      id="writing"
+      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
+    >
+      <div class="hidden lg:block bg-white w-full col-span-4">&nbsp;</div>
+    </div>
+    <!-- Case study -->
+    <div
+      id="caseStudy"
+      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
+    >
+      <SizeAndScale />
+      <WitnessingGlaciers />
+      <ScaleWorlds />
+      <div class="hidden lg:block bg-white w-full col-span-2 row-span-2">
+        &nbsp;
+      </div>
     </div>
   </div>
 </div>
@@ -55,3 +163,96 @@ import NPCA from "./Gallery-cards/NPCA.astro";
     gap: 1px;
   }
 </style>
+
+<script>
+  const all = document.querySelector("#all");
+  const allButton = document.querySelector("#allButton");
+
+  const branding = document.querySelector("#branding");
+  const brandingButton = document.querySelector("#brandingButton");
+
+  const website = document.querySelector("#website");
+  const websiteButton = document.querySelector("#websiteButton");
+
+  const userExperience = document.querySelector("#userExperience");
+  const userExperienceButton = document.querySelector("#userExperienceButton");
+
+  const teaching = document.querySelector("#teaching");
+  const teachingButton = document.querySelector("#teachingButton");
+
+  const writing = document.querySelector("#writing");
+  const writingButton = document.querySelector("#writingButton");
+
+  const caseStudy = document.querySelector("#caseStudy");
+  const caseStudyButton = document.querySelector("#caseStudyButton");
+
+  allButton.addEventListener("click", function () {
+    all.classList.remove("hidden");
+    branding.classList.add("hidden");
+    website.classList.add("hidden");
+    userExperience.classList.add("hidden");
+    teaching.classList.add("hidden");
+    writing.classList.add("hidden");
+    caseStudy.classList.add("hidden");
+  });
+
+  brandingButton.addEventListener("click", function () {
+    all.classList.add("hidden");
+    branding.classList.remove("hidden");
+    website.classList.add("hidden");
+    userExperience.classList.add("hidden");
+    teaching.classList.add("hidden");
+    writing.classList.add("hidden");
+    caseStudy.classList.add("hidden");
+  });
+
+  websiteButton.addEventListener("click", function () {
+    all.classList.add("hidden");
+    branding.classList.add("hidden");
+    website.classList.remove("hidden");
+    userExperience.classList.add("hidden");
+    teaching.classList.add("hidden");
+    writing.classList.add("hidden");
+    caseStudy.classList.add("hidden");
+  });
+
+  userExperienceButton.addEventListener("click", function () {
+    all.classList.add("hidden");
+    branding.classList.add("hidden");
+    website.classList.add("hidden");
+    userExperience.classList.remove("hidden");
+    teaching.classList.add("hidden");
+    writing.classList.add("hidden");
+    caseStudy.classList.add("hidden");
+  });
+
+  teachingButton.addEventListener("click", function () {
+    all.classList.add("hidden");
+    branding.classList.add("hidden");
+    website.classList.add("hidden");
+    userExperience.classList.add("hidden");
+    teaching.classList.remove("hidden");
+    writing.classList.add("hidden");
+    caseStudy.classList.add("hidden");
+  });
+
+  writingButton.addEventListener("click", function () {
+    all.classList.add("hidden");
+    branding.classList.add("hidden");
+    website.classList.add("hidden");
+    userExperience.classList.add("hidden");
+    teaching.classList.add("hidden");
+    writing.classList.remove("hidden");
+    caseStudy.classList.add("hidden");
+  });
+
+  caseStudyButton.addEventListener("click", function () {
+    all.classList.add("hidden");
+    branding.classList.add("hidden");
+    website.classList.add("hidden");
+    userExperience.classList.add("hidden");
+    teaching.classList.add("hidden");
+    writing.classList.add("hidden");
+    caseStudy.classList.remove("hidden");
+  });
+</script>
