@@ -1,25 +1,20 @@
 ---
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
-import video from "../../images/homepage/vespertine3.webm";
-import gif from "../../images/homepage/vespertine.png";
+import video from "../../images/homepage/iasdr.webm";
 import { Image } from "astro:assets";
+import gif from "../../images/homepage/iasdr.png";
 
-const title = "Vespertine";
-const description = "asdf";
+const title =
+  "Preserving theoretically-grounded functions across media platforms in interaction design";
 const year = "2023";
-const types = [
-  { text: "Website", special: false },
-  { text: "Visual", special: false },
-];
-const hasVideo = true;
-const alt =
-  "Video of webpage about Bjork's Vespertine. Shows text of album title in front of three dimensional house";
+const types = [{ text: "Writing", special: false }];
+const alt = "Screenshot of the paper";
 ---
 
 <Card
   size="small"
-  href="projects/vespertine"
+  href="https://dl.designresearchsociety.org/iasdr/iasdr2023/fullpapers/184/"
   title={title}
   types={types}
   year={year}
@@ -36,7 +31,7 @@ const alt =
     </video>
   </div>
   <div class="gif block md:hidden">
-    <Image class="transition-all group-hover:rounded-xl" src={gif} alt={alt} />
+    <Image src={gif} alt={alt} />
   </div>
 </Card>
 
