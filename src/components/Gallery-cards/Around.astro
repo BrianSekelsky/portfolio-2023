@@ -2,7 +2,8 @@
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import { Image } from "astro:assets";
-import myImage from "../../images/homepage/around.gif";
+import gif from "../../images/homepage/around.gif";
+import video from "../../images/homepage/around.webm";
 
 const title = "Around";
 const description = "asdf";
@@ -17,11 +18,20 @@ const alt = "Flowers swirling in and out in a psychadelic way";
 ---
 
 <Card size="small" href="#" title={title} types={types} year={year}>
-  <Image
-    class="transition-all group-hover:rounded-xl"
-    src={myImage}
-    alt={alt}
-  />
+  <div class="video hidden md:block">
+    <video
+      class="transition-all group-hover:rounded-xl"
+      playsinline
+      autoplay
+      muted
+      loop
+    >
+      <source src={video} type="video/webm" />
+    </video>
+  </div>
+  <div class="gif block md:hidden">
+    <Image src={gif} alt={alt} />
+  </div>
 </Card>
 
 <style>
