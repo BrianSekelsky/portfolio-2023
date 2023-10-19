@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import SmallHeading from "../../components/SmallHeading.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+import { Image } from "astro:assets";
+
+import webm from "../../images/homepage/speculative-design-workshop.webm";
+---
+
+<Layout title="Brian Sekelsky">
+  <main>
+    <ProjectHeader
+      title="Speculative Design Workshop"
+      objective="Grad school workshop."
+      types={["Education"]}
+      collaborators={[]}
+      year="2022"
+    />
+    <div class="">
+      <div class="mx-auto flex justify-center">
+        <video class="w-1/2" playsinline autoplay muted loop>
+          <source src={webm} type="video/webm" />
+        </video>
+      </div>
+    </div>
+    <style></style>
+  </main>
+</Layout>
