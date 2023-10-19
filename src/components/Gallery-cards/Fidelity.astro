@@ -3,7 +3,8 @@ import CardLabel from "../Card-label.astro";
 import { Image } from "astro:assets";
 import Card from "../Card.astro";
 
-import myImage from "../../images/homepage/fidelity.gif";
+import gif from "../../images/homepage/fidelity.gif";
+import video from "../../images/homepage/fidelity.webm";
 
 const title = "Fidelity Student Debt";
 const description = "asdf";
@@ -21,11 +22,20 @@ const alt = "Screenshot of user experience work in figma";
   types={types}
   year={year}
 >
-  <Image
-    class="transition-all group-hover:rounded-xl"
-    src={myImage}
-    alt={alt}
-  />
+  <div class="video hidden md:block">
+    <video
+      class="transition-all group-hover:rounded-xl"
+      playsinline
+      autoplay
+      muted
+      loop
+    >
+      <source src={video} type="video/webm" />
+    </video>
+  </div>
+  <div class="gif block md:hidden">
+    <Image class="transition-all group-hover:rounded-xl" src={gif} alt={alt} />
+  </div>
 </Card>
 
 <style>
