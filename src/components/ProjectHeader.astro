@@ -6,8 +6,16 @@ interface Props {
   types: string[];
   collborators: string[];
   year: string;
+  outboundLink?: string;
 }
-const { title, objective, types, collaborators, year } = Astro.props;
+const {
+  title,
+  objective,
+  types,
+  collaborators,
+  year,
+  outboundLink = "",
+} = Astro.props;
 ---
 
 <div class="border-b">
@@ -22,6 +30,12 @@ const { title, objective, types, collaborators, year } = Astro.props;
         <p>
           {objective}
         </p>
+        <div class={outboundLink != "" ? "mt-8 hidden lg:block" : "hidden"}>
+          <a
+            class="border rounded-full text-lg px-3 py-1 hover:bg-offwhite"
+            href={outboundLink}>Visit the site →</a
+          >
+        </div>
       </div>
       <div class="grid divide-y">
         <div class="grid grid-cols-2 py-3">
