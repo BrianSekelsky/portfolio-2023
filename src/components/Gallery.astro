@@ -75,96 +75,24 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       id="all"
       class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr"
     >
-      <SizeAndScale />
-      <CriticalImages />
-      <ImaginePublicTransit />
-      <Animism />
-      <Preserving />
-      <WitnessingGlaciers />
-      <Vespertine />
-      <Around />
-      <Fidelity />
-      <ScaleWorlds />
-      <DeliberateAI />
-      <SpeculativeDesignWorkshop />
-      <PossibleInternet />
-      <LAS />
-      <TerraFirma />
-      <ConcertInterface />
-      <NPCA />
+      <SizeAndScale typeClass="website userExperience caseStudy" />
+      <CriticalImages typeClass="branding" />
+      <ImaginePublicTransit typeClass="branding" />
+      <Animism typeClass="teaching" />
+      <Preserving typeClass="writing" />
+      <WitnessingGlaciers typeClass="website branding caseStudy" />
+      <Vespertine typeClass="visual website branding" />
+      <Around typeClass="branding" />
+      <Fidelity typeClass="userExperience" />
+      <ScaleWorlds typeClass="userExperience caseStudy" />
+      <DeliberateAI typeClass="userExperience" />
+      <SpeculativeDesignWorkshop typeClass="teaching" />
+      <PossibleInternet typeClass="userExperience caseStudy" />
+      <LAS typeClass="userExperience" />
+      <TerraFirma typeClass="branding website" />
+      <ConcertInterface typeClass="branding" />
+      <NPCA typeClass="branding website" />
       <!-- <PartsUnlimited /> -->
-    </div>
-    <!-- Branding Group -->
-    <div
-      id="branding"
-      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
-    >
-      <!-- <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div> -->
-      <CriticalImages />
-      <ImaginePublicTransit />
-      <Vespertine />
-      <Around />
-      <WitnessingGlaciers />
-      <TerraFirma />
-      <ConcertInterface />
-      <NPCA />
-      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
-    </div>
-    <!-- Website -->
-    <div
-      id="website"
-      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
-    >
-      <SizeAndScale />
-      <WitnessingGlaciers />
-      <Vespertine />
-      <TerraFirma />
-      <NPCA />
-      <PartsUnlimited />
-    </div>
-    <!-- User Experience -->
-    <div
-      id="userExperience"
-      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
-    >
-      <SizeAndScale />
-      <Fidelity />
-      <ScaleWorlds />
-      <DeliberateAI />
-      <PartsUnlimited />
-      <LAS />
-      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
-    </div>
-    <!-- Teaching -->
-    <div
-      id="teaching"
-      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
-    >
-      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
-      <Animism />
-      <SpeculativeDesignWorkshop />
-      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
-    </div>
-    <!-- Writing -->
-    <div
-      id="writing"
-      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
-    >
-      <div class="hidden lg:block bg-white w-full col-span-1">&nbsp;</div>
-      <Preserving />
-      <div class="hidden lg:block bg-white w-full col-span-2">&nbsp;</div>
-    </div>
-    <!-- Case study -->
-    <div
-      id="caseStudy"
-      class="grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr hidden"
-    >
-      <SizeAndScale />
-      <WitnessingGlaciers />
-      <ScaleWorlds />
-      <div class="hidden lg:block bg-white w-full col-span-2 row-span-2">
-        &nbsp;
-      </div>
     </div>
   </div>
 </div>
@@ -179,91 +107,95 @@ import Preserving from "./Gallery-cards/Preserving.astro";
   const all = document.querySelector("#all");
   const allButton = document.querySelector("#allButton");
 
-  const branding = document.querySelector("#branding");
   const brandingButton = document.querySelector("#brandingButton");
 
-  const website = document.querySelector("#website");
   const websiteButton = document.querySelector("#websiteButton");
 
-  const userExperience = document.querySelector("#userExperience");
   const userExperienceButton = document.querySelector("#userExperienceButton");
 
-  const teaching = document.querySelector("#teaching");
   const teachingButton = document.querySelector("#teachingButton");
 
-  const writing = document.querySelector("#writing");
   const writingButton = document.querySelector("#writingButton");
 
-  const caseStudy = document.querySelector("#caseStudy");
   const caseStudyButton = document.querySelector("#caseStudyButton");
 
   allButton.addEventListener("click", function () {
-    all.classList.remove("hidden");
-    branding.classList.add("hidden");
-    website.classList.add("hidden");
-    userExperience.classList.add("hidden");
-    teaching.classList.add("hidden");
-    writing.classList.add("hidden");
-    caseStudy.classList.add("hidden");
+    let children = [].slice.call(document.getElementById("all").childNodes, 0);
+
+    children.forEach((item) => {
+      item.classList.remove("hidden");
+    });
   });
 
   brandingButton.addEventListener("click", function () {
-    all.classList.add("hidden");
-    branding.classList.remove("hidden");
-    website.classList.add("hidden");
-    userExperience.classList.add("hidden");
-    teaching.classList.add("hidden");
-    writing.classList.add("hidden");
-    caseStudy.classList.add("hidden");
+    let children = [].slice.call(document.getElementById("all").childNodes, 0);
+
+    children.forEach((item) => {
+      if (item.classList.contains("Visual")) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
   });
 
   websiteButton.addEventListener("click", function () {
-    all.classList.add("hidden");
-    branding.classList.add("hidden");
-    website.classList.remove("hidden");
-    userExperience.classList.add("hidden");
-    teaching.classList.add("hidden");
-    writing.classList.add("hidden");
-    caseStudy.classList.add("hidden");
+    let children = [].slice.call(document.getElementById("all").childNodes, 0);
+
+    children.forEach((item) => {
+      if (item.classList.contains("Website")) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
   });
 
   userExperienceButton.addEventListener("click", function () {
-    all.classList.add("hidden");
-    branding.classList.add("hidden");
-    website.classList.add("hidden");
-    userExperience.classList.remove("hidden");
-    teaching.classList.add("hidden");
-    writing.classList.add("hidden");
-    caseStudy.classList.add("hidden");
+    let children = [].slice.call(document.getElementById("all").childNodes, 0);
+
+    children.forEach((item) => {
+      if (item.classList.contains("UX")) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
   });
 
   teachingButton.addEventListener("click", function () {
-    all.classList.add("hidden");
-    branding.classList.add("hidden");
-    website.classList.add("hidden");
-    userExperience.classList.add("hidden");
-    teaching.classList.remove("hidden");
-    writing.classList.add("hidden");
-    caseStudy.classList.add("hidden");
+    let children = [].slice.call(document.getElementById("all").childNodes, 0);
+
+    children.forEach((item) => {
+      if (item.classList.contains("Teaching")) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
   });
 
   writingButton.addEventListener("click", function () {
-    all.classList.add("hidden");
-    branding.classList.add("hidden");
-    website.classList.add("hidden");
-    userExperience.classList.add("hidden");
-    teaching.classList.add("hidden");
-    writing.classList.remove("hidden");
-    caseStudy.classList.add("hidden");
+    let children = [].slice.call(document.getElementById("all").childNodes, 0);
+
+    children.forEach((item) => {
+      if (item.classList.contains("Writing")) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
   });
 
   caseStudyButton.addEventListener("click", function () {
-    all.classList.add("hidden");
-    branding.classList.add("hidden");
-    website.classList.add("hidden");
-    userExperience.classList.add("hidden");
-    teaching.classList.add("hidden");
-    writing.classList.add("hidden");
-    caseStudy.classList.remove("hidden");
+    let children = [].slice.call(document.getElementById("all").childNodes, 0);
+
+    children.forEach((item) => {
+      if (item.classList.contains("CaseStudy")) {
+        item.classList.remove("hidden");
+      } else {
+        item.classList.add("hidden");
+      }
+    });
   });
 </script>

@@ -10,10 +10,23 @@ interface Props {
 }
 
 const { size, href = "#", title, types, year } = Astro.props;
+
+let mainClasses;
+if (size === "small") {
+  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-2 sm:col-span-1"
+} else {
+  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-2 sm:row-span-2"
+}
+
+let typeNames: string;
+
+for(let i = 0; i < types.length; i++) {
+  typeNames = typeNames + " " + types[i].text
+}
 ---
 
 <div
-  class={size === "small" ? "bg-white group w-full hover:cursor-pointer col-span-2 sm:col-span-1" : "bg-white group w-full hover:cursor-pointer col-span-2 sm:row-span-2"}
+  class:list={[mainClasses, typeNames]}
 >
   <div class="relative overflow-hidden min-h-full w-full flex items-center">
     <a href={href} class="min-h-full">
