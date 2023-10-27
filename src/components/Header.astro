@@ -78,6 +78,24 @@
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  const colors = [
+    "#0000FF",
+    // "#00FF00",
+    "#FF0000",
+    // "#FF00FF",
+    "#28965A",
+    "#AA6DA3",
+    "#4DFFF3",
+    "#CAFF8A",
+    "#4F3130",
+    "#F7E733",
+    "#BDD5EA",
+  ];
+
+  function getRandomColor() {
+    return colors[getRandomInt(0, colors.length - 1)];
+  }
+
   let letters = document.getElementsByClassName("manipulable");
 
   for (let letter of letters) {
@@ -106,16 +124,20 @@
       let randomInt = getRandomInt(1, 4);
       if (randomInt === 1) {
         // letter.classList.add("font-sans");
-        letter.style.transform = "translate(50px, 50px)";
+        letter.style.transform = "skew(10deg, 20deg)";
+        // letter.style.transform = "translate(50px, 50px)";
       } else if (randomInt === 2) {
         // letter.classList.add("font-sans");
-        letter.style.transform = "translate(-50px, -50px)";
+        letter.style.transform = "skew(20deg, 30deg)";
+        // letter.style.transform = "translate(-50px, -50px)";
       } else if (randomInt === 3) {
         // letter.classList.add("font-sans");
-        letter.style.transform = "translate(-50px, 50px)";
+        letter.style.transform = "skew(30deg, -10deg)";
+        // letter.style.transform = "translate(-50px, 50px)";
       } else if (randomInt === 4) {
         // letter.classList.add("font-sans");
-        letter.style.transform = "translate(50px, -50px)";
+        letter.style.transform = "skew(0deg, -20deg)";
+        // letter.style.transform = "translate(50px, -50px)";
       }
       setTimeout(function () {
         letter.removeAttribute("style");
