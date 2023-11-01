@@ -23,10 +23,10 @@ import NPCA from "./Gallery-cards/NPCA.astro";
 import Preserving from "./Gallery-cards/Preserving.astro";
 ---
 
-<div class="hidden md:flex justify-center gap-2 my-6">
+<div id="buttons" class="hidden md:flex justify-center gap-2 py-3 border-t">
   <div
     id="allButton"
-    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite"
+    class="text-lg border cursor-pointer px-3 rounded-full hover:bg-offwhite shadow-md"
   >
     All
   </div>
@@ -121,6 +121,15 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
   allButton.addEventListener("click", function () {
     let children = [].slice.call(document.getElementById("all").childNodes, 0);
+    let buttons = [].slice.call(
+      document.getElementById("buttons").childNodes,
+      0
+    );
+
+    buttons.forEach((item) => {
+      item.classList.remove("shadow-md");
+      this.classList.add("shadow-md");
+    });
 
     children.forEach((item) => {
       item.classList.remove("hidden");
@@ -129,6 +138,15 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
   brandingButton.addEventListener("click", function () {
     let children = [].slice.call(document.getElementById("all").childNodes, 0);
+    let buttons = [].slice.call(
+      document.getElementById("buttons").childNodes,
+      0
+    );
+
+    buttons.forEach((item) => {
+      item.classList.remove("shadow-md");
+      this.classList.add("shadow-md");
+    });
 
     children.forEach((item) => {
       if (item.classList.contains("Visual")) {
@@ -141,6 +159,15 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
   websiteButton.addEventListener("click", function () {
     let children = [].slice.call(document.getElementById("all").childNodes, 0);
+    let buttons = [].slice.call(
+      document.getElementById("buttons").childNodes,
+      0
+    );
+
+    buttons.forEach((item) => {
+      item.classList.remove("shadow-md");
+      this.classList.add("shadow-md");
+    });
 
     children.forEach((item) => {
       if (item.classList.contains("Website")) {
@@ -153,6 +180,15 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
   userExperienceButton.addEventListener("click", function () {
     let children = [].slice.call(document.getElementById("all").childNodes, 0);
+    let buttons = [].slice.call(
+      document.getElementById("buttons").childNodes,
+      0
+    );
+
+    buttons.forEach((item) => {
+      item.classList.remove("shadow-md");
+      this.classList.add("shadow-md");
+    });
 
     children.forEach((item) => {
       if (item.classList.contains("UX")) {
@@ -165,6 +201,15 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
   teachingButton.addEventListener("click", function () {
     let children = [].slice.call(document.getElementById("all").childNodes, 0);
+    let buttons = [].slice.call(
+      document.getElementById("buttons").childNodes,
+      0
+    );
+
+    buttons.forEach((item) => {
+      item.classList.remove("shadow-md");
+      this.classList.add("shadow-md");
+    });
 
     children.forEach((item) => {
       if (item.classList.contains("Teaching")) {
@@ -177,6 +222,15 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
   writingButton.addEventListener("click", function () {
     let children = [].slice.call(document.getElementById("all").childNodes, 0);
+    let buttons = [].slice.call(
+      document.getElementById("buttons").childNodes,
+      0
+    );
+
+    buttons.forEach((item) => {
+      item.classList.remove("shadow-md");
+      this.classList.add("shadow-md");
+    });
 
     children.forEach((item) => {
       if (item.classList.contains("Writing")) {
@@ -189,6 +243,15 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
   caseStudyButton.addEventListener("click", function () {
     let children = [].slice.call(document.getElementById("all").childNodes, 0);
+    let buttons = [].slice.call(
+      document.getElementById("buttons").childNodes,
+      0
+    );
+
+    buttons.forEach((item) => {
+      item.classList.remove("shadow-md");
+      this.classList.add("shadow-md");
+    });
 
     children.forEach((item) => {
       if (item.classList.contains("CaseStudy")) {

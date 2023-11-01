@@ -19,6 +19,9 @@ module.exports = {
 			'1/4': '25%',
 			'1/2': '50%',
 			'3/4': '75%',
+		},
+		boxShadow: {
+			'md': '0 0 10px 0 rgba(0,0,0,0.45) inset;',
 		}
 	},
 	plugins: [],
