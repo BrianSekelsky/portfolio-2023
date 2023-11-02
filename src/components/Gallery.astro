@@ -82,7 +82,6 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       <Preserving typeClass="writing" />
       <WitnessingGlaciers typeClass="website branding caseStudy" />
       <Vespertine typeClass="visual website branding" />
-      <!-- <Around typeClass="branding" /> -->
       <Fidelity typeClass="userExperience" />
       <ScaleWorlds typeClass="userExperience caseStudy" />
       <DeliberateAI typeClass="userExperience" />
@@ -92,7 +91,6 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       <TerraFirma typeClass="branding website" />
       <ConcertInterface typeClass="branding" />
       <NPCA typeClass="branding website" />
-      <!-- <PartsUnlimited /> -->
     </div>
   </div>
 </div>
@@ -119,10 +117,14 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
   const caseStudyButton = document.querySelector("#caseStudyButton");
 
+  const buttons = [].slice.call(
+    document.getElementById("buttons").childNodes,
+    0
+  );
+
   allButton.addEventListener("click", function () {
-    let children = [].slice.call(document.getElementById("all").childNodes, 0);
-    let buttons = [].slice.call(
-      document.getElementById("buttons").childNodes,
+    const children = [].slice.call(
+      document.getElementById("all").childNodes,
       0
     );
 
@@ -137,9 +139,8 @@ import Preserving from "./Gallery-cards/Preserving.astro";
   });
 
   brandingButton.addEventListener("click", function () {
-    let children = [].slice.call(document.getElementById("all").childNodes, 0);
-    let buttons = [].slice.call(
-      document.getElementById("buttons").childNodes,
+    const children = [].slice.call(
+      document.getElementById("all").childNodes,
       0
     );
 
@@ -158,9 +159,8 @@ import Preserving from "./Gallery-cards/Preserving.astro";
   });
 
   websiteButton.addEventListener("click", function () {
-    let children = [].slice.call(document.getElementById("all").childNodes, 0);
-    let buttons = [].slice.call(
-      document.getElementById("buttons").childNodes,
+    const children = [].slice.call(
+      document.getElementById("all").childNodes,
       0
     );
 
@@ -179,9 +179,8 @@ import Preserving from "./Gallery-cards/Preserving.astro";
   });
 
   userExperienceButton.addEventListener("click", function () {
-    let children = [].slice.call(document.getElementById("all").childNodes, 0);
-    let buttons = [].slice.call(
-      document.getElementById("buttons").childNodes,
+    const children = [].slice.call(
+      document.getElementById("all").childNodes,
       0
     );
 
@@ -200,9 +199,8 @@ import Preserving from "./Gallery-cards/Preserving.astro";
   });
 
   teachingButton.addEventListener("click", function () {
-    let children = [].slice.call(document.getElementById("all").childNodes, 0);
-    let buttons = [].slice.call(
-      document.getElementById("buttons").childNodes,
+    const children = [].slice.call(
+      document.getElementById("all").childNodes,
       0
     );
 
@@ -221,9 +219,8 @@ import Preserving from "./Gallery-cards/Preserving.astro";
   });
 
   writingButton.addEventListener("click", function () {
-    let children = [].slice.call(document.getElementById("all").childNodes, 0);
-    let buttons = [].slice.call(
-      document.getElementById("buttons").childNodes,
+    const children = [].slice.call(
+      document.getElementById("all").childNodes,
       0
     );
 
@@ -242,9 +239,8 @@ import Preserving from "./Gallery-cards/Preserving.astro";
   });
 
   caseStudyButton.addEventListener("click", function () {
-    let children = [].slice.call(document.getElementById("all").childNodes, 0);
-    let buttons = [].slice.call(
-      document.getElementById("buttons").childNodes,
+    const children = [].slice.call(
+      document.getElementById("all").childNodes,
       0
     );
 
