@@ -19,7 +19,7 @@ const alt = "Screenshot of the paper";
   types={types}
   year={year}
 >
-  <div class="video hidden md:block">
+  <!-- <div class="video hidden md:block">
     <video
       class="transition-all group-hover:rounded-2xl"
       playsinline
@@ -30,9 +30,9 @@ const alt = "Screenshot of the paper";
     >
       <source src={video} type="video/webm" />
     </video>
-  </div>
-  <div class="gif block md:hidden">
-    <Image src={gif} alt={alt} />
+  </div> -->
+  <div class="gif block">
+    <Image class="transition-all group-hover:rounded-2xl" src={gif} alt={alt} />
   </div>
 </Card>
 
