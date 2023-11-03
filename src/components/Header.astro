@@ -1,7 +1,7 @@
 <div class="p-3 py-12 lg:px-36 lg:py-28">
   <p
     id="manipulate"
-    class="text-center font-serif leading-tight text-6xl sm:text-8xl lg:leading-tight"
+    class="text-center font-serif leading-tight text-5xl sm:text-7xl lg:leading-tight"
   >
     I’m a designer, researcher, developer, & musician. This is my portfolio.
     <!-- <p class="text-xs uppercase font-thin font-mono pb-3 text-center">
@@ -12,7 +12,7 @@
 
 <style>
   #manipulate {
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 </style>
 
@@ -25,17 +25,17 @@
 
   let fontMode = 0;
 
-  document.getElementById("manipulate").addEventListener("click", function () {
-    if (fontMode == 0) {
-      document.getElementById("manipulate").classList.remove("font-serif");
-      document.getElementById("manipulate").classList.add("font-sans");
-      fontMode = 1;
-    } else if (fontMode == 1) {
-      document.getElementById("manipulate").classList.remove("font-sans");
-      document.getElementById("manipulate").classList.add("font-serif");
-      fontMode = 0;
-    }
-  });
+  // document.getElementById("manipulate").addEventListener("click", function () {
+  //   if (fontMode == 0) {
+  //     document.getElementById("manipulate").classList.remove("font-serif");
+  //     document.getElementById("manipulate").classList.add("font-sans");
+  //     fontMode = 1;
+  //   } else if (fontMode == 1) {
+  //     document.getElementById("manipulate").classList.remove("font-sans");
+  //     document.getElementById("manipulate").classList.add("font-serif");
+  //     fontMode = 0;
+  //   }
+  // });
   // document.getElementById("manipulate").classList.add("font-sans");
 
   array.forEach((item) => {
