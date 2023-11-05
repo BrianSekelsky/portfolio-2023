@@ -23,46 +23,49 @@ import NPCA from "./Gallery-cards/NPCA.astro";
 import Preserving from "./Gallery-cards/Preserving.astro";
 ---
 
-<div id="buttons" class="hidden md:flex justify-center gap-2 py-3 border-t">
+<div
+  id="buttons"
+  class="hidden md:flex justify-center gap-2 py-3 border-t px-8"
+>
   <div
     id="allButton"
-    class="border cursor-pointer px-3 rounded-full hover:bg-offwhite shadow-md transition-all"
+    class="text-sm uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite shadow-md transition-all"
   >
     All
   </div>
   <div
     id="websiteButton"
-    class="border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-sm uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
   >
     Website
   </div>
   <div
     id="userExperienceButton"
-    class="border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-sm uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
   >
-    User Experience
+    UX
   </div>
   <div
     id="brandingButton"
-    class="border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-sm uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
   >
     Visual
   </div>
   <div
     id="teachingButton"
-    class="border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-sm uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
   >
     Teaching
   </div>
   <div
     id="writingButton"
-    class="border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-sm uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
   >
     Writing
   </div>
   <div
     id="caseStudyButton"
-    class="border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-sm uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
   >
     w/ Case Study
   </div>
@@ -91,170 +94,173 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       <TerraFirma typeClass="branding website" />
       <ConcertInterface typeClass="branding" />
       <NPCA typeClass="branding website" />
+      <PartsUnlimited typeClass="website userExperience" />
     </div>
   </div>
+
+  <style>
+    .gap-1 {
+      gap: 1px;
+    }
+  </style>
+
+  <script>
+    const all = document.querySelector("#all");
+    const allButton = document.querySelector("#allButton");
+
+    const brandingButton = document.querySelector("#brandingButton");
+
+    const websiteButton = document.querySelector("#websiteButton");
+
+    const userExperienceButton = document.querySelector(
+      "#userExperienceButton"
+    );
+
+    const teachingButton = document.querySelector("#teachingButton");
+
+    const writingButton = document.querySelector("#writingButton");
+
+    const caseStudyButton = document.querySelector("#caseStudyButton");
+
+    const buttons = [].slice.call(
+      document.getElementById("buttons").childNodes,
+      0
+    );
+
+    allButton.addEventListener("click", function () {
+      const children = [].slice.call(
+        document.getElementById("all").childNodes,
+        0
+      );
+
+      buttons.forEach((button) => {
+        button.classList.remove("shadow-md");
+        this.classList.add("shadow-md");
+      });
+
+      children.forEach((item) => {
+        item.classList.remove("hidden");
+      });
+    });
+
+    brandingButton.addEventListener("click", function () {
+      const children = [].slice.call(
+        document.getElementById("all").childNodes,
+        0
+      );
+
+      buttons.forEach((button) => {
+        button.classList.remove("shadow-md");
+        this.classList.add("shadow-md");
+      });
+
+      children.forEach((item) => {
+        if (item.classList.contains("Visual")) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+    });
+
+    websiteButton.addEventListener("click", function () {
+      const children = [].slice.call(
+        document.getElementById("all").childNodes,
+        0
+      );
+
+      buttons.forEach((button) => {
+        button.classList.remove("shadow-md");
+        this.classList.add("shadow-md");
+      });
+
+      children.forEach((item) => {
+        if (item.classList.contains("Website")) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+    });
+
+    userExperienceButton.addEventListener("click", function () {
+      const children = [].slice.call(
+        document.getElementById("all").childNodes,
+        0
+      );
+
+      buttons.forEach((button) => {
+        button.classList.remove("shadow-md");
+        this.classList.add("shadow-md");
+      });
+
+      children.forEach((item) => {
+        if (item.classList.contains("UX")) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+    });
+
+    teachingButton.addEventListener("click", function () {
+      const children = [].slice.call(
+        document.getElementById("all").childNodes,
+        0
+      );
+
+      buttons.forEach((button) => {
+        button.classList.remove("shadow-md");
+        this.classList.add("shadow-md");
+      });
+
+      children.forEach((item) => {
+        if (item.classList.contains("Teaching")) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+    });
+
+    writingButton.addEventListener("click", function () {
+      const children = [].slice.call(
+        document.getElementById("all").childNodes,
+        0
+      );
+
+      buttons.forEach((button) => {
+        button.classList.remove("shadow-md");
+        this.classList.add("shadow-md");
+      });
+
+      children.forEach((item) => {
+        if (item.classList.contains("Writing")) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+    });
+
+    caseStudyButton.addEventListener("click", function () {
+      const children = [].slice.call(
+        document.getElementById("all").childNodes,
+        0
+      );
+
+      buttons.forEach((button) => {
+        button.classList.remove("shadow-md");
+        this.classList.add("shadow-md");
+      });
+
+      children.forEach((item) => {
+        if (item.classList.contains("CaseStudy")) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+    });
+  </script>
 </div>
-
-<style>
-  .gap-1 {
-    gap: 1px;
-  }
-</style>
-
-<script>
-  const all = document.querySelector("#all");
-  const allButton = document.querySelector("#allButton");
-
-  const brandingButton = document.querySelector("#brandingButton");
-
-  const websiteButton = document.querySelector("#websiteButton");
-
-  const userExperienceButton = document.querySelector("#userExperienceButton");
-
-  const teachingButton = document.querySelector("#teachingButton");
-
-  const writingButton = document.querySelector("#writingButton");
-
-  const caseStudyButton = document.querySelector("#caseStudyButton");
-
-  const buttons = [].slice.call(
-    document.getElementById("buttons").childNodes,
-    0
-  );
-
-  allButton.addEventListener("click", function () {
-    const children = [].slice.call(
-      document.getElementById("all").childNodes,
-      0
-    );
-
-    buttons.forEach((button) => {
-      button.classList.remove("shadow-md");
-      this.classList.add("shadow-md");
-    });
-
-    children.forEach((item) => {
-      item.classList.remove("hidden");
-    });
-  });
-
-  brandingButton.addEventListener("click", function () {
-    const children = [].slice.call(
-      document.getElementById("all").childNodes,
-      0
-    );
-
-    buttons.forEach((button) => {
-      button.classList.remove("shadow-md");
-      this.classList.add("shadow-md");
-    });
-
-    children.forEach((item) => {
-      if (item.classList.contains("Visual")) {
-        item.classList.remove("hidden");
-      } else {
-        item.classList.add("hidden");
-      }
-    });
-  });
-
-  websiteButton.addEventListener("click", function () {
-    const children = [].slice.call(
-      document.getElementById("all").childNodes,
-      0
-    );
-
-    buttons.forEach((button) => {
-      button.classList.remove("shadow-md");
-      this.classList.add("shadow-md");
-    });
-
-    children.forEach((item) => {
-      if (item.classList.contains("Website")) {
-        item.classList.remove("hidden");
-      } else {
-        item.classList.add("hidden");
-      }
-    });
-  });
-
-  userExperienceButton.addEventListener("click", function () {
-    const children = [].slice.call(
-      document.getElementById("all").childNodes,
-      0
-    );
-
-    buttons.forEach((button) => {
-      button.classList.remove("shadow-md");
-      this.classList.add("shadow-md");
-    });
-
-    children.forEach((item) => {
-      if (item.classList.contains("UX")) {
-        item.classList.remove("hidden");
-      } else {
-        item.classList.add("hidden");
-      }
-    });
-  });
-
-  teachingButton.addEventListener("click", function () {
-    const children = [].slice.call(
-      document.getElementById("all").childNodes,
-      0
-    );
-
-    buttons.forEach((button) => {
-      button.classList.remove("shadow-md");
-      this.classList.add("shadow-md");
-    });
-
-    children.forEach((item) => {
-      if (item.classList.contains("Teaching")) {
-        item.classList.remove("hidden");
-      } else {
-        item.classList.add("hidden");
-      }
-    });
-  });
-
-  writingButton.addEventListener("click", function () {
-    const children = [].slice.call(
-      document.getElementById("all").childNodes,
-      0
-    );
-
-    buttons.forEach((button) => {
-      button.classList.remove("shadow-md");
-      this.classList.add("shadow-md");
-    });
-
-    children.forEach((item) => {
-      if (item.classList.contains("Writing")) {
-        item.classList.remove("hidden");
-      } else {
-        item.classList.add("hidden");
-      }
-    });
-  });
-
-  caseStudyButton.addEventListener("click", function () {
-    const children = [].slice.call(
-      document.getElementById("all").childNodes,
-      0
-    );
-
-    buttons.forEach((button) => {
-      button.classList.remove("shadow-md");
-      this.classList.add("shadow-md");
-    });
-
-    children.forEach((item) => {
-      if (item.classList.contains("CaseStudy")) {
-        item.classList.remove("hidden");
-      } else {
-        item.classList.add("hidden");
-      }
-    });
-  });
-</script>
