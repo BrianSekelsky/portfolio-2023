@@ -5,11 +5,9 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<div class="sm:hidden">
+<div class="block sm:hidden">
   <div class="mx-auto">
-    <div
-      class="flex flex-wrap justify-center sm:justify-between py-3 font-mono"
-    >
+    <div class="flex flex-wrap justify-center sm:justify-between p-4 font-mono">
       <div class="w-full sm:w-1/2 text-center sm:text-left">
         <NavLink href="/#" name="BRIAN SEKELSKY" />
       </div>
@@ -22,9 +20,11 @@ const currentPath = pathname.slice(1); // remove the first "/"
   </div>
 </div>
 <div class="hidden sm:block">
-  <div class="mx-auto">
-    <div class="flex flex-col justify-center sm:justify-between p-4 font-mono">
-      <div class="w-full sm:w-1/2 text-center sm:text-left">
+  <div class="">
+    <div
+      class="flex justify-between sm:justify-between py-5 font-mono rotate-180 writing-mode min-h-full min-w-full items-center"
+    >
+      <div class="w-full sm:w-1/2 text-center sm:text-left font-bold">
         <NavLink href="/#" name="BRIAN SEKELSKY" />
       </div>
       <div class="flex flex-wrap gap-8 pt-6 sm:pt-0">
@@ -35,3 +35,9 @@ const currentPath = pathname.slice(1); // remove the first "/"
     </div>
   </div>
 </div>
+
+<style>
+  .writing-mode {
+    writing-mode: vertical-rl;
+  }
+</style>
