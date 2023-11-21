@@ -19,16 +19,21 @@ const {
 ---
 
 <div class="border-b">
-  <div class="">
-    <div class="p-4 grid sm:grid-template grid-cols-1 sm:grid-cols-2 gap-12">
+  <div class="p-4">
+    <a
+      href="/"
+      class="text-sm font-mono uppercase hover:lowercase hover:text-blue"
+      >← back to projects</a
+    >
+    <p class="font-sans leading-tight text-4xl lg:leading-tight mb-0 pt-4 pb-2">
+      {title}
+    </p>
+    <div class="grid sm:grid-template grid-cols-1 sm:grid-cols-2 gap-12">
       <div>
-        <p class="font-sans leading-tight text-4xl lg:leading-tight mb-0">
-          {title}
-        </p>
         <p>
           {objective}
         </p>
-        <div class={outboundLink != "" ? "mt-8 hidden lg:block" : "hidden"}>
+        <div class={outboundLink != "" ? "mt-4 hidden lg:block" : "hidden"}>
           <a
             class="border rounded-full text-lg px-3 py-1 hover:bg-offwhite"
             href={outboundLink}>Visit the site →</a
@@ -36,7 +41,7 @@ const {
         </div>
       </div>
       <div class="grid divide-y">
-        <div class="grid grid-cols-2 py-3">
+        <div class="grid grid-cols-2 pb-3">
           <p class="font-bold">Year</p>
           <p>
             {year}
