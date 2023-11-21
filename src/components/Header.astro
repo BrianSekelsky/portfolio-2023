@@ -1,5 +1,8 @@
-<div class="p-3 py-12 sm:px-4 sm:pt-4 sm:pb-48 sm:max-w-3/4">
-  <p id="manipulate" class="text-center sm:text-left text-5xl sm:text-7xl font-serif">
+<div class="p-3 py-12 sm:px-4 sm:pt-4 sm:pb-48 sm:max-w-3/4 sm:max-h-96">
+  <p
+    id="manipulate"
+    class="text-center sm:text-left text-5xl sm:text-7xl font-serif"
+  >
     My name is Brian Sekelsky. I’m a designer, researcher, developer, & musician. This website is a portfolio and archive for my work.
   </p>
 </div>
@@ -117,25 +120,25 @@
       letter.style.color = randomColor();
       let randomInt = getRandomInt(1, 4);
       if (randomInt === 1) {
-        // letter.classList.add("font-sans");
-        letter.style.transform = "skew(10deg, 20deg)";
+        letter.classList.add("font-bold");
+        // letter.style.transform = "skew(10deg, 20deg)";
         // letter.style.transform = "translate(50px, 50px)";
       } else if (randomInt === 2) {
-        // letter.classList.add("font-sans");
-        letter.style.transform = "skew(20deg, 30deg)";
+        letter.classList.add("font-bold");
+        // letter.style.transform = "skew(20deg, 30deg)";
         // letter.style.transform = "translate(-50px, -50px)";
       } else if (randomInt === 3) {
-        // letter.classList.add("font-sans");
-        letter.style.transform = "skew(30deg, -10deg)";
+        letter.classList.add("font-bold");
+        // letter.style.transform = "skew(30deg, -10deg)";
         // letter.style.transform = "translate(-50px, 50px)";
       } else if (randomInt === 4) {
-        // letter.classList.add("font-sans");
-        letter.style.transform = "skew(0deg, -20deg)";
+        letter.classList.add("font-bold");
+        // letter.style.transform = "skew(0deg, -20deg)";
         // letter.style.transform = "translate(50px, -50px)";
       }
       setTimeout(function () {
         letter.removeAttribute("style");
-        letter.classList.remove("font-sans");
+        letter.classList.remove("font-bold");
       }, 400);
     });
   }
