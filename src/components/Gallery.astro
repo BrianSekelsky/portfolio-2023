@@ -26,43 +26,43 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 <div id="buttons" class="hidden md:flex justify-start gap-2 p-4">
   <div
     id="allButton"
-    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite shadow-md transition-all"
+    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase shadow-md transition-all"
   >
     All
   </div>
   <div
     id="websiteButton"
-    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
     Website
   </div>
   <div
     id="userExperienceButton"
-    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
     UX
   </div>
   <div
     id="brandingButton"
-    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
     Visual
   </div>
   <div
     id="teachingButton"
-    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
     Teaching
   </div>
   <div
     id="writingButton"
-    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
     Writing
   </div>
   <div
     id="caseStudyButton"
-    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite transition-all"
+    class="text-lg uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
     w/ Case Study
   </div>
@@ -110,7 +110,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
     const websiteButton = document.querySelector("#websiteButton");
 
     const userExperienceButton = document.querySelector(
-      "#userExperienceButton"
+      "#userExperienceButton",
     );
 
     const teachingButton = document.querySelector("#teachingButton");
@@ -121,13 +121,13 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 
     const buttons = [].slice.call(
       document.getElementById("buttons").childNodes,
-      0
+      0,
     );
 
     allButton.addEventListener("click", function () {
       const children = [].slice.call(
         document.getElementById("all").childNodes,
-        0
+        0,
       );
 
       buttons.forEach((button) => {
@@ -143,7 +143,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
     brandingButton.addEventListener("click", function () {
       const children = [].slice.call(
         document.getElementById("all").childNodes,
-        0
+        0,
       );
 
       buttons.forEach((button) => {
@@ -163,7 +163,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
     websiteButton.addEventListener("click", function () {
       const children = [].slice.call(
         document.getElementById("all").childNodes,
-        0
+        0,
       );
 
       buttons.forEach((button) => {
@@ -183,7 +183,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
     userExperienceButton.addEventListener("click", function () {
       const children = [].slice.call(
         document.getElementById("all").childNodes,
-        0
+        0,
       );
 
       buttons.forEach((button) => {
@@ -203,7 +203,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
     teachingButton.addEventListener("click", function () {
       const children = [].slice.call(
         document.getElementById("all").childNodes,
-        0
+        0,
       );
 
       buttons.forEach((button) => {
@@ -223,7 +223,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
     writingButton.addEventListener("click", function () {
       const children = [].slice.call(
         document.getElementById("all").childNodes,
-        0
+        0,
       );
 
       buttons.forEach((button) => {
@@ -243,7 +243,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
     caseStudyButton.addEventListener("click", function () {
       const children = [].slice.call(
         document.getElementById("all").childNodes,
-        0
+        0,
       );
 
       buttons.forEach((button) => {
