@@ -29,7 +29,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
 >
   <div
     id="allButton"
-    class="text-xl md:text-base uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase shadow-md transition-all"
+    class="text-xl md:text-base uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase bg-black text-white transition-all"
   >
     All
   </div>
@@ -50,12 +50,6 @@ import Preserving from "./Gallery-cards/Preserving.astro";
     class="text-xl md:text-base uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
     Visual
-  </div>
-  <div
-    id="teachingButton"
-    class="text-xl md:text-base uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase transition-all"
-  >
-    Teaching
   </div>
   <div
     id="writingButton"
@@ -81,20 +75,17 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       <SizeAndScale typeClass="website userExperience caseStudy" />
       <CriticalImages typeClass="branding" />
       <ImaginePublicTransit typeClass="branding" />
-      <Animism typeClass="teaching" />
       <Preserving typeClass="writing" />
       <WitnessingGlaciers typeClass="website branding caseStudy" />
-      <Vespertine typeClass="visual website branding" />
       <Fidelity typeClass="userExperience" />
+      <Vespertine typeClass="visual website branding" />
       <ScaleWorlds typeClass="userExperience caseStudy" />
-      <DeliberateAI typeClass="userExperience" />
-      <SpeculativeDesignWorkshop typeClass="teaching" />
+      <!-- <DeliberateAI typeClass="userExperience" /> -->
       <PossibleInternet typeClass="userExperience caseStudy" />
-      <LAS typeClass="userExperience" />
-      <TerraFirma typeClass="branding website" />
-      <ConcertInterface typeClass="branding" />
+      <!-- <LAS typeClass="userExperience" /> -->
+      <!-- <TerraFirma typeClass="branding website" /> -->
       <NPCA typeClass="branding website" />
-      <PartsUnlimited typeClass="website userExperience" />
+      <!-- <PartsUnlimited typeClass="website userExperience" /> -->
     </div>
   </div>
 
@@ -116,7 +107,7 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       "#userExperienceButton",
     );
 
-    const teachingButton = document.querySelector("#teachingButton");
+    // const teachingButton = document.querySelector("#teachingButton");
 
     const writingButton = document.querySelector("#writingButton");
 
@@ -134,8 +125,13 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       );
 
       buttons.forEach((button) => {
-        button.classList.remove("shadow-md");
-        this.classList.add("shadow-md");
+        button.classList.remove("text-white");
+        button.classList.remove("bg-black");
+        this.classList.add("text-white");
+        this.classList.add("bg-black");
+
+        button.classList.add("hover:bg-offwhite");
+        this.classList.remove("hover:bg-offwhite");
       });
 
       children.forEach((item) => {
@@ -150,8 +146,13 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       );
 
       buttons.forEach((button) => {
-        button.classList.remove("shadow-md");
-        this.classList.add("shadow-md");
+        button.classList.remove("text-white");
+        button.classList.remove("bg-black");
+        this.classList.add("text-white");
+        this.classList.add("bg-black");
+
+        button.classList.add("hover:bg-offwhite");
+        this.classList.remove("hover:bg-offwhite");
       });
 
       children.forEach((item) => {
@@ -170,8 +171,13 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       );
 
       buttons.forEach((button) => {
-        button.classList.remove("shadow-md");
-        this.classList.add("shadow-md");
+        button.classList.remove("text-white");
+        button.classList.remove("bg-black");
+        this.classList.add("text-white");
+        this.classList.add("bg-black");
+
+        button.classList.add("hover:bg-offwhite");
+        this.classList.remove("hover:bg-offwhite");
       });
 
       children.forEach((item) => {
@@ -190,8 +196,13 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       );
 
       buttons.forEach((button) => {
-        button.classList.remove("shadow-md");
-        this.classList.add("shadow-md");
+        button.classList.remove("text-white");
+        button.classList.remove("bg-black");
+        this.classList.add("text-white");
+        this.classList.add("bg-black");
+
+        button.classList.add("hover:bg-offwhite");
+        this.classList.remove("hover:bg-offwhite");
       });
 
       children.forEach((item) => {
@@ -203,25 +214,25 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       });
     });
 
-    teachingButton.addEventListener("click", function () {
-      const children = [].slice.call(
-        document.getElementById("all").childNodes,
-        0,
-      );
+    // teachingButton.addEventListener("click", function () {
+    //   const children = [].slice.call(
+    //     document.getElementById("all").childNodes,
+    //     0,
+    //   );
 
-      buttons.forEach((button) => {
-        button.classList.remove("shadow-md");
-        this.classList.add("shadow-md");
-      });
+    //   buttons.forEach((button) => {
+    //     button.classList.remove("bg-black text-white");
+    //     this.classList.add("bg-black text-white");
+    //   });
 
-      children.forEach((item) => {
-        if (item.classList.contains("Teaching")) {
-          item.classList.remove("hidden");
-        } else {
-          item.classList.add("hidden");
-        }
-      });
-    });
+    //   children.forEach((item) => {
+    //     if (item.classList.contains("Teaching")) {
+    //       item.classList.remove("hidden");
+    //     } else {
+    //       item.classList.add("hidden");
+    //     }
+    //   });
+    // });
 
     writingButton.addEventListener("click", function () {
       const children = [].slice.call(
@@ -230,8 +241,13 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       );
 
       buttons.forEach((button) => {
-        button.classList.remove("shadow-md");
-        this.classList.add("shadow-md");
+        button.classList.remove("text-white");
+        button.classList.remove("bg-black");
+        this.classList.add("text-white");
+        this.classList.add("bg-black");
+
+        button.classList.add("hover:bg-offwhite");
+        this.classList.remove("hover:bg-offwhite");
       });
 
       children.forEach((item) => {
@@ -250,8 +266,13 @@ import Preserving from "./Gallery-cards/Preserving.astro";
       );
 
       buttons.forEach((button) => {
-        button.classList.remove("shadow-md");
-        this.classList.add("shadow-md");
+        button.classList.remove("text-white");
+        button.classList.remove("bg-black");
+        this.classList.add("text-white");
+        this.classList.add("bg-black");
+
+        button.classList.add("hover:bg-offwhite");
+        this.classList.remove("hover:bg-offwhite");
       });
 
       children.forEach((item) => {
