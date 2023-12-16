@@ -5,7 +5,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			mono: ['"JetBrainsMono", "ui-monospace"', 'sans-serif'],
-			serif: ["NeueMontrealSqueezed", "Arial", "sans-serif"],
+			serif: ["PPRightGroteskMono", "Arial", "sans-serif"],
 			sans: ['"Inter", "Arial"', 'sans-serif']
 		},
 		colors: {

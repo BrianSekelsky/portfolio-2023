@@ -35,7 +35,7 @@ array.forEach((item) => {
 
         if (tempCharSpan.textContent != " ") {
             tempCharSpan.classList.add("inline-block");
-            tempCharSpan.classList.add("transition-all");
+            // tempCharSpan.classList.add("transition-all");
         }
 
         tempSpan.append(tempCharSpan);
@@ -56,10 +56,6 @@ function randomColor() {
     // return "rgb(0, 0, 255)";
 }
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 const colors = [
     "#0000FF",
     // "#00FF00",
@@ -73,6 +69,10 @@ const colors = [
     "#F7E733",
     "#BDD5EA",
 ];
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 function getRandomColor() {
     return colors[getRandomInt(0, colors.length - 1)];
@@ -106,24 +106,29 @@ for (let letter of letters) {
         let randomInt = getRandomInt(1, 4);
         if (randomInt === 1) {
             letter.classList.add("font-bold");
+            letter.classList.add("uppercase");
             // letter.style.transform = "skew(10deg, 20deg)";
             // letter.style.transform = "translate(50px, 50px)";
         } else if (randomInt === 2) {
             letter.classList.add("font-bold");
+            letter.classList.add("uppercase");
             // letter.style.transform = "skew(20deg, 30deg)";
             // letter.style.transform = "translate(-50px, -50px)";
         } else if (randomInt === 3) {
             letter.classList.add("font-bold");
+            letter.classList.add("uppercase");
             // letter.style.transform = "skew(30deg, -10deg)";
             // letter.style.transform = "translate(-50px, 50px)";
         } else if (randomInt === 4) {
             letter.classList.add("font-bold");
+            letter.classList.add("uppercase");
             // letter.style.transform = "skew(0deg, -20deg)";
             // letter.style.transform = "translate(50px, -50px)";
         }
         setTimeout(function () {
             letter.removeAttribute("style");
             letter.classList.remove("font-bold");
+            letter.classList.remove("uppercase");
         }, 2000);
     });
 }
