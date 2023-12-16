@@ -33,9 +33,9 @@ array.forEach((item) => {
         tempCharSpan.innerHTML = char;
         tempCharSpan.classList.add("manipulable");
 
-        if (tempCharSpan.textContent != " ") {
-            // tempCharSpan.classList.add("inline-block");
-            // tempCharSpan.classList.add("transition-all");
+        if (tempCharSpan.textContent == "0") {
+            tempCharSpan.classList.add("text-offwhite");
+            tempCharSpan.classList.add("break-words");
         }
 
         tempSpan.append(tempCharSpan);
