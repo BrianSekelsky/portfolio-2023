@@ -33,7 +33,7 @@ array.forEach((item) => {
         tempCharSpan.innerHTML = char;
         tempCharSpan.classList.add("manipulable");
 
-        if (tempCharSpan.textContent == "0") {
+        if (tempCharSpan.textContent == "&" || tempCharSpan.textContent == "0") {
             tempCharSpan.classList.add("text-offwhite");
             tempCharSpan.classList.add("break-words");
         }
@@ -129,6 +129,6 @@ for (let letter of letters) {
             letter.removeAttribute("style");
             letter.classList.remove("font-bold");
             letter.classList.remove("uppercase");
-        }, 2000);
+        }, 1000);
     });
 }
