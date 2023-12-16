@@ -21,7 +21,7 @@ let fontMode = 0;
 
 array.forEach((item) => {
     let tempSpan = document.createElement("span");
-    tempSpan.classList.add("inline-block");
+    // tempSpan.classList.add("inline-block");
 
     let spaceSpan = document.createElement("span");
     spaceSpan.innerHTML = " ";
@@ -34,7 +34,7 @@ array.forEach((item) => {
         tempCharSpan.classList.add("manipulable");
 
         if (tempCharSpan.textContent != " ") {
-            tempCharSpan.classList.add("inline-block");
+            // tempCharSpan.classList.add("inline-block");
             // tempCharSpan.classList.add("transition-all");
         }
 
