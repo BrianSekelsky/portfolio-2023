@@ -32,6 +32,7 @@ array.forEach((item) => {
         let tempCharSpan = document.createElement("span");
         tempCharSpan.innerHTML = char;
         tempCharSpan.classList.add("manipulable");
+        spaceSpan.classList.add("manipulable");
 
         if (tempCharSpan.textContent == "¤") {
             tempCharSpan.classList.add("text-white");
@@ -80,7 +81,34 @@ function getRandomColor() {
 
 let letters = document.getElementsByClassName("manipulable");
 
+let firstClick = true;
+let tempBgColor;
+document.getElementById("manipulate").addEventListener("click", function () {
+    if (firstClick) {
+        tempBgColor = randomColor();
+        document.getElementById("manipulate").parentElement.style.backgroundColor = tempBgColor;
+        for (let letter of letters) {
+            if (letter.innerHTML == "¤") {
+                letter.style.color = tempBgColor;
+            }
+        }
+        firstClick = false;
+    } else {
+        document.getElementById("manipulate").parentElement.style.backgroundColor = "white";
+        firstClick = true;
+        for (let letter of letters) {
+            if (letter.innerHTML == "¤") {
+                letter.style.color = "white";
+            }
+        }
+    }
+});
+
 for (let letter of letters) {
+    if (letter.innerHTML == "¤") {
+        letter.classList.add("invisible")
+        letter.classList.add("lg:visible")
+    }
     // letter.addEventListener("mouseenter", function () {
     //   let randomInt = getRandomInt(1, 4);
     //   // letter.style.transform = "translate(30px)"
@@ -103,32 +131,27 @@ for (let letter of letters) {
     // });
     letter.addEventListener("mouseenter", function () {
         letter.style.color = randomColor();
-        let randomInt = getRandomInt(1, 4);
-        if (randomInt === 1) {
-            letter.classList.add("font-bold");
-            letter.classList.add("uppercase");
-            // letter.style.transform = "skew(10deg, 20deg)";
-            // letter.style.transform = "translate(50px, 50px)";
-        } else if (randomInt === 2) {
-            letter.classList.add("font-bold");
-            letter.classList.add("uppercase");
-            // letter.style.transform = "skew(20deg, 30deg)";
-            // letter.style.transform = "translate(-50px, -50px)";
-        } else if (randomInt === 3) {
-            letter.classList.add("font-bold");
-            letter.classList.add("uppercase");
-            // letter.style.transform = "skew(30deg, -10deg)";
-            // letter.style.transform = "translate(-50px, 50px)";
-        } else if (randomInt === 4) {
-            letter.classList.add("font-bold");
-            letter.classList.add("uppercase");
-            // letter.style.transform = "skew(0deg, -20deg)";
-            // letter.style.transform = "translate(50px, -50px)";
+        if (letter.innerHTML == "¤") {
+            letter.style.backgroundColor = letter.style.color;
+        } else if (letter.innerHTML === ' ') {
+            letter.style.borderColor = letter.style.color;
+            letter.style.border = '2px solid';
+            letter.style.margin = '-2px';
         }
+        // let randomInt = getRandomInt(1, 4);
+        letter.classList.add("font-bold");
+        letter.classList.add("uppercase");
         setTimeout(function () {
             letter.removeAttribute("style");
             letter.classList.remove("font-bold");
             letter.classList.remove("uppercase");
+            if (letter.innerHTML == "¤" && !firstClick) {
+                if (!firstClick) {
+                    letter.style.color = tempBgColor
+                } else {
+                    letter.style.color = "white"
+                }
+            }
         }, 1000);
     });
 }
