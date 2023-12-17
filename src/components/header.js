@@ -135,8 +135,8 @@ for (let letter of letters) {
             letter.style.backgroundColor = letter.style.color;
         } else if (letter.innerHTML === ' ') {
             letter.style.borderColor = letter.style.color;
-            letter.style.border = '2px solid';
-            letter.style.margin = '-2px';
+            letter.style.boxShadow = 'inset 0 0 5px';
+            // letter.style.margin = '-2px';
         }
         // let randomInt = getRandomInt(1, 4);
         letter.classList.add("font-bold");
