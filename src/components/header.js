@@ -33,8 +33,8 @@ array.forEach((item) => {
         tempCharSpan.innerHTML = char;
         tempCharSpan.classList.add("manipulable");
 
-        if (tempCharSpan.textContent == "&" || tempCharSpan.textContent == "0") {
-            tempCharSpan.classList.add("text-offwhite");
+        if (tempCharSpan.textContent == "¤") {
+            tempCharSpan.classList.add("text-white");
             tempCharSpan.classList.add("break-words");
         }
 
