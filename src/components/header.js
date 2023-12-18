@@ -80,14 +80,42 @@ function getRandomColor() {
     return colors[getRandomInt(0, colors.length - 1)];
 }
 
+function lightOrDarkColor(color) {
+    // Variables for red, green, blue values
+    var r, g, b, hsp;
+
+    // If RGB --> store the red, green, blue values in separate variables
+    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+
+    r = color[1];
+    g = color[2];
+    b = color[3];
+    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+    hsp = Math.sqrt(
+        0.299 * (r * r) +
+        0.587 * (g * g) +
+        0.114 * (b * b)
+    );
+
+    // Using the HSP value, determine whether the color is light or dark
+    if (hsp > 127.5) {
+
+        return 'light';
+    }
+    else {
+
+        return 'dark';
+    }
+}
+
 let letters = document.getElementsByClassName("manipulable");
 
 let firstClick = true;
 let tempBgColor;
+
 document.getElementById("manipulate").addEventListener("click", function () {
     // if (firstClick) {
     tempBgColor = currentRandomColor;
-    console.log(currentRandomColor)
     document.getElementById("manipulate").parentElement.style.backgroundColor = tempBgColor;
     for (let letter of letters) {
         if (letter.innerHTML == "¤") {
@@ -95,6 +123,14 @@ document.getElementById("manipulate").addEventListener("click", function () {
         }
     }
     firstClick = false;
+
+    if (lightOrDarkColor(currentRandomColor) == 'dark') {
+        this.classList.remove("text-black")
+        this.classList.add("text-white")
+    } else {
+        this.classList.add("text-black")
+        this.classList.remove("text-white")
+    }
     // } else {
     //     document.getElementById("manipulate").parentElement.style.backgroundColor = "white";
     //     firstClick = true;
@@ -109,30 +145,6 @@ document.getElementById("manipulate").addEventListener("click", function () {
 let currentRandomColor;
 
 for (let letter of letters) {
-    if (letter.innerHTML == "¤") {
-        letter.classList.add("invisible")
-        letter.classList.add("lg:visible")
-    }
-    // letter.addEventListener("mouseenter", function () {
-    //   let randomInt = getRandomInt(1, 4);
-    //   // letter.style.transform = "translate(30px)"
-    //   letter.style.color = randomColor();
-    //   // letter.style.transform = "scale(1.4)"
-    //   if (randomInt === 1) {
-    //     letter.style.transform = "skew(10deg, 20deg)";
-    //     // letter.classList.add("font-sans");
-    //   } else if (randomInt === 2) {
-    //     letter.style.transform = "skew(20deg, 30deg)";
-    //   } else if (randomInt === 3) {
-    //     letter.style.transform = "skew(30deg, -10deg)";
-    //   } else if (randomInt === 4) {
-    //     letter.style.transform = "skew(0deg, -20deg)";
-    //   }
-    //   setTimeout(function () {
-    //     letter.removeAttribute("style");
-    //     letter.classList.remove("font-sans");
-    //   }, 1000);
-    // });
     letter.addEventListener("mouseenter", function () {
         letter.style.color = randomColor();
         if (letter.innerHTML == "¤") {
@@ -144,9 +156,9 @@ for (let letter of letters) {
         }
         // let randomInt = getRandomInt(1, 4);
         if (document.fonts.ready) {
-            // letter.classList.add("font-bold");
+            letter.classList.add("font-bold");
+            letter.classList.add("uppercase");
         }
-        // letter.classList.add("uppercase");
     });
     letter.addEventListener("mouseout", function () {
         setTimeout(function () {
