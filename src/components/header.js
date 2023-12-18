@@ -53,7 +53,8 @@ function randomColor() {
     for (let i = 0; i < 3; i++) {
         color.push(Math.floor(Math.random() * 256));
     }
-    return "rgb(" + color.join(", ") + ")";
+    currentRandomColor = "rgb(" + color.join(", ") + ")";
+    return currentRandomColor;
     // return "rgb(0, 0, 255)";
 }
 
@@ -84,25 +85,28 @@ let letters = document.getElementsByClassName("manipulable");
 let firstClick = true;
 let tempBgColor;
 document.getElementById("manipulate").addEventListener("click", function () {
-    if (firstClick) {
-        tempBgColor = randomColor();
-        document.getElementById("manipulate").parentElement.style.backgroundColor = tempBgColor;
-        for (let letter of letters) {
-            if (letter.innerHTML == "¤") {
-                letter.style.color = tempBgColor;
-            }
-        }
-        firstClick = false;
-    } else {
-        document.getElementById("manipulate").parentElement.style.backgroundColor = "white";
-        firstClick = true;
-        for (let letter of letters) {
-            if (letter.innerHTML == "¤") {
-                letter.style.color = "white";
-            }
+    // if (firstClick) {
+    tempBgColor = currentRandomColor;
+    console.log(currentRandomColor)
+    document.getElementById("manipulate").parentElement.style.backgroundColor = tempBgColor;
+    for (let letter of letters) {
+        if (letter.innerHTML == "¤") {
+            letter.style.color = tempBgColor;
         }
     }
+    firstClick = false;
+    // } else {
+    //     document.getElementById("manipulate").parentElement.style.backgroundColor = "white";
+    //     firstClick = true;
+    //     for (let letter of letters) {
+    //         if (letter.innerHTML == "¤") {
+    //             letter.style.color = "white";
+    //         }
+    //     }
+    // }
 });
+
+let currentRandomColor;
 
 for (let letter of letters) {
     if (letter.innerHTML == "¤") {
@@ -141,6 +145,8 @@ for (let letter of letters) {
         // let randomInt = getRandomInt(1, 4);
         letter.classList.add("font-bold");
         letter.classList.add("uppercase");
+    });
+    letter.addEventListener("mouseout", function () {
         setTimeout(function () {
             letter.removeAttribute("style");
             letter.classList.remove("font-bold");
