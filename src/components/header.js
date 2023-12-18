@@ -144,9 +144,9 @@ for (let letter of letters) {
         }
         // let randomInt = getRandomInt(1, 4);
         if (document.fonts.ready) {
-            letter.classList.add("font-bold");
+            // letter.classList.add("font-bold");
         }
-        letter.classList.add("uppercase");
+        // letter.classList.add("uppercase");
     });
     letter.addEventListener("mouseout", function () {
         setTimeout(function () {
