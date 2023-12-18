@@ -7,46 +7,113 @@ import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
 import physicalManifestation from "../../images/critical-images/physical-manifestation.png";
-import programmingIsForgetting from "../../images/critical-images/programming-is-forgetting.png";
 import technologies from "../../images/critical-images/technologies.png";
 import designThinking from "../../images/critical-images/when-design-thinking.png";
 import newNewTypography from "../../images/critical-images/new-new-typography.png";
+import contrarianism from "../../images/critical-images/contrarianism.png";
+import opacBox from "../../images/critical-images/50-opac-box-bob.png";
+import programmingIsForgetting from "../../images/critical-images/programming-is-forgetting.png";
+import mediums from "../../images/critical-images/mediums.png";
+import balloon from "../../images/critical-images/balloon.png";
+import apple from "../../images/critical-images/apple.png";
+import interfaces from "../../images/critical-images/interface.jpeg";
+import frankenstein from "../../images/critical-images/frankenstein.png";
+import Link from "../../components/Link.astro";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Critical Images"
-      objective="Graphic reflections on readings from grad school. Mostly from a Publishing class taught by Jarrett Fuller + others from a typography discourse class taught by Denise Gonzales-Crisp."
+      objective="This page is for some visual work that I made in grad school classes. Most of them come from a Publishing class taught by Jarrett Fuller and others are from a typography discourse class taught by Denise Gonzales-Crisp."
       types={["Graphic Design"]}
       collaborators={[]}
       year="2023"
     />
     <div class="content-center">
-      <div class="mx-auto">
-        <Image
-          width="1000px"
-          src={physicalManifestation}
-          alt="The designer likewise becomes the physical manifestation of the content"
-        />
-        <!-- <div class="mx-auto border-t p-3">
-        <Image src={programmingIsForgetting} alt="Programming is forgetting">
-      </div> -->
-        <div class="mx-auto border-t">
+      <div class="mx-auto lg:max-w-1/2 p-4 pt-12">
+        <div>
           <Image
-            src={designThinking}
-            alt="When design thinking is used against us"
+            src={physicalManifestation}
+            alt="The designer likewise becomes the physical manifestation of the content"
           />
-          <div class="mx-auto">
-            <Image
-              src={technologies}
-              alt="technologies not as reflections of our world but shapers of it"
-            />
-            <div class="mx-auto border-t flex justify-center">
-              <Image src={newNewTypography} alt="The new new typography" />
-            </div>
-            <style></style>
-          </div>
+        </div>
+        <div class="pt-2 pb-12 text-center text-sm">
+          Reflecting on <Link
+            href="https://2x4.org/ideas/1996/designer-as-author/"
+            name="Michael Rock's Designer as Author"
+          />
+        </div>
+        <Image
+          src={designThinking}
+          alt="When design thinking is used against us"
+        />
+        <div class="pt-2 pb-12 text-center text-sm">
+          A zine/essay I wrote and produced about David Kelley and design
+          thinking
+        </div>
+        <Image
+          src={technologies}
+          alt="technologies not as reflections of our world but shapers of it"
+        />
+        <div class="pt-2 pb-12 text-center text-sm">
+          Technologies not as reflections of our world but shapers of it
+        </div>
+        <Image
+          src={contrarianism}
+          alt="Image showing fish swimming and text over the top reading design contrarianism and combinationism"
+        />
+        <div class="pt-2 pb-12 text-center text-sm">
+          Image from an interactive essay about post-post-modern design
+        </div>
+        <Image
+          src={opacBox}
+          alt="Image showing a semi transparent box and text reading the 50% opacity box"
+        />
+        <div class="pt-2 pb-12 text-center text-sm">
+          Image from a blog post titled <Link
+            href="https://academics.design.ncsu.edu/yesand/2022/02/09/the-50-opacity-box/"
+            name="The 50% opacity box"
+          />
+        </div>
+        <Image src={newNewTypography} alt="The new new typography" />
+        <div class="pt-2 pb-12 text-center text-sm">
+          Essay about Jan Tschichold and Max Bill
+        </div>
+        <Image
+          src={programmingIsForgetting}
+          alt="Image with text that says programming is forgetting"
+        />
+        <div class="pt-2 pb-12 text-center text-sm">
+          Image from a blog post titled <Link
+            href="https://academics.design.ncsu.edu/yesand/2022/11/27/programming-is-forgetting/"
+            name="Programming is forgetting"
+          />
+        </div>
+        <Image src={mediums} alt="So many new mediums since the sixties" />
+        <div class="pt-2 pb-12 text-center text-sm">
+          A powerpoint about the impermanence of design mediums
+        </div>
+        <div class="grid gap-1">
+          <Image src={apple} alt="Letter a with an apple texture" />
+          <Image src={balloon} alt="Letter b with balloon texture" />
+        </div>
+        <div class="pt-2 pb-12 text-center text-sm">
+          On the nose renders I made for the alphabet while I was learning
+          blender and developing a concept for tactile education as part of a
+          workshop
+        </div>
+        <Image src={frankenstein} alt="Frankenstein book cover" />
+        <div class="pt-2 pb-12 text-center text-sm">
+          Creating a design interpretation for Mary Shelley's Frankenstein as
+          part of an intro class
+        </div>
+        <Image
+          src={interfaces}
+          alt="Experimental interface that looks like twitch but wild"
+        />
+        <div class="pt-2 pb-12 text-center text-sm">
+          An experimental interface for online diy concerts
         </div>
       </div>
     </div>
