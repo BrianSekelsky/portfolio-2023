@@ -143,7 +143,9 @@ for (let letter of letters) {
             // letter.style.margin = '-2px';
         }
         // let randomInt = getRandomInt(1, 4);
-        letter.classList.add("font-bold");
+        if (document.fonts.ready) {
+            letter.classList.add("font-bold");
+        }
         letter.classList.add("uppercase");
     });
     letter.addEventListener("mouseout", function () {
