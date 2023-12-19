@@ -2,9 +2,18 @@
 import Layout from "../../layouts/Layout.astro";
 
 import ProjectHeader from "../../components/ProjectHeader.astro";
-import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
+import Caption from "../../components/Caption.astro";
+import tf1 from "../../images/terrafirma/tf-1.png";
+import tf2 from "../../images/terrafirma/tf-2.png";
+import tf3 from "../../images/terrafirma/tf-3.png";
+import tf4 from "../../images/terrafirma/tf-4.png";
+import tf5 from "../../images/terrafirma/tf-5.png";
+import tf6 from "../../images/terrafirma/tf-6.png";
+import tf7 from "../../images/terrafirma/tf-7.png";
+import tf8 from "../../images/terrafirma/tf-8.png";
+import tf9 from "../../images/terrafirma/tf-9.png";
 
 import webm from "../../images/homepage/terrafirma.webm";
 ---
@@ -13,18 +22,74 @@ import webm from "../../images/homepage/terrafirma.webm";
   <main>
     <ProjectHeader
       title="Terrafirma Software"
-      objective="Branding work for the Puerto Rico-based start-up."
-      types={["Visual", "Branding"]}
-      collaborators={[]}
+      objective="Branding work for the Puerto Rico-based start-up, Terrafirma."
+      types={["Visual", "Branding", "Website"]}
+      collaborators={[
+        "Amanda Williams",
+        "Brogan Williams",
+        "Jacob Williams",
+        "Jeff Wilkinson",
+        "Molly Mills",
+      ]}
       year="2022"
+      outboundLink="https://www.terrafirmasoftware.com/"
     />
-    <div class="">
+    <div class="border-b">
       <div class="mx-auto flex justify-center">
         <video class="w-1/2" playsinline autoplay muted loop>
           <source src={webm} type="video/webm" />
         </video>
       </div>
     </div>
+    <ProjectGrid>
+      <div class="col-span-1">
+        <p>
+          <b>Problem</b>
+          <br />
+           Terrafirma came to us in need of a brand identity to support their
+          environmental data platform. We proposed renaming themselves to
+          TerraFirma Software in order to contextualize their company and
+          differentiate themselves from the many other terrafirmas out there. We
+          designed a full brand package for them including a website.
+        </p>
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf3} alt="Logo for terrafirma software" />
+        <Caption text="Logo" />
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf1} alt="Logo for terrafirma software" />
+        <Caption text="Colors" />
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf2} alt="Logo for terrafirma software" />
+        <Caption text="Website map" />
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf8} alt="Billboard mockups" />
+        <Caption text="Billboard mockups" />
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf9} alt="Poster mockups" />
+        <Caption text="Poster mockups" />
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf4} alt="Website mockups" />
+        <Caption text="Homepage concept" />
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf5} alt="Website mockups" />
+        <Caption text="Contact page" />
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf6} alt="Website mockups" />
+        <Caption text="Sign-up page" />
+      </div>
+      <div class="col-span-1">
+        <Image width="800px" src={tf7} alt="Website mockups" />
+        <Caption text="Homepage concept" />
+      </div>
+    </ProjectGrid>
     <style></style>
   </main>
 </Layout>
