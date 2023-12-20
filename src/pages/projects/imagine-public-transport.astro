@@ -7,6 +7,15 @@ import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
 import webm from "../../images/homepage/public-transit.webm";
+import Caption from "../../components/Caption.astro";
+
+import pt1 from "../../images/imagine-public-transport/1.png";
+import pt2 from "../../images/imagine-public-transport/2.png";
+import pt3 from "../../images/imagine-public-transport/3.png";
+import pt4 from "../../images/imagine-public-transport/4.png";
+import pt5 from "../../images/imagine-public-transport/5.png";
+import pt6 from "../../images/imagine-public-transport/6.png";
+import process from "../../images/imagine-public-transport/process.png";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -19,12 +28,50 @@ import webm from "../../images/homepage/public-transit.webm";
       year="2023"
     />
     <div class="">
-      <div class="mx-auto flex justify-center">
-        <video class="w-1/2" playsinline autoplay muted loop>
-          <source src={webm} type="video/webm" />
-        </video>
+      <div class="mx-auto flex justify-center border-b">
+        <Image src={pt3} alt="Logo for terrafirma software" />
       </div>
     </div>
+    <ProjectGrid>
+      <div class="col-span-1">
+        <p>
+          <b>Problem</b>
+          <br />
+          <p>
+            A publishing class, I took in grad school, forced me to reconsider
+            what makes something a publication. During one project, I explored
+            the ways that a public medium might "reach across the aisle" and
+            create discussion around urban planning in the United States. I
+            designed a series of billboards with a slightly sarcastic tone...
+            ideally I would have worked with a better copywriter than myself on
+            this.
+          </p>
+        </p>
+      </div>
+      <div class="col-span-1">
+        <Image src={pt1} alt="Logo for Imagine Public Transit" />
+        <Caption text="Identity" />
+      </div>
+      <div class="col-span-1">
+        <Image src={pt2} alt="Logo for Imagine Public Transit" />
+      </div>
+      <div class="col-span-1">
+        <Image src={pt3} alt="Logo for Imagine Public Transit" />
+      </div>
+      <div class="col-span-1">
+        <Image src={pt4} alt="Logo for Imagine Public Transit" />
+      </div>
+      <div class="col-span-1">
+        <Image src={pt5} alt="Logo for Imagine Public Transit" />
+      </div>
+      <div class="col-span-1">
+        <Image src={pt6} alt="Logo for Imagine Public Transit" />
+      </div>
+      <div class="col-span-2">
+        <Image src={process} alt="Screenshot of figma showing process work" />
+        <Caption text="Some process work" />
+      </div>
+    </ProjectGrid>
     <style></style>
   </main>
 </Layout>
