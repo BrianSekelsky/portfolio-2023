@@ -7,24 +7,60 @@ import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
 import webm from "../../images/homepage/vespertine.webm";
+
+import sketch1 from "../../images/vespertine/sketch1.png";
+import sketch2 from "../../images/vespertine/sketch2.png";
+import sketch3 from "../../images/vespertine/sketch3.png";
+import sketch4 from "../../images/vespertine/sketch4.png";
+import sketch5 from "../../images/vespertine/sketch5.png";
+import sketch6 from "../../images/vespertine/sketch6.png";
+import sketch7 from "../../images/vespertine/sketch7.png";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Vespertine"
-      objective="Three JS website made for Bjork's album Vespertine."
+      objective="This project was made for my own edification. I wanted to practice making interactive websites and do something fun. This is supposed to be a website made for Bjork's album Vespertine (one of my favorites). I ultimately landed on using ThreeJS and using a 3D model of a house, this is her 'domestic album' after all."
       types={["Website"]}
       collaborators={[]}
       year="2023"
     />
-    <div class="">
+    <div class="border-b">
       <div class="mx-auto flex justify-center">
         <video class="w-1/2" playsinline autoplay muted loop>
           <source src={webm} type="video/webm" />
         </video>
       </div>
     </div>
+    <ProjectGrid>
+      <div class="col-span-2">
+        <div class="grid grid-cols-2 gap-2">
+          <p class="col-span-2">
+            <b>Sketches</b>
+            <br />
+          </p>
+          <div class="col-span-1">
+            <Image src={sketch1} alt="sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={sketch2} alt="sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={sketch3} alt="sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={sketch4} alt="sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={sketch5} alt="sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={sketch6} alt="sketch" />
+          </div>
+        </div>
+      </div>
+    </ProjectGrid>
     <style></style>
   </main>
 </Layout>
