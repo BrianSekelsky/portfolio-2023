@@ -147,12 +147,8 @@ let currentRandomColor;
 for (let letter of letters) {
     letter.addEventListener("mouseenter", function () {
         letter.style.color = randomColor();
-        if (letter.innerHTML == "¤") {
+        if (letter.innerHTML == "¤" || letter.innerHTML === ' ') {
             letter.style.backgroundColor = letter.style.color;
-        } else if (letter.innerHTML === ' ') {
-            letter.style.borderColor = letter.style.color;
-            letter.style.boxShadow = 'inset 0 0 5px';
-            // letter.style.margin = '-2px';
         }
         // let randomInt = getRandomInt(1, 4);
         if (document.fonts.ready) {

@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 
 import gif from "../../images/homepage/las.gif";
 import video from "../../images/homepage/las.webm";
+import png from "../../images/homepage/las2.png";
 
 const title = "Laboratory for Analytic Sciences";
 const description = "asdf";
@@ -12,6 +13,7 @@ const year = "2022";
 const types = [
   { text: "UX", special: false },
   { text: "AI", special: false },
+  { text: "CaseStudy", special: true },
 ];
 const size = "small";
 const hasVideo = false;
@@ -20,7 +22,7 @@ const alt =
 ---
 
 <Card size="small" href="projects/las" title={title} types={types} year={year}>
-  <div class="video hidden md:block">
+  <!-- <div class="video hidden md:block">
     <video
       class="transition-all"
       playsinline
@@ -31,9 +33,9 @@ const alt =
     >
       <source src={video} type="video/webm" />
     </video>
-  </div>
-  <div class="gif block md:hidden">
-    <Image src={gif} alt={alt} />
+  </div> -->
+  <div class="gif">
+    <Image src={png} alt={alt} />
   </div>
 </Card>
 

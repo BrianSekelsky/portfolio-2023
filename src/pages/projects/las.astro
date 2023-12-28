@@ -5,26 +5,206 @@ import ProjectHeader from "../../components/ProjectHeader.astro";
 import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
+import Caption from "../../components/Caption.astro";
 
 import webm from "../../images/homepage/las.webm";
+
+import miro from "../../images/las/miro-overview.png";
+import persona from "../../images/las/persona.jpg";
+import interview from "../../images/las/interview.png";
+import debrief from "../../images/las/debrief.jpg";
+import dots from "../../images/las/dots.jpg";
+import sketch1 from "../../images/las/sketch-1.jpg";
+import sketch2 from "../../images/las/sketch-2.jpg";
+import sketch3 from "../../images/las/sketch-3.jpg";
+import sketch4 from "../../images/las/sketch-4.jpeg";
+import refined1 from "../../images/las/refined-sketch-1.png";
+import refined2 from "../../images/las/refined-sketch-2.png";
+import refined3 from "../../images/las/refined-sketch-3.png";
+import refined4 from "../../images/las/refined-sketch-4.png";
+
+import hifi1 from "../../images/las/hi-fi-1.png";
+import hifi2 from "../../images/las/hi-fi-2.png";
+import hifi3 from "../../images/las/hi-fi-3.png";
+import hifi4 from "../../images/las/hi-fi-4.png";
+
+import las1 from "../../images/las/las-1.png";
+import las2 from "../../images/las/las-2.png";
+import las3 from "../../images/las/las-3.png";
+import las4 from "../../images/las/las-4.png";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Laboratory of Analytic Science"
-      objective="asdf."
-      types={["User Experience"]}
-      collaborators={[]}
+      objective="Design an interface using the affordances of machine learning to provide a personalized user experience so that intelligence analysts can quickly and knowledgeably enter their day’s workflow."
+      types={["User Experience", "Case Study"]}
+      collaborators={["Elizabeth Gabriel", "Jillian Swaim"]}
       year="2022"
     />
-    <div class="">
-      <div class="mx-auto flex justify-center">
-        <video class="w-1/2" playsinline autoplay muted loop>
-          <source src={webm} type="video/webm" />
-        </video>
+    <div class="object-cover w-full">
+      <div class="relative">
+        <iframe
+          title="vimeo-player"
+          src="https://player.vimeo.com/video/804076406?h=974afa4633"
+          frameborder="0"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"
+          allowfullscreen></iframe>
       </div>
     </div>
+    <ProjectGrid>
+      <div class="col-span-1">
+        <p>
+          <b>Problem</b>
+          <br />
+           Scale has been identified as a crosscutting concept by the National
+          Academies of Science, Engineering, and Medicine.
+        </p>
+      </div>
+      <div class="col-span-1">
+        <Image
+          width="800px"
+          src={miro}
+          alt="Image of miro board showing background work for project"
+        />
+        <Caption
+          text="Before heading into Figma, Miro was our home for collaborating on notes and research"
+        />
+      </div>
+      <div class="col-span-2">
+        <div class="w-full mx-auto">
+          <Image src={persona} alt="Image of Chloe persona diagram" />
+          <Caption
+            text="Persona for Chloe, the analyst reporter. Including task flow, pain points, etc."
+          />
+        </div>
+      </div>
+      <div class="col-span-1">
+        <p>
+          We interviewed several intelligence analysts throughout our process.
+          This helped us better understand Chloe's process and how we could
+          improve it. We mapped out our takeaways from these interviews.
+        </p>
+      </div>
+      <div class="col-span-1">
+        <Image
+          width="800px"
+          src={interview}
+          alt="Screenshot of interview over zoom"
+        />
+        <Caption text="Faces are blurred for the privacy of the analysts" />
+      </div>
+      <div class="col-span-1">
+        <Image
+          width="800px"
+          src={debrief}
+          alt="Screenshot of interview over zoom"
+        />
+      </div>
+      <div class="col-span-1">
+        <Image
+          width="800px"
+          src={dots}
+          alt="Screenshot of interview over zoom"
+        />
+      </div>
+      <div class="col-span-2">
+        <p>
+          <b>Sketching</b>
+          <br />
+           We did a ton of low fidelity sketching to generate ideas together and
+          seperately. We followed the "kill your babies" philosophy popularized
+          by man design schools.
+        </p>
+        <div class="flex flex-row">
+          <div class="flex-shrink">
+            <Image src={sketch1} alt="Screenshot of a sketch" />
+          </div>
+          <div class="flex-shrink">
+            <Image src={sketch2} alt="Screenshot of a sketch" />
+          </div>
+          <div class="flex-shrink">
+            <Image src={sketch3} alt="Screenshot of a sketch" />
+          </div>
+          <div class="flex-shrink">
+            <Image src={sketch4} alt="Screenshot of a sketch" />
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <div class="grid grid-cols-2 gap-2">
+          <p class="col-span-2">
+            Here is one of the concepts that I further developed. I think it was
+            a good idea but I allowed myself to kill this one.
+            <br />
+          </p>
+          <div class="col-span-1">
+            <Image src={refined1} alt="Screenshot of a sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={refined2} alt="Screenshot of a sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={refined3} alt="Screenshot of a sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={refined4} alt="Screenshot of a sketch" />
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <div class="grid grid-cols-2 gap-2">
+          <p class="col-span-2">
+            <b>Version 1</b>
+          </p>
+          <div class="col-span-1">
+            <Image src={hifi1} alt="Screenshot of a sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={hifi2} alt="Screenshot of a sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={hifi3} alt="Screenshot of a sketch" />
+          </div>
+          <div class="col-span-1">
+            <Image src={hifi4} alt="Screenshot of a sketch" />
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <div class="grid grid-cols-2 gap-2">
+          <p class="col-span-2">
+            <b>Final Prototypes</b>
+             When the analyst gets to work in the morning and opens up their
+            Atlas software, they see a summary of their day's work. All new
+            reports are summarized by AI in a running text on the left side of
+            the screen. Pre-highlighted words are paired with images and
+            external documents arranged on the right. Emails, customer interests
+            and tag filters are arranged at the bottom of the screen.
+            <br />
+          </p>
+          <div class="col-span-1">
+            <Image src={las1} alt="high fidelity 1" />
+          </div>
+          <div class="col-span-1">
+            <Image src={las2} alt="high fidelity 2" />
+          </div>
+          <div class="col-span-1">
+            <Image src={las3} alt="high fidelity 3" />
+          </div>
+          <div class="col-span-1">
+            <Image src={las4} alt="high fidelity 4" />
+          </div>
+        </div>
+      </div>
+    </ProjectGrid>
     <style></style>
   </main>
+
+  <style>
+    .iframe-container iframe {
+      flex-grow: 1;
+    }
+  </style>
 </Layout>
