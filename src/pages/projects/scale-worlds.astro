@@ -19,7 +19,28 @@ import d from "../../images/scale-worlds/Scaling-D.jpeg";
 import e from "../../images/scale-worlds/Scaling-E.jpeg";
 import f from "../../images/scale-worlds/Scaling-F.jpeg";
 
+import cave from "../../images/scale-worlds/cave.png";
+import hmd from "../../images/scale-worlds/hmd.png";
+
+import userinterface from "../../images/scale-worlds/user-interface.png";
+import armatures from "../../images/scale-worlds/armatures.png";
+import entities from "../../images/scale-worlds/entities.png";
+
 import webm from "../../images/scale-worlds/scale-movement.webm";
+
+import decimal from "../../images/scale-worlds/decimal-move.gif";
+import numericpanel from "../../images/scale-worlds/numeric panel.png";
+
+import forest from "../../images/scale-worlds/forest.png";
+import path from "../../images/scale-worlds/path.png";
+
+import research1 from "../../images/scale-worlds/research1.png";
+import research2 from "../../images/scale-worlds/research2.png";
+import research3 from "../../images/scale-worlds/research3.png";
+import research4 from "../../images/scale-worlds/research4.png";
+
+import ruler1 from "../../images/scale-worlds/ruler-1.jpg";
+import ruler2 from "../../images/scale-worlds/ruler-2.jpg";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -88,21 +109,145 @@ import webm from "../../images/scale-worlds/scale-movement.webm";
           <Image class="pb-3" src={astro} alt="astronaut in scale worlds" />
         </div>
         <!--////////////////////////////-->
-        <div class="col-span-1">
-          <SmallHeading text="Research">
-            <p>
-              When I joined the project, the team of professors had secured
-              funding through NSF partially due to a prototype created by Grace
-              Wonaphotimuke.
-            </p>
-          </SmallHeading>
-          <div class="col-span-1 grid grid-cols-3">
+        <div class="col-span-2">
+          <p>
+            <b>Background</b>
+            <br />
+             When I joined the project, the team of professors had secured
+            funding through NSF partially due to a prototype created by Grace
+            Wonaphotimuke.
+            <br />
+          </p>
+          <div class="grid grid-cols-3 gap-2">
             <Image class="col-span-1" src={a} alt="a" />
             <Image class="col-span-1" src={b} alt="b" />
             <Image class="col-span-1" src={c} alt="c" />
             <Image class="col-span-1" src={d} alt="d" />
             <Image class="col-span-1" src={e} alt="e" />
             <Image class="col-span-1" src={f} alt="f" />
+          </div>
+        </div>
+        <div class="col-span-2">
+          <p>
+            This project involves designing for two VR platforms: the Cave
+            Automatic Virtual Enviornment (CAVE) and Head Mounted Display (HMD)
+            <br />
+          </p>
+          <div class="grid grid-cols-2 gap-2">
+            <Image class="col-span-1" src={cave} alt="Imge of CAVE" />
+            <Image
+              class="col-span-1"
+              src={hmd}
+              alt="image of HMD with 3d model representing the user"
+            />
+          </div>
+        </div>
+        <div class="col-span-2">
+          <p>
+            When designing the new version of the environment, the scheme was
+            split up into 3 main sections
+            <br />
+          </p>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="col-span-1">
+              <Image src={userinterface} alt="Imge of CAVE" />
+              <Caption text="user interface: flat interactive elements" />
+            </div>
+            <div class="col-span-1">
+              <Image src={armatures} alt="Imge of CAVE" />
+              <Caption
+                text="armatures: three-dimensional things which aren't entities"
+              />
+            </div>
+            <div class="col-span-1">
+              <Image src={entities} alt="Imge of CAVE" />
+              <Caption
+                text="entities: three dimensional things like animals, stars, atoms, cells, etc. which are used as landmark things to measure"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <p>
+            The way in which the user interacts with the environment was
+            designed to mimic changing an exponent in scientific notation and
+            moving decimal places in standard notation: concepts seen in
+            American science and math curricula
+            <br />
+          </p>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="col-span-1">
+              <Image src={decimal} alt="gif of the decimal dance animation" />
+              <Caption text="Animation of decimal moving" />
+            </div>
+            <div class="col-span-1">
+              <Image src={numericpanel} alt="diagram of numeric panel" />
+              <Caption
+                text="Diagram of the numeric panel that the user interacs with"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <p>
+            A variety of enivronment schema were designed in two or more ways
+            and then put through user testing with user interface experts. Later
+            testing will be done with general "non-expert" students.
+            <br />
+          </p>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="col-span-1">
+              <Image src={forest} alt="diagram of forest layout" />
+              <Caption text="the forest" />
+            </div>
+            <div class="col-span-1">
+              <Image src={path} alt="diagram of path layout" />
+              <Caption text="the path" />
+            </div>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <div class="grid grid-cols-2 gap-2">
+            <p class="col-span-2">
+              User research revealed a path forwards as well as opening up a
+              conversation about "usability vs theory".
+              <br />
+            </p>
+            <div class="col-span-1">
+              <Image
+                src={research1}
+                alt="image of some research descriptions"
+              />
+            </div>
+            <div class="col-span-1">
+              <Image
+                src={research2}
+                alt="image of some research descriptions"
+              />
+            </div>
+            <div class="col-span-1">
+              <Image
+                src={research3}
+                alt="image of some research descriptions"
+              />
+            </div>
+            <div class="col-span-1">
+              <Image
+                src={research4}
+                alt="image of some research descriptions"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <div class="grid grid-cols-2 gap-2">
+            <div class="col-span-1">
+              <Image src={ruler1} alt="image of professor in cave" />
+              <Caption text="professors in the CAVE" />
+            </div>
+            <div class="col-span-1">
+              <Image src={ruler2} alt="image of proffessor in cave" />
+            </div>
           </div>
         </div>
       </ProjectGrid>
