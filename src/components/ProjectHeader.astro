@@ -19,50 +19,48 @@ const {
 ---
 
 <div class="border-b">
-  <div class="p-4">
-    <a
-      href="/"
-      class="text-sm font-mono uppercase hover:lowercase hover:text-blue"
-      >← back to projects</a
-    >
-    <p
-      class="font-serif leading-tight text-4xl lg:leading-tight mb-0 pt-4 pb-2"
-    >
-      {title}
-    </p>
-    <div class="grid sm:grid-template grid-cols-1 sm:grid-cols-2 gap-12">
-      <div>
-        <p>
-          {objective}
+  <div>
+    <div class="p-4 sm:py-4 sm:px-8 border-b lg:pb-12">
+      <a
+        href="/"
+        class="text-xs font-mono uppercase hover:lowercase hover:text-blue"
+        >← back to projects</a
+      >
+      <div class="">
+        <p class="font-serif leading-tight text-4xl sm:text-9xl">
+          {title}
         </p>
-        <div class={outboundLink != "" ? "mt-4 hidden lg:block" : "hidden"}>
-          <a
-            class="border rounded-full text-lg px-3 py-1 hover:bg-offwhite"
-            href={outboundLink}>Visit the site →</a
-          >
-        </div>
       </div>
-      <div class="grid divide-y">
-        <div class="grid grid-cols-2 pb-3">
-          <p class="font-bold">Year</p>
-          <p>
+    </div>
+    <div
+      class="p-4 sm:px-8 sm:py-0 flex flex-col-reverse gap-12 lg:grid grid-cols-2"
+    >
+      <div class="flex gap-12 col-span-1 lg:border-r pt-8 lg:py-12">
+        <div>
+          <p class="uppercase font-mono text-xs">Type</p>
+          <div class="">
+            {types.map((type) => <p class="text-xl">{type}</p>)}
+          </div>
+        </div>
+        <div class="">
+          <p class="uppercase font-mono text-xs">Year</p>
+          <p class="text-xl">
             {year}
           </p>
         </div>
-        <div class="grid grid-cols-2 py-3">
-          <p class="font-bold">Type</p>
+        <div class={collaborators.length > 0 ? "block" : "hidden"}>
+          <p class="uppercase font-mono text-xs">Collaborators</p>
           <div>
-            {types.map((type) => <p>{type}</p>)}
+            {
+              collaborators.map((collaborator) => (
+                <p class="text-xl">{collaborator}</p>
+              ))
+            }
           </div>
         </div>
-        <div
-          class={collaborators.length > 0 ? "grid grid-cols-2 py-3" : "hidden"}
-        >
-          <p class="font-bold">Collaborators</p>
-          <div>
-            {collaborators.map((collaborator) => <p>{collaborator}</p>)}
-          </div>
-        </div>
+      </div>
+      <div class="col-span-1 text-2xl pt-8 lg:py-12">
+        {objective}
       </div>
     </div>
   </div>
@@ -74,6 +72,11 @@ const {
 
     .grid-template {
       grid-template-columns: 1fr 1fr;
+    }
+
+    .w-max-content {
+      width: max-content;
+      max-width: 50%;
     }
   </style>
 </div>
