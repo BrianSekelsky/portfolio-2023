@@ -1,30 +1,214 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
+import Link from "../../components/Link.astro";
+
 import ProjectHeader from "../../components/ProjectHeader.astro";
 import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
 import webm from "../../images/homepage/deliberate.webm";
+import cover from "../../images/deliberate/cover.png";
+
+import userFlow from "../../images/deliberate/user-flow.png";
+import one from "../../images/deliberate/1.png";
+import two from "../../images/deliberate/2.png";
+import three from "../../images/deliberate/3.png";
+import four from "../../images/deliberate/4.png";
+import five from "../../images/deliberate/5.png";
+import six from "../../images/deliberate/6.png";
+import seven from "../../images/deliberate/7.png";
+import eight from "../../images/deliberate/8.png";
+
+import videopage from "../../images/deliberate/video-page.png";
+
+import datavis1 from "../../images/deliberate/data-vis-1.png";
+import datavis2 from "../../images/deliberate/data-vis-1.png";
+import datavis3 from "../../images/deliberate/data-vis-1.png";
+import datavis4 from "../../images/deliberate/data-vis-1.png";
+
+import web1 from "../../images/deliberate/web-1.png";
+import web2 from "../../images/deliberate/web-2.png";
+import web3 from "../../images/deliberate/web-3.png";
+import web4 from "../../images/deliberate/web-4.png";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Deliberate AI"
-      objective="Deliberate AI."
-      types={["User Experience", "AI"]}
-      collaborators={[]}
+      objective="Designing mental health clinician-ready applications and data visualizations integrated with artificial intelligence."
+      types={["User Experience", "User Interface", "AI"]}
+      collaborators={[
+        "Michael Balangue",
+        "Nuno Parente",
+        "Ben Barone",
+        "Yuri Guimarães",
+      ]}
       year="2022"
+      outboundLink="deliberate.health"
     />
     <div class="">
-      <div class="mx-auto flex justify-center">
-        <video class="w-1/2" playsinline autoplay muted loop>
-          <source src={webm} type="video/webm" />
-        </video>
+      <div class="mx-auto flex justify-center border-b">
+        <Image
+          class="transition-all"
+          src={cover}
+          alt={"Image showing preview of some of the applications"}
+        />
       </div>
     </div>
-    <style></style>
+    <div class="">
+      <ProjectGrid>
+        <div class="col-span-1 lg:col-span-2">
+          <SmallHeading text="Background" />
+          <p>
+            During the summer of 2022, I worked as a Product Designer for
+            Deliberate AI, a mental health tech start-up. In this role, I worked
+            to develop the design system for their flagship application which
+            organizes and analyzes complex data that is relevant to mental
+            health clinicians. Due to the start-up nature of the company, I had
+            the opportunity to wear a number of hats. Along with UI and UX work,
+            I also leveraged my visual design skills to produce a number of
+            marketing materials including a product website.
+            <br />
+            <Link href="deliberate.health" name="deliberate.health" />
+          </p>
+        </div>
+        <!--////////////////////////////-->
+        <div class="col-span-1">
+          <SmallHeading text="Process" />
+          <p>
+            Coming into Deliberate, I had to learn a lot about the work of
+            mental health clinicians. Research included reading online as well
+            as speaking to in-house clinicians.
+          </p>
+        </div>
+        <div class="col-span-1">
+          <Image class="pb-3" src={userFlow} alt="image from figma" />
+        </div>
+        <div class="col-span-1 lg:col-span-2">
+          <SmallHeading text="Basic Design System" />
+          <p>
+            Coming into the role, I encountered cluttered figma documents with
+            inconsistent components, colors, and typography. I created a simple
+            design system, with figma components, to tie together the brand
+            identity and and user interface.
+          </p>
+        </div>
+        <div class="bg-offwhite lg:col-span-2">
+          <div class="col-span-2 flex gap-8 py-8">
+            <div>
+              <Image class="shadow" src={one} alt="Screenshot of Universcale" />
+            </div>
+            <div>
+              <Image
+                class="shadow"
+                src={two}
+                alt="Screenshots from Eames' Powers of Ten video"
+              />
+              <!-- <Caption text="Screenshots from Eames' Powers of Ten video" /> -->
+            </div>
+            <div>
+              <Image
+                class="shadow"
+                src={three}
+                alt="Image from science textbook showing various scales"
+              />
+            </div>
+            <div>
+              <Image
+                class="shadow"
+                src={four}
+                alt="Image from science textbook showing various scales"
+              />
+            </div>
+          </div>
+          <div class="col-span-2 flex gap-8 py-8">
+            <div>
+              <Image
+                class="shadow"
+                src={five}
+                alt="Screenshot of Universcale"
+              />
+            </div>
+            <div>
+              <Image
+                class="shadow"
+                src={six}
+                alt="Screenshots from Eames' Powers of Ten video"
+              />
+              <!-- <Caption text="Screenshots from Eames' Powers of Ten video" /> -->
+            </div>
+            <div>
+              <Image
+                class="shadow"
+                src={seven}
+                alt="Image from science textbook showing various scales"
+              />
+            </div>
+            <div>
+              <Image
+                class="shadow"
+                src={eight}
+                alt="Image from science textbook showing various scales"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-span-1">
+          <p>
+            After learning about clinicians' workflow as well as the
+            capabilities of Deliberate's AI tech, we were able to define a
+            variety of design features. An easily-scannable analysis and
+            transcript of patient-clinician sessions.
+          </p>
+        </div>
+        <div class="col-span-1">
+          <Image class="pb-3" src={videopage} alt="image from figma" />
+        </div>
+        <div class="col-span-1">
+          <p>
+            We developed a number of data visualization options for analyzing
+            patients' progress using a variety of mental health questionnaire
+            frameworks.
+          </p>
+        </div>
+        <div class="col-span-1 grid grid-cols-2 gap-4">
+          <div class="shadow-sm rounded-xl">
+            <Image class="" src={datavis1} alt="image from figma" />
+          </div>
+          <div class="shadow-sm rounded-xl">
+            <Image class="" src={datavis2} alt="image from figma" />
+          </div>
+          <div class="shadow-sm rounded-xl">
+            <Image class="" src={datavis3} alt="image from figma" />
+          </div>
+          <div class="shadow-sm rounded-xl">
+            <Image class="" src={datavis4} alt="image from figma" />
+          </div>
+        </div>
+        <div class="col-span-1 lg:col-span-2">
+          <SmallHeading text="Marketing Website" />
+          <p>
+            Finally, I designed a client-focused product page which provides a
+            broad overview of features available to three types of potential
+            users: clinicians, supervisors, and clinic directors.
+          </p>
+        </div>
+        <div class="col-span-1 shadow-sm">
+          <Image class="" src={web1} alt="image from figma" />
+        </div>
+        <div class="col-span-1 shadow-sm">
+          <Image class="" src={web2} alt="image from figma" />
+        </div>
+        <div class="col-span-1 shadow-sm">
+          <Image class="" src={web3} alt="image from figma" />
+        </div>
+        <div class="col-span-1 shadow-sm">
+          <Image class="" src={web4} alt="image from figma" />
+        </div>
+      </ProjectGrid>
+    </div>
   </main>
 </Layout>
