@@ -145,6 +145,8 @@ document.getElementById("manipulate").addEventListener("click", function () {
 let currentRandomColor;
 
 for (let letter of letters) {
+    letter.classList.add("font-bold")
+
     letter.addEventListener("mouseenter", function () {
         letter.style.color = randomColor();
         if (letter.innerHTML == "¤" || letter.innerHTML === ' ') {
@@ -152,15 +154,13 @@ for (let letter of letters) {
         }
         // let randomInt = getRandomInt(1, 4);
         if (document.fonts.ready) {
-            letter.classList.add("font-bold");
-            letter.classList.add("uppercase");
+            letter.classList.remove("font-bold");
         }
     });
     letter.addEventListener("mouseout", function () {
         setTimeout(function () {
             letter.removeAttribute("style");
-            letter.classList.remove("font-bold");
-            letter.classList.remove("uppercase");
+            letter.classList.add("font-bold");
             if (letter.innerHTML == "¤" && !firstClick) {
                 if (!firstClick) {
                     letter.style.color = tempBgColor
