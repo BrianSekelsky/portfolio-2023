@@ -15,6 +15,13 @@ import sketch4 from "../../images/vespertine/sketch4.png";
 import sketch5 from "../../images/vespertine/sketch5.png";
 import sketch6 from "../../images/vespertine/sketch6.png";
 import sketch7 from "../../images/vespertine/sketch7.png";
+
+import webpage1 from "../../images/vespertine/webpage1.png";
+import webpage2 from "../../images/vespertine/webpage2.png";
+import webpage3 from "../../images/vespertine/webpage3.png";
+import webpage4 from "../../images/vespertine/webpage4.png";
+import webpage5 from "../../images/vespertine/webpage5.png";
+import webpage6 from "../../images/vespertine/webpage6.png";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -38,28 +45,46 @@ import sketch7 from "../../images/vespertine/sketch7.png";
     </div>
     <ProjectGrid>
       <div class="col-span-2">
-        <div class="grid grid-cols-2 gap-2">
-          <p class="col-span-2">
-            <b>Sketches</b>
-            <br />
-          </p>
+        <SmallHeading text="Screenshots" />
+        <div class="grid grid-cols-2 gap-8 mb-8">
+          <div class="col-span-2">
+            <Image src={webpage1} class="shadow-lg" alt="webpage screenshot" />
+          </div>
+          <div class="col-span-2">
+            <Image src={webpage2} class="shadow-lg" alt="webpage screenshot" />
+          </div>
+          <div class="col-span-2">
+            <Image src={webpage3} class="shadow-lg" alt="webpage screenshot" />
+          </div>
+          <div class="col-span-2">
+            <Image src={webpage4} class="shadow-lg" alt="webpage screenshot" />
+          </div>
+          <div class="col-span-2">
+            <Image src={webpage5} class="shadow-lg" alt="webpage screenshot" />
+          </div>
+          <div class="col-span-2">
+            <Image src={webpage6} class="shadow-lg" alt="webpage screenshot" />
+          </div>
+        </div>
+        <SmallHeading text="Sketches" />
+        <div class="grid grid-cols-2 gap-8">
           <div class="col-span-1">
-            <Image src={sketch1} alt="sketch" />
+            <Image src={sketch1} class="shadow-lg" alt="sketch" />
           </div>
           <div class="col-span-1">
-            <Image src={sketch2} alt="sketch" />
+            <Image src={sketch2} class="shadow-lg" alt="sketch" />
           </div>
           <div class="col-span-1">
-            <Image src={sketch3} alt="sketch" />
+            <Image src={sketch3} class="shadow-lg" alt="sketch" />
           </div>
           <div class="col-span-1">
-            <Image src={sketch4} alt="sketch" />
+            <Image src={sketch4} class="shadow-lg" alt="sketch" />
           </div>
           <div class="col-span-1">
-            <Image src={sketch5} alt="sketch" />
+            <Image src={sketch5} class="shadow-lg" alt="sketch" />
           </div>
           <div class="col-span-1">
-            <Image src={sketch6} alt="sketch" />
+            <Image src={sketch6} class="shadow-lg" alt="sketch" />
           </div>
         </div>
       </div>
