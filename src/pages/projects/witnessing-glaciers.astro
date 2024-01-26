@@ -19,6 +19,11 @@ import glaciers from "../../images/glaciers/glaciers.gif";
 
 import webm from "../../images/glaciers/witnessing_glaciers.mp4";
 import webm2 from "../../images/glaciers/a_dangerously_unscientific_study_on_glaciers_and_sea_level.mp4";
+
+import webpage1 from "../../images/glaciers/webpage1.png";
+import webpage2 from "../../images/glaciers/webpage2.png";
+import webpage3 from "../../images/glaciers/webpage3.png";
+import webpage4 from "../../images/glaciers/webpage4.png";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -45,19 +50,52 @@ import webm2 from "../../images/glaciers/a_dangerously_unscientific_study_on_gla
               href="https://scottreinhard.com/"
               name="Scott Reinhard (Graphics Editor at The New York Times)"
             />
-             , I explored data visualization related to climate change and
-            glaciers. The final prototype is a website which features a globe
-            populated by all of the world’s glaciers, designated by white
-            specks. A few key glaciers have been identified and marked with
-            larger sphere which turn red as the user scrolls and reads their
-            corresponding text. All of the data comes from the
+            , I explored data visualization related to climate change and glaciers.
+            The final prototype is a website which features a globe populated by
+            all of the world’s glaciers, designated by white specks. A few key glaciers
+            have been identified and marked with larger sphere which turn red as
+            the user scrolls and reads their corresponding text. All of the data
+            comes from the
             <Link
               name="World Glacier Monitoring Service."
               href="https://wgms.ch/"
             />
-             Using javascript and ThreeJS I was able to place all of the
-            glaciers on this model of Earth.
+            Using javascript and ThreeJS I was able to place all of the glaciers
+            on this model of Earth.
           </p>
+        </div>
+        <div class="col-span-2">
+          <SmallHeading text="Screenshots" />
+          <div class="grid grid-cols-2 gap-8 mb-8">
+            <div class="col-span-2">
+              <Image
+                src={webpage1}
+                class="shadow-lg"
+                alt="webpage screenshot"
+              />
+            </div>
+            <div class="col-span-2">
+              <Image
+                src={webpage2}
+                class="shadow-lg"
+                alt="webpage screenshot"
+              />
+            </div>
+            <div class="col-span-2">
+              <Image
+                src={webpage3}
+                class="shadow-lg"
+                alt="webpage screenshot"
+              />
+            </div>
+            <div class="col-span-2">
+              <Image
+                src={webpage4}
+                class="shadow-lg"
+                alt="webpage screenshot"
+              />
+            </div>
+          </div>
         </div>
         <!--////////////////////////////-->
         <div class="col-span-1">
@@ -70,7 +108,7 @@ import webm2 from "../../images/glaciers/a_dangerously_unscientific_study_on_gla
         </div>
         <div class="col-span-1">
           <Image
-            class="pb-3"
+            class="pb-3 shadow-lg"
             src={italianAlps}
             alt="Screenshot of figma file with images of the alps and data graphics"
           />
@@ -86,9 +124,9 @@ import webm2 from "../../images/glaciers/a_dangerously_unscientific_study_on_gla
               href="https://wgms.ch/data_databaseversions/"
               name="WGMS’s Fluctuations of Glaciers Databases"
             />
-             . The simple sketch shows the world’s glaciers in their relative
-            positions, their color fades from white to black in accordane with
-            their mass. As years pass, the glaciers fade.
+            . The simple sketch shows the world’s glaciers in their relative positions,
+            their color fades from white to black in accordane with their mass. As
+            years pass, the glaciers fade.
           </p>
         </div>
         <div class="col-span-1">
@@ -107,10 +145,9 @@ import webm2 from "../../images/glaciers/a_dangerously_unscientific_study_on_gla
               href="https://www.usgs.gov/faqs/what-benchmark-glacier"
               name="The Benchmark Glaciers"
             />
-             are four North American glaciers which have been chosen for
-            longterm monitoring. Using the dataset I was able to make
-            representations in Processing of 3D boxes based on the glaciers’
-            area and elevation over the years.
+            are four North American glaciers which have been chosen for longterm
+            monitoring. Using the dataset I was able to make representations in Processing
+            of 3D boxes based on the glaciers’ area and elevation over the years.
           </p>
         </div>
         <div class="col-span-1 flex flex-wrap">
