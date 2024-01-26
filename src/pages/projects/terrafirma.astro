@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
+import SmallHeading from "../../components/SmallHeading.astro";
+
 import ProjectHeader from "../../components/ProjectHeader.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
@@ -43,10 +45,9 @@ import webm from "../../images/homepage/terrafirma.webm";
     </div>
     <ProjectGrid>
       <div class="col-span-1">
+        <SmallHeading text="Problem" />
         <p>
-          <b>Problem</b>
-          <br />
-           Terrafirma came to us in need of a brand identity to support their
+          Terrafirma came to us in need of a brand identity to support their
           environmental data platform. We proposed renaming themselves to
           TerraFirma Software in order to contextualize their company and
           differentiate themselves from the many other terrafirmas out there. We
