@@ -33,16 +33,18 @@ for(let i = 0; i < types.length; i++) {
     <div class="m-auto transition-all duration-200 group-hover:blur-md">
       <slot class="rounded transition-all duration-200" />
     </div>
-    <div class="p-4 opacity-0 group-hover:opacity-100 flex text-center text-white bg-black bg-opacity-100 absolute bottom-0 top-0 w-full h-full transition-all duration-200 px-4 py-4 flex-col justify-center">
+    <div class="p-4 opacity-0 group-hover:opacity-100 flex text-center text-black bg-white bg-opacity-100 absolute bottom-0 top-0 w-full h-full transition-all duration-200 px-4 py-4 flex-col justify-center">
       <div class="items-baseline pb-6">
+        <div class="pb-2">
+          <CardLabel value={year} , isLarge={false} />
+        </div>
         <CardLabel value={title} , isLarge={true} />
-        <CardLabel value={year} , isLarge={false} />
       </div>
       <div class="">
         <div class="flex flex-wrap justify-center gap-2">
           {
             types.map((type) => (
-            <div class={type.special ? "text-xs text-white" : "text-white text-xs"}>
+            <div class={type.special ? "text-xs text-blue" : "text-black text-xs"}>
               <CardLabel value={"#" + type.text} , isLarge={false} />
             </div>
             ))
