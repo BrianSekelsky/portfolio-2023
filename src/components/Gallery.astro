@@ -26,11 +26,11 @@ import Las from "../pages/projects/las.astro";
 
 <div
   id="buttons"
-  class="flex flex-wrap max-w-100 justify-center sm:justify-start gap-2 p-4 items-center border-t"
+  class="flex flex-wrap text-xl max-w-100 justify-center lg:justify-start gap-2 p-8 py-8 items-center border-t"
 >
   <div
     id="allButton"
-    class="uppercase font-mono border cursor-pointer px-3 rounded-full hover:bg-offwhite hover:lowercase bg-black text-white transition-all"
+    class="uppercase font-mono border cursor-pointer px-3 rounded-full hover:lowercase bg-black text-white transition-all"
   >
     All
   </div>
@@ -60,12 +60,12 @@ import Las from "../pages/projects/las.astro";
   </div>
 </div>
 
-<div class="border-t">
-  <div class="mx-auto bg-black">
+<div>
+  <div class="mx-auto">
     <!-- All -->
     <div
       id="all"
-      class="grid gap-1 grid-cols-1 sm:grid-cols-4 md:grid-cols-5 grid-flow-row-dense md:auto-rows-fr"
+      class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-row-dense md:auto-rows-fr p-8 pt-0"
     >
       <SizeAndScale typeClass="website userExperience caseStudy" />
       <CriticalImages typeClass="branding" />

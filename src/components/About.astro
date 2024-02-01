@@ -13,7 +13,7 @@ document.body.style.backgroundColor = "#9DC5BB";
   <div class="mx-auto">
     <div class="grid grid-cols-1 lg:flex lg:justify-stretch">
       <div class="flex flex-col shrink justify-stretch">
-        <div class="p-4 pb-0 bg-white">
+        <div class="py-4 px-8 pb-0 bg-white">
           <p
             id="manipulate"
             class="text-left text-5xl sm:text-7xl font-serif uppercase cursor-pointer"
@@ -21,7 +21,7 @@ document.body.style.backgroundColor = "#9DC5BB";
             Brian Sekelsky
           </p>
         </div>
-        <div class="bg-white p-4 border-b">
+        <div class="bg-white pt-4 border-b p-8">
           <!-- <SmallHeading text="Basics" /> -->
           <div class="mb-0">he/him</div>
           <div class="mb-0">briansekelsky@gmail.com</div>
@@ -31,7 +31,7 @@ document.body.style.backgroundColor = "#9DC5BB";
             href="/sekelsky-resume.pdf">resume.pdf</a
           >
         </div>
-        <div class="p-4 bg-white border-b">
+        <div class="p-8 bg-white border-b">
           <SmallHeading text="Bio" />
           <p>
             I am a multidisciplinary designer focused on interaction, web, 3D,
@@ -67,7 +67,7 @@ document.body.style.backgroundColor = "#9DC5BB";
             electronic and folk music, and exploring the great outdoors.
           </p>
         </div>
-        <div class="bg-white p-4 grow">
+        <div class="bg-white p-8 grow">
           <SmallHeading text="About this site" />
           <p>
             This site is a portfolio and archive for my designs, art, and music.
@@ -83,11 +83,9 @@ document.body.style.backgroundColor = "#9DC5BB";
           </p>
         </div>
       </div>
-      <div
-        class="bg-white md:min-w-fit border-t lg:border-t-0 lg:border-l grid place-content-center"
-      >
+      <div class="bg-white md:min-w-fit border-t lg:border-t-0 lg:border-l">
         <Image
-          class="object-fit"
+          class="object-cover"
           src={brianImage}
           alt="Image of Brian Sekelsky outside"
         />
@@ -102,6 +100,11 @@ document.body.style.backgroundColor = "#9DC5BB";
   }
   p {
     margin-bottom: 0.7rem;
+  }
+
+  .object-cover {
+    min-width: 100%;
+    min-height: 100%;
   }
 </style>
 
