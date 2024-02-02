@@ -3,7 +3,7 @@ import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import video from "../../images/homepage/physical-manifestation.webm";
 import { Image } from "astro:assets";
-import gif from "../../images/homepage/physical-manifestation.jpg";
+import gif from "../../images/homepage/physical-manifestation.png";
 
 const title = "Critical Images";
 const description = "asdf";
@@ -24,7 +24,7 @@ const alt =
   types={types}
   year={year}
 >
-  <div class="video hidden sm:block">
+  <div class="video hidden">
     <video
       class="transition-all"
       playsinline
@@ -36,7 +36,7 @@ const alt =
       <source src={video} type="video/webm" />
     </video>
   </div>
-  <div class="gif block sm:hidden">
+  <div class="gif block">
     <Image src={gif} alt={alt} />
   </div>
 </Card>
