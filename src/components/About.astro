@@ -13,7 +13,7 @@ document.body.style.backgroundColor = "#9DC5BB";
   <div class="mx-auto">
     <div class="grid grid-cols-1 lg:flex lg:justify-stretch">
       <div class="flex flex-col shrink justify-stretch">
-        <div class="py-4 px-8 pb-0 bg-white">
+        <div class="py-4 px-8 pb-0 bg-white border-b">
           <p
             id="manipulate"
             class="text-left text-5xl sm:text-7xl font-serif uppercase cursor-pointer"
@@ -22,7 +22,7 @@ document.body.style.backgroundColor = "#9DC5BB";
           </p>
         </div>
         <div class="bg-white pt-4 border-b p-8">
-          <!-- <SmallHeading text="Basics" /> -->
+          <SmallHeading text="Basics" />
           <div class="mb-0">he/him</div>
           <div class="mb-0">briansekelsky@gmail.com</div>
           <a
@@ -34,37 +34,28 @@ document.body.style.backgroundColor = "#9DC5BB";
         <div class="p-8 bg-white border-b">
           <SmallHeading text="Bio" />
           <p>
-            I am a multidisciplinary designer focused on interaction, web, 3D,
-            and user experience. I currently design products which help users
-            manage and pay down their student debt at <Link
+            I am a generalist at heart and design is my home base. I leverage my
+            backgrounds in front-end development, visual design, teaching, and
+            user experience in all of my work. I follow a tool-agnostic, highly
+            collaborative, humanity-centered approach to design. I believe that
+            the teams best equipped to solve complicated problems are
+            inter-disciplinary.
+          </p>
+          <p>
+            I currently design products that help users manage and pay down
+            their student debt at
+            <Link
               name="Fidelity Investments."
               href="https://www.fidelityworkplace.com/s/studentdebt?ccsource=sem%7Cgoogle%7Cgoogle.com%7Cexact%7Chavas-wps-sd-search%7Cfidelity-student-debt%7Cstudentdebtb2bbrand-studentloans%7C%7Ceid%3Dep61486480236%7C&gclid=Cj0KCQjwpc-oBhCGARIsAH6ote9g7PwdorVXfwVC6jNwrIJ_-DeyJ8dgYuvkgFbjMvqEfBEAt_FrY5QaAq-LEALw_wcB&gclsrc=aw.ds"
             />
-            I am also an adjunct faculty member at <Link
-              name="North Carolina State University."
-              href="https://design.ncsu.edu/"
-            />
+            I am also an adjunct faculty member at North Carolina State University’s
+            <Link name="College of Design" href="https://design.ncsu.edu/" /> where
+            I am teaching a course on emerging technologies (AI/ML, AR/VR, creative
+            coding) for designers.
           </p>
           <p>
-            In May of 2023, I graduated with an MGXD (equivalent to an MFA) from
-
-            <Link
-              name="North Carolina State University."
-              href="https://design.ncsu.edu/graphic-design/academics/masters/"
-            />
-            During my time there, I worked as a research assistant on
-            <Link
-              name="Scale Worlds."
-              href="https://www.ise.ncsu.edu/vr/projects/#:~:text=SCALE%2DVR%20entails%20the%20design,be%20replicated%20in%20everyday%20experience"
-            />
-            Before that I worked as a graphic designer and frontend developer for
-            a few different companies, spent 27 months teaching in Tanzania as a
-            Peace Corps Volunteer, and studied Computer Science at the University
-            of Wisconsin–Madison.
-          </p>
-          <p>
-            In my free time I enjoy distance running, making art, recording
-            electronic and folk music, and exploring the great outdoors.
+            In my free time, I enjoy running, learning piano, recording
+            electronic/folk music, and exploring the great outdoors.
           </p>
         </div>
         <div class="bg-white p-8 grow">
@@ -92,20 +83,20 @@ document.body.style.backgroundColor = "#9DC5BB";
       </div>
     </div>
   </div>
+
+  <style>
+    .gap-1 {
+      gap: 1px;
+    }
+    p {
+      margin-bottom: 0.7rem;
+    }
+
+    .object-cover {
+      min-width: 100%;
+      min-height: 100%;
+    }
+  </style>
+
+  <script src="./header.js"></script>
 </div>
-
-<style>
-  .gap-1 {
-    gap: 1px;
-  }
-  p {
-    margin-bottom: 0.7rem;
-  }
-
-  .object-cover {
-    min-width: 100%;
-    min-height: 100%;
-  }
-</style>
-
-<script src="./header.js"></script>
