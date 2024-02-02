@@ -1,7 +1,7 @@
 <div class="hidden lg:block p-8 sm:pt-4 max-w-full">
   <p
     id="manipulate"
-    class="text-5xl sm:text-8xl font-serif uppercase cursor-pointer overflow-hidden pb-24 lg:less-width"
+    class="text-5xl sm:text-8xl font-serif uppercase cursor-pointer overflow-hidden pb-24 less-width"
   >
     <span id="main-text"
       >Brian Sekelsky is a designer, teacher, coder, & musician.</span
@@ -23,8 +23,13 @@
     line-height: 1.14;
   }
 
+  @media (min-width: 1024px) {
+    .less-width {
+      width: 94%;
+    }
+  }
   .less-width {
-    width: 94% !important;
+    width: 100%;
   }
 </style>
 
