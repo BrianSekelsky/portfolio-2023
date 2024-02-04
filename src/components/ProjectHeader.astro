@@ -28,7 +28,7 @@ const {
       > -->
       <div class="">
         <p
-          class="font-serif font-bold uppercase leading-tight text-6xl sm:text-9xl break-words sm:break-normal hyphens-auto sm:hyphens-manual"
+          class="font-mono font-extralight uppercase leading-tight text-6xl sm:text-9xl break-words sm:break-normal hyphens-auto sm:hyphens-manual"
         >
           {title}
         </p>
@@ -39,19 +39,21 @@ const {
     >
       <div class="flex gap-12 col-span-1 lg:border-r py-12">
         <div>
-          <p class="uppercase font-mono text-xs">Type</p>
+          <p class="uppercase font-mono text-sm pb-1 font-extralight">Type</p>
           <div class="">
             {types.map((type) => <p class="text-xl">{type}</p>)}
           </div>
         </div>
         <div class="">
-          <p class="uppercase font-mono text-xs">Year</p>
+          <p class="uppercase font-mono text-sm pb-1 font-extralight">Year</p>
           <p class="text-xl">
             {year}
           </p>
         </div>
         <div class={collaborators.length > 0 ? "hidden sm:block" : "hidden"}>
-          <p class="uppercase font-mono text-xs">Collaborators</p>
+          <p class="uppercase font-mono text-sm pb-1 font-extralight">
+            Collaborators
+          </p>
           <div>
             {
               collaborators.map((collaborator) => (

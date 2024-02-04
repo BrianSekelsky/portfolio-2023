@@ -4,8 +4,8 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
-			mono: ['"JetBrainsMono", "ui-monospace"', 'sans-serif'],
-			serif: ["PPRightGroteskMono", "Arial", "sans-serif"],
+			mono: ['"PPRightGroteskMono", "ui-monospace"', 'sans-serif'],
+			serif: ["PPRightGroteskMonoSerif", "ui-monospace", "sans-serif"],
 			sans: ['"Inter", "Arial"', 'sans-serif']
 		},
 		colors: {

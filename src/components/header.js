@@ -145,22 +145,22 @@ document.getElementById("manipulate").addEventListener("click", function () {
 let currentRandomColor;
 
 for (let letter of letters) {
-    letter.classList.add("font-bold")
+    letter.classList.add("font-serif")
 
     letter.addEventListener("mouseenter", function () {
         letter.style.color = randomColor();
-        if (letter.innerHTML == "¤" || letter.innerHTML === ' ') {
-            letter.style.backgroundColor = letter.style.color;
-        }
+        // if (letter.innerHTML == "¤" || letter.innerHTML === ' ') {
+        //     letter.style.backgroundColor = letter.style.color;
+        // }
         // let randomInt = getRandomInt(1, 4);
         if (document.fonts.ready) {
-            letter.classList.remove("font-bold");
+            letter.classList.remove("font-serif")
         }
     });
     letter.addEventListener("mouseout", function () {
         setTimeout(function () {
             letter.removeAttribute("style");
-            letter.classList.add("font-bold");
+            letter.classList.add("font-serif");
             if (letter.innerHTML == "¤" && !firstClick) {
                 if (!firstClick) {
                     letter.style.color = tempBgColor
