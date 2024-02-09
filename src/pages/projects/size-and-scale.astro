@@ -6,25 +6,15 @@ import { Image } from "astro:assets";
 import ProjectHeader from "../../components/ProjectHeader.astro";
 import SmallHeading from "../../components/SmallHeading.astro";
 import Link from "../../components/Link.astro";
-import Microcopy from "../../components/Microcopy.astro";
 import Caption from "../../components/Caption.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 
-import crossCuttingConcept1 from "../../images/size-and-scale/crosscutting-concept-1.png";
-import crossCuttingConcept2 from "../../images/size-and-scale/crosscutting-concept-2.png";
 import cave from "../../images/size-and-scale/cave.png";
-import magana from "../../images/size-and-scale/magana.png";
-import mayer from "../../images/size-and-scale/mayer.png";
 import universcale from "../../images/size-and-scale/universcale.png";
 import powersoften from "../../images/size-and-scale/powersoften.jpeg";
 import book1 from "../../images/size-and-scale/book-1.png";
 import book2 from "../../images/size-and-scale/book-2.png";
 import prototype from "../../images/size-and-scale/prototype.png";
-import functionMappingIntro from "../../images/size-and-scale/function-mapping-intro.png";
-import functionMapping1 from "../../images/size-and-scale/function-mapping-1.png";
-import functionMapping2 from "../../images/size-and-scale/function-mapping-2.png";
-import functionMapping3 from "../../images/size-and-scale/function-mapping-3.png";
-import highlighting from "../../images/size-and-scale/highlighting.gif";
 
 import crossCuttingConcept1 from "../../images/size-and-scale/crosscutting-concept-1.png";
 import astro from "../../images/scale-worlds/astro.png";
@@ -64,13 +54,16 @@ import website2 from "../../images/size-and-scale/website-2.png";
 import website3 from "../../images/size-and-scale/website-3.png";
 import website4 from "../../images/size-and-scale/website-4.png";
 import website5 from "../../images/size-and-scale/website-5.png";
+
+import swcave from "../../images/scale-worlds/swcave.gif";
+import swvideo from "../../images/homepage/size&scale4.webm";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Scale Worlds"
-      objective="Create an immersive virtual environment, where students can see various scientific entities in relation to their own bodies and conduct realistic size comparisons that cannot be replicated in everyday experience."
+      objective="A multi-year project for the National Science Foundation. The first phase focused on the creation of two virtual reality-based learning environments where students can experience scales ranging from the size of the universe down to an atom. The second goal was to create a web-based flat-screen version of the VR experience. Finally, we wrote a research paper about the process of mapping the VR experience to the web."
       types={[
         "Virtual Reality",
         "User Experience",
@@ -99,7 +92,8 @@ import website5 from "../../images/size-and-scale/website-5.png";
     </div>
     <div class="">
       <ProjectGrid>
-        <div class="col-span-1 lg:col-span-2">
+        <!--////////////////////////////-->
+        <div class="col-span-1">
           <SmallHeading text="Background" />
           <p>
             Scale Worlds is a virtual learning environment which enhances
@@ -119,26 +113,15 @@ import website5 from "../../images/size-and-scale/website-5.png";
             I have also acted as manager for three hourly design technicians.
           </p>
         </div>
-        <!--////////////////////////////-->
         <div class="col-span-1">
-          <p>
-            I was highly involved in this project, taking on diverse tasks
-            including drafting design documents, planning out the user
-            experience, coding in C#, 3D modeling in Blender, and developing in
-            Unity. I have assisted in running two rounds of qualitative
-            usability studies. Results from the first round have been published
-            in a Human Factors journal. The majority of our design decisions
-            have been made in response to the usability studies or are backed up
-            by literature on the subject. Alejandra Magaña’s Framework for Size
-            and Scale Cognition has been an invaluable resource during our
-            design process.
-          </p>
-        </div>
-        <div class="col-span-1">
-          <Image class="pb-3" src={astro} alt="astronaut in scale worlds" />
+          <Image
+            class="drop-shadow rounded-sm"
+            src={swcave}
+            alt="astronaut in scale worlds"
+          />
         </div>
         <!--////////////////////////////-->
-        <div class="col-span-2">
+        <!-- <div class="col-span-2">
           <p>
             When I joined the project, the team of professors had secured
             funding through NSF partially due to a prototype created by Grace
@@ -153,34 +136,31 @@ import website5 from "../../images/size-and-scale/website-5.png";
             <Image class="col-span-1" src={e} alt="e" />
             <Image class="col-span-1" src={f} alt="f" />
           </div>
-        </div>
-        <div class="col-span-2">
-          <p>
-            This project involves designing for two VR platforms: the Cave
-            Automatic Virtual Enviornment (CAVE) and Head Mounted Display (HMD)
-            <br />
-          </p>
-          <div class="grid grid-cols-2 gap-2">
-            <Image
-              class="col-span-1 drop-shadow"
-              src={cave}
-              alt="Imge of CAVE"
-            />
-            <Image
-              class="col-span-1 drop-shadow"
-              src={hmd}
-              alt="image of HMD with 3d model representing the user"
-            />
-          </div>
-        </div>
+        </div> -->
       </ProjectGrid>
-      <div class="border-y my-24">
+      <div class="border-y my-12">
         <video playsinline autoplay muted loop>
           <source src={webm2} type="video/webm" />
         </video>
       </div>
       <ProjectGrid>
-        <div class="col-span-2">
+        <div class="col-span-1">
+          <Image
+            class="col-span-1 drop-shadow rounded-sm"
+            src={hmd}
+            alt="image of HMD with 3d model representing the user"
+          />
+          <Caption text="Head-mounted Display" />
+        </div>
+        <div class="col-span-1">
+          <Image
+            class="col-span-1 drop-shadow rounded-sm"
+            src={cave}
+            alt="Imge of CAVE"
+          />
+          <Caption text="Cave Augmented Virtual Environment" />
+        </div>
+        <!-- <div class="col-span-2">
           <p>
             When designing the new version of the environment, the scheme was
             split up into 3 main sections
@@ -204,53 +184,130 @@ import website5 from "../../images/size-and-scale/website-5.png";
               />
             </div>
           </div>
-        </div>
-        <div class="col-span-2">
+        </div> -->
+        <div class="col-span-1">
           <p>
             The way in which the user interacts with the environment was
             designed to mimic changing an exponent in scientific notation and
             moving decimal places in standard notation: concepts seen in
-            American science and math curricula
+            American science and math curricula.
             <br />
           </p>
-          <div class="grid grid-cols-2 gap-2">
-            <div class="col-span-1">
-              <Image src={decimal} alt="gif of the decimal dance animation" />
-              <Caption text="Animation of decimal moving" />
-            </div>
-            <div class="col-span-1">
-              <Image src={numericpanel} alt="diagram of numeric panel" />
+        </div>
+        <div class="grid gap-2">
+          <Image
+            src={decimal}
+            class="rounded-sm drop-shadow"
+            alt="gif of the decimal dance animation"
+          />
+          <Caption text="Animation of decimal moving" />
+          <!-- <Image src={numericpanel} alt="diagram of numeric panel" />
+          <Caption
+            text="Diagram of the numeric panel that the user interacs with"
+          /> -->
+        </div>
+        <div class="col-span-1">
+          <SmallHeading text="Scale Worlds – Web" />
+          <p>
+            The web version was created as a way to bring the Scale Worlds
+            experience to people who don't have access to expensive VR
+            equipment.
+          </p>
+          <p>
+            The core theory of Scale Worlds – VR was mapped into a set of new
+            features which would live more naturally on a flat screen display. I
+            authored a paper about this process, <Link
+              href="https://dl.designresearchsociety.org/iasdr/iasdr2023/fullpapers/184/"
+              name="Preserving theoretically-grounded-sm functions across media platforms in interaction design, "
+            />
+            which was published in the IASDR 2023 conference proceedings.
+          </p>
+        </div>
+        <div class="col-span-1">
+          <video
+            class="transition-all"
+            playsinline
+            autoplay
+            muted
+            loop
+            preload="none"
+          >
+            <source src={swvideo} type="video/webm" />
+          </video>
+        </div>
+        <!--////////////////////////////-->
+        <!--////////////////////////////-->
+        <!--////////////////////////////-->
+        <div class="col-span-2">
+          <Image
+            src={website1}
+            alt="Screenshot of the website"
+            class="drop-shadow rounded-sm"
+            class="drop-shadow rounded-sm"
+          />
+        </div>
+        <div class="col-span-2">
+          <Image
+            src={website4}
+            alt="Screenshot of the website"
+            class="drop-shadow rounded-sm"
+            class="drop-shadow rounded-sm"
+          />
+        </div>
+        <div class="col-span-2">
+          <Image
+            src={website3}
+            alt="Screenshot of the website"
+            class="drop-shadow rounded-sm"
+            class="drop-shadow rounded-sm"
+          />
+        </div>
+        <!--////////////////////////////-->
+        <div class="col-span-2 pt-8 bg-offwhite">
+          <b>Research</b>
+          <div class="flex py-8">
+            <div>
+              <Image src={universcale} alt="Screenshot of Universcale" />
               <Caption
-                text="Diagram of the numeric panel that the user interacs with"
+                text="Screenshots of Universcale, research, & Eames' Powers of Ten video "
+              />
+            </div>
+            <div>
+              <Image
+                src={powersoften}
+                alt="Screenshots from Eames' Powers of Ten video"
+              />
+              <!-- <Caption text="Screenshots from Eames' Powers of Ten video" /> -->
+            </div>
+            <div>
+              <Image
+                src={book1}
+                alt="Image from science textbook showing various scales"
+              />
+              <Caption text="Diagrams from unknown science textbooks" />
+            </div>
+            <div>
+              <Image
+                src={book2}
+                alt="Image from science textbook showing various scales"
               />
             </div>
           </div>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-1">
           <p>
-            A variety of enivronment schema were designed in two or more ways
+            A variety of enivornment schema were designed in two or more ways
             and then put through user testing with user interface experts. Later
             testing will be done with general "non-expert" students.
             <br />
           </p>
-          <div class="grid grid-cols-2 gap-2">
-            <div class="col-span-1">
-              <Image src={forest} alt="diagram of forest layout" />
-              <Caption text="the forest" />
-            </div>
-            <div class="col-span-1">
-              <Image src={path} alt="diagram of path layout" />
-              <Caption text="the path" />
-            </div>
-          </div>
+        </div>
+        <div class="col-span-1">
+          <Image src={forest} alt="diagram of forest layout" />
+          <Caption text="the forest" />
         </div>
         <div class="col-span-2">
           <div class="grid grid-cols-2 gap-2">
-            <p class="col-span-2">
-              User research revealed a path forwards as well as opening up a
-              conversation about "usability vs theory".
-              <br />
-            </p>
             <div class="col-span-1">
               <Image
                 src={research1}
@@ -288,93 +345,13 @@ import website5 from "../../images/size-and-scale/website-5.png";
             </div>
           </div>
         </div>
-        <div class="col-span-1">
-          <SmallHeading text="Scale Worlds – Web" />
-          <p>
-            The web version was created as a way to bring the Scale Worlds
-            experience to people who don't have access to expensive VR
-            equipment.
-          </p>
-          <p>
-            The core theory of Scale Worlds – VR was mapped into a set of new
-            features which would live more naturally on a flat screen display. I
-            authored a paper about this process, <Link
-              href="https://dl.designresearchsociety.org/iasdr/iasdr2023/fullpapers/184/"
-              name="Preserving theoretically-grounded functions across media platforms in interaction design, "
-            />
-            which was published in the IASDR 2023 conference proceedings.
-          </p>
-        </div>
-        <div class="col-span-1">
-          <Image
-            width="800px"
-            src={website1}
-            alt="Image of Scale Worlds - Web"
-          />
-          <Caption text="Screenshot from Scale Worlds – Web" />
-        </div>
-        <div class="col-span-2 flex bg-offwhite py-8">
-          <div>
-            <Image src={universcale} alt="Screenshot of Universcale" />
-            <Caption
-              text="Screenshots of Universcale, research, & Eames' Powers of Ten video "
-            />
-          </div>
-          <div>
-            <Image
-              src={powersoften}
-              alt="Screenshots from Eames' Powers of Ten video"
-            />
-            <!-- <Caption text="Screenshots from Eames' Powers of Ten video" /> -->
-          </div>
-          <div>
-            <Image
-              src={book1}
-              alt="Image from science textbook showing various scales"
-            />
-            <Caption text="Diagrams from unknown science textbooks" />
-          </div>
-          <div>
-            <Image
-              src={book2}
-              alt="Image from science textbook showing various scales"
-            />
-          </div>
-        </div>
-        <!--////////////////////////////-->
-        <!--////////////////////////////-->
-        <!--////////////////////////////-->
-        <div class="col-span-1 pb-4">
-          <p>
-            One of the first steps was to create a tech demo with Three.js to
-            ensure that the basic scaling mechanic would work in a web browser.
-            The final screens can be seen below.
-          </p>
-        </div>
-        <div class="col-span-1 pb-4">
-          <Image
-            src={prototype}
-            alt="Screenshot of original prototype shows a 3d model of a robin, doctor, and whale to scale "
-          />
-          <Caption text="Original tech demo for Scale Worlds-Web" />
-        </div>
-        <div class="col-span-1 pb-4">
-          <Image src={website1} alt="Screenshot of the website" />
-        </div>
-        <div class="col-span-1 pb-4">
-          <Image src={website2} alt="Screenshot of the website" />
-        </div>
-        <div class="col-span-1 pb-4">
-          <Image src={website3} alt="Screenshot of the website" />
-        </div>
-        <div class="col-span-1 pb-4">
-          <Image src={website4} alt="Screenshot of the website" />
-        </div>
-        <div class="col-span-1 pb-4">
-          <Image src={website5} alt="Screenshot of the website" />
-        </div>
-        <!--////////////////////////////-->
       </ProjectGrid>
     </div>
   </main>
 </Layout>
+
+<style>
+  img {
+    width: 100%;
+  }
+</style>

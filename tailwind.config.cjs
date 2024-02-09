@@ -22,6 +22,7 @@ module.exports = {
 		},
 		borderRadius:
 		{
+			'Default': '0.25rem',
 			'sm': '0.25rem',
 			'md': '0.5rem',
 			'lg': '1rem',
