@@ -1,25 +1,18 @@
+---
+import ProjectHeader from "./ProjectHeader.astro";
+---
+
 <div class="pt-4">
-  <div class="text-left sm:text-center p-4 sm:py-8 border-b">
-    <!-- <a
-      href="/"
-      class="text-xs font-mono uppercase hover:lowercase hover:text-blue"
-      >← back to projects</a
-    > -->
-    <div class="">
-      <p
-        id="manipulate"
-        class="font-mono uppercase cursor-pointer leading-tight text-6xl sm:text-9xl break-words sm:break-normal hyphens-auto sm:hyphens-manual"
-      >
-        Winter Foe
-      </p>
-    </div>
-  </div>
-  <div class="text-left sm:text-center p-4 sm:p-8">
-    <p class="font-bold">Genres/styles</p>
-    <p class="font-sans">acoustic, ambient, electronic, folk, pop</p>
-  </div>
+  <ProjectHeader
+    title="Winter Foe"
+    objective="Winter Foe is a music project that I have been working on since around 2018. I am searching for new ways to combine digital sounds, electronics, acoustic instruments, and field recordings. Through this project I have expanded my visual vocabulary by producing album art, animations, and videos. I have also had the opportunity to collaborate with some amazing musicians who inspire me."
+    types={["Electronic", "Ambient", "Experimental", "Folk", "Pop"]}
+    collaborators={[]}
+    year="2018 – Present"
+    music={true}
+  />
 </div>
-<div class="flex flex-col md:flex-row justify-stretch border-t">
+<div class="flex flex-col md:flex-row justify-stretch">
   <div class="border-b md:border-b-0 md:border-r flex-1">
     <iframe
       width="100%"
