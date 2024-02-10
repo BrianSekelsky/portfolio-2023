@@ -5,6 +5,7 @@ import Card from "../Card.astro";
 
 import gif from "../../images/homepage/fidelity2.png";
 import video from "../../images/homepage/fidelity.webm";
+import preview from "../../images/homepage/fidelity.png";
 
 const title = "Fidelity Student Debt";
 const description = "asdf";
@@ -38,7 +39,11 @@ const alt = "Screenshot of user experience work in figma";
     </video>
   </div>
   <div class="gif block">
-    <Image class="transition-all group-hover:rounded-xl" src={gif} alt={alt} />
+    <Image
+      class="transition-all group-hover:rounded-xl"
+      src={preview}
+      alt={alt}
+    />
   </div>
 </Card>
 

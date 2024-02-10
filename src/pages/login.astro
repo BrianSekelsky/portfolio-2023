@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Brian Sekelsky">
+    <main class="p-8">
+        <div class="h-screen">
+            <form id="login-form">
+                <label for="password" class="font-mono">Password</label><br />
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="text"
+                    placeholder="password"
+                />
+                <button
+                    type="submit"
+                    class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >Submit</button
+                >
+            </form>
+        </div>
+
+        <script>
+            document
+                .getElementById("login-form")
+                .addEventListener("submit", function (event) {
+                    // Prevent the form from being submitted
+                    event.preventDefault();
+
+                    // Get the password entered by the user
+                    var password = document.getElementById("password").value;
+
+                    // Check if the password is correct
+                    if (password === "briansekelsky") {
+                        // If the password is correct, store it in local storage
+                        localStorage.setItem("password", password);
+
+                        // Redirect to the protected page
+                        window.location.href = "/projects/fidelity";
+                    } else {
+                        // If the password is incorrect, show an error message
+                        alert("Incorrect password");
+                    }
+                });
+        </script>
+    </main>
+</Layout>
