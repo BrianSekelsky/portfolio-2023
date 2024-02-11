@@ -57,6 +57,8 @@ import website5 from "../../images/size-and-scale/website-5.png";
 
 import swcave from "../../images/scale-worlds/swcave.gif";
 import swvideo from "../../images/homepage/size&scale4.webm";
+
+import fmtable from "../../images/size-and-scale/fm-table.png";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -109,8 +111,10 @@ import swvideo from "../../images/homepage/size&scale4.webm";
             <Link href="https://textimage.org/" name="Dr. Matthew Peterson" />
             and in close collaboration with professors and doctoral students from
             the Human Factors Engineering and STEM Education departments to design
-            and develop this scale cognition learning environment. In this project,
-            I also acted as manager for three hourly design technicians.
+            and develop this scale cognition learning environment. STEM educators
+            acted as analysts providing educational requirements from literature,
+            as designers we interpreted these requirements into specific design features
+            in the three virtual environemtns.
           </p>
         </div>
         <div class="col-span-1">
@@ -294,17 +298,33 @@ import swvideo from "../../images/homepage/size&scale4.webm";
             </div>
           </div>
         </div>
+        <div class="col-span-2 flex justify-center">
+          <div class="w-1/2">
+            <Image
+              src={fmtable}
+              class="rounded-sm drop-shadow"
+              alt="Table with all tracked features from scale worlds"
+            />
+            <Caption
+              text="We tracked all design features across the three versions from specific theoretical assertions based in the scale cognition literature."
+            />
+          </div>
+        </div>
         <div class="col-span-1">
           <p>
-            A variety of enivornment schema were designed in two or more ways
-            and then put through user testing during mutlitple sessions with
-            both "user interface experts" and "non-expert" students.
+            Although all of the design features were based in theoretical
+            assertions we utilized user testing at multiple stages throughout
+            the design/development lifecycle. We used user testing in cases
+            where we had determined multiple possible solutions. For example, we
+            tested a variety of enivornment schema to guauge how it affected
+            learners' understanding of objects' scale and the clarity of
+            interactive elements.
             <br />
           </p>
         </div>
         <div class="col-span-1">
           <Image src={forest} alt="diagram of forest layout" />
-          <Caption text="the forest" />
+          <Caption text='"the forest" layout' />
         </div>
         <div class="col-span-2">
           <div class="grid grid-cols-2 gap-2">
@@ -312,24 +332,28 @@ import swvideo from "../../images/homepage/size&scale4.webm";
               <Image
                 src={research1}
                 alt="image of some research descriptions"
+                class="rounded-md drop-shadow"
               />
             </div>
             <div class="col-span-1">
               <Image
                 src={research2}
                 alt="image of some research descriptions"
+                class="rounded-md drop-shadow"
               />
             </div>
             <div class="col-span-1">
               <Image
                 src={research3}
                 alt="image of some research descriptions"
+                class="rounded-md drop-shadow"
               />
             </div>
             <div class="col-span-1">
               <Image
                 src={research4}
                 alt="image of some research descriptions"
+                class="rounded-md drop-shadow"
               />
             </div>
           </div>
@@ -337,11 +361,18 @@ import swvideo from "../../images/homepage/size&scale4.webm";
         <div class="col-span-2">
           <div class="grid grid-cols-2 gap-2">
             <div class="col-span-1">
-              <Image src={ruler1} alt="image of professor in cave" />
-              <Caption text="professors in the CAVE" />
+              <Image
+                src={ruler1}
+                alt="image of professor in cave"
+                class="rounded-md drop-shadow"
+              />
             </div>
             <div class="col-span-1">
-              <Image src={ruler2} alt="image of proffessor in cave" />
+              <Image
+                src={ruler2}
+                alt="image of proffessor in cave"
+                class="rounded-md drop-shadow"
+              />
             </div>
           </div>
         </div>
