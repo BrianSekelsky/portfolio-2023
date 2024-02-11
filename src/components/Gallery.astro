@@ -58,193 +58,193 @@ import Las from "../pages/projects/las.astro";
   >
     w/ Case Study
   </div>
-</div>
 
-<div class="bg-gradient">
-  <div class="mx-auto">
-    <!-- All -->
-    <div
-      id="all"
-      class="grid gap-2 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-flow-row-dense md:auto-rows-fr p-4 sm:p-8 pt-0"
-    >
-      <SizeAndScale typeClass="website userExperience caseStudy" />
-      <CriticalImages typeClass="branding" />
-      <WitnessingGlaciers typeClass="website branding caseStudy" />
-      <ImaginePublicTransit typeClass="branding" />
-      <Vespertine typeClass="visual website branding" />
-      <Fidelity typeClass="userExperience" />
-      <PossibleInternet typeClass="userExperience caseStudy" />
-      <LAS typeClass="userExperience caseStudy" />
-      <TerraFirma typeClass="visual website branding" />
+  <div class="bg-gradient">
+    <div class="mx-auto">
+      <!-- All -->
+      <div
+        id="all"
+        class="grid gap-2 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-flow-row-dense md:auto-rows-fr p-4 sm:p-8 pt-0"
+      >
+        <SizeAndScale typeClass="website userExperience caseStudy" />
+        <CriticalImages typeClass="branding" />
+        <WitnessingGlaciers typeClass="website branding caseStudy" />
+        <ImaginePublicTransit typeClass="branding" />
+        <Vespertine typeClass="visual website branding" />
+        <Fidelity typeClass="userExperience" />
+        <PossibleInternet typeClass="userExperience caseStudy" />
+        <LAS typeClass="userExperience caseStudy" />
+        <TerraFirma typeClass="visual website branding" />
 
-      <style>
-        .gap-1 {
-          gap: 1px;
-        }
-      </style>
+        <style>
+          .gap-1 {
+            gap: 1px;
+          }
+        </style>
 
-      <script>
-        const all = document.querySelector("#all");
-        const allButton = document.querySelector("#allButton");
+        <script>
+          const all = document.querySelector("#all");
+          const allButton = document.querySelector("#allButton");
 
-        const brandingButton = document.querySelector("#brandingButton");
+          const brandingButton = document.querySelector("#brandingButton");
 
-        const websiteButton = document.querySelector("#websiteButton");
+          const websiteButton = document.querySelector("#websiteButton");
 
-        const userExperienceButton = document.querySelector(
-          "#userExperienceButton",
-        );
+          const userExperienceButton = document.querySelector(
+            "#userExperienceButton",
+          );
 
-        // const teachingButton = document.querySelector("#teachingButton");
+          // const teachingButton = document.querySelector("#teachingButton");
 
-        const caseStudyButton = document.querySelector("#caseStudyButton");
+          const caseStudyButton = document.querySelector("#caseStudyButton");
 
-        const buttons = [].slice.call(
-          document.getElementById("buttons").childNodes,
-          0,
-        );
-
-        allButton.addEventListener("click", function () {
-          const children = [].slice.call(
-            document.getElementById("all").childNodes,
+          const buttons = [].slice.call(
+            document.getElementById("buttons").childNodes,
             0,
           );
 
-          buttons.forEach((button) => {
-            button.classList.remove("text-white");
-            button.classList.remove("bg-black");
-            this.classList.add("text-white");
-            this.classList.add("bg-black");
+          allButton.addEventListener("click", function () {
+            const children = [].slice.call(
+              document.getElementById("all").childNodes,
+              0,
+            );
 
-            button.classList.add("hover:bg-offwhite");
-            this.classList.remove("hover:bg-offwhite");
-          });
+            buttons.forEach((button) => {
+              button.classList.remove("text-white");
+              button.classList.remove("bg-black");
+              this.classList.add("text-white");
+              this.classList.add("bg-black");
 
-          children.forEach((item) => {
-            item.classList.remove("hidden");
-          });
-        });
+              button.classList.add("hover:bg-offwhite");
+              this.classList.remove("hover:bg-offwhite");
+            });
 
-        brandingButton.addEventListener("click", function () {
-          const children = [].slice.call(
-            document.getElementById("all").childNodes,
-            0,
-          );
-
-          buttons.forEach((button) => {
-            button.classList.remove("text-white");
-            button.classList.remove("bg-black");
-            this.classList.add("text-white");
-            this.classList.add("bg-black");
-
-            button.classList.add("hover:bg-offwhite");
-            this.classList.remove("hover:bg-offwhite");
-          });
-
-          children.forEach((item) => {
-            if (item.classList.contains("Visual")) {
+            children.forEach((item) => {
               item.classList.remove("hidden");
-            } else {
-              item.classList.add("hidden");
-            }
-          });
-        });
-
-        websiteButton.addEventListener("click", function () {
-          const children = [].slice.call(
-            document.getElementById("all").childNodes,
-            0,
-          );
-
-          buttons.forEach((button) => {
-            button.classList.remove("text-white");
-            button.classList.remove("bg-black");
-            this.classList.add("text-white");
-            this.classList.add("bg-black");
-
-            button.classList.add("hover:bg-offwhite");
-            this.classList.remove("hover:bg-offwhite");
+            });
           });
 
-          children.forEach((item) => {
-            if (item.classList.contains("Website")) {
-              item.classList.remove("hidden");
-            } else {
-              item.classList.add("hidden");
-            }
-          });
-        });
+          brandingButton.addEventListener("click", function () {
+            const children = [].slice.call(
+              document.getElementById("all").childNodes,
+              0,
+            );
 
-        userExperienceButton.addEventListener("click", function () {
-          const children = [].slice.call(
-            document.getElementById("all").childNodes,
-            0,
-          );
+            buttons.forEach((button) => {
+              button.classList.remove("text-white");
+              button.classList.remove("bg-black");
+              this.classList.add("text-white");
+              this.classList.add("bg-black");
 
-          buttons.forEach((button) => {
-            button.classList.remove("text-white");
-            button.classList.remove("bg-black");
-            this.classList.add("text-white");
-            this.classList.add("bg-black");
+              button.classList.add("hover:bg-offwhite");
+              this.classList.remove("hover:bg-offwhite");
+            });
 
-            button.classList.add("hover:bg-offwhite");
-            this.classList.remove("hover:bg-offwhite");
-          });
-
-          children.forEach((item) => {
-            if (item.classList.contains("UX")) {
-              item.classList.remove("hidden");
-            } else {
-              item.classList.add("hidden");
-            }
-          });
-        });
-
-        // teachingButton.addEventListener("click", function () {
-        //   const children = [].slice.call(
-        //     document.getElementById("all").childNodes,
-        //     0,
-        //   );
-
-        //   buttons.forEach((button) => {
-        //     button.classList.remove("bg-black text-white");
-        //     this.classList.add("bg-black text-white");
-        //   });
-
-        //   children.forEach((item) => {
-        //     if (item.classList.contains("Teaching")) {
-        //       item.classList.remove("hidden");
-        //     } else {
-        //       item.classList.add("hidden");
-        //     }
-        //   });
-        // });
-
-        caseStudyButton.addEventListener("click", function () {
-          const children = [].slice.call(
-            document.getElementById("all").childNodes,
-            0,
-          );
-
-          buttons.forEach((button) => {
-            button.classList.remove("text-white");
-            button.classList.remove("bg-black");
-            this.classList.add("text-white");
-            this.classList.add("bg-black");
-
-            button.classList.add("hover:bg-offwhite");
-            this.classList.remove("hover:bg-offwhite");
+            children.forEach((item) => {
+              if (item.classList.contains("Visual")) {
+                item.classList.remove("hidden");
+              } else {
+                item.classList.add("hidden");
+              }
+            });
           });
 
-          children.forEach((item) => {
-            if (item.classList.contains("CaseStudy")) {
-              item.classList.remove("hidden");
-            } else {
-              item.classList.add("hidden");
-            }
+          websiteButton.addEventListener("click", function () {
+            const children = [].slice.call(
+              document.getElementById("all").childNodes,
+              0,
+            );
+
+            buttons.forEach((button) => {
+              button.classList.remove("text-white");
+              button.classList.remove("bg-black");
+              this.classList.add("text-white");
+              this.classList.add("bg-black");
+
+              button.classList.add("hover:bg-offwhite");
+              this.classList.remove("hover:bg-offwhite");
+            });
+
+            children.forEach((item) => {
+              if (item.classList.contains("Website")) {
+                item.classList.remove("hidden");
+              } else {
+                item.classList.add("hidden");
+              }
+            });
           });
-        });
-      </script>
+
+          userExperienceButton.addEventListener("click", function () {
+            const children = [].slice.call(
+              document.getElementById("all").childNodes,
+              0,
+            );
+
+            buttons.forEach((button) => {
+              button.classList.remove("text-white");
+              button.classList.remove("bg-black");
+              this.classList.add("text-white");
+              this.classList.add("bg-black");
+
+              button.classList.add("hover:bg-offwhite");
+              this.classList.remove("hover:bg-offwhite");
+            });
+
+            children.forEach((item) => {
+              if (item.classList.contains("UX")) {
+                item.classList.remove("hidden");
+              } else {
+                item.classList.add("hidden");
+              }
+            });
+          });
+
+          // teachingButton.addEventListener("click", function () {
+          //   const children = [].slice.call(
+          //     document.getElementById("all").childNodes,
+          //     0,
+          //   );
+
+          //   buttons.forEach((button) => {
+          //     button.classList.remove("bg-black text-white");
+          //     this.classList.add("bg-black text-white");
+          //   });
+
+          //   children.forEach((item) => {
+          //     if (item.classList.contains("Teaching")) {
+          //       item.classList.remove("hidden");
+          //     } else {
+          //       item.classList.add("hidden");
+          //     }
+          //   });
+          // });
+
+          caseStudyButton.addEventListener("click", function () {
+            const children = [].slice.call(
+              document.getElementById("all").childNodes,
+              0,
+            );
+
+            buttons.forEach((button) => {
+              button.classList.remove("text-white");
+              button.classList.remove("bg-black");
+              this.classList.add("text-white");
+              this.classList.add("bg-black");
+
+              button.classList.add("hover:bg-offwhite");
+              this.classList.remove("hover:bg-offwhite");
+            });
+
+            children.forEach((item) => {
+              if (item.classList.contains("CaseStudy")) {
+                item.classList.remove("hidden");
+              } else {
+                item.classList.add("hidden");
+              }
+            });
+          });
+        </script>
+      </div>
     </div>
   </div>
 </div>
