@@ -1,21 +1,22 @@
-<div id="loading-circle"></div>
-<div class="hidden lg:block p-8 sm:pt-4 max-w-full border-b bg" id="header">
-  <p
-    id="manipulate"
-    class="text-5xl sm:text-8xl font-mono font-extralight uppercase cursor-pointer overflow-hidden pb-24"
-  >
-    <span id="main-text"
-      >Brian Sekelsky is a product designer, coder, teacher, & musician.</span
+<div id="header">
+  <div class="hidden lg:block p-8 sm:pt-4 max-w-full border-b bg" id="header">
+    <p
+      id="manipulate"
+      class="text-5xl sm:text-8xl font-mono font-extralight uppercase cursor-pointer overflow-hidden pb-24"
     >
-  </p>
-</div>
-<div class="lg:hidden p-4 max-w-full border-b">
-  <p
-    id="manipulate"
-    class="text-6xl sm:text-7xl font-mono font-serif font-extralight uppercase py-4 cursor-pointer text-left"
-  >
-    Brian Sekelsky is a product designer, coder, teacher, & musician.
-  </p>
+      <span id="main-text"
+        >Brian Sekelsky is a product designer, coder, teacher, & musician.</span
+      >
+    </p>
+  </div>
+  <div class="lg:hidden p-4 max-w-full border-b">
+    <p
+      id="manipulate"
+      class="text-6xl sm:text-7xl font-mono font-serif font-extralight uppercase py-4 cursor-pointer text-left"
+    >
+      Brian Sekelsky is a product designer, coder, teacher, & musician.
+    </p>
+  </div>
 </div>
 
 <style>
@@ -35,34 +36,6 @@
   }
   .bg {
   }
-
-  .header {
-    overflow: hidden;
-    background: linear-gradient(
-      to right,
-      #000 0%,
-      #000 0%,
-      #fff 100%,
-      #fff 100%
-    );
-    background-size: 200% 100%;
-    animation: colorFill 2s ease-in-out forwards;
-  }
-
-  @keyframes colorFill {
-    to {
-      background-position: -100% 0;
-    }
-  }
 </style>
 
 <script src="./header.js"></script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Simulate page loading time with a timeout (adjust the timeout value as needed)
-    setTimeout(function () {
-      document.getElementById("header").style.overflow = "visible";
-    }, 5000); // 5000 milliseconds (5 seconds) is just an example, adjust as needed
-  });
-</script>

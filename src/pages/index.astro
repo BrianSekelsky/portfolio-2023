@@ -8,9 +8,27 @@ import Footer from "../components/Footer.astro";
 
 <Layout title="Brian Sekelsky">
   <main>
-    <Header />
-    <Gallery />
+    <div class="load-in">
+      <Header />
+    </div>
+    <div class="load-in">
+      <Gallery />
+    </div>
   </main>
 
   <style></style>
 </Layout>
+
+<script>
+  import gsap from "gsap";
+  const header = document.getElementsByClassName("load-in");
+
+  const fadeInTimeline = gsap.timeline({});
+
+  fadeInTimeline.set(header, { opacity: 0 }).to(header, {
+    opacity: 1,
+    duration: 1,
+    delay: 0.25,
+    stagger: 0.5,
+  });
+</script>
