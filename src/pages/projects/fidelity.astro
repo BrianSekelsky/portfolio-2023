@@ -7,17 +7,33 @@ import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
 import preview from "../../images/fidelity/preview.png";
+
+import Link from "../../components/Link.astro";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Fidelity Student Debt"
-      objective="Since May, 2023 I have been working fulltime on complex user experience and frontends for Fidelity's emerging products related to helping customers pay down their student debt. I can't share much here but please reach out if you would like to learn more."
-      types={["User Experience", "User Interface"]}
+      objective="I have been working fulltime on complex user experience and frontend problems for Fidelity's emerging products related to helping customers pay down their student debt. I can't share much here but please reach out if you would like to learn more."
+      types={[
+        "Product Design",
+        "User Experience",
+        "User Interface",
+        "Visual Design",
+      ]}
       collaborators={[]}
-      year="2023"
-    />
+      year="2023 – Present"
+    >
+      The products we are working on have been featured in articles by <Link
+        href="https://www.nytimes.com/2024/02/02/business/student-loan-401k-match.html"
+        name="The New York Times"
+      />
+      and <Link
+        href="https://time.com/6692130/401k-match-student-loan-payments/"
+        name="Time Magazine."
+      />
+    </ProjectHeader>
     <div class="">
       <div class="mx-auto flex justify-center">
         <Image
