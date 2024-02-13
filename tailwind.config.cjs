@@ -28,7 +28,8 @@ module.exports = {
 			'lg': '1rem',
 			'xl': '2rem',
 			'2xl': '3rem',
-			'full': '100rem'
+			'full': '100rem',
+			'rounded-none': '0px',
 		}
 	},
 	plugins: [],
