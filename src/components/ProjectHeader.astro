@@ -8,6 +8,7 @@ interface Props {
   year: string;
   outboundLink?: string;
   music?: boolean;
+  myColor?: string;
 }
 const {
   title,
@@ -17,12 +18,13 @@ const {
   year,
   outboundLink = "",
   music = false,
+  myColor = "white",
 } = Astro.props;
 ---
 
-<div class="border-b">
+<div class="border-b project-header">
   <div>
-    <div class="p-4 sm:p-8 border-b">
+    <div class="p-4 sm:p-8 border-b color">
       <!-- <a href="/" class="font-mono uppercase hover:lowercase hover:text-blue"
         >← back to projects</a
       > -->
@@ -72,7 +74,12 @@ const {
     </div>
   </div>
 
-  <style>
+  <style define:vars={{ myColor }}>
+    .color {
+      background-color: white;
+      background-color: var(--myColor);
+    }
+
     .gap-1 {
       gap: 1px;
     }
