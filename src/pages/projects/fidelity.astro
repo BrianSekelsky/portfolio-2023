@@ -7,34 +7,29 @@ import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
 import preview from "../../images/fidelity/preview.png";
+import admin from "../../images/fidelity/admin-beforeafter.png";
+import direct from "../../images/fidelity/direct-beforeafter.png";
+import adminwebm from "../../images/fidelity/admin2.webm";
 
 import Link from "../../components/Link.astro";
+import Caption from "../../components/Caption.astro";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Fidelity Student Debt"
-      objective="I have been working fulltime on complex user experience and frontend problems for Fidelity's emerging products related to helping customers pay down their student debt. I can't share much here but please reach out if you would like to learn more."
+      objective="I spend my time at Fidelity working on complex B2B and B2C problems related to student debt. One project that I led the design of, end to end, was for our administrative software. This internal tool is used by operations employees to maintain all of our users’ accounts and loans across our three products. The project also included some important updates to the customer facing products to simplify processes, reconcile with changes to the databases, and update to the new design system."
       types={[
         "Product Design",
         "User Experience",
         "User Interface",
         "Visual Design",
       ]}
-      collaborators={[]}
-      year="2023 – Present"
-    >
-      The products we are working on have been featured in articles by <Link
-        href="https://www.nytimes.com/2024/02/02/business/student-loan-401k-match.html"
-        name="The New York Times"
-      />
-      and <Link
-        href="https://time.com/6692130/401k-match-student-loan-payments/"
-        name="Time Magazine."
-      />
-    </ProjectHeader>
-    <div class="">
+      collaborators={["Mac Hill", "Emily McGalliard"]}
+      year="2023 – 2024"
+    />
+    <div class="border-b">
       <div class="mx-auto flex justify-center">
         <Image
           class=""
@@ -44,5 +39,47 @@ import Link from "../../components/Link.astro";
       </div>
       <style></style>
     </div>
+    <ProjectGrid>
+      <!--////////////////////////////-->
+      <div class="col-span-1">
+        <SmallHeading text="Problem" />
+        <p>
+          Fidelity’s internal operations team need an easy way to process the
+          loans and accounts of the many users who participate in our products.
+          As our user base grows, our operations team is also growing so we need
+          a streamlined way for operations employees to jump in and start
+          managing loan data quickly. As a secondary goal we wanted to update
+          administrative software to use the up-to-date components.
+        </p>
+      </div>
+      <div class="col-span-1">
+        <Image class="" src={admin} alt="admin before and after" />
+      </div>
+      <div class="col-span-2 py-8 bg-offwhite">
+        <video
+          class="transition-all w-3/4 m-auto"
+          playsinline
+          autoplay
+          muted
+          loop
+          preload="none"
+        >
+          <source src={adminwebm} type="video/webm" />
+        </video>
+        <Caption text="Basic admin workflow" />
+      </div>
+      <div class="col-span-1">
+        <Image class="" src={direct} alt="direct before and after" />
+      </div>
+      <div class="col-span-1">
+        <SmallHeading text="Design System" />
+        <p>
+          As part of this modernization effort I have also redesigned the
+          frontend for some customer facing products. This is the homepage for
+          our workplace benefit in which employers help pay off their employees'
+          student debt.
+        </p>
+      </div>
+    </ProjectGrid>
   </main>
 </Layout>

@@ -5,14 +5,16 @@ import Card from "../Card.astro";
 
 import gif from "../../images/homepage/fidelity2.png";
 import video from "../../images/homepage/fidelity.webm";
-import preview from "../../images/homepage/fidelity.png";
+import preview from "../../images/homepage/fidelitysd.png";
 
 const title = "Fidelity Student Debt";
 const description = "asdf";
 const year = "2023 – 2024";
 const types = [
   { text: "UX", special: false },
+  { text: "Product", special: false },
   { text: "Research", special: false },
+  { text: "Website", special: false },
 ];
 const size = "large";
 const hasVideo = false;
@@ -20,7 +22,7 @@ const alt = "Screenshot of user experience work in figma";
 ---
 
 <Card
-  size="small"
+  size="large"
   href="projects/fidelity"
   title={title}
   types={types}
