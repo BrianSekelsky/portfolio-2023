@@ -14,9 +14,9 @@ const { size, href = "#", title, types, year, myColor } = Astro.props;
 
 let mainClasses;
 if (size === "small") {
-  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1 col-span-1"
+  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1"
 } else {
-  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1 row-span-1 sm:col-span-2 sm:row-span-2"
+  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1"
 }
 
 let typeNames: string;
@@ -29,23 +29,20 @@ for(let i = 0; i < types.length; i++) {
 <div
   class:list={[mainClasses, typeNames]}
 >
-  <div class="relative overflow-hidden min-h-full w-full flex items-center justify-center color transition-all  duration-400">
-    <a href={href} class="min-h-full flex justify-center">
-    <div class="m-auto transition-all duration-400 group-hover:opacity-0 opacity-100">
+  <div class="relative overflow-hidden color transition-all  duration-400">
+    <a href={href}>
+    <div class="m-auto transition-all duration-400">
       <slot class="duration-400" />
     </div>
-    <div class="align-middle p-4 opacity-0 group-hover:opacity-100 flex text-center text-black border absolute bottom-0 top-0 w-full h-full transition-all duration-400 px-4 py-4 flex-col justify-center rounded-none ">
-      <div class="items-baseline pb-6">
-        <div class="pb-2">
+    <div class="align-middle w-full h-full transition-all duration-400 py-4 flex-col justify-center rounded-none ">
+      <div class="items-baseline pb-2 flex justify-between align-top">
+        <CardLabel value={title} , isLarge={true} />
+        <div class="pt-2">
           <CardLabel value={year} , isLarge={false} />
         </div>
-        <CardLabel value={title} , isLarge={true} />
-      </div>
-      <div class="w-1/2 h-auto mx-auto pb-6">
-        <slot class="transition-all duration-400" />
       </div>
       <div class="">
-        <div class="flex flex-wrap justify-center gap-2">
+        <div class="flex flex-wrap gap-2">
           {
             types.map((type) => (
             <div class={type.special ? "text-xs text-blue" : "text-black text-xs"}>

@@ -9,7 +9,7 @@ import preview from "../../images/homepage/fidelitysd.png";
 
 const title = "Fidelity Student Debt";
 const description = "asdf";
-const year = "2023 – 2024";
+const year = "2024";
 const types = [
   { text: "UX", special: false },
   { text: "Product", special: false },
@@ -22,7 +22,7 @@ const alt = "Screenshot of user experience work in figma";
 ---
 
 <Card
-  size="small"
+  size="large"
   href="projects/fidelity"
   title={title}
   types={types}
@@ -41,7 +41,7 @@ const alt = "Screenshot of user experience work in figma";
       <source src={video} type="video/webm" />
     </video>
   </div>
-  <div class="gif block">
+  <div class="gif block shadow-md rounded-md">
     <Image class="transition-all" src={preview} alt={alt} />
   </div>
 </Card>
