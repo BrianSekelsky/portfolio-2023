@@ -8,9 +8,10 @@ interface Props {
   types: { text: string; special: boolean; }[]
   year: string;
   myColor?: string;
+  description?: string;
 }
 
-const { size, href = "#", title, types, year, myColor } = Astro.props;
+const { size, href = "#", title, types, year, myColor, description } = Astro.props;
 
 let mainClasses;
 if (size === "small") {
@@ -29,29 +30,32 @@ for(let i = 0; i < types.length; i++) {
 <div
   class:list={[mainClasses, typeNames]}
 >
-  <div class="relative overflow-hidden color transition-all  duration-400">
+  <div class="relative overflow-hidden color transition-all duration-400">
     <a href={href}>
     <div class="m-auto transition-all duration-400">
       <slot class="duration-400" />
     </div>
-    <div class="align-middle w-full h-full transition-all duration-400 py-4 flex-col justify-center rounded-none ">
-      <div class="items-baseline pb-2 flex justify-between align-top">
+    <div class="align-middle w-full h-full transition-all duration-400 pt-4 flex-col justify-center rounded-none ">
+      <div class="items-baseline flex justify-between align-top">
         <CardLabel value={title} , isLarge={true} />
-        <div class="pt-2">
           <CardLabel value={year} , isLarge={false} />
-        </div>
       </div>
-      <div class="">
+      <div class="pt-2">
         <div class="flex flex-wrap gap-2">
           {
             types.map((type) => (
-            <div class={type.special ? "text-xs text-blue" : "text-black text-xs"}>
-              <CardLabel value={"#" + type.text} , isLarge={false} />
+            <div class={type.special ? "border-blue border text-sm text-blue px-2 rounded-full" : "border border-black text-black text-sm px-2 rounded-full"}>
+              <CardLabel value={type.text} , isLarge={false} />
             </div>
             ))
           }
         </div>
       </div>
+      <!-- <div class="pt-2 font-mono">
+        <p>
+          {description}
+        </p>
+      </div> -->
     </div>
     </a>
   </div>
