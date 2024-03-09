@@ -29,9 +29,9 @@ const alt = "";
   year={year}
   myColor="#FCEDDD"
 >
-  <div class="video hidden md:block">
+  <div class="hidden md:block">
     <video
-      class="transition-all"
+      class="transition-all video"
       playsinline
       autoplay
       muted
@@ -47,7 +47,10 @@ const alt = "";
 </Card>
 
 <style>
-  img {
+  .video {
+    height: 220px;
     width: 100%;
+    object-fit: cover;
+    object-position: top;
   }
 </style>

@@ -30,10 +30,10 @@ for(let i = 0; i < types.length; i++) {
 <div
   class:list={[mainClasses, typeNames]}
 >
-  <div class="relative overflow-hidden color transition-all duration-400">
+  <div class="p-2 relative overflow-hidden color transition-all duration-400">
     <a href={href}>
     <div class="m-auto transition-all duration-400">
-      <slot class="duration-400" />
+      <slot />
     </div>
     <div class="align-middle w-full h-full transition-all duration-400 pt-4 group-hover:lowercase">
       <div class="items-baseline flex justify-between align-top">
@@ -66,5 +66,4 @@ for(let i = 0; i < types.length; i++) {
 .color {
   background-color: white;
 }
-
 </style>

@@ -43,7 +43,7 @@ const alt = "Screenshot of user experience work in figma";
   </div>
   <div class="gif block">
     <Image
-      class="transition-all shadow-md rounded-md"
+      class="transition-all shadow-md rounded-sm image"
       src={preview}
       alt={alt}
     />
@@ -51,7 +51,10 @@ const alt = "Screenshot of user experience work in figma";
 </Card>
 
 <style>
-  img {
+  .image {
+    height: 220px;
     width: 100%;
+    object-fit: cover;
+    object-position: top;
   }
 </style>
