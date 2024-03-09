@@ -35,7 +35,7 @@ for(let i = 0; i < types.length; i++) {
     <div class="m-auto transition-all duration-400">
       <slot class="duration-400" />
     </div>
-    <div class="align-middle w-full h-full transition-all duration-400 pt-4 flex-col justify-center rounded-none ">
+    <div class="align-middle w-full h-full transition-all duration-400 pt-4">
       <div class="items-baseline flex justify-between align-top">
         <CardLabel value={title} , isLarge={true} />
           <CardLabel value={year} , isLarge={false} />
@@ -44,7 +44,7 @@ for(let i = 0; i < types.length; i++) {
         <div class="flex flex-wrap gap-2">
           {
             types.map((type) => (
-            <div class={type.special ? "border-blue border text-sm text-blue px-2 rounded-full" : "border border-black text-black text-sm px-2 rounded-full"}>
+            <div class={type.special ? "border-blue border text-xs text-blue px-2 rounded-full" : "border border-black text-black text-xs px-2 rounded-full"}>
               <CardLabel value={type.text} , isLarge={false} />
             </div>
             ))
