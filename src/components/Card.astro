@@ -35,10 +35,10 @@ for(let i = 0; i < types.length; i++) {
     <div class="m-auto transition-all duration-400">
       <slot class="duration-400" />
     </div>
-    <div class="align-middle w-full h-full transition-all duration-400 pt-4">
+    <div class="align-middle w-full h-full transition-all duration-400 pt-4 group-hover:lowercase">
       <div class="items-baseline flex justify-between align-top">
         <CardLabel value={title} , isLarge={true} />
-          <CardLabel value={year} , isLarge={false} />
+        <CardLabel value={year} , isLarge={false} />
       </div>
       <div class="pt-2">
         <div class="flex flex-wrap gap-2">

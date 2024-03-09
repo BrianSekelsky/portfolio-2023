@@ -9,8 +9,8 @@ const { isLarge, value } = Astro.props;
 
 <p
   class={isLarge
-    ? "uppercase text-3xl font-mono font-extralight"
-    : "uppercase font-mono mb-0"}
+    ? "uppercase text-3xl font-mono font-extralight group-hover:capitalize"
+    : "uppercase font-mono mb-0 group-hover:lowercase"}
 >
   {value}
 </p>
