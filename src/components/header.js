@@ -6,19 +6,6 @@ document.getElementById("manipulate").innerHTML = "";
 
 let fontMode = 0;
 
-// document.getElementById("manipulate").addEventListener("click", function () {
-//   if (fontMode == 0) {
-//     document.getElementById("manipulate").classList.remove("font-serif");
-//     document.getElementById("manipulate").classList.add("font-sans");
-//     fontMode = 1;
-//   } else if (fontMode == 1) {
-//     document.getElementById("manipulate").classList.remove("font-sans");
-//     document.getElementById("manipulate").classList.add("font-serif");
-//     fontMode = 0;
-//   }
-// });
-// document.getElementById("manipulate").classList.add("font-sans");
-
 array.forEach((item) => {
     let tempSpan = document.createElement("span");
     // tempSpan.classList.add("inline-block");
@@ -145,7 +132,7 @@ document.getElementById("manipulate").addEventListener("click", function () {
 let currentRandomColor;
 
 for (let letter of letters) {
-    letter.classList.add("font-serif")
+    letter.classList.add("font-mono")
 
     letter.addEventListener("mouseenter", function () {
         letter.style.color = randomColor();
@@ -154,13 +141,13 @@ for (let letter of letters) {
         // }
         // let randomInt = getRandomInt(1, 4);
         if (document.fonts.ready) {
-            letter.classList.remove("font-serif")
+            letter.classList.remove("font-mono")
         }
     });
     letter.addEventListener("mouseout", function () {
         setTimeout(function () {
             letter.removeAttribute("style");
-            letter.classList.add("font-serif");
+            letter.classList.add("font-mono");
             if (letter.innerHTML == "¤" && !firstClick) {
                 if (!firstClick) {
                     letter.style.color = tempBgColor
