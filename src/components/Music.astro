@@ -1,16 +1,48 @@
 ---
 import ProjectHeader from "./ProjectHeader.astro";
+
+let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
 ---
 
 <div class="">
-  <ProjectHeader
-    title="Winter Foe"
-    objective="Winter Foe is a music project that I have been working on since around 2018. I am searching for new ways to combine digital sounds, electronics, acoustic instruments, and field recordings. Through this project I have expanded my visual vocabulary by producing album art, animations, and videos. I have also had the opportunity to collaborate with some amazing musicians who inspire me."
-    types={["Electronic", "Ambient", "Experimental", "Folk", "Pop"]}
-    collaborators={[]}
-    year="2018 – Present"
-    music={true}
-  />
+  <div
+    id="header"
+    class="hidden sm:block py-4 sm:pt-6 px-4 sm:px-8 pb-0 bg-white border-b"
+  >
+    <p
+      id="manipulate"
+      class="text-left text-5xl sm:text-7xl font-serif font-extralight uppercase cursor-pointer line-height-1.4"
+    >
+      Winter Foe
+    </p>
+  </div>
+</div>
+<div class="flex flex-col lg:grid grid-cols-2 text-lg lg:divide-x border-b">
+  <div class="font-extralight col-span-1 text-2xl p-4 sm:p-8 sm:py-12">
+    Winter Foe is a music project that I have been working on since around 2018.
+    I am searching for new ways to combine digital sounds, electronics, acoustic
+    instruments, and field recordings. Through this project I have expanded my
+    visual vocabulary by producing album art, animations, and videos. I have
+    also had the opportunity to collaborate with some amazing musicians who
+    inspire me.
+    <slot />
+  </div>
+  <div class="flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:py-12">
+    <div>
+      <p class="font-bold">Genres</p>
+      <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
+        {types.map((type) => <p class="">{type}</p>)}
+      </div>
+    </div>
+    <div class="">
+      <p class="font-bold">Year</p>
+      <p class="">2018 – Present</p>
+    </div>
+    <div class="invisible">
+      <p class="font-bold">Collaborators</p>
+      <div>Collaborators</div>
+    </div>
+  </div>
 </div>
 <div class="flex flex-col md:flex-row justify-stretch">
   <div class="border-b md:border-b-0 md:border-r flex-1">
@@ -50,3 +82,11 @@ import ProjectHeader from "./ProjectHeader.astro";
 </div>
 
 <script src="./header.js"></script>
+
+<style>
+  #manipulate {
+    /* cursor: pointer; */
+    line-height: 1.14;
+    margin-bottom: 0.7rem;
+  }
+</style>

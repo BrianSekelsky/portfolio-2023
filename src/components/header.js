@@ -102,8 +102,12 @@ let tempBgColor;
 
 document.getElementById("manipulate").addEventListener("click", function () {
     // if (firstClick) {
+
+    if (firstClick && document.getElementById("helper")) {
+        document.getElementById("helper").classList.add("opacity-0");
+    }
     tempBgColor = currentRandomColor;
-    document.getElementById("manipulate").parentElement.style.backgroundColor = tempBgColor;
+    document.getElementById("header").style.backgroundColor = tempBgColor;
     for (let letter of letters) {
         if (letter.innerHTML == "¤") {
             letter.style.color = tempBgColor;
@@ -142,6 +146,9 @@ for (let letter of letters) {
         // let randomInt = getRandomInt(1, 4);
         if (document.fonts.ready) {
             letter.classList.remove("font-mono")
+            if (document.getElementById("helper")) {
+                document.getElementById("helper").classList.remove("text-white");
+            }
         }
     });
     letter.addEventListener("mouseout", function () {
