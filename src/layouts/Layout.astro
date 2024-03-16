@@ -111,31 +111,33 @@ const { title } = Astro.props;
     opacity: 0;
   }
 
-  .image-center {
-    height: 370px;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+  @media only screen and (min-width: 600px) {
+    .image-center {
+      height: 370px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
 
-  .image {
-    height: 370px;
-    width: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
+    .image {
+      height: 370px;
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
 
-  .video {
-    height: 370px;
-    width: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
+    .video {
+      height: 370px;
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
 
-  .video-center {
-    height: 370px;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+    .video-center {
+      height: 370px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 </style>
