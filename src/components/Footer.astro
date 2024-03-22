@@ -1,5 +1,6 @@
 ---
 import NavLink from "./Nav-link.astro";
+import Link from "./Link.astro";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
@@ -9,33 +10,49 @@ const year = new Date().getFullYear();
 
 <div class="border-t px-3 sm:px-4">
   <div class="mx-auto">
-    <div class="flex flex-wrap justify-start sm:justify-between py-3 font-mono">
-      <div class="hidden lg:block w-full sm:w-1/2 text-left">
-        <p class="text">© {year} BRIAN SEKELSKY</p>
+    <div class="font-mono">
+      <div class="flex justify-center gap-8 py-4">
+        <div>
+          <Link
+            href="https://www.instagram.com/briansekelsky/"
+            name="Instagram↗"
+          />
+        </div>
+        <div>
+          <Link
+            href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
+            name="Spotify↗"
+          />
+        </div>
+        <div>
+          <Link
+            href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
+            name="Youtube↗"
+          />
+        </div>
+        <div>
+          <Link
+            href="https://www.linkedin.com/in/brian-sekelsky/"
+            name="LinkedIn↗"
+          />
+        </div>
       </div>
-      <div
-        class="flex flex-wrap font-bold justify-start sm:justify-between gap-x-8 gap-y-2 sm:pt-0"
-      >
-        <NavLink
-          href="https://www.instagram.com/briansekelsky/"
-          name="INSTAGRAM"
-        />
-        <NavLink
-          href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
-          name="SPOTIFY"
-        />
-        <NavLink
-          href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
-          name="YOUTUBE"
-        />
-        <NavLink
-          href="https://www.linkedin.com/in/brian-sekelsky/"
-          name="LINKEDIN"
-        />
-      </div>
-      <div class="block lg:hidden w-full sm:w-1/2 text-left pt-2">
-        <p class="text">© {year} BRIAN SEKELSKY</p>
-      </div>
+      <!-- <NavLink
+        href="https://www.instagram.com/briansekelsky/"
+        name="INSTAGRAM"
+      />
+      <NavLink
+        href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
+        name="SPOTIFY"
+      />
+      <NavLink
+        href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
+        name="YOUTUBE"
+      />
+      <NavLink
+        href="https://www.linkedin.com/in/brian-sekelsky/"
+        name="LINKEDIN"
+      /> -->
     </div>
   </div>
 </div>
