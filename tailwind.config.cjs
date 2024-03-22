@@ -30,7 +30,7 @@ module.exports = {
 			'2xl': '3rem',
 			'full': '100rem',
 			'none': '0px',
-		}
+		},
 	},
 	plugins: [],
 }
