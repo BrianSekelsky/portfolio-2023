@@ -41,10 +41,10 @@ for(let i = 0; i < types.length; i++) {
         <CardLabel value={year} , isLarge={false} />
       </div>
       <div class="pt-2">
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-1">
           {
             types.map((type) => (
-            <div class={type.special ? "border-blue border text-xs text-blue px-2 rounded-full" : "border border-black text-black text-xs px-2 rounded-full"}>
+            <div class={type.special ? "border-blue border text-blue px-3 py-xs rounded-full text-xxs" : "px-3 py-xs border border-black text-black text-xxs rounded-full"}>
               <CardLabel value={type.text} , isLarge={false} />
             </div>
             ))
@@ -65,5 +65,11 @@ for(let i = 0; i < types.length; i++) {
 
 .color {
   background-color: white;
+}
+
+.text-xxs {
+  font-size: 0.6rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 </style>
