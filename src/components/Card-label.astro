@@ -7,10 +7,6 @@ interface Props {
 const { isLarge, value } = Astro.props;
 ---
 
-<p
-  class={isLarge
-    ? "uppercase font-mono group-hover:capitalize"
-    : "uppercase font-mono mb-0 group-hover:lowercase"}
->
+<p class={isLarge ? "font-mono" : "uppercase font-mono mb-0"}>
   {value}
 </p>
