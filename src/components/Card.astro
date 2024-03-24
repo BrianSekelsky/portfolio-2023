@@ -44,7 +44,7 @@ for(let i = 0; i < types.length; i++) {
         <div class="flex flex-wrap gap-1">
           {
             types.map((type) => (
-            <div class={type.special ? "border-blue border text-blue px-3 py-xs rounded-full text-xxs" : "px-3 py-xs border border-black text-black text-xxs rounded-full"}>
+            <div class={type.special ? "border-blue border text-blue px-3 rounded-full text-xxs" : "px-3 py-xs border border-black text-black text-xxs rounded-full"}>
               <CardLabel value={type.text} , isLarge={false} />
             </div>
             ))
@@ -69,7 +69,5 @@ for(let i = 0; i < types.length; i++) {
 
 .text-xxs {
   font-size: 0.6rem;
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
 }
 </style>

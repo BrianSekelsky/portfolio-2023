@@ -31,6 +31,9 @@ module.exports = {
 			'full': '100rem',
 			'none': '0px',
 		},
+		shadow: {
+			'none': '0px',
+		}
 		// fontSize: {
 		// 	'xs': '.6rem',
 		// 	'sm': '.775rem',
