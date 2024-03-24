@@ -8,14 +8,14 @@ const currentPath = pathname.slice(1); // remove the first "/"
 const year = new Date().getFullYear();
 ---
 
-<div class="border-t px-3 sm:px-4">
+<div class="border-t px-3 sm:px-8">
   <div class="mx-auto">
     <div class="font-mono">
-      <div class="flex justify-center gap-8 py-4 uppercase">
+      <div class="flex gap-8 py-4 uppercase">
         <div>
           <NavLink
             href="https://www.instagram.com/briansekelsky/"
-            name="INSTAGRAM↗"
+            name="Instagram↗"
           />
         </div>
         <div>
@@ -36,23 +36,13 @@ const year = new Date().getFullYear();
             name="LinkedIn↗"
           />
         </div>
+        <div>
+          <NavLink href="https://www.are.na/brian-sekelsky" name="Arena↗" />
+        </div>
+        <div>
+          <NavLink href="https://twitter.com/winter_foe" name="Twitter↗" />
+        </div>
       </div>
-      <!-- <NavLink
-        href="https://www.instagram.com/briansekelsky/"
-        name="INSTAGRAM"
-      />
-      <NavLink
-        href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
-        name="SPOTIFY"
-      />
-      <NavLink
-        href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
-        name="YOUTUBE"
-      />
-      <NavLink
-        href="https://www.linkedin.com/in/brian-sekelsky/"
-        name="LINKEDIN"
-      /> -->
     </div>
   </div>
 </div>
