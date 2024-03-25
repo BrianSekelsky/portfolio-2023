@@ -136,7 +136,7 @@ document.getElementById("manipulate").addEventListener("click", function () {
 let currentRandomColor;
 
 for (let letter of letters) {
-    letter.classList.add("font-mono")
+    letter.classList.add("font-serif")
 
     letter.addEventListener("mouseenter", function () {
         letter.style.color = randomColor();
@@ -145,7 +145,7 @@ for (let letter of letters) {
         // }
         // let randomInt = getRandomInt(1, 4);
         if (document.fonts.ready) {
-            letter.classList.remove("font-mono")
+            letter.classList.remove("font-serif")
             if (document.getElementById("helper")) {
                 document.getElementById("helper").classList.remove("text-white");
             }
@@ -154,7 +154,7 @@ for (let letter of letters) {
     letter.addEventListener("mouseout", function () {
         setTimeout(function () {
             letter.removeAttribute("style");
-            letter.classList.add("font-mono");
+            letter.classList.add("font-serif");
             if (letter.innerHTML == "¤" && !firstClick) {
                 if (!firstClick) {
                     letter.style.color = tempBgColor
