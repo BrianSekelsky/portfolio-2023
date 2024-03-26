@@ -36,13 +36,24 @@ array.forEach((item) => {
 });
 
 function randomColor() {
-    let color = [];
-    for (let i = 0; i < 3; i++) {
-        color.push(Math.floor(Math.random() * 256));
-    }
-    currentRandomColor = "rgb(" + color.join(", ") + ")";
-    return currentRandomColor;
+    // let color = [];
+    // for (let i = 0; i < 3; i++) {
+    //     color.push(Math.floor(Math.random() * 256));
+    // }
+    // currentRandomColor = "rgb(" + color.join(", ") + ")";
+    // return currentRandomColor;
     // return "rgb(0, 0, 255)";
+
+    let h = Math.random() * 360
+    let s = 70
+    let l = 50
+
+    let rgbcolor = [];
+    rgbcolor = hslToRgb(h, s, l);
+
+    currentRandomColor = rgbcolor;
+
+    return "hsl(" + h + "," + s + "%," + l + "%)"
 }
 
 const colors = [
@@ -59,20 +70,12 @@ const colors = [
     "#BDD5EA",
 ];
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function getRandomColor() {
-    return colors[getRandomInt(0, colors.length - 1)];
-}
-
 function lightOrDarkColor(color) {
     // Variables for red, green, blue values
     var r, g, b, hsp;
 
     // If RGB --> store the red, green, blue values in separate variables
-    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+    // color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
 
     r = color[1];
     g = color[2];
@@ -106,8 +109,12 @@ document.getElementById("manipulate").addEventListener("click", function () {
     if (firstClick && document.getElementById("helper")) {
         document.getElementById("helper").classList.add("opacity-0");
     }
-    tempBgColor = currentRandomColor;
+    tempBgColor = "rgb(" + currentRandomColor.join(", ") + ")"
+    console.log(tempBgColor)
     document.getElementById("header").style.backgroundColor = tempBgColor;
+
+    document.getElementById("clearer").style.display = 'block';
+
     for (let letter of letters) {
         if (letter.innerHTML == "¤") {
             letter.style.color = tempBgColor;
@@ -131,6 +138,15 @@ document.getElementById("manipulate").addEventListener("click", function () {
     //         }
     //     }
     // }
+});
+
+let myElementToCheckIfClicksAreInsideOf = document.querySelector('#manipulate');
+document.getElementById("clearer").addEventListener("click", function () {
+
+    document.getElementById("manipulate").classList.add("text-black")
+    document.getElementById("manipulate").classList.remove("text-white")
+    document.getElementById("header").style.backgroundColor = "white";
+
 });
 
 let currentRandomColor;
@@ -164,4 +180,14 @@ for (let letter of letters) {
             }
         }, 1000);
     });
+}
+
+const hslToRgb = (h, s, l) => {
+    s /= 100;
+    l /= 100;
+    const k = n => (n + h / 30) % 12;
+    const a = s * Math.min(l, 1 - l);
+    const f = n =>
+        l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+    return [255 * f(0), 255 * f(8), 255 * f(4)];
 }
