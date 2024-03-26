@@ -110,10 +110,12 @@ document.getElementById("manipulate").addEventListener("click", function () {
         document.getElementById("helper").classList.add("opacity-0");
     }
     tempBgColor = "rgb(" + currentRandomColor.join(", ") + ")"
-    console.log(tempBgColor)
+
     document.getElementById("header").style.backgroundColor = tempBgColor;
 
-    document.getElementById("clearer").style.display = 'block';
+    if (document.getElementById("clearer")) {
+        document.getElementById("clearer").style.display = 'block';
+    }
 
     for (let letter of letters) {
         if (letter.innerHTML == "¤") {
@@ -141,13 +143,16 @@ document.getElementById("manipulate").addEventListener("click", function () {
 });
 
 let myElementToCheckIfClicksAreInsideOf = document.querySelector('#manipulate');
-document.getElementById("clearer").addEventListener("click", function () {
 
-    document.getElementById("manipulate").classList.add("text-black")
-    document.getElementById("manipulate").classList.remove("text-white")
-    document.getElementById("header").style.backgroundColor = "white";
+if (document.getElementById("clearer")) {
+    document.getElementById("clearer").addEventListener("click", function () {
 
-});
+        document.getElementById("manipulate").classList.add("text-black")
+        document.getElementById("manipulate").classList.remove("text-white")
+        document.getElementById("header").style.backgroundColor = "white";
+
+    });
+}
 
 let currentRandomColor;
 
