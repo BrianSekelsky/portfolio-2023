@@ -46,7 +46,7 @@ function randomColor() {
 
     let h = Math.random() * 360
     let s = 70
-    let l = 50
+    let l = 60
 
     let rgbcolor = [];
     rgbcolor = hslToRgb(h, s, l);
@@ -77,9 +77,10 @@ function lightOrDarkColor(color) {
     // If RGB --> store the red, green, blue values in separate variables
     // color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
 
-    r = color[1];
-    g = color[2];
-    b = color[3];
+    r = color[0];
+    g = color[1];
+    b = color[2];
+
     // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
     hsp = Math.sqrt(
         0.299 * (r * r) +
@@ -89,11 +90,9 @@ function lightOrDarkColor(color) {
 
     // Using the HSP value, determine whether the color is light or dark
     if (hsp > 127.5) {
-
         return 'light';
     }
     else {
-
         return 'dark';
     }
 }
@@ -114,7 +113,8 @@ document.getElementById("manipulate").addEventListener("click", function () {
     document.getElementById("header").style.backgroundColor = tempBgColor;
 
     if (document.getElementById("clearer")) {
-        document.getElementById("clearer").style.display = 'block';
+        document.getElementById("clearer").classList.remove('hidden')
+        document.getElementById("clearer").classList.add('block')
     }
 
     for (let letter of letters) {
@@ -127,9 +127,17 @@ document.getElementById("manipulate").addEventListener("click", function () {
     if (lightOrDarkColor(currentRandomColor) == 'dark') {
         this.classList.remove("text-black")
         this.classList.add("text-white")
+        if (document.getElementById('clearer')) {
+            document.getElementById('clearer').classList.remove("text-black")
+            document.getElementById('clearer').classList.add("text-white")
+        }
     } else {
         this.classList.add("text-black")
         this.classList.remove("text-white")
+        if (document.getElementById('clearer')) {
+            document.getElementById('clearer').classList.add("text-black")
+            document.getElementById('clearer').classList.remove("text-white")
+        }
     }
     // } else {
     //     document.getElementById("manipulate").parentElement.style.backgroundColor = "white";
@@ -150,6 +158,8 @@ if (document.getElementById("clearer")) {
         document.getElementById("manipulate").classList.add("text-black")
         document.getElementById("manipulate").classList.remove("text-white")
         document.getElementById("header").style.backgroundColor = "white";
+        this.classList.add('hidden')
+        this.classList.remove('block')
 
     });
 }
