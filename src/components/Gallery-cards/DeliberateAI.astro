@@ -5,12 +5,13 @@ import { Image } from "astro:assets";
 
 import gif from "../../images/homepage/deliberate.gif";
 import video from "../../images/homepage/deliberate.webm";
-import image from "../../images/homepage/deliberate-card.png";
+import image from "../../images/homepage/deliberate-ai-card.png";
 
 const title = "Deliberate AI";
 const description = "asdf";
 const year = "2022";
 const types = [
+  { text: "Design System", special: false },
   { text: "UX", special: false },
   { text: "AI", special: false },
   { text: "CaseStudy", special: true },
@@ -28,8 +29,8 @@ const alt =
   types={types}
   year={year}
 >
-  <div class="gif shadow-md">
-    <Image src={image} alt={alt} />
+  <div class="gif">
+    <Image src={image} alt={alt} class="rounded-md" />
   </div>
 </Card>
 
