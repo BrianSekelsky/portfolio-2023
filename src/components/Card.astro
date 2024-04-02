@@ -38,7 +38,9 @@ for(let i = 0; i < types.length; i++) {
     <div class="align-middle w-full h-full transition-all duration-400 pt-4">
       <div class="items-baseline flex justify-between align-top">
         <CardLabel value={title} , isLarge={true} />
-        <CardLabel value={year} , isLarge={false} />
+        <div class="text-xs text-gray">
+          <CardLabel value={year} , isLarge={false} />
+        </div>
       </div>
       <div class="pt-2">
         <div class="flex flex-wrap gap-1">
