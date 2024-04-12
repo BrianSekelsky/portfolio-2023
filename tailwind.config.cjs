@@ -13,7 +13,8 @@ module.exports = {
 			'black': '#000',
 			'white': '#fff',
 			'offwhite': '#f5f5f5',
-			'gray': '#666'
+			'gray': '#666',
+			'lightgray': '#f2f2f2'
 		},
 		maxWidth: {
 			'1/4': '25%',

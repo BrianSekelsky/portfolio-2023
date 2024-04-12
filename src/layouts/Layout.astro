@@ -64,6 +64,13 @@ const { title } = Astro.props;
   </head>
   <body class="">
     <div class="">
+      <div class="overflow-hidden">
+        <Nav />
+        <slot />
+        <Footer />
+      </div>
+    </div>
+    <!-- <div class="">
       <div
         class="sm:fixed sm:h-screen sm:br-1 w-16 hidden sm:block sm:border-r"
       >
@@ -76,7 +83,7 @@ const { title } = Astro.props;
         <slot />
         <Footer />
       </div>
-    </div>
+    </div> -->
   </body>
 </html>
 <style is:global>

@@ -5,7 +5,25 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<div class="block sm:hidden">
+<div
+  class="fixed top-8 pt-2 sm:pt-0 left-16 right-16 shadow-md bg-white rounded-md z-10 border-lightgray border"
+>
+  <div class="mx-auto">
+    <div class="flex flex-wrap sm:justify-between p-4 font-mono">
+      <div class="font-serif">
+        <NavLink href="/#" name="BRIAN SEKELSKY" />
+      </div>
+      <div class="flex flex-wrap gap-8">
+        <NavLink href="/music" name="MUSIC" />
+        <NavLink href="/teaching" name="TEACHING" />
+        <NavLink href="/about" name="ABOUT" />
+        <NavLink href="/" name="DESIGN" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="block sm:hidden">
   <div class="mx-auto">
     <div class="flex flex-wrap sm:justify-between p-4 font-mono">
       <div class="w-full sm:w-1/2">
@@ -36,7 +54,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <style>
   .writing-mode {

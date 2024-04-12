@@ -22,12 +22,12 @@ const {
 } = Astro.props;
 ---
 
-<div class="border-b project-header">
+<div class="border-b project-header pt-16">
   <div>
-    <div class="p-4 sm:p-8 border-b color">
-      <a href="/" class="font-mono uppercase hover:lowercase hover:text-blue"
+    <div class="p-4 sm:p-8 sm:px-16 border-b color">
+      <!-- <a href="/" class="font-mono uppercase hover:lowercase hover:text-blue"
         >← back to projects</a
-      >
+      > -->
       <div class="pt-4">
         <p
           class="font-mono font-extralight leading-tight text-6xl sm:text-8xl break-words sm:break-normal hyphens-auto sm:hyphens-manual"
@@ -37,11 +37,11 @@ const {
       </div>
     </div>
     <div class="flex flex-col lg:grid grid-cols-2 text-lg lg:divide-x">
-      <div class="font-extralight col-span-1 text-2xl p-4 sm:p-8 sm:py-12">
+      <div class="font-extralight col-span-1 text-2xl p-4 sm:p-16 sm:py-12">
         {objective}
         <slot />
       </div>
-      <div class="flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:py-12">
+      <div class="flex justify-between gap-12 col-span-1 p-4 sm:p-16 sm:py-12">
         <div class={music === false ? "hidden sm:block" : "hidden"}>
           <p class="font-bold">Type</p>
           <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
