@@ -111,6 +111,7 @@ document.getElementById("manipulate").addEventListener("click", function () {
     tempBgColor = "rgb(" + currentRandomColor.join(", ") + ")"
 
     document.getElementById("header").style.backgroundColor = tempBgColor;
+    document.getElementById("nav").style.backgroundColor = tempBgColor;
 
     if (document.getElementById("clearer")) {
         document.getElementById("clearer").classList.remove('hidden')
@@ -158,6 +159,7 @@ if (document.getElementById("clearer")) {
         document.getElementById("manipulate").classList.add("text-black")
         document.getElementById("manipulate").classList.remove("text-white")
         document.getElementById("header").style.backgroundColor = "white";
+        document.getElementById("nav").style.backgroundColor = "white";
         this.classList.add('hidden')
         this.classList.remove('block')
 

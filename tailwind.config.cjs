@@ -14,7 +14,8 @@ module.exports = {
 			'white': '#fff',
 			'offwhite': '#f5f5f5',
 			'gray': '#666',
-			'lightgray': 'rgba(23, 16, 14, .2)'
+			'lightgray': 'rgba(23, 16, 14, .2)',
+			'cream': '#f5f5f5',
 		},
 		maxWidth: {
 			'1/4': '25%',

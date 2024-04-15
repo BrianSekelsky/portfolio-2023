@@ -7,12 +7,12 @@ const currentPath = pathname.slice(1); // remove the first "/"
 import Image from "astro/components/Image.astro";
 ---
 
-<div class="px-16 py-4 border-b">
+<div class="px-3 sm:px-16 py-4 transition-all duration-500" id="nav">
   <div class="flex flex-wrap sm:justify-between font-mono">
     <div class="font-serif">
       <NavLink href="/#" name="BRIAN SEKELSKY" />
     </div>
-    <div class="flex flex-wrap gap-4">
+    <div class="flex flex-wrap gap-8 pt-4 sm:pt-0">
       <NavLink href="/music" name="MUSIC" />
       <NavLink href="/teaching" name="TEACHING" />
       <NavLink href="/about" name="ABOUT" />
