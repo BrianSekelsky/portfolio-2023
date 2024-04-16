@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import ProjectHeader from "./ProjectHeader.astro";
 
 let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
@@ -18,16 +19,29 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
   </div>
 </div>
 <div class="flex flex-col lg:grid grid-cols-2 text-lg lg:divide-x border-b">
-  <div class="font-extralight col-span-1 text-2xl p-4 sm:p-8 sm:py-12">
+  <div class="font-extralight col-span-1 p-4 sm:p-8 sm:pb-16">
     Winter Foe is a music project that I have been working on since around 2018.
     I am searching for new ways to combine digital sounds, electronics, acoustic
     instruments, and field recordings. Through this project I have expanded my
     visual vocabulary by producing album art, animations, and videos. I have
     also had the opportunity to collaborate with some amazing musicians who
     inspire me.
+
+    <div class="flex flex-wrap gap-8 mt-8">
+      <Link href="https://soundcloud.com/winterfoe" name="Soundcloud" />
+      <Link
+        href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N"
+        name="Spotify"
+      />
+      <Link
+        href="https://music.apple.com/us/artist/winter-foe/1336473956"
+        name="Apple Music"
+      />
+      <Link href="https://winterfoe.bandcamp.com/" name="Bandcamp" />
+    </div>
     <slot />
   </div>
-  <div class="flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:py-12">
+  <div class="flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:pb-16">
     <div>
       <p class="font-bold">Genres</p>
       <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
@@ -45,6 +59,18 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
   </div>
 </div>
 <div class="flex flex-col md:flex-row justify-stretch">
+  <div class="md:flex-1">
+    <iframe
+      width="100%"
+      height="450"
+      src="https://www.youtube.com/embed/ci7wcKekVwo?si=xxn-bp3RC_ioJQEd"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+</div>
+<div class="flex flex-col md:flex-row justify-stretch border-t">
   <div class="border-b md:border-b-0 md:border-r flex-1">
     <iframe
       width="100%"
@@ -68,16 +94,6 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
       allowfullscreen=""
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy"></iframe>
-  </div>
-  <div class="md:flex-1">
-    <iframe
-      width="100%"
-      height="450"
-      src="https://www.youtube.com/embed/ci7wcKekVwo?si=xxn-bp3RC_ioJQEd"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
   </div>
 </div>
 
