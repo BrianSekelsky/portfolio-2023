@@ -8,7 +8,7 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
 <div class="">
   <div
     id="header"
-    class="hidden sm:block py-4 sm:pt-6 px-4 sm:px-8 pb-0 bg-white border-b transition-all duration-500"
+    class="py-4 sm:pt-6 px-4 sm:px-8 pb-0 bg-white border-b transition-all duration-500"
   >
     <p
       id="manipulate"
@@ -26,8 +26,9 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
     visual vocabulary by producing album art, animations, and videos. I have
     also had the opportunity to collaborate with some amazing musicians.
 
-    <div class="flex-col sm:flex-row flex flex-wrap gap-4 sm:gap-12 mt-8">
-      <Link href="https://soundcloud.com/winterfoe" name="Soundcloud" />
+    <div
+      class="flex-col sm:flex-row flex flex-wrap gap-4 sm:gap-12 my-4 sm:mb-0 sm:mt-8"
+    >
       <Link
         href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N"
         name="Spotify"
@@ -37,6 +38,7 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
         name="Apple Music"
       />
       <Link href="https://winterfoe.bandcamp.com/" name="Bandcamp" />
+      <Link href="https://soundcloud.com/winterfoe" name="Soundcloud" />
     </div>
     <slot />
   </div>
