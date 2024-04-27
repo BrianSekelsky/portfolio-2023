@@ -24,10 +24,9 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
     I am searching for new ways to combine digital sounds, electronics, acoustic
     instruments, and field recordings. Through this project I have expanded my
     visual vocabulary by producing album art, animations, and videos. I have
-    also had the opportunity to collaborate with some amazing musicians who
-    inspire me.
+    also had the opportunity to collaborate with some amazing musicians.
 
-    <div class="flex flex-wrap gap-8 mt-8">
+    <div class="flex-col sm:flex-row flex flex-wrap gap-4 sm:gap-12 mt-8">
       <Link href="https://soundcloud.com/winterfoe" name="Soundcloud" />
       <Link
         href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N"
@@ -41,7 +40,9 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
     </div>
     <slot />
   </div>
-  <div class="flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:pb-16">
+  <div
+    class="hidden sm:flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:pb-16"
+  >
     <div>
       <p class="font-bold">Genres</p>
       <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
