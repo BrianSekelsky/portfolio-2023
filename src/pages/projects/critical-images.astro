@@ -11,9 +11,11 @@ import technologies from "../../images/critical-images/technologies.png";
 import designThinking from "../../images/critical-images/when-design-thinking.png";
 import newNewTypography from "../../images/critical-images/new-new-typography.png";
 import contrarianism from "../../images/critical-images/contrarianism.png";
+import combinationism from "../../images/critical-images/combinationism.webm";
 import opacBox from "../../images/critical-images/50-opac-box-bob.png";
 import programmingIsForgetting from "../../images/critical-images/programming-is-forgetting.png";
 import mediums from "../../images/critical-images/mediums.png";
+import mediums2 from "../../images/critical-images/mediums.webm";
 import balloon from "../../images/critical-images/balloon.png";
 import apple from "../../images/critical-images/apple.png";
 import interfaces from "../../images/critical-images/interface.jpeg";
@@ -24,7 +26,6 @@ import combinedcity from "../../images/critical-images/combined-city.jpg";
 import around from "../../images/critical-images/around.gif";
 import smallclassroom from "../../images/critical-images/smallclassroom.png";
 import broadside from "../../images/critical-images/broadside.png";
-import fw from "../../images/critical-images/gradschoolframework.jpg";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -58,8 +59,6 @@ import fw from "../../images/critical-images/gradschoolframework.jpg";
         <div class="pt-2 pb-12 text-center text-sm">
           Technologies not as reflections of our world but shapers of it
         </div>
-        <Image src={combinedcity} alt="the combined city" />
-        <div class="pt-2 pb-12 text-center text-sm">The combined city</div>
         <div class="mx-auto w-10/12">
           <Image src={around} alt="around" />
           <div class="pt-2 pb-12 text-center mx-auto text-sm">
@@ -71,10 +70,15 @@ import fw from "../../images/critical-images/gradschoolframework.jpg";
           Experimental game which was never actually created, wasn't well
           thought out
         </div>
-        <Image
-          src={contrarianism}
+        <!-- <Image
+          src={combinationism}
           alt="Image showing fish swimming and text over the top reading design contrarianism and combinationism"
-        />
+        /> -->
+        <div class="mx-auto">
+          <video playsinline autoplay muted loop>
+            <source src={combinationism} type="video/webm" />
+          </video>
+        </div>
         <div class="pt-2 pb-12 text-center text-sm">
           Image from an interactive essay about post-post-modern design
         </div>
@@ -96,6 +100,8 @@ import fw from "../../images/critical-images/gradschoolframework.jpg";
             name="Programming is forgetting"
           />
         </div>
+        <Image src={combinedcity} alt="the combined city" />
+        <div class="pt-2 pb-12 text-center text-sm">The combined city</div>
         <Image
           src={designThinking}
           alt="When design thinking is used against us"
@@ -104,7 +110,11 @@ import fw from "../../images/critical-images/gradschoolframework.jpg";
           A zine/essay I wrote and produced about David Kelley and design
           thinking
         </div>
-        <Image src={mediums} alt="So many new mediums since the sixties" />
+        <div class="mx-auto">
+          <video playsinline autoplay muted loop>
+            <source src={mediums2} type="video/webm" />
+          </video>
+        </div>
         <div class="pt-2 pb-12 text-center text-sm">
           A powerpoint about the impermanence of design mediums
         </div>
