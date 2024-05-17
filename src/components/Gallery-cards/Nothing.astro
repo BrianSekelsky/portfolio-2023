@@ -11,6 +11,7 @@ const year = "2023";
 const types = [
   { text: "User Experience", special: false },
   { text: "Speculative", special: false },
+  { text: "Branding", special: false },
 ];
 const size = "small";
 const hasVideo = false;
@@ -20,7 +21,7 @@ const alt =
 ---
 
 <Card size="small" href="#" title={title} types={types} year={year}>
-  <Image class="transition-all" src={myImage} alt={alt} />
+  <Image class="transition-all rounded-sm" src={myImage} alt={alt} />
 </Card>
 
 <style>

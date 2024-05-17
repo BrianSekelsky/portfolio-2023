@@ -3,14 +3,14 @@ import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import { Image } from "astro:assets";
 
-import image from "../../images/homepage/npca.jpeg";
+import image from "../../images/homepage/npca.png";
 
 const title = "National Peace Corps Association";
 const description = "asdf";
 const year = "2020–2021";
 const types = [
   { text: "Website", special: false },
-  { text: "Visual", special: false },
+  { text: "Branding", special: false },
 ];
 const hasVideo = false;
 const alt = "Images of work I did with NPCA";
@@ -18,7 +18,7 @@ const alt = "Images of work I did with NPCA";
 
 <Card size="small" href="projects/npca" title={title} types={types} year={year}>
   <div class="gif">
-    <Image src={image} alt={alt} class="rounded-md" />
+    <Image src={image} alt={alt} />
   </div>
 </Card>
 

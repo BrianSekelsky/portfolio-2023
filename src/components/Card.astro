@@ -5,44 +5,50 @@ interface Props {
   size: string;
   href: string;
   title: string;
-  types: { text: string; special: boolean; }[]
+  types: { text: string; special: boolean }[];
   year: string;
   myColor?: string;
   description?: string;
 }
 
-const { size, href = "#", title, types, year, myColor, description } = Astro.props;
+const {
+  size,
+  href = "#",
+  title,
+  types,
+  year,
+  myColor,
+  description,
+} = Astro.props;
 
 let mainClasses;
 if (size === "small") {
-  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1"
+  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1";
 } else {
-  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1"
+  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1";
 }
 
 let typeNames: string;
 
-for(let i = 0; i < types.length; i++) {
-  typeNames = typeNames + " " + types[i].text
+for (let i = 0; i < types.length; i++) {
+  typeNames = typeNames + " " + types[i].text;
 }
 ---
 
-<div
-  class:list={[mainClasses, typeNames]}
->
+<div class:list={[mainClasses, typeNames]}>
   <div class="p-2 relative overflow-hidden color transition-all duration-400">
     <a href={href}>
-    <div class="m-auto transition-all duration-400 group-hover:brightness-90">
-      <slot />
-    </div>
-    <div class="align-middle w-full h-full transition-all duration-400 pt-4">
-      <div class="items-baseline flex justify-between align-top">
-        <CardLabel value={title} , isLarge={true} />
-        <div class="text-xs text-gray">
-          <CardLabel value={year} , isLarge={false} />
-        </div>
+      <div class="m-auto transition-all duration-400 group-hover:brightness-90">
+        <slot />
       </div>
-      <div class="pt-2">
+      <div class="align-middle w-full h-full transition-all duration-400 pt-4">
+        <div class="items-baseline flex justify-between align-top">
+          <CardLabel value={title} , isLarge={true} />
+          <div class="text-xs text-gray">
+            <CardLabel value={year} , isLarge={false} />
+          </div>
+        </div>
+        <div class="pt-2">
         <div class="flex flex-wrap gap-1">
           {
             types.map((type) => (
@@ -53,23 +59,22 @@ for(let i = 0; i < types.length; i++) {
           }
         </div>
       </div>
-      <!-- <div class="pt-2 font-mono">
+        <!-- <div class="pt-2 font-mono">
         <p>
           {description}
         </p>
       </div> -->
-    </div>
+      </div>
     </a>
   </div>
 </div>
 
-<style define:vars={{myColor}}>
+<style define:vars={{ myColor }}>
+  .color {
+    background-color: white;
+  }
 
-.color {
-  background-color: white;
-}
-
-.text-xxs {
-  font-size: 0.6rem;
-}
+  .text-xxs {
+    font-size: 0.6rem;
+  }
 </style>

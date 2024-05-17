@@ -31,6 +31,9 @@ module.exports = {
 			'full': '100rem',
 			'none': '0px',
 		},
+		// borderColor: {
+		// 	DEFAULT: '#bbbbbb'
+		// },
 		shadow: {
 			'none': '0px',
 		}

@@ -22,6 +22,7 @@ import Animism from "./Gallery-cards/Animism.astro";
 import NPCA from "./Gallery-cards/NPCA.astro";
 import Preserving from "./Gallery-cards/Preserving.astro";
 import Las from "../pages/projects/las.astro";
+import Deliberate from "../pages/projects/deliberate.astro";
 ---
 
 <div
@@ -50,13 +51,13 @@ import Las from "../pages/projects/las.astro";
     id="brandingButton"
     class="uppercase font-mono border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
-    Visual
+    Branding
   </div>
   <div
     id="caseStudyButton"
     class="uppercase font-mono border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
   >
-    w/ Case Study
+    Case Study
   </div>
 </div>
 <div class="mb-16 sm:mb-0">
@@ -64,17 +65,24 @@ import Las from "../pages/projects/las.astro";
     <!-- All -->
     <div
       id="all"
-      class="grid gap-10 sm:gap-y-12
+      class="gallery grid gap-16 sm:gap-y-24
          grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-2 sm:p-8 sm:-mx-2"
     >
-      <SizeAndScale typeClass="website userExperience caseStudy" />
+      <SizeAndScale typeClass="branding website userExperience caseStudy" />
       <WitnessingGlaciers typeClass="website branding caseStudy" />
       <CriticalImages typeClass="branding" />
       <ImaginePublicTransit typeClass="branding" />
-      <LAS typeClass="userExperience caseStudy" />
+      <Fidelity typeClass="userExperience website" />
       <PossibleInternet typeClass="userExperience caseStudy" />
-      <Vespertine typeClass="visual website branding" />
-      <TerraFirma typeClass="visual website branding" />
+      <ScaleWorlds typeClass="userExperience caseStudy" />
+      <Vespertine typeClass="branding website branding" />
+      <TerraFirma typeClass="branding website branding" />
+      <LAS typeClass="userExperience caseStudy" />
+      <Nothing typeClass="userExperience" />
+      <NPCA typeClass="website" />
+      <DeliberateAI typeClass="website userExperience" />
+      <Animism typeClass="Teaching userExperience" />
+      <PartsUnlimited typeclass="website userExperience" />
 
       <style>
         .gap-1 {
@@ -141,7 +149,7 @@ import Las from "../pages/projects/las.astro";
           });
 
           children.forEach((item) => {
-            if (item.classList.contains("Visual")) {
+            if (item.classList.contains("Branding")) {
               item.classList.remove("hidden");
             } else {
               item.classList.add("hidden");
