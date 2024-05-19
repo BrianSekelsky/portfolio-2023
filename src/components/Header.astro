@@ -1,50 +1,154 @@
-<div id="header" class="transition-all duration-500">
+<div id="header2" class="transition-all duration-500 cursor-pointer">
   <div class="hidden sm:block p-8 sm:pt-6 max-w-full border-b bg" id="header">
     <p
       id="manipulate"
-      class="text-5xl sm:text-8xl cursor-pointer overflow-hidden pb-24 font-mono uppercase"
+      class="text-5xl sm:text-8xl overflow-hidden pb-36 font-mono font-serif uppercase"
     >
       <span id="main-text"
-        >Brian Sekelsky is a designer, coder, teacher, & musician.
+        >Brian Sekelsky is a designer, coder, teacher, & part-time musician.
       </span>
     </p>
     <div class="hidden sm:flex justify-between">
       <div
         id="helper"
-        class="text-sm font-mono animate-bounce transition-all duration-500 text-white font-extralight"
+        class="text-sm font-mono animate-bounce transition-all duration-500 text-black font-extralight"
       >
-        ↑ click a letter to change the background color
-      </div>
-      <div
-        id="clearer"
-        class="text-sm font-mono text-right transition-all duration-500 text-white font-extralight cursor-pointer hidden"
-      >
-        reset
+        click anywhere for a new shape
       </div>
     </div>
+    <div class="sm:hidden p-4 max-w-full border-b">
+      <p
+        id="manipulate"
+        class="text-6xl sm:text-7xl py-4 text-left font-serif uppercase"
+      >
+        Brian Sekelsky is a designer, coder, teacher, & musician.
+      </p>
+    </div>
   </div>
-  <div class="sm:hidden p-4 max-w-full border-b">
-    <p
-      id="manipulate"
-      class="text-6xl sm:text-7xl py-4 cursor-pointer text-left font-serif uppercase"
-    >
-      Brian Sekelsky is a designer, coder, teacher, & musician.
-    </p>
-  </div>
-</div>
 
-<style>
-  .less-width {
-    width: 100%;
-  }
-
-  @media (min-width: 1024px) {
+  <style>
     .less-width {
-      width: 98%;
+      width: 100%;
     }
-  }
-  .bg {
-  }
-</style>
 
-<script src="./header.js"></script>
+    @media (min-width: 1024px) {
+      .less-width {
+        width: 98%;
+      }
+    }
+    .bg {
+    }
+
+    #main-text,
+    #helper {
+      color: black;
+      text-shadow:
+        -2px -2px 0 #ffffff,
+        2px -2px 0 #ffffff,
+        -2px 2px 0 #ffffff,
+        2px 2px 0 #ffffff;
+    }
+  </style>
+
+  <script
+    is:inline
+    src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script is:inline>
+    let canvas;
+    let header = document.getElementById("header");
+    let gravity = 0.1;
+    let positions = [];
+    var particles = [];
+    let shape = 0;
+    let shapeSize = 60;
+
+    function windowResized() {
+      resizeCanvas(header.offsetWidth, header.offsetHeight);
+    }
+
+    function setup() {
+      canvas = createCanvas(header.offsetWidth, header.offsetHeight);
+      canvas.position(63, 0);
+      canvas.style("z-index", "-1");
+      // particles.push(new Particle(random(width), 0));
+    }
+    function draw() {
+      background(255);
+      for (i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].show();
+      }
+    }
+
+    function mouseMoved() {
+      if (mouseX < canvas.width && mouseY < canvas.height) {
+        particles.push(new Particle(mouseX, mouseY));
+      }
+    }
+
+    function mouseClicked() {
+      document.getElementById("helper").classList.add("opacity-0");
+      particles.splice(0, particles.length);
+      shapeSize = random(1, 200);
+
+      if (shape == 3) {
+        shape = 0;
+      } else {
+        shape++;
+      }
+    }
+
+    function Particle(x, y) {
+      this.x = x;
+      this.y = y;
+
+      this.yspeed = 0;
+      // this.history = [];
+
+      this.update = function () {
+        this.y += this.yspeed;
+        this.yspeed += gravity;
+
+        if (shape == 0 || shape == 1) {
+          if (this.y + shapeSize / 2 > height) {
+            this.y = height - shapeSize / 2;
+            this.yspeed *= -0.7;
+          }
+        } else if (shape == 2) {
+          // if (this.y + 2 > height) {
+          //   this.y = height - 2;
+          //   this.yspeed *= -0.7;
+          // }
+        } else {
+        }
+        // this.history.push(this.x, this.y);
+      };
+
+      this.show = function () {
+        stroke(0);
+        fill(255);
+        if (shape == 0) {
+          ellipse(this.x, this.y, shapeSize, shapeSize);
+        } else if (shape == 1) {
+          rect(
+            this.x - shapeSize / 2,
+            this.y - shapeSize / 2,
+            shapeSize,
+            shapeSize,
+          );
+        } else if (shape == 2) {
+          line(
+            this.x - shapeSize,
+            this.y - shapeSize + this.x / 10,
+            this.x + shapeSize,
+            this.y - shapeSize - this.x / 10,
+          );
+        } else if (shape == 3) {
+          line(canvas.width / 2, canvas.height / 2, this.x, this.y);
+        }
+      };
+
+      this.collide = function () {};
+    }
+  </script>
+</div>
