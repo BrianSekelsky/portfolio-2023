@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import SmallHeading from "../../components/SmallHeading.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+import { Image } from "astro:assets";
+
+import hero from "/src/images/nothing/1.png";
+import two from "/src/images/nothing/2.png";
+import three from "/src/images/nothing/3.png";
+import four from "/src/images/nothing/4.png";
+import five from "/src/images/nothing/5.png";
+import six from "/src/images/nothing/6.png";
+import seven from "/src/images/nothing/7.png";
+---
+
+<Layout title="Brian Sekelsky">
+    <main>
+        <ProjectHeader
+            title="Nothing Social"
+            objective="A speculative grad school project exploring designs that don't have content. What if a social networking site didn’t allow its users to post any content? What if users could only connect with one another? What purpose would this serve?"
+            types={["User Interface", "Product", "Branding", "Speculative"]}
+            collaborators={[]}
+            year="2023"
+        />
+        <div class="load-in">
+            <div class="mx-auto flex justify-center border-b">
+                <Image src={hero} alt="hero image" />
+            </div>
+            <div class="content-center load-in">
+                <div class="mx-auto lg:max-w-3/4 p-4 pt-12">
+                    <div>
+                        <Image src={two} alt="slide 2" />
+                    </div>
+                    <div>
+                        <Image src={three} alt="slide 3" />
+                    </div>
+                    <div>
+                        <Image src={four} alt="slide 4" />
+                    </div>
+                    <div>
+                        <Image src={five} alt="slide 5" />
+                    </div>
+                    <div>
+                        <Image src={six} alt="slide 6" />
+                    </div>
+                    <div>
+                        <Image src={seven} alt="slide 7" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main></Layout
+>

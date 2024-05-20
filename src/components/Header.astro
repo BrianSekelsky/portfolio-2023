@@ -14,7 +14,7 @@
     <div class="hidden sm:flex justify-between">
       <div
         id="helper"
-        class="text-sm font-mono animate-bounce transition-all duration-500 text-black font-extralight"
+        class="text-sm font-mono animate-bounce transition-all duration-500 text-black font-extralight opacity-0"
       >
         click anywhere for a new shape
       </div>
@@ -63,7 +63,8 @@
   let positions = [];
   var particles = [];
   let shape = 0;
-  let shapeSize = 60;
+  let shapeSize;
+  let firstTime = true;
 
   function windowResized() {
     resizeCanvas(header.offsetWidth, header.offsetHeight);
@@ -73,6 +74,7 @@
     canvas = createCanvas(header.offsetWidth, header.offsetHeight);
     canvas.position(63, 0);
     canvas.style("z-index", "-1");
+    shapeSize = random(0, 200);
     // particles.push(new Particle(random(width), 0));
   }
   function draw() {
@@ -85,6 +87,10 @@
 
   function mouseMoved() {
     if (mouseX < canvas.width && mouseY < canvas.height) {
+      if (firstTime) {
+        document.getElementById("helper").classList.remove("opacity-0");
+        firstTime = false;
+      }
       particles.push(new Particle(mouseX, mouseY));
     }
   }
@@ -118,11 +124,12 @@
           this.yspeed *= -0.7;
         }
       } else if (shape == 2) {
-        this.y += this.yspeed;
+        this.y -= this.yspeed;
         this.yspeed += gravity;
+        rotate(((mouseY - canvas.height / 2) * 0.000001) / this.yspeed);
       } else {
-        this.y += this.yspeed;
-        this.yspeed += gravity;
+        // this.y += this.yspeed;
+        // this.yspeed += gravity;
       }
       // this.history.push(this.x, this.y);
     };
@@ -147,7 +154,14 @@
           this.y - (this.x - canvas.width / 2) * 0.25,
         );
       } else if (shape == 3) {
-        line(canvas.width / 2, canvas.height / 2, this.x, this.y);
+        triangle(
+          canvas.width / 2,
+          canvas.height / 2,
+          this.x,
+          this.y,
+          this.x + shapeSize,
+          this.y + shapeSize,
+        );
       }
     };
 
