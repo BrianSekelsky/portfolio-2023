@@ -14,7 +14,7 @@
     <div class="hidden sm:flex justify-between">
       <div
         id="helper"
-        class="text-sm font-mono animate-bounce transition-all duration-500 text-black font-extralight opacity-0"
+        class="text-sm font-mono animate-bounce transition-all duration-500 text-black font-extralight opacity-0 bg-white"
       >
         click anywhere for a new shape
       </div>
@@ -59,7 +59,7 @@
 <script is:inline>
   let canvas;
   let header = document.getElementById("header");
-  let gravity = 0.1;
+  let gravity = 0.2;
   let positions = [];
   var particles = [];
   let shape = 0;
@@ -74,7 +74,7 @@
     canvas = createCanvas(header.offsetWidth, header.offsetHeight);
     canvas.position(63, 0);
     canvas.style("z-index", "-1");
-    shapeSize = random(0, 200);
+    shapeSize = random(5, 200);
     // particles.push(new Particle(random(width), 0));
   }
   function draw() {
@@ -98,7 +98,7 @@
   function mouseClicked() {
     document.getElementById("helper").classList.add("opacity-0");
     particles.splice(0, particles.length);
-    shapeSize = random(1, 200);
+    shapeSize = random(5, 200);
 
     if (shape == 3) {
       shape = 0;
@@ -115,13 +115,21 @@
     // this.history = [];
 
     this.update = function () {
-      if (shape == 0 || shape == 1) {
+      if (shape == 0) {
         this.y += this.yspeed;
         this.yspeed += gravity;
 
         if (this.y + shapeSize / 2 > height) {
           this.y = height - shapeSize / 2;
           this.yspeed *= -0.7;
+        }
+      } else if (shape == 1) {
+        this.y += this.yspeed;
+        this.yspeed += gravity * 4;
+
+        if (this.y + shapeSize / 2 > height) {
+          this.y = height - shapeSize / 2;
+          this.yspeed *= -0.2;
         }
       } else if (shape == 2) {
         this.y -= this.yspeed;
