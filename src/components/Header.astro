@@ -74,7 +74,7 @@
     canvas = createCanvas(header.offsetWidth, header.offsetHeight);
     canvas.position(63, 0);
     canvas.style("z-index", "-1");
-    shapeSize = random(5, 200);
+    shapeSize = random(20, 100);
     // particles.push(new Particle(random(width), 0));
   }
   function draw() {
@@ -86,7 +86,8 @@
   }
 
   function mouseMoved() {
-    if (mouseX < canvas.width && mouseY < canvas.height) {
+    if (mouseX < canvas.width && mouseY < canvas.height && mouseX > 0) {
+      console.log(mouseX);
       if (firstTime) {
         document.getElementById("helper").classList.remove("opacity-0");
         firstTime = false;
@@ -111,7 +112,7 @@
     this.x = x;
     this.y = y;
 
-    this.yspeed = 0;
+    this.yspeed = gravity;
     // this.history = [];
 
     this.update = function () {
@@ -122,6 +123,10 @@
         if (this.y + shapeSize / 2 > height) {
           this.y = height - shapeSize / 2;
           this.yspeed *= -0.7;
+          if (this.yspeed > -1 && this.yspeed < 1) {
+            console.log(this.yspeed);
+            this.yspeed = 0;
+          }
         }
       } else if (shape == 1) {
         this.y += this.yspeed;
