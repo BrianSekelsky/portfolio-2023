@@ -59,19 +59,20 @@ import swcave from "../../images/scale-worlds/swcave.gif";
 import swvideo from "../../images/homepage/size&scale5.webm";
 
 import fmtable from "../../images/size-and-scale/fm-table.png";
+import FrameCaption from "../../components/FrameCaption.astro";
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
-      title="Scale Worlds"
-      objective="This was a multi-year project for the National Science Foundation. The first phase focused on creating two virtual reality-based learning environments where students could experience scales ranging from the size of the universe down to an atom. The second goal was to create a web-based flat-screen version of the VR experience. Finally, we wrote a research paper about mapping the VR experience to the web."
+      title="Visualizing Size & Scale"
+      objective="The team behind Scale Worlds needed to create a web-based version of the existing Scale Worlds VR experience, making it accessible to elementary and high school students without needing expensive VR equipment. The goal was to leverage the theoretical framework for scale cognition while adapting the experience to the affordances and limitations of web-based interfaces."
       types={[
-        "Virtual Reality",
         "User Experience",
         "Website",
         "Research",
         "Education",
+        "Function Mapping",
       ]}
       collaborators={[
         "Dr. Matthew Peterson",
@@ -88,10 +89,11 @@ import fmtable from "../../images/size-and-scale/fm-table.png";
       outboundLink="https://textimage.org/scale/"
       myColor="ghostwhite"
     />
-    <div class="border-b load-in">
+    <div class="border-b load-in relative">
       <video playsinline autoplay muted loop>
         <source src={webm} type="video/webm" />
       </video>
+      <!-- <FrameCaption text="Scale Worlds Web" /> -->
     </div>
     <div class="">
       <ProjectGrid>
@@ -99,27 +101,35 @@ import fmtable from "../../images/size-and-scale/fm-table.png";
         <div class="col-span-1">
           <SmallHeading text="Background" />
           <p>
-            Scale Worlds is a virtual learning environment that enhances
-            participants’ conception of size and scale. It was funded through a
-            National Science Foundation award titled
+            The existing
+
+            <Link
+              href="/projects/scale-worlds"
+              name="Scale Worlds experiences"
+            />
+            are virtual learning environments that enhance participants’ conception
+            of size and scale. They were funded through a National Science Foundation
+            award titled
             <Link
               name="Virtual Reality to Improve Students’ Understanding of Scale in STEM."
               href="https://nsf.gov/awardsearch/showAward?AWD_ID=2055680"
             />
+          </p>
 
+          <p>
             For two years, I worked under the guidance of
 
             <Link href="https://textimage.org/" name="Dr. Matthew Peterson" />
             and in close collaboration with professors and doctoral students from
             the Human Factors Engineering and STEM Education departments to design
-            and develop this scale cognition learning environment. STEM educators
-            acted as analysts providing educational requirements from literature,
-            as designers, we interpreted these requirements into specific design
-            features in the three virtual environments.
+            and develop two scale cognition learning environments.
           </p>
         </div>
         <div class="col-span-1">
-          <Image class="" src={swcave} alt="astronaut in scale worlds" />
+          <div class="relative">
+            <Image class="" src={swcave} alt="astronaut in scale worlds" />
+            <FrameCaption text="Scale Worlds CAVE" />
+          </div>
         </div>
         <!--////////////////////////////-->
         <!-- <div class="col-span-2">
@@ -139,88 +149,49 @@ import fmtable from "../../images/size-and-scale/fm-table.png";
           </div>
         </div> -->
       </ProjectGrid>
-      <div class="border-y">
+      <div class="border-y relative">
         <video playsinline autoplay muted loop>
           <source src={webm2} type="video/webm" />
         </video>
+        <FrameCaption text="Scale Worlds HMD" />
       </div>
       <ProjectGrid>
         <div class="col-span-1">
-          <Image
-            class="col-span-1"
-            src={hmd}
-            alt="image of HMD with 3d model representing the user"
-          />
-          <Caption text="Head-mounted Display" />
-        </div>
-        <div class="col-span-1">
-          <Image class="col-span-1" src={cave} alt="Imge of CAVE" />
-          <Caption text="Cave Augmented Virtual Environment" />
-        </div>
-        <!-- <div class="col-span-2">
+          <SmallHeading text="Process" />
           <p>
-            When designing the new version of the environment, the scheme was
-            split up into 3 main sections
-            <br />
-          </p>
-          <div class="grid grid-cols-3 gap-2">
-            <div class="col-span-1">
-              <Image src={userinterface} alt="Imge of CAVE" />
-              <Caption text="user interface: flat interactive elements" />
-            </div>
-            <div class="col-span-1">
-              <Image src={armatures} alt="Imge of CAVE" />
-              <Caption
-                text="armatures: three-dimensional things which aren't entities"
-              />
-            </div>
-            <div class="col-span-1">
-              <Image src={entities} alt="Imge of CAVE" />
-              <Caption
-                text="entities: three dimensional things like animals, stars, atoms, cells, etc. which are used as landmark things to measure"
-              />
-            </div>
-          </div>
-        </div> -->
-        <div class="col-span-1">
-          <p>
-            The way in which the user interacts with the environment was
-            designed to mimic changing an exponent in scientific notation and
-            moving decimal places in standard notation: concepts seen in
-            American science and math curricula.
-            <br />
-          </p>
-        </div>
-        <div class="grid gap-2">
-          <Image
-            src={decimal}
-            class=""
-            alt="gif of the decimal dance animation"
-          />
-          <Caption text="Animation of decimal moving" />
-          <!-- <Image src={numericpanel} alt="diagram of numeric panel" />
-          <Caption
-            text="Diagram of the numeric panel that the user interacs with"
-          /> -->
-        </div>
-        <div class="col-span-1">
-          <SmallHeading text="Scale Worlds – Web" />
-          <p>
-            I independently created the web version as a way to bring the Scale
-            Worlds experience to people who don't have access to expensive VR
-            equipment.
-          </p>
-          <p>
-            The core theory of Scale Worlds – VR was mapped into a set of new
-            features which would live more naturally on a flat screen display. I
+            To ensure a successful transition from VR to the web, our team
+            developed a novel design methodology we call function mapping. We
             authored a paper about this process, <Link
               href="https://dl.designresearchsociety.org/iasdr/iasdr2023/fullpapers/184/"
-              name="Preserving theoretically-g functions across media platforms in interaction design, "
-            />
-            which was published in the IASDR 2023 conference proceedings.
+              name="Preserving theoretically-grounded functions across media platforms in interaction design,"
+            /> which I presented at IASDR 2023 in Milan.
+          </p>
+          <p>
+            Through function mapping we identified the key concepts and
+            understandings that learners need to grasp to comprehend scale
+            effectively. These core concepts come from Magana's Framework for
+            Scale Cognition and other academic literature about scale cognition.
+            We created a chart that mapped specific features within the
+            application that reinforce each learning concept. This mapping
+            served as a guide, ensuring that the core learning objectives were
+            addressed in the existing VR versions and the new web-based
+            adaptation while accounting for the flat-screen interface we were
+            developing.
           </p>
         </div>
-        <div class="col-span-1">
+        <div class="col-span-1 flex justify-center">
+          <div class="lg:w-3/4 shadow-md">
+            <Image
+              src={fmtable}
+              class=""
+              alt="Table with all tracked features from scale worlds"
+            />
+            <!-- <Caption
+              text="We tracked all design features across the three versions from specific theoretical assertions based in the scale cognition literature."
+            /> -->
+          </div>
+        </div>
+        <!-- <div class="col-span-1">
           <video
             class="transition-all"
             playsinline
@@ -231,45 +202,20 @@ import fmtable from "../../images/size-and-scale/fm-table.png";
           >
             <source src={swvideo} type="video/webm" />
           </video>
-        </div>
+        </div> -->
         <!--////////////////////////////-->
         <!--////////////////////////////-->
-        <!--////////////////////////////-->
-        <div class="col-span-2">
-          <Image
-            src={website1}
-            alt="Screenshot of the website"
-            class=""
-            class=""
-          />
-        </div>
-        <div class="col-span-2">
-          <Image
-            src={website4}
-            alt="Screenshot of the website"
-            class=""
-            class=""
-          />
-        </div>
-        <div class="col-span-2">
-          <Image
-            src={website3}
-            alt="Screenshot of the website"
-            class=""
-            class=""
-          />
-        </div>
         <!--////////////////////////////-->
         <div class="col-span-2 pt-8 bg-offwhite">
           <b>Precedents</b>
-          <div class="flex justify-around items-end py-8">
-            <div class="w-1/3">
+          <div class="flex justify-between items-end py-8">
+            <div class="lg:pr-4">
               <Image src={universcale} alt="Screenshot of Universcale" />
               <Caption
-                text="Screenshot from Universacle and a user study from Magana (2018)"
+                text="Screenshot from Universcale and a user study from Magana (2018)"
               />
             </div>
-            <div class="w-1/3">
+            <div class="lg:pl-4">
               <Image
                 src={powersoften}
                 alt="Screenshots from Eames' Powers of Ten video"
@@ -277,15 +223,15 @@ import fmtable from "../../images/size-and-scale/fm-table.png";
               <Caption text="Screenshot from Eames' Powers of Ten video" />
             </div>
           </div>
-          <div class="flex justify-around items-end py-8">
-            <div class="w-1/3">
+          <div class="flex justify-between items-end py-8">
+            <div class="lg:pr-4">
               <Image
                 src={book1}
                 alt="Image from science textbook showing various scales"
               />
               <Caption text="Diagram from science textbook 1" />
             </div>
-            <div class="w-1/3">
+            <div class="lg:pl-4">
               <Image
                 src={book2}
                 alt="Image from science textbook showing various scales"
@@ -294,76 +240,40 @@ import fmtable from "../../images/size-and-scale/fm-table.png";
             </div>
           </div>
         </div>
-        <div class="col-span-2 flex justify-center">
-          <div class="lg:w-1/2">
-            <Image
-              src={fmtable}
-              class=""
-              alt="Table with all tracked features from scale worlds"
-            />
-            <Caption
-              text="We tracked all design features across the three versions from specific theoretical assertions based in the scale cognition literature."
-            />
-          </div>
-        </div>
         <div class="col-span-1">
+          <SmallHeading text="Solution and Implementation" />
           <p>
-            Although all of the design features were based in theoretical
-            assertions we utilized user testing at multiple stages throughout
-            the design/development lifecycle. We used user testing in cases
-            where we had determined multiple possible solutions. For example, we
-            tested a variety of enivornment schema to guauge how it affected
-            learners' understanding of objects' scale and the clarity of
-            interactive elements.
-            <br />
+            Armed with the function mapping table, I began sketching interface ideas on paper and in Figma. Since the key features were already identified in the mapping process, it was easier to conceptualize and iterate on potential interface solutions. The function mapping table provided a clear framework for translating the VR experience into a web-based environment while preserving the essential learning objectives.
+          </p>
+          <p>
+            After sketching the ideas, I implemented the designs as a working prototype utilizing HTML, CSS, javascript, and Three.js to run the experience.
           </p>
         </div>
         <div class="col-span-1">
-          <Image src={forest} alt="diagram of forest layout" />
-          <Caption text='"the forest" layout' />
+          <Image
+            src={website1}
+            alt="Screenshot of the website"
+            class=""
+            class=""
+          />
         </div>
-        <div class="col-span-2">
-          <div class="grid grid-cols-2 gap-2">
-            <div class="col-span-1">
-              <Image
-                src={research1}
-                alt="image of some research descriptions"
-                class=""
-              />
-            </div>
-            <div class="col-span-1">
-              <Image
-                src={research2}
-                alt="image of some research descriptions"
-                class=""
-              />
-            </div>
-            <div class="col-span-1">
-              <Image
-                src={research3}
-                alt="image of some research descriptions"
-                class=""
-              />
-            </div>
-            <div class="col-span-1">
-              <Image
-                src={research4}
-                alt="image of some research descriptions"
-                class=""
-              />
-            </div>
-          </div>
+        <div class="col-span-1">
+          <Image
+            src={website4}
+            alt="Screenshot of the website"
+            class=""
+            class=""
+          />
         </div>
-        <div class="col-span-2">
-          <div class="grid grid-cols-2 gap-2">
-            <div class="col-span-1">
-              <Image src={ruler1} alt="image of professor in cave" class="" />
-            </div>
-            <div class="col-span-1">
-              <Image src={ruler2} alt="image of proffessor in cave" class="" />
-            </div>
-          </div>
+        <div class="col-span-1">
+          <Image
+            src={website3}
+            alt="Screenshot of the website"
+            class=""
+            class=""
+          />
         </div>
+        <!--////////////////////////////-->
       </ProjectGrid>
     </div>
   </main>
