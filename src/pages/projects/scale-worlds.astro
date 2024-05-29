@@ -41,6 +41,7 @@ import research4 from "../../images/scale-worlds/research4.png";
 
 import ruler1 from "../../images/scale-worlds/ruler-1.jpg";
 import ruler2 from "../../images/scale-worlds/ruler-2.jpg";
+import FrameCaption from "../../components/FrameCaption.astro";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -109,13 +110,6 @@ import ruler2 from "../../images/scale-worlds/ruler-2.jpg";
         </div>
         <!--////////////////////////////-->
         <div class="col-span-2">
-          <p>
-            <b>Background</b>
-            <br />
-            When I joined the project, the team of professors had secured funding
-            through NSF partially due to a prototype created by Grace Wonaphotimuke.
-            <br />
-          </p>
           <div class="grid grid-cols-3 gap-2">
             <Image class="col-span-1" src={a} alt="a" />
             <Image class="col-span-1" src={b} alt="b" />
@@ -125,24 +119,21 @@ import ruler2 from "../../images/scale-worlds/ruler-2.jpg";
             <Image class="col-span-1" src={f} alt="f" />
           </div>
         </div>
-        <div class="col-span-2">
-          <p>
-            This project involves designing for two VR platforms: the Cave
-            Automatic Virtual Enviornment (CAVE) and Head Mounted Display (HMD)
-            <br />
-          </p>
-          <div class="grid grid-cols-2 gap-2">
-            <Image
-              class="col-span-1 drop-shadow"
-              src={cave}
-              alt="Imge of CAVE"
-            />
-            <Image
-              class="col-span-1 drop-shadow"
-              src={hmd}
-              alt="image of HMD with 3d model representing the user"
-            />
-          </div>
+        <div class="col-span-1 relative">
+          <Image
+          class="col-span-1"
+          src={cave}
+          alt="Imge of CAVE"
+          />
+          <FrameCaption text="Cave Augmented Virtual Environment (CAVE)" />
+        </div>
+        <div class="grid-cols-1 relative">
+          <Image
+            class="col-span-1"
+            src={hmd}
+            alt="image of HMD with 3d model representing the user"
+          />
+          <FrameCaption text="Head Mounted Display (HMD)" />
         </div>
         <div class="col-span-2">
           <p>
@@ -245,7 +236,6 @@ import ruler2 from "../../images/scale-worlds/ruler-2.jpg";
           <div class="grid grid-cols-2 gap-2">
             <div class="col-span-1">
               <Image src={ruler1} alt="image of professor in cave" />
-              <Caption text="professors in the CAVE" />
             </div>
             <div class="col-span-1">
               <Image src={ruler2} alt="image of proffessor in cave" />

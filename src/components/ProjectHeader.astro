@@ -25,7 +25,7 @@ const {
 <div class="border-b project-header load-in">
   <div>
     <div class="p-4 sm:p-8 border-b color">
-      <a href="/" class="font-mono uppercase hover:lowercase hover:text-blue"
+      <a href="/" class="font-mono uppercase border rounded-full px-4 py-1 hover:lowercase hover:bg-verylightgray"
         >← back to projects</a
       >
       <div class="pt-4">
@@ -37,32 +37,32 @@ const {
       </div>
     </div>
     <div class="flex flex-col lg:grid grid-cols-2 lg:divide-x">
-      <div class="font-extralight col-span-1 p-4 sm:p-8 sm:pb-16">
-        <p class="font-bold">Overview</p>
+      <div class="font-extralight col-span-1 p-4 sm:p-8">
+        <p class="font-mono uppercase font-bold text-lg mb-4">Overview</p>
         {objective}
         <slot />
       </div>
-      <div class="flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:pb-16">
+      <div class="flex justify-between gap-12 col-span-1 p-4 sm:p-8">
         <div class={music === false ? "hidden sm:block" : "hidden"}>
-          <p class="font-bold">Type</p>
+          <p class="font-mono uppercase font-bold text-lg mb-4">Type</p>
           <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
             {types.map((type) => <p>{type}</p>)}
           </div>
         </div>
         <div class={music === true ? "hidden sm:block" : "hidden"}>
-          <p class="font-bold">Genres</p>
+          <p class="font-mono uppercase font-bold text-lg mb-4">Genres</p>
           <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
             {types.map((type) => <p class="">{type}</p>)}
           </div>
         </div>
         <div class="">
-          <p class="font-bold">Year</p>
+          <p class="font-mono uppercase font-bold text-lg mb-4">Year</p>
           <p class="">
             {year}
           </p>
         </div>
         <div class={collaborators.length > 0 ? "hidden sm:block" : "invisible"}>
-          <p class="font-bold">Collaborators</p>
+          <p class="font-mono uppercase font-bold text-lg mb-4">Collaborators</p>
           <div>
             {
               collaborators.map((collaborator) => (

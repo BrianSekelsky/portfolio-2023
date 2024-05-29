@@ -24,14 +24,15 @@ import webpage1 from "../../images/glaciers/webpage1.png";
 import webpage2 from "../../images/glaciers/webpage2.png";
 import webpage3 from "../../images/glaciers/webpage3.png";
 import webpage4 from "../../images/glaciers/webpage4.png";
+import FrameCaption from "../../components/FrameCaption.astro"
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Witnessing Glaciers"
-      objective="Designing and building a website with Three.js to visualize the world's glaciers. Website visitors scroll to reveal facts about the benchmark glaciers and their health."
-      types={["Website", "Research"]}
+      objective="In a workshop with Scott Reinhard (The New York Times), I took on the roles of a journalist and designer, tasked with exploring an interesting issue, finding relevant data, and presenting the information in a unique and engaging way. I chose to focus on the impact of climate change on glaciers worldwide, utilizing a comprehensive dataset from the World Glacier Monitoring Service (WGMS)."
+      types={["Website", "Research", "Data-driven"]}
       collaborators={[]}
       year="2022"
       myColor="mintcream"
@@ -43,156 +44,94 @@ import webpage4 from "../../images/glaciers/webpage4.png";
         </video>
       </div>
       <ProjectGrid>
-        <div class="col-span-1 lg:col-span-2">
-          <SmallHeading text="Problem" />
-          <p>
-            During a workshop with
-            <Link
-              href="https://scottreinhard.com/"
-              name="Scott Reinhard (Graphics Editor at The New York Times)"
-            />
-            , I explored data visualization related to climate change and glaciers.
-            The final prototype is a website which features a globe populated by
-            all of the world’s glaciers, designated by white specks. A few key glaciers
-            have been identified and marked with larger spheres that turn red as
-            the user scrolls and reads their corresponding text. All of the data
-            comes from the
-            <Link
-              name="World Glacier Monitoring Service."
-              href="https://wgms.ch/"
-            />
-            Using javascript and Three.JS I was able to place all of the glaciers
-            on this model of the Earth.
-          </p>
-        </div>
-        <div class="col-span-2">
-          <SmallHeading text="Screenshots" />
-          <div class="grid grid-cols-2 gap-8 mb-8">
-            <div class="col-span-2">
-              <Image src={webpage1} class="" alt="webpage screenshot" />
-            </div>
-            <div class="col-span-2">
-              <Image src={webpage2} class="" alt="webpage screenshot" />
-            </div>
-            <div class="col-span-2">
-              <Image src={webpage3} class="" alt="webpage screenshot" />
-            </div>
-            <div class="col-span-2">
-              <Image src={webpage4} class="" alt="webpage screenshot" />
-            </div>
-          </div>
-        </div>
-        <!--////////////////////////////-->
         <div class="col-span-1">
-          <SmallHeading text="Research" />
+          <SmallHeading text="Process" />
           <p>
-            I started by exploring current climate change issues and open
-            datasets I could pull from. I came across several stories about
-            melting ice caps in the Italian alps.
+            I began with extensive background research, diving deep into the world of glaciers, initially concentrating on the Alps but eventually expanding my scope to a global perspective. After discovering the             <Link
+            name="World Glacier Monitoring Service's database,"
+            href="https://wgms.ch/"
+          /> which tracks the size and mass of glaciers worldwide over time, I immediately started sketching ideas to explore interesting ways to present this data.
           </p>
         </div>
         <div class="col-span-1">
           <Image
-            class="pb-3"
-            src={italianAlps}
-            alt="Screenshot of figma file with images of the alps and data graphics"
+          class="pb-3 w-3/4 mx-auto"
+          src={italianAlps}
+          alt="Screenshot of figma file with images of the alps and data graphics"
           />
           <Caption text="Collecting research in figma" />
         </div>
         <!--////////////////////////////-->
         <div class="col-span-1">
           <p>
-            This eventually led me to glaciers, which have been changing size at
-            alarming rates. I started out by sketching in Processing, using GPS
-            coordinates and glacial masses from
-            <Link
-              href="https://wgms.ch/data_databaseversions/"
-              name="WGMS’s Fluctuations of Glaciers Databases"
-            />
-            . The simple sketch shows the world’s glaciers in their relative positions,
-            their color fades from white to black in accordance with their mass.
-            As years pass, the glaciers fade.
+            Through coding in Processing, I created animations that depicted the alarming rate at which glaciers around the world are shrinking. The WGMS dataset also highlighted the "Benchmark glaciers," which are heavily monitored and serve as representatives for global glacier trends.
           </p>
         </div>
         <div class="col-span-1">
-          <Image
-            class=""
-            src={world}
-            alt="Data visualization of the world's glaciers shrinking over time"
-          />
-          <Caption text="Processing sketch" />
+          <div class="col-span-1 relative">
+            <Image
+              class=""
+              src={world}
+              alt="Data visualization of the world's glaciers shrinking over time"
+            />
+            <FrameCaption text="First processing sketch" />
+          </div>
         </div>
         <!--////////////////////////////-->
+        <!--////////////////////////////-->
         <div class="col-span-1">
-          <p>
-            Next, I looked at the Benchmark Glaciers from a USGS dataset.
-            <Link
-              href="https://www.usgs.gov/faqs/what-benchmark-glacier"
-              name="The Benchmark Glaciers"
-            />
-            are four North American glaciers which have been chosen for longterm
-            monitoring. Using the dataset I was able to make representations in Processing
-            of 3D boxes based on the glaciers’ area and elevation over the years.
-          </p>
-        </div>
-        <div class="col-span-1 flex flex-wrap">
           <Image
-            class="p-1 w-1/2"
             src={gulkana}
             alt="gif of gulkana galcier represented as a wireframe cube that is shrinking"
           />
+        </div>
+        <div class="col-span-1">
           <Image
-            class="p-1 w-1/2"
             src={wolverine}
             alt="gif of wolverine galcier represented as a wireframe cube that is shrinking"
           />
+        </div>
+        <div class="col-span-1">
           <Image
-            class="p-1 w-1/2"
             src={lemonCreek}
             alt="gif of lemon creek galcier represented as a wireframe cube that is shrinking"
           />
+        </div>
+        <div class="col-span-1">
           <Image
-            class="p-1 w-1/2"
             src={southCascade}
             alt="gif of south cascade galcier represented as a wireframe cube that is shrinking"
           />
         </div>
-        <!--////////////////////////////-->
         <div class="col-span-1">
           <p>
-            Next, Scott encouraged me to commit to design explorations that were
-            non-graphic. He encouraged me to do one exploration off of the
-            computer and one exploration with sound. The first exploration was a
-            timelapse of a large ice cube melting. One neat observation from
-            this study was the realization that large ice cubes melt from their
-            interiors.
+            In addition to these data-driven explorations, I conducted looser studies aimed at sparking creative ideas. In a unique approach, I converted the glacier data into MIDI notes and ran them through a synthesizer, resulting in ancient, otherworldly sounds that directly informed the art direction for the final website.
           </p>
         </div>
-        <div class="col-span-1">
+        <div class="col-span-1 relative">
           <video playsinline autoplay muted loop>
             <source src={webm2} type="video/webm" />
           </video>
-          <Caption
-            text="A dangerously unscientific study on glaciers and sea level"
-          />
+          <FrameCaption text="A dangerously unscientific study on glaciers and sea level" />
         </div>
-        <!--////////////////////////////-->
         <div class="col-span-1">
+          <SmallHeading text="Solutions and Implementation" />
           <p>
-            Next, I learned how to map the glacier data points onto a 3D globe
-            using Three.js. When I find the time, I would like to turn the
-            website into an interactive database style website. Visitors would
-            be able to look through all of the world’s glaciers on the globe
-            interface and explore data related to their health and sizes.
+          The culmination of my efforts was an interactive scrollytelling website that brought the global glacier crisis to life. Leveraging Three.js, I created a 3D model of the Earth and mapped all the world's glaciers from the WGMS database onto the sphere. As visitors scroll through the site, the camera moves around the globe, zooming in on key glaciers and narrating their decline.
+The website serves as an immersive and educational story, allowing visitors to explore, learn about glaciers, and become inspired to take action to preserve these majestic natural wonders for future generations.
           </p>
         </div>
         <div class="col-span-1">
-          <Image
-            class="rounded-md"
-            src={glaciers}
-            alt="Screen recording of an early mockup which showed every glacier in the world on a 3d globe"
-          />
-          <Caption text="Mapping every glacier in the world" />
+          <Image src={webpage1} class="" alt="webpage screenshot" />
+        </div>
+        <div class="col-span-2">
+          <Image src={webpage2} class="" alt="webpage screenshot" />
+        </div>
+        <div class="col-span-2">
+          <Image src={webpage3} class="" alt="webpage screenshot" />
+        </div>
+        <div class="col-span-2">
+          <Image src={webpage4} class="" alt="webpage screenshot" />
         </div>
       </ProjectGrid>
     </div>
