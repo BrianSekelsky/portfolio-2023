@@ -48,17 +48,17 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
     class="hidden sm:flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:pb-16"
   >
     <div>
-      <p class="font-bold">Genres</p>
+      <p class="font-mono uppercase font-bold text-lg mb-4">Genres</p>
       <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
         {types.map((type) => <p class="">{type}</p>)}
       </div>
     </div>
     <div class="">
-      <p class="font-bold">Year</p>
+      <p class="font-mono uppercase font-bold text-lg mb-4">Year</p>
       <p class="">2018 – Present</p>
     </div>
     <div class="invisible">
-      <p class="font-bold">Collaborators</p>
+      <p class="font-mono uppercase font-bold text-lg mb-4">Collaborators</p>
       <div>Collaborators</div>
     </div>
   </div>
