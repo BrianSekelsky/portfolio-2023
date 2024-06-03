@@ -36,12 +36,12 @@ for (let i = 0; i < types.length; i++) {
 ---
 
 <div class:list={[mainClasses, typeNames]}>
-  <div class="p-2 relative overflow-hidden color transition-all duration-400">
-    <a href={href}>
-      <div class="m-auto transition-all duration-400 group-hover:brightness-90">
+  <div class="p-2 relative overflow-hidden">
+    <a href={href} class="group-hover:font-bold transition-all">
+      <div class="m-auto group-hover:blur-sm transition-all">
         <slot />
       </div>
-      <div class="align-middle w-full h-full transition-all duration-400 pt-4">
+      <div class="align-middle w-full h-full pt-4">
         <div class="items-baseline flex justify-between align-top">
           <CardLabel value={title} , isLarge={true} />
           <div class="text-xs text-gray">
