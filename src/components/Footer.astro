@@ -8,48 +8,41 @@ const currentPath = pathname.slice(1); // remove the first "/"
 const year = new Date().getFullYear();
 ---
 
-<div class="border-t px-3 sm:px-8 bg-verylightgray">
+<div class="border-t px-3 sm:px-8 bg-white">
   <div class="mx-auto">
-    <div class="font-mono text-gray">
-      <div class="flex flex-wrap justify-between py-4">
+    <div class="font-mono">
+      <div
+        class="flex justify-start sm:justify-between flex-wrap gap-y-4 py-4 gap-8"
+      >
         <div>
-          <!-- <p class="text-xs">contact</p> -->
-          briansekelsky@gmail.com
+          <Link
+            href="https://www.instagram.com/briansekelsky/"
+            name="Instagram"
+          />
         </div>
         <div>
-          <!-- <p class="text-xs">socials</p> -->
-          <div class="flex flex-wrap gapy-y-2 gap-8 pt-4 sm:pt-0">
-            <div>
-              <Link
-                href="https://www.instagram.com/briansekelsky/"
-                name="Instagram"
-              />
-            </div>
-            <div>
-              <Link
-                href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
-                name="Spotify"
-              />
-            </div>
-            <div>
-              <Link
-                href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
-                name="Youtube"
-              />
-            </div>
-            <div>
-              <Link
-                href="https://www.linkedin.com/in/brian-sekelsky/"
-                name="LinkedIn"
-              />
-            </div>
-            <div>
-              <Link href="https://www.are.na/brian-sekelsky" name="Arena" />
-            </div>
-            <div>
-              <Link href="https://twitter.com/winter_foe" name="Twitter" />
-            </div>
-          </div>
+          <Link
+            href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
+            name="Spotify"
+          />
+        </div>
+        <div>
+          <Link
+            href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
+            name="Youtube"
+          />
+        </div>
+        <div>
+          <Link
+            href="https://www.linkedin.com/in/brian-sekelsky/"
+            name="LinkedIn"
+          />
+        </div>
+        <div>
+          <Link href="https://www.are.na/brian-sekelsky" name="Arena" />
+        </div>
+        <div>
+          <Link href="https://twitter.com/winter_foe" name="Twitter" />
         </div>
       </div>
     </div>
