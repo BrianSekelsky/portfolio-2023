@@ -15,7 +15,8 @@ module.exports = {
 			'offwhite': '#f5f5f5',
 			'gray': '#666',
 			'lightgray': "#bcbcbc",
-			'verylightgray': "#eeeeee"
+			'verylightgray': "#eeeeee",
+			'green': '#6C7B5A'
 		},
 		maxWidth: {
 			'1/4': '25%',
@@ -34,8 +35,9 @@ module.exports = {
 			'none': '0px',
 		},
 		borderColor: {
-			DEFAULT: '#bcbcbc',
-			'blue': "#0000ff"
+			DEFAULT: '#212427',
+			'blue': "#0000ff",
+			'lightgray': '#bcbcbc'
 		},
 		shadow: {
 			'none': '0px',

@@ -49,10 +49,10 @@ for (let i = 0; i < types.length; i++) {
           </div>
         </div>
         <div class="pt-2">
-        <div class="flex flex-wrap gap-1">
+        <div class="flex flex-wrap gap-1 display-none">
           {
             types.map((type) => (
-            <div class={type.special ? "border-blue border text-blue px-3 rounded-full text-xxs" : "px-3 py-xs border border-black text-gray text-xxs rounded-full"}>
+            <div class={type.special ? "border-blue border text-blue px-3 rounded-full text-xxs" : "px-3 py-xs border border-lightgray text-gray text-xxs rounded-full"}>
               <CardLabel value={type.text} , isLarge={false} />
             </div>
             ))

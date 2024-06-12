@@ -25,39 +25,42 @@ import Las from "../pages/projects/las.astro";
 import Deliberate from "../pages/projects/deliberate.astro";
 ---
 
-<div
-  id="buttons"
-  class="hidden flex-wrap max-w-100 justify-start sm:justify-center md:justify-start gap-2 p-4 sm:p-8 py-8 sm:pb-0 items-center"
->
+<div class="hidden sm:flex justify-between px-8 pt-6">
+  <div class="text-3xl font-serif tracking-tight">Projects</div>
   <div
-    id="allButton"
-    class="uppercase font-mono border cursor-pointer px-4 rounded-full hover:lowercase bg-black text-white transition-all"
+    id="buttons"
+    class="flex max-w-100 justify-start sm:justify-center md:justify-start gap-2 items-center"
   >
-    All
-  </div>
-  <div
-    id="websiteButton"
-    class="uppercase font-mono border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
-  >
-    Website
-  </div>
-  <div
-    id="userExperienceButton"
-    class="uppercase font-mono border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
-  >
-    UX
-  </div>
-  <div
-    id="brandingButton"
-    class="uppercase font-mono border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
-  >
-    Branding
-  </div>
-  <div
-    id="caseStudyButton"
-    class="uppercase font-mono border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
-  >
-    Case Study
+    <div
+      id="allButton"
+      class="uppercase font-mono text-sm border cursor-pointer px-4 rounded-full hover:lowercase bg-black text-white transition-all"
+    >
+      All
+    </div>
+    <div
+      id="websiteButton"
+      class="uppercase font-mono text-sm border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
+    >
+      Website
+    </div>
+    <div
+      id="userExperienceButton"
+      class="uppercase font-mono text-sm border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
+    >
+      UX
+    </div>
+    <div
+      id="brandingButton"
+      class="uppercase font-mono text-sm border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
+    >
+      Branding
+    </div>
+    <div
+      id="caseStudyButton"
+      class="uppercase font-mono text-sm border cursor-pointer px-4 rounded-full hover:bg-offwhite hover:lowercase transition-all"
+    >
+      Case Study
+    </div>
   </div>
 </div>
 <div class="mb-16 sm:mb-0">
@@ -66,7 +69,7 @@ import Deliberate from "../pages/projects/deliberate.astro";
     <div
       id="all"
       class="gallery grid gap-4 sm:gap-y-12
-         grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-2 sm:p-8 sm:-mx-2"
+         grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-2 sm:p-8 sm:pt-6 sm:-mx-2"
     >
       <SizeAndScale
         id="one"

@@ -4,9 +4,12 @@ const currentPath = new URL(Astro.request.url).pathname;
 interface Props {
   href: string;
   name: string;
+  footer?: boolean;
 }
 
-const { href, name } = Astro.props;
+const { href, name, footer = false } = Astro.props;
 ---
 
-<a class="underline hover:text-blue" href={href}>{name}</a>
+<a class={footer ? "underline" : "underline hover:text-blue"} href={href}
+  >{name}</a
+>
