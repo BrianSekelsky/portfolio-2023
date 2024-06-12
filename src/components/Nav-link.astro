@@ -12,8 +12,8 @@ const { href, name } = Astro.props;
 <a href={href}>
   <span
     class={currentPath === href
-      ? "underline lg:first:ml-0 hover:lowercase hover:text-blue transition-all"
-      : "lg:first:ml-0 hover:lowercase hover:text-blue transition-all"}
+      ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all"
+      : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all"}
   >
     {name}
   </span>
