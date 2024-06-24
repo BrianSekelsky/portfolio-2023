@@ -5,11 +5,25 @@ interface Props {
   href: string;
   name: string;
   footer?: boolean;
+  newtab?: boolean;
 }
 
-const { href, name, footer = false } = Astro.props;
+const { href, name, footer = false, newtab = false } = Astro.props;
 ---
 
-<a class={footer ? "underline" : "underline hover:text-blue"} href={href}
-  >{name}</a
->
+{
+  newtab ? (
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      class={footer ? "underline" : "underline hover:text-blue"}
+      href={href}
+    >
+      {name}
+    </a>
+  ) : (
+    <a class={footer ? "underline" : "underline hover:text-blue"} href={href}>
+      {name}
+    </a>
+  )
+}
