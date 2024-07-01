@@ -28,9 +28,6 @@
       class="text-6xl sm:text-7xl py-4 text-left font-serif bold tracking-tight"
     >
       Brian Sekelsky
-      <!-- <span class="font-mono font-extralight"
-        >is a designer, coder, teacher, & musician.</span
-      > -->
     </p>
   </div>
 </div>
@@ -91,7 +88,6 @@
 
   function mouseMoved() {
     if (mouseX < canvas.width && mouseY < canvas.height && mouseX > 0) {
-      console.log(mouseX);
       if (firstTime) {
         document.getElementById("helper").classList.remove("opacity-0");
         firstTime = false;
@@ -128,7 +124,6 @@
           this.y = height - shapeSize / 2;
           this.yspeed *= -0.7;
           if (this.yspeed > -1 && this.yspeed < 1) {
-            console.log(this.yspeed);
             this.yspeed = 0;
           }
         }
