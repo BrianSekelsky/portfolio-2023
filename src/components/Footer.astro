@@ -1,6 +1,7 @@
 ---
 import NavLink from "./Nav-link.astro";
 import Link from "./Link.astro";
+import SectionHeader from "./SectionHeader.astro";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
@@ -10,10 +11,8 @@ const year = new Date().getFullYear();
 
 <div class="border-t px-3 sm:px-8 pb-4 bg-green">
   <div class="mx-auto">
-    <div
-      class="hidden sm:block text-3xl font-mono font-extralight tracking-tight pt-6"
-    >
-      Links
+    <div class="pt-6">
+      <SectionHeader text="Links" />
     </div>
     <div class="flex flex-wrap justify-between pt-2">
       <div class="font-mono">
