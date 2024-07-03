@@ -7,6 +7,6 @@ interface Props {
 const { isLarge, value } = Astro.props;
 ---
 
-<p class={isLarge ? "font-serif" : "uppercase font-mono mb-0"}>
+<p class={isLarge ? "font-serif text-lg" : "uppercase font-mono mb-0"}>
   {value}
 </p>

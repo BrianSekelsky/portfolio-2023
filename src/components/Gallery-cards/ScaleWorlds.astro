@@ -26,10 +26,11 @@ const alt =
   title={title}
   types={types}
   year={year}
+  myColor="#E7F5FE"
 >
-  <div class="video hidden md:block">
+  <div class="video hidden md:flex justify-center items-center bg-color h-full">
     <video
-      class="transition-all"
+      class="transition-all rounded-sm shadow-xl video w-5/6 h-min m-4 lg:m-8"
       playsinline
       autoplay
       muted
@@ -47,5 +48,9 @@ const alt =
 <style>
   img {
     width: 100%;
+  }
+
+  .bg-color {
+    background-color: var(--myColor);
   }
 </style>
