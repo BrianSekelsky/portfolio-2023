@@ -27,7 +27,7 @@ const alt =
   title={title}
   types={types}
   year={year}
-  myColor="whitesmoke"
+  myColor="#E1E5DC"
 >
   <!-- <div class="video hidden md:block">
     <video
@@ -41,7 +41,15 @@ const alt =
       <source src={video} type="video/webm" />
     </video>
   </div> -->
-  <div>
-    <Image src={png} alt={alt} class="image" />
+  <div class="gif md:flex justify-center items-center bg-color h-full">
+    <div class="rounded-sm shadow-xl video w-5/6 h-min">
+      <Image src={png} alt={alt} class="image rounded-sm" />
+    </div>
   </div>
 </Card>
+
+<style>
+  .bg-color {
+    background-color: var(--myColor);
+  }
+</style>

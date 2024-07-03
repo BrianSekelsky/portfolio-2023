@@ -3,7 +3,7 @@ import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import { Image } from "astro:assets";
 
-import myImage from "../../images/homepage/no-content.png";
+import myImage from "../../images/homepage/nothing-phone.png";
 
 const title = "Nothing";
 const description = "this is an explanation about project 4";
@@ -26,12 +26,21 @@ const alt =
   title={title}
   types={types}
   year={year}
+  myColor="honeydew"
 >
-  <Image class="transition-all" src={myImage} alt={alt} />
+  <div class="gif md:flex justify-center items-center bg-color h-full">
+    <div class="rounded-sm video h-min">
+      <Image src={myImage} alt={alt} class="rounded-sm" />
+    </div>
+  </div>
 </Card>
 
 <style>
   img {
     width: 100%;
+  }
+
+  .bg-color {
+    background-color: var(--myColor);
   }
 </style>
