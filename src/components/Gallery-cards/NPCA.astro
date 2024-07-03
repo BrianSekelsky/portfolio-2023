@@ -16,14 +16,27 @@ const hasVideo = false;
 const alt = "Images of work I did with NPCA";
 ---
 
-<Card size="small" href="projects/npca" title={title} types={types} year={year}>
-  <div class="gif">
-    <Image src={image} alt={alt} />
+<Card
+  size="small"
+  href="projects/npca"
+  title={title}
+  types={types}
+  year={year}
+  myColor="#D9E5E7"
+>
+  <div class="gif md:flex justify-center items-center bg-color h-full">
+    <div class="rounded-sm shadow-2xl video w-5/6 h-min">
+      <Image src={image} alt={alt} class="rounded-sm" />
+    </div>
   </div>
 </Card>
 
 <style>
   img {
     width: 100%;
+  }
+
+  .bg-color {
+    background-color: var(--myColor);
   }
 </style>
