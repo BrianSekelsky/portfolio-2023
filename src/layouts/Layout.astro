@@ -27,6 +27,9 @@ const { title } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
 
     <!-- <link
       rel="preload"
@@ -134,24 +137,17 @@ const { title } = Astro.props;
     font-variation-settings: "slnt" 0;
   }
 
-  @font-face {
-    font-family: "PPRightGroteskMono";
-    src: url("/font/PPRightGroteskMono-Fine.woff") format("woff");
-    font-weight: 100;
-  }
-  @font-face {
-    font-family: "PPRightGroteskMono";
-    src: url("/font/PPRightGroteskMono-Light.woff") format("woff");
-  }
-  @font-face {
-    font-family: "PPRightGroteskMono";
-    src: url("/font/PPRightGroteskMono-Regular.woff") format("woff");
-    font-weight: 700;
-  }
-  @font-face {
-    font-family: "PPRightSerif";
-    src: url("/font/PPRightSerifLight.woff") format("woff");
-  }
+  .ibm-plex-mono-light {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ibm-plex-mono-regular-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
 
   .project-grid p {
     padding-bottom: 2rem;

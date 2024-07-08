@@ -1,6 +1,8 @@
 ---
+import NavLink from "./Nav-link.astro";
+
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
 <div class="block sm:hidden">
@@ -10,10 +12,10 @@ const currentPath = new URL(Astro.request.url).pathname;
         <a href="/#" class="lg:first:ml-0 hover:text-blue transition-all">Brian Sekelsky</a>
       </div>
       <div class="flex flex-wrap justify-center gap-8 pt-2 sm:pt-0 font-extralight w-full">
-        <a href="/music/" class={ currentPath == "/music/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Music</a>
-        <a href="/teaching/" class={ currentPath == "/teaching/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Teaching</a>
-        <a href="/about/" class={ currentPath == "/about/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>About</a>
-        <a href="/" class={ currentPath == "/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Design</a>
+        <NavLink href="/" name="DESIGN" />
+        <NavLink href="/about/" name="ABOUT" />
+        <NavLink href="/music/" name="MUSIC" />
+        <NavLink href="/teaching/" name="TEACHING" />
       </div>
     </div>
   </div>
@@ -23,14 +25,14 @@ const currentPath = new URL(Astro.request.url).pathname;
     <div
       class="flex justify-start sm:justify-between py-9 font-mono rotate-180 writing-mode min-h-full min-w-full items-center bg"
     >
-      <div class="w-full sm:w-1/2 text-left font-serif text-lg font-extralight">
+      <div class="w-full sm:w-1/2 text-left font-serif text-xl font-extralight">
         <a href="/#" class="lg:first:ml-0 hover:text-blue transition-all">Brian Sekelsky</a>
       </div>
       <div class="flex flex-wrap gap-8 pt-6 sm:pt-0 font-extralight">
-        <a href="/music/" class={ currentPath == "/music/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Music</a>
-        <a href="/teaching/" class={ currentPath == "/teaching/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Teaching</a>
-        <a href="/about/" class={ currentPath == "/about/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>About</a>
-        <a href="/" class={ currentPath == "/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Design</a>
+        <NavLink href="/music/" name="MUSIC" />
+        <NavLink href="/teaching/" name="TEACHING" />
+        <NavLink href="/about/" name="ABOUT" />
+        <NavLink href="/" name="DESIGN" />
       </div>
     </div>
   </div>

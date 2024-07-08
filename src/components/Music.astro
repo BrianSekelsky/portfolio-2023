@@ -2,6 +2,8 @@
 import Link from "./Link.astro";
 import ProjectHeader from "./ProjectHeader.astro";
 
+import SectionHeader from "./SectionHeader.astro";
+
 let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
 ---
 
@@ -21,7 +23,7 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
 <div
   class="load-in flex flex-col lg:grid grid-cols-2 text-lg lg:divide-x border-b"
 >
-  <div class="font-extralight col-span-1 p-4 sm:p-8 sm:pb-16">
+  <div class="col-span-1 p-4 sm:p-8 sm:pb-16">
     Winter Foe is a music project that I have been working on since around 2018.
     I am searching for new ways to combine digital sounds, electronics, acoustic
     instruments, and field recordings. Through this project I have expanded my
@@ -48,17 +50,23 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
     class="hidden sm:flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:pb-16"
   >
     <div>
-      <p class="font-mono uppercase font-bold text-lg mb-4">Genres</p>
+      <div class="mb-4">
+        <SectionHeader text="Genres" />
+      </div>
       <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
         {types.map((type) => <p class="">{type}</p>)}
       </div>
     </div>
     <div class="">
-      <p class="font-mono uppercase font-bold text-lg mb-4">Year</p>
+      <div class="mb-4">
+        <SectionHeader text="Year" />
+      </div>
       <p class="">2018 – Present</p>
     </div>
     <div class="invisible">
-      <p class="font-mono uppercase font-bold text-lg mb-4">Collaborators</p>
+      <div class="mb-4">
+        <SectionHeader text="Collaborators" />
+      </div>
       <div>Collaborators</div>
     </div>
   </div>
