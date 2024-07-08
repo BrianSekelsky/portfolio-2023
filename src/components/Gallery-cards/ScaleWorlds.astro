@@ -28,7 +28,7 @@ const alt =
   year={year}
   myColor="#E7F5FE"
 >
-  <div class="video hidden md:flex justify-center items-center bg-color h-full">
+  <div class="hidden md:flex justify-center items-center bg-color h-full">
     <video
       class="transition-all rounded-sm shadow-xl video w-5/6 h-min m-4 lg:m-8"
       playsinline
@@ -40,7 +40,7 @@ const alt =
       <source src={video} type="video/webm" />
     </video>
   </div>
-  <div class="gif block md:hidden">
+  <div class="flex md:hidden">
     <Image class="transition-all" src={gif} alt={alt} />
   </div>
 </Card>
