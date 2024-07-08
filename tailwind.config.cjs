@@ -5,8 +5,8 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			mono: ['"PPRightGroteskMono", "ui-monospace"', 'sans-serif'],
-			serif: ["PPRightSerif", "ui-monospace", "sans-serif"],
-			sans: ['"Inter", "Arial"', 'sans-serif']
+			serif: ["freighttextcmp-pro", "ui-monospace", "sans-serif"],
+			sans: ["Inter", "Arial", 'sans-serif']
 		},
 		colors: {
 			'blue': '#3454D1',
