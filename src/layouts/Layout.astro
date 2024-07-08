@@ -167,11 +167,21 @@ const { title } = Astro.props;
   const header = document.getElementsByClassName("load-in");
 
   const fadeInTimeline = gsap.timeline({});
+  const fadeOutTimeline = gsap.timeline({});
 
   fadeInTimeline.set(header, { opacity: 0 }).to(header, {
     opacity: 1,
     duration: 1,
     delay: 0.25,
     stagger: 0.5,
+  });
+
+  window.addEventListener("beforeunload", (event) => {
+    fadeOutTimeline.set(header, { opacity: 1 }).to(header, {
+      opacity: 0,
+      duration: 1,
+      delay: 0.25,
+      stagger: 0.5,
+    });
   });
 </script>
