@@ -1,8 +1,6 @@
 ---
-import NavLink from "./Nav-link.astro";
-
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+const currentPath = new URL(Astro.request.url).pathname;
 ---
 
 <div class="block sm:hidden">
@@ -12,10 +10,10 @@ const currentPath = pathname.slice(1); // remove the first "/"
         <a href="/#" class="lg:first:ml-0 hover:text-blue transition-all">Brian Sekelsky</a>
       </div>
       <div class="flex flex-wrap justify-center gap-8 pt-2 sm:pt-0 font-extralight w-full">
-        <NavLink href="/" name="DESIGN" />
-        <NavLink href="/about/" name="ABOUT" />
-        <NavLink href="/music/" name="MUSIC" />
-        <NavLink href="/teaching/" name="TEACHING" />
+        <a href="/music/" class={ currentPath == "/music/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Music</a>
+        <a href="/teaching/" class={ currentPath == "/teaching/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Teaching</a>
+        <a href="/about/" class={ currentPath == "/about/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>About</a>
+        <a href="/" class={ currentPath == "/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Design</a>
       </div>
     </div>
   </div>
@@ -29,10 +27,10 @@ const currentPath = pathname.slice(1); // remove the first "/"
         <a href="/#" class="lg:first:ml-0 hover:text-blue transition-all">Brian Sekelsky</a>
       </div>
       <div class="flex flex-wrap gap-8 pt-6 sm:pt-0 font-extralight">
-        <NavLink href="/music/" name="MUSIC" />
-        <NavLink href="/teaching/" name="TEACHING" />
-        <NavLink href="/about/" name="ABOUT" />
-        <NavLink href="/" name="DESIGN" />
+        <a href="/music/" class={ currentPath == "/music/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Music</a>
+        <a href="/teaching/" class={ currentPath == "/teaching/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Teaching</a>
+        <a href="/about/" class={ currentPath == "/about/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>About</a>
+        <a href="/" class={ currentPath == "/" ? "underline lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" : "lg:first:ml-0 hover:text-blue hover:font-bold transition-all uppercase" }>Design</a>
       </div>
     </div>
   </div>
