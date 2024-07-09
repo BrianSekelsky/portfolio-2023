@@ -2,7 +2,7 @@
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import video from "../../images/homepage/vespertine.webm";
-import gif from "../../images/homepage/vespertine.png";
+import image from "../../images/homepage/vespertine.png";
 import { Image } from "astro:assets";
 
 const title = "Vespertine";
@@ -38,6 +38,6 @@ const alt =
     </video>
   </div>
   <div class="gif block sm:hidden">
-    <Image class="transition-all rounded-sm" src={gif} alt={alt} />
+    <Image class="transition-all" src={image} alt={alt} />
   </div>
 </Card>
