@@ -2,8 +2,8 @@
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import { Image } from "astro:assets";
-import video from "../../images/homepage/scale-worlds.webm";
 import image from "../../images/homepage/scale-worlds.png";
+import video from "../../images/homepage/scale-worlds.webm";
 
 const title = "Scale Worlds";
 const description = "this is an explanation about project 1";
@@ -15,7 +15,6 @@ const types = [
 ];
 const size = "medium";
 const hasVideo = true;
-const src = "src/images/homepage/scale-worlds.webm";
 const alt =
   "Clip of zooming out from astronaut perspective up to whale perspective";
 ---
@@ -37,7 +36,11 @@ const alt =
       loop
       preload="none"
     >
-      <source src={video} type="video/webm" />
+      <source
+        src={video}
+        type="video/webm"
+        media="screen and (min-width:640px)"
+      />
     </video>
   </div>
   <div class="flex md:hidden">

@@ -6,7 +6,7 @@ module.exports = {
 		fontFamily: {
 			mono: ['"IBM Plex Mono", "ui-monospace"', 'sans-serif'],
 			serif: ["freighttextcmp-pro", "ui-monospace", "sans-serif"],
-			sans: ["Inter", "Arial", 'sans-serif']
+			sans: ["freight-sans-pro", "Arial", 'sans-serif']
 		},
 		colors: {
 			'blue': '#3454D1',
