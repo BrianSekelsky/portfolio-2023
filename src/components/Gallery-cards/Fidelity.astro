@@ -27,7 +27,7 @@ const alt = "Screenshot of user experience work in figma";
   title={title}
   types={types}
   year={year}
-  myColor="white"
+  myColor="ghostwhite"
 >
   <div class="video hidden">
     <video
@@ -41,7 +41,15 @@ const alt = "Screenshot of user experience work in figma";
       <source src={video} type="video/webm" />
     </video>
   </div>
-  <div class="gif block">
-    <Image class="transition-all image" src={preview} alt={alt} />
+  <div class="flex justify-center items-center bg-color h-full">
+    <div class="rounded-sm shadow video w-5/6 h-min m-4">
+      <Image class="rounded-sm" src={preview} alt={alt} />
+    </div>
   </div>
 </Card>
+
+<style>
+  .bg-color {
+    background-color: var(--myColor);
+  }
+</style>
