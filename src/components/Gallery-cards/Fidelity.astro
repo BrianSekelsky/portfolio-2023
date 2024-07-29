@@ -12,9 +12,9 @@ const description = "asdf";
 const year = "2024";
 const types = [
   { text: "UX", special: false },
-  { text: "Product", special: false },
   { text: "Research", special: false },
   { text: "Website", special: false },
+  { text: "CaseStudy", special: true },
 ];
 const size = "small";
 const hasVideo = false;
@@ -41,8 +41,8 @@ const alt = "Screenshot of user experience work in figma";
       <source src={video} type="video/webm" />
     </video>
   </div>
-  <div class="flex justify-center items-center bg-color h-full">
-    <div class="rounded-sm shadow video w-5/6 h-min m-4">
+  <div class="block">
+    <div class="rounded-sm shadow">
       <Image class="rounded-sm" src={preview} alt={alt} />
     </div>
   </div>
