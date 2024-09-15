@@ -3,7 +3,7 @@ import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import { Image } from "astro:assets";
 
-import image from "../../images/homepage/npca.png";
+import image from "../../images/npca/main.png";
 
 const title = "National Peace Corps Association";
 const description = "asdf";
@@ -24,9 +24,9 @@ const alt = "Images of work I did with NPCA";
   year={year}
   myColor="#D9E5E7"
 >
-  <div class="flex justify-center items-center bg-color h-full">
-    <div class="rounded-sm shadow-xl video w-5/6 h-min m-4">
-      <Image src={image} alt={alt} class="rounded-sm" />
+  <div class="block">
+    <div class="">
+      <Image src={image} alt={alt} class="shadow-md" />
     </div>
   </div>
 </Card>

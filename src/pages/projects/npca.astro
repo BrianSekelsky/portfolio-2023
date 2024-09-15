@@ -6,7 +6,26 @@ import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
-import webm from "../../images/homepage/npca.webm";
+import main from "../../images/npca/main.png";
+import two from "../../images/npca/2.png";
+import three from "../../images/npca/3.png";
+import four from "../../images/npca/4.png";
+import five from "../../images/npca/5.png";
+import six from "../../images/npca/6.png";
+import seven from "../../images/npca/7.png";
+import eight from "../../images/npca/8.png";
+import nine from "../../images/npca/9.png";
+import ten from "../../images/npca/10.png";
+import report from "../../images/npca/report.png";
+import report2 from "../../images/npca/report-2.png";
+import eleven from "../../images/npca/11.png";
+import twelve from "../../images/npca/12.png";
+import thirteen from "../../images/npca/13.png";
+import fourteen from "../../images/npca/14.png";
+import fifteen from "../../images/npca/15.png";
+import sixteen from "../../images/npca/16.png";
+import seventeen from "../../images/npca/17.png";
+import eighteen from "../../images/npca/18.png";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -20,13 +39,61 @@ import webm from "../../images/homepage/npca.webm";
       year="2021 – 2022"
       outboundLink="https://www.peacecorpsconnect.org/cpages/home"
     />
-    <div class="load-in">
-      <div class="mx-auto flex justify-center">
-        <video class="w-1/2" playsinline autoplay muted loop>
-          <source src={webm} type="video/webm" />
-        </video>
+    <div class="content-center load-in">
+      <div class="border-b">
+        <div>
+          <Image src={two} alt="The Peace Corps is on the way back." />
+        </div>
+      </div>
+      <div
+        class="grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 m-8 auto-rows-min items-center justify-items-center"
+      >
+        <Image src={four} alt="The Peace Corps is on the way back." />
+
+        <Image src={five} alt="The Peace Corps is on the way back." />
+
+        <Image src={seven} alt="The Peace Corps is on the way back." />
+
+        <Image src={eight} alt="The Peace Corps is on the way back." />
+
+        <div class="w-3/4">
+          <Image src={nine} alt="The Peace Corps is on the way back." />
+        </div>
+
+        <Image src={ten} alt="The Peace Corps is on the way back." />
+
+        <Image src={report} alt="The Peace Corps is on the way back." />
+
+        <Image src={report2} alt="The Peace Corps is on the way back." />
+        <Image src={eleven} alt="The Peace Corps is on the way back." />
+
+        <Image src={twelve} alt="The Peace Corps is on the way back." />
+        <Image src={thirteen} alt="The Peace Corps is on the way back." />
+
+        <Image src={fourteen} alt="The Peace Corps is on the way back." />
+        <Image src={fifteen} alt="The Peace Corps is on the way back." />
+
+        <Image src={sixteen} alt="The Peace Corps is on the way back." />
+        <Image src={seventeen} alt="The Peace Corps is on the way back." />
+
+        <Image src={eighteen} alt="The Peace Corps is on the way back." />
       </div>
     </div>
     <style></style>
   </main>
 </Layout>
+
+<style>
+  figure {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-bottom: 10px;
+    break-inside: avoid;
+  }
+
+  figure > img {
+    grid-row: 1 / -1;
+    grid-column: 1;
+  }
+</style>
