@@ -13,31 +13,32 @@ document.body.style.backgroundColor = "#9DC5BB";
     <div class="mx-auto">
         <div class="grid grid-cols-1 lg:flex lg:justify-stretch">
             <div class="flex flex-col shrink justify-stretch md:[&>*]:pr-72">
-                <!-- <div
-                    id="header"
-                    class="hidden sm:block py-4 sm:pt-6 px-4 sm:px-8 pb-0 bg-white border-b transition-all duration-500"
-                >
-                    <p
-                        id="manipulate"
-                        class="text-left text-5xl sm:text-6xl font-mono font-extralight cursor-pointer line-height-1.4"
-                    >
-                        Teaching
-                    </p>
-                </div> -->
                 <div class="bg-white pt-4 border-b px-4 py-8 sm:p-8">
                     <SmallHeading text="Classes" />
-                    <div class="flex gap-8">
-                        <span>Tech Tinkering</span>
-                        Spring 2024
-                        <Link
-                            href="https://docs.google.com/document/d/1WC3XdD-5z1Dz4kn_b43A6ZKSKemnKqgqdj_WIBOhhVs/edit?usp=drive_link"
-                            name="Syllabus"
-                        />
-                        <Link
-                            href="https://miro.com/app/board/uXjVN80tgx8=/"
-                            name="Miro"
-                        />
-                    </div>
+                    <table class="table-fixed">
+                        <tbody class="divide-y-10 border-white">
+                            <tr>
+                                <td>Foundations of Graphic Design</td>
+                                <td>Fall 2024</td>
+                                <td>
+                                    <Link
+                                        href="https://docs.google.com/document/d/1k_dUV1C_aTN7J4Ylh494rwMVqL1yR-LkWMw3P9FZfCI/edit"
+                                        name="Syllabus"
+                                    /></td
+                                >
+                            </tr>
+                            <tr>
+                                <td>Tech Tinkering</td>
+                                <td>Spring 2024</td>
+                                <td>
+                                    <Link
+                                        href="https://docs.google.com/document/d/1WC3XdD-5z1Dz4kn_b43A6ZKSKemnKqgqdj_WIBOhhVs/edit?usp=drive_link"
+                                        name="Syllabus"
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="bg-white pt-4 border-b px-4 py-8 sm:p-8">
                     <SmallHeading text="Publications" />
@@ -121,6 +122,15 @@ document.body.style.backgroundColor = "#9DC5BB";
             .object-cover {
                 min-width: 100%;
                 min-height: 100%;
+            }
+
+            td:not(:first-child) {
+                padding: 0px 25px 0px 25px;
+            }
+
+            tbody,
+            tr {
+                padding: 20px;
             }
         </style>
 
