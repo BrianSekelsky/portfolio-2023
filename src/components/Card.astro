@@ -23,9 +23,9 @@ const {
 
 let mainClasses;
 if (size === "small") {
-  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1 lg:col-span-2";
+  mainClasses = "rounded-md bg-white group w-full hover:cursor-pointer col-span-1 lg:col-span-2";
 } else {
-  mainClasses = "bg-white group w-full hover:cursor-pointer col-span-1 lg:col-span-3 lg:row-span-2";
+  mainClasses = "rounded-md bg-white group w-full hover:cursor-pointer col-span-1 lg:col-span-3 lg:row-span-2";
 }
 
 let typeNames: string;
@@ -41,7 +41,7 @@ for (let i = 0; i < types.length; i++) {
       <div class="m-auto transition-all grow">
         <slot />
       </div>
-      <div class="align-middle w-full pt-4">
+      <div class="align-middle w-full pt-3">
         <div class="items-baseline flex justify-between align-top">
           <CardLabel value={title} , isLarge={true} />
           <div class="text-xs text-gray">
