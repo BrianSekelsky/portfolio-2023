@@ -4,9 +4,9 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
-			mono: ['"IBM Plex Mono", "ui-monospace"', 'sans-serif'],
+			// mono: ['"IBM Plex Mono", "ui-monospace"', 'sans-serif'],
 			serif: ["freighttextcmp-pro", "ui-monospace", "sans-serif"],
-			sans: ["freight-sans-pro", "Arial", 'sans-serif']
+			sans: ["Inter Variable", "Arial", 'sans-serif']
 		},
 		colors: {
 			'blue': '#3454D1',

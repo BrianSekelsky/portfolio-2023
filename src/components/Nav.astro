@@ -7,17 +7,17 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
 <div class="block sm:hidden">
   <div class="mx-auto">
-    <div class="flex flex-wrap sm:justify-between p-4 font-mono">
+    <div class="flex flex-wrap sm:justify-between p-4">
       <div class="w-full sm:w-1/2 font-serif text-xl font-extralight">
         <a href="/#" class="lg:first:ml-0 hover:text-blue transition-all"
           >Brian Sekelsky</a
         >
       </div>
-      <div class="flex flex-wrap gap-8 pt-2 sm:pt-0 font-extralight w-full">
-        <NavLink href="/" name="DESIGN" />
-        <NavLink href="/about/" name="ABOUT" />
-        <NavLink href="/music/" name="MUSIC" />
-        <NavLink href="/teaching/" name="TEACHING" />
+      <div class="flex flex-wrap gap-8 pt-2 sm:pt-0 w-full">
+        <NavLink href="/" name="Design" />
+        <NavLink href="/about/" name="About" />
+        <NavLink href="/music/" name="Music" />
+        <NavLink href="/teaching/" name="Teaching" />
       </div>
     </div>
   </div>
@@ -27,18 +27,18 @@ const currentPath = pathname.slice(1); // remove the first "/"
     <div
       class="flex justify-start sm:justify-between py-9 font-mono rotate-180 writing-mode min-h-full min-w-full items-center bg"
     >
-      <div class="w-full sm:w-1/2 text-left font-serif text-xl font-extralight">
+      <div class="w-full sm:w-1/2 text-left font-serif text-xl">
         <a
           href="/#"
-          class="lg:first:ml-0 hover:text-blue hover:italic transition-all"
+          class="lg:first:ml-0 hover:text-blue hover:italic transition-all font-extralight"
           >Brian Sekelsky</a
         >
       </div>
-      <div class="flex flex-wrap gap-8 pt-6 sm:pt-0 font-extralight">
-        <NavLink href="/music/" name="MUSIC" />
-        <NavLink href="/teaching/" name="TEACHING" />
-        <NavLink href="/about/" name="ABOUT" />
-        <NavLink href="/" name="DESIGN" />
+      <div class="flex flex-wrap gap-8 pt-6 sm:pt-0">
+        <NavLink href="/music/" name="Music" />
+        <NavLink href="/teaching/" name="Teaching" />
+        <NavLink href="/about/" name="About" />
+        <NavLink href="/" name="Design" />
       </div>
     </div>
   </div>

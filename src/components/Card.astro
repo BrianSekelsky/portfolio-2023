@@ -44,16 +44,17 @@ for (let i = 0; i < types.length; i++) {
       <div class="align-middle w-full pt-3">
         <div class="items-baseline flex justify-between align-top">
           <CardLabel value={title} , isLarge={true} />
-          <div class="text-xs text-gray">
+          <!-- <div class="text-xs text-gray">
             <CardLabel value={year} , isLarge={false} />
-          </div>
+          </div> -->
         </div>
-        <div class="pt-2">
+        <div class="">
         <div class="flex flex-wrap gap-1 display-none">
+          <p class="text-gray text-xs text-light">{year}; </p>
           {
-            types.map((type) => (
-            <div class={type.special ? "border-blue border text-blue px-3 rounded-full text-xxs" : "px-3 py-xs border border-lightgray text-gray text-xxs rounded-full"}>
-              <CardLabel value={type.text} , isLarge={false} />
+            types.map((type, i) => (
+            <div class={type.special ? "text-blue text-xs text-light" : "text-gray text-xs text-light"}>
+              <p>{i == types.length - 1 ? type.text : type.text + ','} </p>
             </div>
             ))
           }
