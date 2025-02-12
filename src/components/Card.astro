@@ -41,32 +41,20 @@ for (let i = 0; i < types.length; i++) {
       <div class="m-auto transition-all grow">
         <slot />
       </div>
-      <div class="align-middle w-full pt-3 absolute bottom-0 pb-1 pl-1 opacity-0 group-hover:opacity-100 transition-all">
-        <div class="items-baseline flex justify-between align-top">
+      <div class="absolute top-0 left-0 bottom-0 right-0 m-auto text-center opacity-0 h-fit-content group-hover:opacity-100 transition-all">
           <CardLabel value={title} , isLarge={true} />
-          <!-- <div class="text-xs text-gray">
-            <CardLabel value={year} , isLarge={false} />
-          </div> -->
-        </div>
         <div class="">
-        <div class="flex">
-          <div class="bg-white flex gap-1 px-1 ">
-          <p class="text-gray text-xs text-light">{year}; </p>
-            {
-              types.map((type, i) => (
-              <div class={type.special ? "text-blue text-xs text-light" : "text-gray text-xs text-light"}>
-                <p>{i == types.length - 1 ? type.text : type.text + ','} </p>
-              </div>
-              ))
-            }
+          <div class="bg-white inline-block px-2">
+            <span class="text-gray text-xs text-light text-center">{year}; </span>
+              {
+                types.map((type, i) => (
+                <span class={type.special ? "text-blue text-xs text-light" : "text-gray text-xs text-light"}>
+                  <span>{i == types.length - 1 ? type.text : type.text + ','} </span>
+                </span>
+                ))
+              }
           </div>
         </div>
-      </div>
-        <!-- <div class="pt-2 font-mono">
-        <p>
-          {description}
-        </p>
-      </div> -->
       </div>
     </a>
   </div>
@@ -79,5 +67,9 @@ for (let i = 0; i < types.length; i++) {
 
   .text-xxs {
     font-size: 0.6rem;
+  }
+
+  .h-fit-content {
+    height: fit-content;
   }
 </style>
