@@ -42,8 +42,8 @@ for (let i = 0; i < types.length; i++) {
         <slot />
       </div>
       <div class="absolute top-0 left-0 bottom-0 right-0 m-auto text-center opacity-0 h-fit-content group-hover:opacity-100 transition-all">
-          <CardLabel value={title} , isLarge={true} />
-        <div class="">
+          <CardLabel value={title}, types={types}, year={year}, isLarge={true} />
+        <!-- <div class="">
           <div class="bg-white inline-block px-2 shadow-sm">
             <span class="text-gray text-xs text-light text-center">{year}; </span>
               {
@@ -54,7 +54,7 @@ for (let i = 0; i < types.length; i++) {
                 ))
               }
           </div>
-        </div>
+        </div> -->
       </div>
     </a>
   </div>

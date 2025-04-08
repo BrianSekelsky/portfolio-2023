@@ -2,13 +2,28 @@
 interface Props {
   isLarge: boolean;
   value: string;
+  year: string;
+  types: { text: string; special: boolean }[];
 }
 
-const { isLarge, value } = Astro.props;
+const { isLarge, value, types, year } = Astro.props;
 ---
-
-<p
-  class="bg-white px-2 inline-block shadow-sm"
->
-  {value}
-</p>
+<div class="flex justify-center">
+  <div class="bg-white p-4 shadow-md w-1/2 rounded-sm border-lightgray">
+    <p
+      class=""
+    >
+      {value}
+    </p>
+    <p>
+    {
+      types.map((type, i) => (
+      <span class={type.special ? "text-blue text-xs text-light italic" : "text-gray text-xs text-light"}>
+        <span>{i == types.length - 1 ? type.text : type.text + ','} </span>
+      </span>
+      ))
+    }
+    </p>
+    <p class="text-gray text-xs text-light pt-2">{year}</p>
+  </div>
+</div>
