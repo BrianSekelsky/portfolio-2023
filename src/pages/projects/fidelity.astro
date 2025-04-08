@@ -28,21 +28,26 @@ import Caption from "../../components/Caption.astro";
 
 import FrameCaption from "../../components/FrameCaption.astro";
 import Image from "astro/components/Image.astro";
+
+import mainpage from "../../images/fidelity/main-page.png"
+import mgmt from "../../images/fidelity/loan-mgmt.png"
+import address from "../../images/fidelity/telling-the-user.png"
+import changeloan from "../../images/fidelity/change-loan.png"
 ---
 
 <Layout title="Brian Sekelsky">
   <main>
     <ProjectHeader
       title="Fidelity Student Debt"
-      objective="I spend my time at Fidelity working on complex B2B and B2C problems related to student debt. I was brought onto the Student Debt Direct product to work on modernization efforts. Tasked with the ambiguous goal of improving the overall user experience for the post-enrollment side, I used various methods, including research, facilitating discussions, talking to users, identifying pain points, creating new flows, prototyping, and working with developers."
+      objective="I spend my time at Fidelity working on complex B2B and B2C problems related to student debt. I was brought onto the Student Debt Direct product to work on modernization efforts. Tasked with the ambiguous goal of improving the overall user experience for the post-enrollment side, I worked with the team to implement a new design system, fix accessibility issues, and simplify the loan management experience."
       types={[
         "Product Design",
         "User Experience",
         "User Interface",
         "Visual Design",
       ]}
-      collaborators={["Mac Hill", "Emily McGalliard", "Casie Mattrisch"]}
-      year="2023 – 2024"
+      collaborators={[]}
+      year="2024 – 2025"
     />
     <div class="load-in border-b">
       <div class="mx-auto flex justify-center">
@@ -58,18 +63,14 @@ import Image from "astro/components/Image.astro";
       <div class="col-span-1">
         <SmallHeading text="Learning the product" />
         <p>
-          Student Debt Direct is a benefit offered by Fidelity. Clients
-          (companies) purchase a contract with us to offer this benefit to their
-          employees. It is primarily a retention and hiring incentive where the
+          44 million Americans have student debt. Student Debt Direct is a workplace benefit that employers can offer to their employees through Fidelity. It is primarily a retention and hiring incentive where the
           employer agrees to pay some amount of their employee's student debt
-          every month. However, the product requires complicated loan
-          verification and management with cumbersome loan service provider
-          systems.
+          every month.
         </p>
         <p>
-          I was brought onto this project with an ambiguous task: to improve the
-          user experience for all user actions after enrolling in this benefit
-          with their employer.
+          The product requires complicated loan
+          verification and management with cumbersome loan service provider
+          systems. Any hope of automating the verification process has been squashed under the current presidential administration.
         </p>
         <p>
           One of the first things I did after being brought onto this project
@@ -91,7 +92,7 @@ import Image from "astro/components/Image.astro";
         <SmallHeading text="Partnering with a UX researcher" />
         <p>
           Next, I partnered with our user experience researcher to run a
-          heuristic study. I even had to get my hands dirty and code to update a
+          heuristic study. I even coded the frontend for a
           reference user interface we would use in this study.
         </p>
         <p>
@@ -174,37 +175,49 @@ import Image from "astro/components/Image.astro";
           </div>
           <div class="lg:pr-4">
             <Image src={editflow} alt="screenshot of new edit flow" />
-            <Caption
-              text="Edit flow allows users to edit specific pieces of their loan rather than the whole thing all at once"
-            />
           </div>
         </div>
         <div class="flex justify-center">
           <div>
             <Image src={addflow} alt="screenshot of add flow" />
-            <Caption text="Add flow allows user to add a new loan account" />
           </div>
         </div>
       </div>
       <div class="col-span-2 pt-8">
-        <SmallHeading text="Future work" />
+        <SmallHeading text="Moving to a new design system" />
         <p class="lg:w-1/2">
-          Additional work included updating email communications. Now we are
-          working on moving the entire product over to the brand new enterprise
-          wide design system that Fidelity is using.
+          Fidelity is currently overhauling their design system and working to unify all their products. Component reuse and accessibility are priorities for the business. I am helping to establish consistent patterns, like the way you edit an account, throughout the enterprise experience.
         </p>
 
         <div class="flex justify-between gap-4 py-8">
           <div class="lg:pl-4">
-            <Image src={enrollment} alt="screenshot of new enrollment flow" />
-            <Caption text="Updated look for enrollment" />
+            <Image src={mainpage} alt="screenshot of new post-enrollment dashboard" />
+            <Caption text="Updated look for the post-enrollment dashboard" />
           </div>
           <div class="lg:pr-4">
             <Image
-              src={postenrollment}
-              alt="screenshot of post-enrollment dashboard"
+              src={mgmt}
+              alt="screenshot of post-enrollment dashboard, editing loans"
             />
-            <Caption text="Updated look for the post enrollment dashboard" />
+            <Caption text="Updated look and pattern for loan management" />
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2 pt-8">
+        <SmallHeading text="Telling the user what's wrong" />
+        <p class="lg:w-1/2">
+          In the final iterations of the desin, we have introduced inline alerts that tell the user when there are problems with their loan. The alerts help users understand what about their current loan is problematic and how they can go about fixing their issue and getting back to recieving payments.
+        </p>
+
+        <div class="flex justify-between gap-4 py-8">
+          <div class="lg:pl-4">
+            <Image src={address} alt="screenshot of loan management with alert warning them that their payment address isn't recieving payments" />
+          </div>
+          <div class="lg:pr-4">
+            <Image
+              src={changeloan}
+              alt="screenshot of post-enrollment dashboard, editing loans"
+            />
           </div>
         </div>
       </div>
