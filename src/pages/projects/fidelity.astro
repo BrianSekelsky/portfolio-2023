@@ -33,6 +33,8 @@ import mainpage from "../../images/fidelity/main-page.png"
 import mgmt from "../../images/fidelity/loan-mgmt.png"
 import address from "../../images/fidelity/telling-the-user.png"
 import changeloan from "../../images/fidelity/change-loan.png"
+import mainbeforeafter from "../../images/fidelity/main-beforeafter.png"
+import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
 ---
 
 <Layout title="Brian Sekelsky">
@@ -60,6 +62,22 @@ import changeloan from "../../images/fidelity/change-loan.png"
       <style></style>
     </div>
     <ProjectGrid>
+      <div class="col-span-2">
+        <div class="flex justify-between gap-4 py-8">
+          <div class="lg:pl-4">
+            <Image src={mainbeforeafter} alt="screenshot of presentation showing before and after of the main dashboard" />
+          </div>
+        </div>
+          <div class="col-span-2"></div>
+          <div class="lg:pr-4">
+              <Image
+                src={mgmtbeforeafter}
+                alt="screenshot of presentation showing before and after of the loan management page"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="col-span-1">
         <SmallHeading text="Learning the product" />
         <p>
