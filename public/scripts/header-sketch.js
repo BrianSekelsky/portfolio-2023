@@ -1,4 +1,4 @@
-import p5 from 'p5';
+import p5 from 'https://cdn.skypack.dev/p5@1.9.0';
 
 let sketchInstance;
 
