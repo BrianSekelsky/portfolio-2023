@@ -1,6 +1,7 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 // Supports weights 100-900
 import '@fontsource-variable/inter';
 
@@ -37,6 +38,8 @@ const { title } = Astro.props;
     />
   </head>
   <body class="overflow-x-hidden">
+    <ClientRouter />
+    <div id="transition-overlay"></div>
     <div class="border-t">
       <div
         class="sm:fixed sm:h-screen sm:br-1 w-16 hidden sm:block sm:border-r sm:bg-white"
@@ -47,7 +50,9 @@ const { title } = Astro.props;
         <div class="block sm:hidden border-b">
           <Nav />
         </div>
-        <slot />
+        <main data-astro-transition>
+          <slot />
+        </main>
         <Footer />
       </div>
     </div>
@@ -106,32 +111,18 @@ const { title } = Astro.props;
     padding-bottom: 2rem;
   }
 
-  .load-in {
+  #transition-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(244, 244, 244, 0.6); /* semi-transparent */
+    pointer-events: none;
+    z-index: 999;
     opacity: 0;
+    backdrop-filter: blur(0px);
+    transition: backdrop-filter 0.3s ease;
   }
+
 </style>
 
-<script>
-  /**gsap*/
-  import gsap from "gsap";
-  const header = document.getElementsByClassName("load-in");
-
-  const fadeInTimeline = gsap.timeline({});
-  const fadeOutTimeline = gsap.timeline({});
-
-  fadeInTimeline.set(header, { opacity: 0 }).to(header, {
-    opacity: 1,
-    duration: 1,
-    delay: 0.25,
-    stagger: 0.5,
-  });
-
-  window.addEventListener("beforeunload", (event) => {
-    fadeOutTimeline.set(header, { opacity: 1 }).to(header, {
-      opacity: 0,
-      duration: 1,
-      delay: 0.25,
-      stagger: 0.5,
-    });
-  });
-</script>
+<script type="module" src="/src/layouts/page-transition.js"></script>
