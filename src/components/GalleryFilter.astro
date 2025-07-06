@@ -1,0 +1,10 @@
+<div id="buttons" class="flex flex-wrap gap-2 p-4">
+  {["All", "Website", "UX", "Branding", "Case Study"].map((label) => (
+    <div
+      class="gallery-button uppercase font-mono text-sm border cursor-pointer px-4 rounded-full hover:bg-offwhite transition-all"
+      data-filter={label.toLowerCase().replace(" ", "")}
+    >
+      {label}
+    </div>
+  ))}
+</div>
