@@ -2,7 +2,6 @@ import SizeAndScale from "./Gallery-cards/SizeAndScale.astro";
 import Fidelity from './Gallery-cards/Fidelity.astro';
 import Vespertine from './Gallery-cards/Vespertine.astro';
 import DeliberateAI from './Gallery-cards/DeliberateAI.astro';
-import Fidelity from "./Gallery-cards/Fidelity.astro";
 import SizeAndScale from "./Gallery-cards/SizeAndScale.astro";
 import CriticalImages from "./Gallery-cards/CriticalImages.astro";
 import Vespertine from "./Gallery-cards/Vespertine.astro";
