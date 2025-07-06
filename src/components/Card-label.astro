@@ -9,12 +9,12 @@ interface Props {
 const { value, types, year } = Astro.props;
 ---
 
-<div class="flex flex-wrap items-baseline gap-x-2 text-[11px] tracking-wide uppercase text-gray-500">
+<div class="flex flex-wrap items-baseline gap-x-2 text-[11px] tracking-wide font-mono">
   <h3 class="font-medium transition-all group-hover:underline">{value}</h3>
   <span class="text-gray-400">·</span>
   {types.map((type, i) => (
     <span class={type.special ? "text-blue-600 font-medium" : ""}>
-      {type.text}{i < types.length - 1 ? ',' : ''}
+      {type.text}{i < types.length - 1 ? '' : ''}
     </span>
   ))}
   <span class="text-gray-400">·</span>

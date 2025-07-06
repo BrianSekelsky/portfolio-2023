@@ -1,0 +1,29 @@
+---
+import Card from "../Card.astro";
+import { Image } from "astro:assets";
+import thumbnail from "../../images/homepage/greenways.png";
+
+const props = {
+  title: "Greenways.com",
+  description:
+    "Designing and developing a website",
+  year: "2025",
+  types: [
+    { text: "Website", special: false },
+    { text: "Branding", special: false },
+    { text: "Development", special: false },
+  ],
+  size: "medium",
+  href: "projects/greenways",
+  myColor: "honeydew",
+  alt: "Clip of zooming out from astronaut perspective up to whale perspective",
+};
+---
+
+<Card {...props}>
+  <div class="flex justify-center items-center bg-color h-full">
+    <div class="block">
+      <Image src={thumbnail} alt={props.alt} class="w-full transition-all" />
+    </div>
+  </div>
+</Card>

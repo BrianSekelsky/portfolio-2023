@@ -9,14 +9,14 @@ module.exports = {
 			sans: ["Inter Variable", "Arial", 'sans-serif']
 		},
 		colors: {
-			'blue': '#3454D1',
+			'blue': '#0000ff',
 			'black': '#212427',
 			'white': '#fff',
 			'offwhite': '#f5f5f5',
 			'gray': '#666',
 			'lightgray': "#bcbcbc",
 			'verylightgray': "#eeeeee",
-			'green': '#4F9D69'
+			'ecru': "#A69658"
 		},
 		maxWidth: {
 			'1/4': '25%',

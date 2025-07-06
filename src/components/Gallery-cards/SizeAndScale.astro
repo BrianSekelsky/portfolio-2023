@@ -1,58 +1,45 @@
 ---
-import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
-import video from "../../images/homepage/size&scale.webm";
 import { Image } from "astro:assets";
+import video from "../../images/homepage/size&scale.webm";
 import gif from "../../images/homepage/size-scale-still.png";
 
-const title = "Visualizing Size & Scale";
-const description =
-  "Designing and creating virtual reality and web-based learning environments where students can experience scales ranging from the size of the universe down to an atom.";
-const year = "2023";
-const types = [
-  { text: "Website", special: false },
-  { text: "UX", special: false },
-  { text: "Branding", special: false },
-  { text: "Research", special: false },
-];
-const size = "medium";
-const hasVideo = true;
-const alt =
-  "Clip of zooming out from astronaut perspective up to whale perspective";
+const props = {
+  title: "Visualizing Size & Scale",
+  description:
+    "Designing and creating virtual reality and web-based learning environments where students can experience scales ranging from the size of the universe down to an atom.",
+  year: "2023",
+  types: [
+    { text: "Website", special: false },
+    { text: "UX", special: false },
+    { text: "Branding", special: false },
+    { text: "Research", special: false },
+  ],
+  size: "featured",
+  href: "projects/size-and-scale",
+  myColor: "honeydew",
+  alt:
+    "Clip of zooming out from astronaut perspective up to whale perspective",
+};
 ---
 
-<Card
-  size="featured"
-  href="projects/size-and-scale"
-  title={title}
-  types={types}
-  year={year}
-  myColor="honeydew"
-  description={description}
->
-  <div class="video hidden md:block h-full">
-    <video
-      class="transition-all"
-      playsinline
-      autoplay
-      muted
-      loop
-      preload="none"
-    >
-      <source
-        src={video}
-        type="video/webm"
-        media="screen and (min-width:640px)"
-      />
-    </video>
-  </div>
-  <div class="flex md:hidden">
-    <Image class="transition-all" src={gif} alt={alt} />
+<Card {...props}>
+  <div class="flex justify-center items-center bg-color h-full">
+    <div class="hidden md:block w-full h-full">
+      <video
+        class="w-full h-full object-contain transition-all"
+        playsinline
+        autoplay
+        muted
+        loop
+        preload="none"
+      >
+        <source src={video} type="video/webm" media="(min-width: 640px)" />
+      </video>
+    </div>
+
+    <div class="flex md:hidden">
+      <Image src={gif} alt={props.alt} class="w-full transition-all" />
+    </div>
   </div>
 </Card>
-
-<style>
-  .bg-color {
-    background-color: var(--myColor);
-  }
-</style>

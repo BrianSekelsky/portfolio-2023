@@ -10,6 +10,7 @@ import ScaleWorlds from "./Gallery-cards/ScaleWorlds.astro";
 import TerraFirma from "./Gallery-cards/TerraFirma.astro";
 import PossibleInternet from "./Gallery-cards/PossibleInternet.astro";
 import NPCA from "./Gallery-cards/NPCA.astro";
+import Greenways from "./Gallery-cards/Greenways.astro";
 
 
 export default [
