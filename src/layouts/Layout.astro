@@ -123,6 +123,13 @@ const { title } = Astro.props;
     transition: backdrop-filter 0.3s ease;
   }
 
+  @media (max-width: 767px) {
+    canvas {
+      display: none;
+    }
+  }
+
+
 </style>
 
 <script type="module" src="/scripts/page-transition.js"></script>
