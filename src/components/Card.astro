@@ -21,16 +21,24 @@ const {
 } = Astro.props;
 
 const layoutClass = {
+  xsmall: 'col-span-6 md:col-span-1',
   small: 'col-span-6 md:col-span-2',
+  mediumSmall: 'col-span-6 md: col-span-3',
   medium: 'col-span-6 md:col-span-4',
   featured: 'col-span-6', // full width
+  tall: 'col-span-6 md:col-span-2', // same width as small
 }[size ?? 'small'];
 
+
 const heightClass = {
+  xsmall: 'row-span-1',
   small: 'row-span-1',
+  mediumSmall: 'row-span-2',
   medium: 'row-span-2',
   featured: 'row-span-3',
+  tall: 'row-span-3', // spans more visual height
 }[size ?? 'small'];
+
 ---
 
 <article class={`group flex flex-col space-y-2 ${layoutClass} ${heightClass}`}>
