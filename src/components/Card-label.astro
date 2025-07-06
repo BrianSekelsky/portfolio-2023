@@ -6,24 +6,17 @@ interface Props {
   types: { text: string; special: boolean }[];
 }
 
-const { isLarge, value, types, year } = Astro.props;
+const { value, types, year } = Astro.props;
 ---
-<div class="flex justify-center">
-  <div class="bg-white p-4 shadow-sm w-1/2 rounded-sm border">
-    <p
-      class="text-sm"
-    >
-      {value}
-    </p>
-    <p>
-    {
-      types.map((type, i) => (
-      <span class={type.special ? "text-blue text-xs text-light italic" : "text-gray text-xs text-light"}>
-        <span>{i == types.length - 1 ? type.text : type.text + ','} </span>
-      </span>
-      ))
-    }
-    </p>
-    <p class="text-gray text-xs text-light pt-2">{year}</p>
-  </div>
+
+<div class="flex flex-wrap items-baseline gap-x-2 text-[11px] tracking-wide uppercase text-gray-500">
+  <h3 class="font-medium transition-all group-hover:underline">{value}</h3>
+  <span class="text-gray-400">·</span>
+  {types.map((type, i) => (
+    <span class={type.special ? "text-blue-600 font-medium" : ""}>
+      {type.text}{i < types.length - 1 ? ',' : ''}
+    </span>
+  ))}
+  <span class="text-gray-400">·</span>
+  <span class="text-gray-400">{year}</span>
 </div>

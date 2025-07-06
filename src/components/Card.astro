@@ -1,8 +1,8 @@
 ---
-import CardLabel from "./Card-label.astro";
+import CardLabel from './Card-label.astro';
 
 interface Props {
-  size: string;
+  size: 'small' | 'medium';
   href: string;
   title: string;
   types: { text: string; special: boolean }[];
@@ -12,64 +12,32 @@ interface Props {
 }
 
 const {
-  size,
-  href = "#",
+  size = 'small',
+  href,
   title,
   types,
   year,
   myColor,
-  description,
 } = Astro.props;
 
-let mainClasses;
-if (size === "small") {
-  mainClasses = "rounded-md bg-white group w-full hover:cursor-pointer col-span-1 lg:col-span-2";
-} else {
-  mainClasses = "rounded-md bg-white group w-full hover:cursor-pointer col-span-1 lg:col-span-3 lg:row-span-2";
-}
+const layoutClass = {
+  small: 'col-span-6 md:col-span-2',
+  medium: 'col-span-6 md:col-span-4',
+  featured: 'col-span-6', // full width
+}[size ?? 'small'];
 
-let typeNames: string;
-
-for (let i = 0; i < types.length; i++) {
-  typeNames = typeNames + " " + types[i].text;
-}
+const heightClass = {
+  small: 'row-span-1',
+  medium: 'row-span-2',
+  featured: 'row-span-3',
+}[size ?? 'small'];
 ---
 
-<div class:list={[mainClasses, typeNames]}>
-  <div class="relative overflow-hidden h-full">
-    <a href={href} class=" transition-all flex flex-col h-full">
-      <div class="m-auto transition-all grow">
-        <slot />
-      </div>
-      <div class="absolute top-0 left-0 bottom-0 right-0 m-auto text-center opacity-0 h-fit-content group-hover:opacity-100 transition-all">
-          <CardLabel value={title}, types={types}, year={year}, isLarge={true} />
-        <!-- <div class="">
-          <div class="bg-white inline-block px-2 shadow-sm">
-            <span class="text-gray text-xs text-light text-center">{year}; </span>
-              {
-                types.map((type, i) => (
-                <span class={type.special ? "text-blue text-xs text-light" : "text-gray text-xs text-light"}>
-                  <span>{i == types.length - 1 ? type.text : type.text + ','} </span>
-                </span>
-                ))
-              }
-          </div>
-        </div> -->
-      </div>
-    </a>
-  </div>
-</div>
-
-<style define:vars={{ myColor }}>
-  .color {
-    background-color: white;
-  }
-
-  .text-xxs {
-    font-size: 0.6rem;
-  }
-
-  .h-fit-content {
-    height: fit-content;
-  }
-</style>
+<article class={`group flex flex-col space-y-2 ${layoutClass} ${heightClass}`}>
+  <CardLabel value={title} types={types} year={year} isLarge={false} />
+  <a href={href} class="block overflow-hidden w-full">
+    <div class="bg-white">
+      <slot />
+    </div>
+  </a>
+</article>

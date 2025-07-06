@@ -20,9 +20,9 @@ export default [
   { Component: WitnessingGlaciers, typeClass: "website branding caseStudy" },
   { Component: PossibleInternet, typeClass: "userExperience caseStudy" },
   { Component: Vespertine, typeClass: "branding website branding" },
-  { Component: TerraFirma, typeClass: "branding website branding" },
-  { Component: ScaleWorlds, typeClass: "userExperience caseStudy" },
-  { Component: NPCA, typeClass: "website" },
   { Component: Nothing, typeClass: "userExperience" },
+  { Component: NPCA, typeClass: "website" },
+  { Component: ScaleWorlds, typeClass: "userExperience caseStudy" },
+  { Component: TerraFirma, typeClass: "branding website branding" },
   { Component: DeliberateAI, typeClass: "website userExperience" },
 ];
