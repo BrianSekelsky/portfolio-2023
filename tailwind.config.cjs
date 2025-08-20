@@ -40,6 +40,7 @@ module.exports = {
 			'lightgray': '#bcbcbc'
 		},
 		shadow: {
+			DEFAULT: '1.7px 3.4px 3.4px hsl(0deg 0% 0% / 0.45);',
 			'none': '0px',
 		}
 		// fontSize: {

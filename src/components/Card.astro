@@ -9,6 +9,7 @@ interface Props {
   year: string;
   myColor?: string;
   description?: string;
+  noShadow?: boolean;
 }
 
 const {
@@ -18,12 +19,13 @@ const {
   types,
   year,
   myColor,
+  noShadow = false,
 } = Astro.props;
 
 const layoutClass = {
   xsmall: 'col-span-6 md:col-span-1',
   small: 'col-span-6 md:col-span-2',
-  mediumSmall: 'col-span-6 md: col-span-3',
+  mediumSmall: 'col-span-6 md:col-span-3',
   medium: 'col-span-6 md:col-span-4',
   featured: 'col-span-6', // full width
   tall: 'col-span-6 md:col-span-2', // same width as small
@@ -39,11 +41,13 @@ const heightClass = {
   tall: 'row-span-3', // spans more visual height
 }[size ?? 'small'];
 
+const linkClass = `block overflow-hidden w-full rounded-md ${noShadow ? '' : 'shadow'}`
+
 ---
 
 <article class={`group flex flex-col space-y-2 ${layoutClass} ${heightClass}`}>
   <CardLabel value={title} types={types} year={year} isLarge={false} />
-  <a href={href} class="block overflow-hidden w-full">
+  <a href={href} class={linkClass}>
     <div class="bg-white">
       <slot />
     </div>
