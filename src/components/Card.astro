@@ -18,6 +18,7 @@ const {
   title,
   types,
   year,
+  description = 'Sample description. It will get longer. Maybe it should be two to three sentences. I not sure yet.',
   myColor,
   noShadow = false,
 } = Astro.props;
@@ -41,15 +42,28 @@ const heightClass = {
   tall: 'row-span-3', // spans more visual height
 }[size ?? 'small'];
 
-const linkClass = `block overflow-hidden w-full rounded-md ${noShadow ? '' : 'shadow'}`
+const linkClass = `block overflow-hidden w-full rounded-md ${noShadow ? '' : 'shadow group-hover:no-shadow'}`
 
 ---
 
-<article class={`group flex flex-col space-y-2 ${layoutClass} ${heightClass}`}>
-  <CardLabel value={title} types={types} year={year} isLarge={false} />
-  <a href={href} class={linkClass}>
-    <div class="bg-white">
-      <slot />
+<a class=`group flex flex-col space-y-2 col-span-6 md:col-span-3 2xl:col-span-2 cursor-pointer` href={href}>
+  <div class="grid grid-cols-6 gap-4 p-4 bg-white rounded-lg border border-zinc-200 group-hover:border-zinc-300 transition card">
+    <div class="col-span-6">
+      <div class="block overflow-hidden w-full rounded-md">
+        <div class="bg-white">
+          <slot />
+        </div>
+      </div>
     </div>
-  </a>
-</article>
+    <div class="col-span-6">
+      <CardLabel value={title} types={types} year={year} isLarge={false} description={description} />
+    </div>
+  </div>
+</a>
+
+<style>
+  .card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform, box-shadow;
+  }
+</style>

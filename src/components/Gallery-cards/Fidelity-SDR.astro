@@ -1,0 +1,32 @@
+---
+import CardLabel from "../Card-label.astro";
+import { Image } from "astro:assets";
+import Card from "../Card.astro";
+
+import thumbnail from "../../images/homepage/SDR-firstview.png";
+
+const title = "Fidelity Student Debt";
+const description = "asdf";
+const year = "2024 — 2025";
+const types = [
+  { text: "UX", special: false },
+  { text: "Research", special: false },
+  { text: "Website", special: false },
+];
+const size = "small";
+const hasVideo = false;
+const alt = "Screenshot of user experience work in figma";
+---
+
+<Card
+  size="small"
+  href="projects/fidelity"
+  title={title}
+  types={types}
+  year={year}
+  myColor="ghostwhite"
+>
+  <div class="block">
+    <Image src={thumbnail} alt={alt} />
+  </div>
+</Card>

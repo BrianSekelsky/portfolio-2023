@@ -1,29 +1,18 @@
 ---
 import Link from "./Link.astro";
 import ProjectHeader from "./ProjectHeader.astro";
+import SmallHeading from "./SmallHeading.astro";
 
 import SectionHeader from "./SectionHeader.astro";
 
 let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
 ---
 
-<div class="load-in">
-  <div
-    id="header"
-    class="py-4 sm:pt-6 px-4 sm:px-8 pb-0 bg-white border-b transition-all duration-500"
-  >
-    <p
-      id="manipulate"
-      class="text-left text-5xl sm:text-6xl font-mono font-extralight cursor-pointer line-height-1.4"
-    >
-      Winter Foe
-    </p>
-  </div>
-</div>
 <div
   class="load-in flex flex-col lg:grid grid-cols-2 text-lg lg:divide-x border-b"
 >
   <div class="col-span-1 p-4 sm:p-8 sm:pb-16">
+    <SmallHeading text="Winter Foe" />
     Winter Foe is a music project that I have been working on since around 2018.
     I am searching for new ways to combine digital sounds, electronics, acoustic
     instruments, and field recordings. Through this project I have expanded my
@@ -51,7 +40,7 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
   >
     <div>
       <div class="mb-4">
-        <SectionHeader text="Genres" />
+        <SmallHeading text="Genres" />
       </div>
       <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
         {types.map((type) => <p class="">{type}</p>)}
@@ -59,13 +48,13 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
     </div>
     <div class="">
       <div class="mb-4">
-        <SectionHeader text="Year" />
+        <SmallHeading text="Year" />
       </div>
       <p class="">2018 – Present</p>
     </div>
     <div class="invisible">
       <div class="mb-4">
-        <SectionHeader text="Collaborators" />
+        <SmallHeading text="Collaborators" />
       </div>
       <div>Collaborators</div>
     </div>
@@ -75,15 +64,15 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
   <div class="md:flex-1">
     <iframe
       width="100%"
-      height="450"
-      src="https://www.youtube.com/embed/ci7wcKekVwo?si=xxn-bp3RC_ioJQEd"
+      height="750"
+      src="https://www.youtube.com/embed/5RJmP0pWtEA?si=JPqtsfoa30dBQ3db"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen></iframe>
   </div>
 </div>
-<div class="load-in flex flex-col md:flex-row justify-stretch border-t">
+<!-- <div class="load-in flex flex-col md:flex-row justify-stretch border-t">
   <div class="border-b md:border-b-0 md:border-r flex-1">
     <iframe
       width="100%"
@@ -108,7 +97,7 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy"></iframe>
   </div>
-</div>
+</div> -->
 
 <script src="./header.js"></script>
 

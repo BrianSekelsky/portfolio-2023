@@ -9,7 +9,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
 const year = new Date().getFullYear();
 ---
 
-<div class="border-t px-3 sm:px-8 pb-4 bg-ecru text-sm">
+<div class="h-full border-t px-3 sm:px-8 pb-4 bg-zinc-100 text-sm">
   <div class="mx-auto">
     <!-- <div class="pt-6">
       <SectionHeader text="Links" />
@@ -69,12 +69,6 @@ const year = new Date().getFullYear();
     </div>
   </div>
 </div>
-<!-- <div class="border-t px-8 py-2 flex justify-between">
-  <div>
-    © <span id="year"></span> Brian Sekelsky
-  </div>
-  <div>back to top</div>
-</div> -->
 
 <script>
   document.getElementById("year").innerHTML = new Date().getFullYear();

@@ -4,19 +4,19 @@ interface Props {
   value: string;
   year: string;
   types: { text: string; special: boolean }[];
+  description: string;
 }
 
-const { value, types, year } = Astro.props;
+const { value, types, year, description } = Astro.props;
 ---
 
-<div class="flex flex-wrap items-baseline gap-x-2 text-[11px] tracking-wide font-mono">
-  <h3 class="font-medium transition-all group-hover:underline">{value}</h3>
-  <span class="text-gray-400">·</span>
-  {types.map((type, i) => (
-    <span class={type.special ? "text-blue-600 font-medium" : ""}>
-      {type.text}{i < types.length - 1 ? '' : ''}
-    </span>
-  ))}
-  <span class="text-gray-400">·</span>
-  <span class="text-gray-400">{year}</span>
-</div>
+<h3 class="transition-all text-xl">{value}</h3>
+<!-- <p class="font-serif pt-2">
+  {description}
+</p> -->
+<p class="text-sm pt-2 pb-4 ">{year}</p>
+{types.map((type, i) => (
+  <span class="italic mr-2 font-serif font-light text-sm text-zinc-700 rounded-full px-4 py-1 bg-zinc-100">
+    {type.text}{i < types.length - 1 ? '' : ''}
+  </span>
+))}

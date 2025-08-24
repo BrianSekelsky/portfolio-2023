@@ -12,11 +12,10 @@ import PossibleInternet from "./Gallery-cards/PossibleInternet.astro";
 import NPCA from "./Gallery-cards/NPCA.astro";
 import Greenways from "./Gallery-cards/Greenways.astro";
 import FriendsOfTanzania from "./Gallery-cards/FriendsOfTanzania.astro";
+import FidelitySDR from "./Gallery-cards/Fidelity-SDR.astro";
 
 
 export default [
-  { Component: Greenways, typeClass: "branding website ux" },
-  { Component: FriendsOfTanzania, typeClass: "branding website ux" },
   { Component: SizeAndScale, typeClass: "branding website ux caseStudy" },
   { Component: Fidelity, typeClass: "website ux research caseStudy" },
   { Component: CriticalImages, typeClass: "branding" },

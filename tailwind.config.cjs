@@ -4,19 +4,8 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
-			// mono: ['"IBM Plex Mono", "ui-monospace"', 'sans-serif'],
-			serif: ["freighttextcmp-pro", "ui-monospace", "sans-serif"],
-			sans: ["Inter Variable", "Arial", 'sans-serif']
-		},
-		colors: {
-			'blue': '#0000ff',
-			'black': '#212427',
-			'white': '#fff',
-			'offwhite': '#f5f5f5',
-			'gray': '#666',
-			'lightgray': "#bcbcbc",
-			'verylightgray': "#eeeeee",
-			'ecru': "#A69658"
+			serif: ["freight-text-pro", "sans-serif"],
+			sans: ["neue-haas-unica", "Helvetica", 'sans-serif']
 		},
 		maxWidth: {
 			'1/4': '25%',
@@ -34,28 +23,20 @@ module.exports = {
 			'full': '100rem',
 			'none': '0px',
 		},
-		borderColor: {
-			DEFAULT: '#212427',
-			'blue': "#0000ff",
-			'lightgray': '#bcbcbc'
-		},
-		shadow: {
-			DEFAULT: '1.7px 3.4px 3.4px hsl(0deg 0% 0% / 0.45);',
-			'none': '0px',
+		extend: {
+			colors: {
+				'black': '#212427',
+				'white': '#fff',
+				'offwhite': '#f5f5f5',
+				'gray': '#8A817C',
+				'lightgray': "#ededed",
+				'verylightgray': "#ededed",
+				'ecru': "#A69658"
+			},
+			borderColor: {
+				DEFAULT: 'oklch(70.5% 0.015 286.067)',
+			},
 		}
-		// fontSize: {
-		// 	'xs': '.6rem',
-		// 	'sm': '.775rem',
-		// 	'base': '1rem',
-		// 	'lg': '1.125rem',
-		// 	'xl': '1.25rem',
-		// 	'2xl': '1.5rem',
-		// 	'3xl': '1.875rem',
-		// 	'4xl': '2.25rem',
-		// 	'5xl': '3rem',
-		// 	'6xl': '4rem',
-		// 	'7xl': '5rem',
-		// },
 	},
 	plugins: [],
 }
