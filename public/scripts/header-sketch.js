@@ -153,6 +153,7 @@ export function startSketch() {
 
     p.setup = () => {
       header = document.getElementById('header');
+      isMouseInsideHeader = true;
       if (!header) return;
 
       header.addEventListener('mouseenter', () => {
