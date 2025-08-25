@@ -2,6 +2,7 @@
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import video from "../../images/homepage/vespertine.webm";
+import videomp4 from "../../images/homepage/vespertine.mp4";
 import image from "../../images/homepage/vespertine.png";
 import { Image } from "astro:assets";
 
@@ -24,6 +25,7 @@ const alt =
   types={types}
   year={year}
   myColor="#BEFC5B"
+  description="Building a scrolly-telling website for Bjork's album Vespertine."
 >
   <div class="hidden sm:block">
     <video
@@ -37,6 +39,11 @@ const alt =
       <source
         src={video}
         type="video/webm"
+        media="screen and (min-width:640px)"
+      />
+      <source
+        src={videomp4}
+        type="video/mp4"
         media="screen and (min-width:640px)"
       />
     </video>

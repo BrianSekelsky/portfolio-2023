@@ -4,6 +4,7 @@ import Card from "../Card.astro";
 import { Image } from "astro:assets";
 import image from "../../images/homepage/scale-worlds.png";
 import video from "../../images/homepage/scale-worlds.webm";
+import videomp4 from "../../images/homepage/scale-worlds.mp4";
 
 const title = "Scale Worlds";
 const description = "this is an explanation about project 1";
@@ -25,6 +26,7 @@ const alt =
   types={types}
   year={year}
   myColor="#E7F5FE"
+  description="Creating an immersive virtual environment, where students can see various scientific entities in relation to their own bodies and conduct realistic size comparisons that cannot be replicated in everyday experience."
 >
   <div class="hidden md:block">
     <video
@@ -38,6 +40,11 @@ const alt =
       <source
         src={video}
         type="video/webm"
+        media="screen and (min-width:640px)"
+      />
+      <source
+        src={videomp4}
+        type="video/mp4"
         media="screen and (min-width:640px)"
       />
     </video>

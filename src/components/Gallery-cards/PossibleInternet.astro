@@ -4,6 +4,7 @@ import Card from "../Card.astro";
 import { Image } from "astro:assets";
 
 import video from "../../images/homepage/possible-internet2.webm";
+import videomp4 from "../../images/homepage/possible-internet2.mp4";
 import image from "../../images/homepage/possible-internet.png";
 
 const title = "Possible Internet";
@@ -27,6 +28,7 @@ const alt = "";
   types={types}
   year={year}
   myColor="#FCEDDD"
+  description="Imagining a future where the complexity of academic literature reviews can be untangled with augmented reality."
 >
   <div class="hidden md:block">
     <video
@@ -40,6 +42,11 @@ const alt = "";
       <source
         src={video}
         type="video/webm"
+        media="screen and (min-width:640px)"
+      />
+      <source
+        src={videomp4}
+        type="video/mp4"
         media="screen and (min-width:640px)"
       />
     </video>
