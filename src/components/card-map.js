@@ -16,14 +16,14 @@ import FidelitySDR from "./Gallery-cards/Fidelity-SDR.astro";
 
 
 export default [
-  { Component: SizeAndScale, typeClass: "branding website ux caseStudy" },
-  { Component: Fidelity, typeClass: "website ux research caseStudy" },
-  { Component: WitnessingGlaciers, typeClass: "website branding caseStudy" },
+  { Component: SizeAndScale, typeClass: "branding website ux development" },
+  { Component: Fidelity, typeClass: "website ux research" },
+  { Component: WitnessingGlaciers, typeClass: "website branding development" },
   { Component: DeliberateAI, typeClass: "website userExperience" },
   { Component: NPCA, typeClass: "website" },
-  { Component: PossibleInternet, typeClass: "userExperience caseStudy" },
+  { Component: PossibleInternet, typeClass: "userExperience" },
   { Component: Vespertine, typeClass: "branding website branding" },
-  { Component: ScaleWorlds, typeClass: "userExperience caseStudy" },
+  { Component: ScaleWorlds, typeClass: "userExperience" },
   { Component: TerraFirma, typeClass: "branding website branding" },
   { Component: ImaginePublicTransit, typeClass: "branding" },
   { Component: CriticalImages, typeClass: "branding" },
