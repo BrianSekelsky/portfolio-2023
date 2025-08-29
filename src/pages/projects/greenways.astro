@@ -1,0 +1,227 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import SmallHeading from "../../components/SmallHeading.astro";
+import ProjectGrid6Cols from "../../components/ProjectGrid6Cols.astro";
+import { Image } from "astro:assets";
+import Caption from "../../components/Caption.astro";
+
+import HeaderImage from "../../images/homepage/greenways.png";
+import OldHomepage from "../../images/greenways/old-homepage.png";
+
+import OldSiteMap from "../../images/greenways/old-sitemap.png";
+import NewSiteMap from "../../images/greenways/new-sitemap.png";
+
+import greenwaysHome from "../../images/greenways/greenways-homescreen.png";
+import greenwaysRec from "../../images/greenways/greenways-rec.webm";
+import greenwaysRecMp4 from "../../images/greenways/greenways-rec.mp4";
+
+import Homepage2 from "../../images/greenways/Homepage-2.png";
+import HomepageChuck from "../../images/greenways/homepage-chuck.png";
+import offerings from "../../images/greenways/offerings.png";
+
+import mobile from "../../images/greenways/greenways-mobile.webm";
+import mobileMp4 from "../../images/greenways/greenways-mobile.mp4";
+
+import project1 from "../../images/greenways/project-1.png";
+import project2 from "../../images/greenways/project-2.png";
+import project3 from "../../images/greenways/project-3.png";
+import project4 from "../../images/greenways/project-4.png";
+import project5 from "../../images/greenways/project-5.png";
+
+---
+
+<Layout title="Brian Sekelsky">
+  <main>
+
+    <ProjectHeader
+      title="Greenways.com"
+      objective="Best Parts (Elizabeth Gabriel and I) were hired by Chuck Flink to re-design his website, Greenways.com. Chuck Flink is an accomplished landscape architect and greenways consultant. He wanted a new website to catalog his work over the years and serve as a hub for new clients and collaborators to find hime."
+      types={[
+        "Web Design",
+        "Wordpress Development",
+        "Branding"
+      ]}
+      collaborators={[
+        "Elizabeth Gabriel",
+      ]}
+      year="2025"
+      outboundLink="https://greenways.com"
+      myColor="honeydew"
+    />
+    <div class="border-b load-in relative">
+      <video playsinline autoplay muted loop>
+        <source src={greenwaysRec} type="video/webm" />
+        <source src={greenwaysRecMp4} type="video/mp4" />
+      </video>
+    </div>
+    <ProjectGrid6Cols>
+  <div class="col-span-2">
+    <SmallHeading text="Organization and content management" />
+    <p>
+      We built Chuck’s site on WordPress so he can update content himself. A self-service CMS ensures he won’t need developer support just to add a new project or tweak copy.
+    </p>
+  </div>
+  <div class="col-span-4">
+    <Image
+      src={HeaderImage}
+      alt="WordPress-powered homepage for Greenways.com"
+      class="rounded-md shadow"
+    />
+    <Caption text="Homepage built on top of Wordpress" />
+  </div>
+
+  <div class="col-span-2">
+    <SmallHeading text="Sitemap overhaul" />
+    <p>
+      The old structure was deep and confusing. We flattened the hierarchy around Chuck’s core services, making it easier for visitors to find what they need in one click.
+    </p>
+  </div>
+  <div class="col-span-2 flex flex-col justify-between">
+    <Image
+      src={OldSiteMap}
+      alt="Diagram showing the original Greenways.com sitemap"
+      class="rounded-md"
+    />
+    <Caption text="Original sitemap" />
+  </div>
+  <div class="col-span-2 flex flex-col justify-between">
+    <Image
+      src={NewSiteMap}
+      alt="Diagram showing the revised Greenways.com sitemap"
+      class="rounded-md"
+    />
+    <Caption text="Revised sitemap" />
+  </div>
+
+  <div class="col-span-2">
+    <SmallHeading text="Visual refresh" />
+    <p>
+      Chuck’s brand needed a modern, clean aesthetic that still felt rooted in nature. We introduced a light palette, clear typography, and generous white space to foreground his portfolio.
+    </p>
+  </div>
+  <div class="col-span-4 grid grid-cols-2 gap-4">
+    <div class="flex flex-col justify-between">
+      <Image
+        src={OldHomepage}
+        alt="Screenshot of Greenways.com before the redesign"
+        class="rounded-md"
+      />
+      <Caption text="Before" />
+    </div>
+    <div class="flex flex-col justify-between">
+      <Image
+        src={HeaderImage}
+        alt="Screenshot of Greenways.com after the redesign"
+        class="rounded-md"
+      />
+      <Caption text="After" />
+    </div>
+  </div>
+<div class="col-span-2">
+    <SmallHeading text="Custom project illustrations" />
+    <p>
+      Elizabeth created a bespoke botanical illustration for each of Chuck’s five highlighted projects.  
+      Each drawing features a plant native to its region, grounding the site in real landscapes and adding a layer of local storytelling.
+    </p>
+  </div>
+  <div class="col-span-4 grid grid-cols-2 gap-4">
+    <div class="flex flex-col items-center">
+      <Image
+        src={project1}
+        alt="Botanical illustration for project one"
+        class="rounded-md shadow"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      <Image
+        src={project2}
+        alt="Botanical illustration for project two"
+        class="rounded-md shadow"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      <Image
+        src={project3}
+        alt="Botanical illustration for project three"
+        class="rounded-md shadow"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      <Image
+        src={project4}
+        alt="Botanical illustration for project four"
+        class="rounded-md shadow"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      <Image
+        src={project5}
+        alt="Botanical illustration for project five"
+        class="rounded-md shadow"
+      />
+    </div>
+  </div>
+  <div class="col-span-2">
+    <SmallHeading text="Highlighting expertise" />
+    <p>
+      We carved out a dedicated intro section on the homepage to spotlight Chuck’s credentials and past projects—building immediate trust with new visitors.
+    </p>
+  </div>
+  <div class="col-span-4">
+    <Image
+      src={HomepageChuck}
+      alt="Homepage section introducing Chuck Flink"
+      class="rounded-md shadow"
+    />
+    <Caption text="Feature: Expert profile" />
+  </div>
+
+  <div class="col-span-2">
+    <SmallHeading text="Clarifying offerings" />
+    <p>
+      Chuck’s services can seem specialized at first glance. We created a scannable offerings grid that breaks down each service into plain-language headings and short descriptions.
+    </p>
+  </div>
+  <div class="col-span-4">
+    <Image
+      src={offerings}
+      alt="Offerings section showing services categories"
+      class="rounded-md shadow"
+    />
+    <Caption text="Interactive service breakdown" />
+  </div>
+
+  <div class="col-span-2">
+    <SmallHeading text="Responsiveness" />
+    <p>
+      The legacy site was desktop-only. We rebuilt every component to adapt fluidly—from desktop to tablet and mobile—ensuring touch targets, layout, and typography scale seamlessly.
+    </p>
+  </div>
+  <div class="col-span-4">
+    <div class="flex justify-center">
+      <video playsinline autoplay muted loop class="rounded-md shadow">
+        <source src={mobile} type="video/webm" />
+        <source src={mobileMp4} type="video/mp4" />
+      </video>
+    </div>
+    <Caption text="Mobile view" />
+  </div>
+
+  <div class="col-span-2">
+    <SmallHeading text="Final reflection" />
+    <p>
+      Collaborating with Elizabeth and Chuck was a masterclass in low-friction design. We delivered a future-proof, maintainable site that truly reflects Chuck’s legacy—and empowers him to own his online presence.
+    </p>
+  </div>
+  <div class="col-span-4">
+    <video playsinline autoplay muted loop>
+      <source src={greenwaysRec} type="video/webm" />
+      <source src={greenwaysRecMp4} type="video/mp4" />
+    </video>
+    <Caption text="Live site view" />
+  </div>
+</ProjectGrid6Cols>
+  </main>
+</Layout>
