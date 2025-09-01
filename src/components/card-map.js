@@ -16,8 +16,9 @@ import FidelitySDR from "./Gallery-cards/Fidelity-SDR.astro";
 
 
 export default [
-  { Component: Greenways, typeClass: "branding website ux development" },
+  { Component: Greenways, typeClass: "branding wordpress ux development" },
   { Component: SizeAndScale, typeClass: "branding website ux development" },
+  { Component: FriendsOfTanzania, typeClass: "wordpress website ux" },
   { Component: Fidelity, typeClass: "website ux research" },
   { Component: WitnessingGlaciers, typeClass: "website branding development" },
   { Component: DeliberateAI, typeClass: "website userExperience" },

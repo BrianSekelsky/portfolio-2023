@@ -1,0 +1,214 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import SmallHeading from "../../components/SmallHeading.astro";
+import ProjectGrid6Cols from "../../components/ProjectGrid6Cols.astro";
+import { Image } from "astro:assets";
+import Caption from "../../components/Caption.astro";
+
+import EasyDonation from "../../images/fotanzania/easy-donation-blackbaud.png";
+
+import UXAudit1 from "../../images/fotanzania/ux-audit.png";
+import UXAudit2 from "../../images/fotanzania/ux-audit-2.png";
+import UXAudit3 from "../../images/fotanzania/ux-audit-3.png";
+
+import NavigationAnalysis from "../../images/fotanzania/navigation-analysis.png";
+import NavigationNew from "../../images/fotanzania/navigation-with-donate-button.png";
+
+import HomepageClearSections from "../../images/fotanzania/homepage-clear-sections.png";
+import HomepageAnotherSection from "../../images/fotanzania/homepage-section.png";
+
+import HomepageHero from "../../images/fotanzania/homepage-hero-image.png";
+
+import HomepageResponsive from "../../images/fotanzania/homepage-responsive-example.png";
+import IntroductionPage from "../../images/fotanzania/introduction-page.png";
+
+import NewHomepageScroll from "../../images/fotanzania/new-homepage-scroll-through.webm";
+import NewHomepageScrollMp4 from "../../images/fotanzania/new-homepage-scroll-through.mp4";
+import OldHomepageScroll from "../../images/fotanzania/old-homepage-scrollthrough.webm";
+import OldHomepageScrollMp4 from "../../images/fotanzania/old-homepage-scrollthrough.mp4";
+---
+
+<Layout title="Brian Sekelsky">
+  <main>
+
+    <ProjectHeader
+      title="Friends of Tanzania"
+      objective="Bringing clarity and organization to the website of a great non-profit serving vulnerable populations in Tanzania."
+      types={[
+        "Web Design",
+        "Wordpress Development",
+        "Branding"
+      ]}
+      collaborators={[
+      ]}
+      year="2025"
+    />
+    <div class="border-b load-in relative">
+        <Image src={HomepageHero} alt={"Image of the new homepage featuring a large hero image of a Tanzanian woman attending a meeting"} />
+    </div>
+    <ProjectGrid6Cols>
+        Case study coming soon!
+    </ProjectGrid6Cols>
+    <!-- <ProjectGrid6Cols>
+        <div class="col-span-2">
+            <SmallHeading text="UX audit insights" />
+            <p>
+            I began by mapping key user journeys and pinpointing where potential donors dropped off. The audit uncovered buried donation links, a cluttered menu, and confusing content hierarchy—vital intelligence for guiding our redesign.
+            </p>
+        </div>
+        <div class="col-span-4 grid grid-cols-3 gap-4">
+            <div class="flex flex-col items-center">
+            <Image
+                src={UXAudit1}
+                alt="Audit highlighting homepage layout issues"
+                class="rounded-md shadow"
+            />
+            <Caption text="Homepage layout review" />
+            </div>
+            <div class="flex flex-col items-center">
+            <Image
+                src={UXAudit2}
+                alt="Audit showing navigation complexity"
+                class="rounded-md shadow"
+            />
+            <Caption text="Navigation complexity analysis" />
+            </div>
+            <div class="flex flex-col items-center">
+            <Image
+                src={UXAudit3}
+                alt="Audit illustrating donation flow friction"
+                class="rounded-md shadow"
+            />
+            <Caption text="Donation flow bottlenecks" />
+            </div>
+        </div>
+
+        <div class="col-span-2">
+            <SmallHeading text="Navigation redesign" />
+            <p>
+            To make donating effortless, I surfaced a persistent Donate link in the primary menu and pruned extraneous items. This change guaranteed that every visitor has a clear path to contribute.
+            </p>
+        </div>
+        <div class="col-span-4 grid grid-cols-2 gap-4">
+            <div class="flex flex-col items-center">
+            <Image
+                src={NavigationAnalysis}
+                alt="Original Friends of Tanzania navigation menu"
+                class="rounded-md shadow"
+            />
+            <Caption text="Original menu" />
+            </div>
+            <div class="flex flex-col items-center">
+            <Image
+                src={NavigationNew}
+                alt="Updated navigation with prominent donate CTA"
+                class="rounded-md shadow"
+            />
+            <Caption text="Revised menu with Donate CTA" />
+            </div>
+        </div>
+
+        <div class="col-span-2">
+            <SmallHeading text="Content structure" />
+            <p>
+            The homepage was a single scrolling page with dense text blocks. I broke it into clear, bite-sized sections—each with a distinct heading and visual rhythm—to help users scan and engage quickly.
+            </p>
+        </div>
+        <div class="col-span-4 grid grid-cols-2 gap-4">
+            <div class="flex flex-col items-center">
+            <Image
+                src={HomepageClearSections}
+                alt="Redesigned homepage with clear content blocks"
+                class="rounded-md shadow"
+            />
+            <Caption text="Structured blocks" />
+            </div>
+            <div class="flex flex-col items-center">
+            <Image
+                src={HomepageAnotherSection}
+                alt="New homepage section highlighting programs"
+                class="rounded-md shadow"
+            />
+            <Caption text="Program highlight section" />
+            </div>
+        </div>
+
+        <div class="col-span-2">
+            <SmallHeading text="Template constraints" />
+            <p>
+            We were bound by a rigid WordPress theme. Through targeted CSS overrides and component re-use, I introduced new section styles and typography without breaking the underlying template.
+            </p>
+        </div>
+        <div class="col-span-4">
+            <Image
+            src={IntroductionPage}
+            alt="Customized introduction page within the WordPress theme"
+            class="rounded-md shadow"
+            />
+            <Caption text="Template override demonstration" />
+        </div>
+
+        <div class="col-span-2">
+            <SmallHeading text="Mobile optimization" />
+            <p>
+            I refined breakpoints, enlarged touch targets, and simplified the donation flow on small screens. The result is a seamless mobile experience that keeps potential donors engaged.
+            </p>
+        </div>
+        <div class="col-span-4">
+            <Image
+            src={HomepageResponsive}
+            alt="Responsive Friends of Tanzania homepage on mobile"
+            class="rounded-md shadow"
+            />
+            <Caption text="Responsive mobile view" />
+        </div>
+
+        <div class="col-span-2">
+            <SmallHeading text="Before and after" />
+            <p>
+            Side-by-side scroll comparisons highlight how the new design brings clarity and urgency to the donate call to action, versus the original’s meandering layout.
+            </p>
+        </div>
+        <div class="col-span-4 grid grid-cols-2 gap-4">
+            <div class="flex flex-col items-center">
+                <video playsinline autoplay muted loop>
+                    <source src={OldHomepageScroll} type="video/webm" />
+                    <source src={OldHomepageScrollMp4} type="video/mp4" />
+                </video>
+                <Caption text="Before redesign" />
+            </div>
+            <div class="flex flex-col items-center">
+                <video playsinline autoplay muted loop>
+                    <source src={NewHomepageScroll} type="video/webm" />
+                    <source src={NewHomepageScrollMp4} type="video/mp4" />
+                </video>
+                <Caption text="After redesign" />
+            </div>
+        </div>
+
+        <div class="col-span-2">
+            <SmallHeading text="Donation interface" />
+            <p>
+            By simplifying the Blackbaud donation widget—cutting fields, clarifying labels, and adding inline feedback—we boosted form completion and reduced abandonment.
+            </p>
+        </div>
+        <div class="col-span-4">
+            <Image
+            src={EasyDonation}
+            alt="Optimized Friends of Tanzania donation interface"
+            class="rounded-md shadow"
+            />
+            <Caption text="Streamlined donation form" />
+        </div>
+
+        <div class="col-span-2">
+            <SmallHeading text="Final reflection" />
+            <p>
+            This project proved that even constrained environments can benefit from strategic UX. Small, targeted changes drove clarity, accessibility, and a smoother path to supporting Friends of Tanzania’s vital work.
+            </p>
+        </div>
+        </ProjectGrid6Cols> -->
+    </main>
+</Layout>
