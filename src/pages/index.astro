@@ -14,28 +14,3 @@ import Header from "../components/Header.astro";
     </div>
   </main>
 </Layout>
-
-<!-- <script>
-  function initCardObserver() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target); // Optional: animate only once
-        }
-      });
-    });
-
-    document.querySelectorAll(".card").forEach((card) => {
-      observer.observe(card);
-    });
-  }
-
-  // Run on initial load
-  initCardObserver();
-
-  // Optional: re-run on navigation (if using client-side routing)
-  window.addEventListener("astro:after-swap", () => {
-    initCardObserver();
-  });
-</script> -->
