@@ -1,5 +1,8 @@
 import p5 from 'https://cdn.skypack.dev/p5@1.9.0';
 
+
+console.log("loaded");
+
 let sketchInstance;
 let mode = 0; // 0 = new sketch, 1–n = old sketches
 let isMouseInsideHeader = false;
@@ -18,6 +21,7 @@ function updateCanvasBlur() {
 window.addEventListener('scroll', updateCanvasBlur);
 
 export function startSketch() {
+  console.log("start");
   sketchInstance = new p5((p) => {
     let header;
     let particles = [];
@@ -34,7 +38,7 @@ export function startSketch() {
       constructor(x, y, hue) {
         this.pos = p.createVector(x, y);
         this.vel = p.createVector(p.random(-0.5, 0.5), p.random(1, 2));
-        this.size = p.pow(p.random(), 2) * (randomSize - randomSize/2) + randomSize/2;
+        this.size = p.pow(p.random(), 2) * (randomSize - randomSize / 2) + randomSize / 2;
         this.hue = hue;
         this.alpha = 30;
         this.settled = false;
@@ -177,25 +181,25 @@ export function startSketch() {
     p.draw = () => {
       p.background(255, 255, 255, 100);
 
-    if (mode === 0) {
-      // Only create new particles if mouse is inside header
-      if (isMouseInsideHeader && (p.mouseX !== prevMouseX || p.mouseY !== prevMouseY)) {
-        let hue = 200 + p.sin((p.frameCount * 0.01) * 30);
-        particles.push(new NewParticle(p.mouseX, p.mouseY, hue));
-      }
+      if (mode === 0) {
+        // Only create new particles if mouse is inside header
+        if (isMouseInsideHeader && (p.mouseX !== prevMouseX || p.mouseY !== prevMouseY)) {
+          let hue = 200 + p.sin((p.frameCount * 0.01) * 30);
+          particles.push(new NewParticle(p.mouseX, p.mouseY, hue));
+        }
 
-      if (particles.length > 400) {
-        particles.splice(0, particles.length - 400);
-      }
+        if (particles.length > 400) {
+          particles.splice(0, particles.length - 400);
+        }
 
-      for (let particle of particles) {
-        particle.update(particles);
-        particle.display();
-      }
+        for (let particle of particles) {
+          particle.update(particles);
+          particle.display();
+        }
 
-      prevMouseX = p.mouseX;
-      prevMouseY = p.mouseY;
-    }
+        prevMouseX = p.mouseX;
+        prevMouseY = p.mouseY;
+      }
 
       if (mode === 0) {
         if (p.mouseX !== prevMouseX || p.mouseY !== prevMouseY) {

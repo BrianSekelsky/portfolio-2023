@@ -1,8 +1,8 @@
 ---
-import CardLabel from './Card-label.astro';
+import CardLabel from "./Card-label.astro";
 
 interface Props {
-  size: 'small' | 'medium';
+  size: "small" | "medium";
   href: string;
   title: string;
   types: { text: string; special: boolean }[];
@@ -13,41 +13,44 @@ interface Props {
 }
 
 const {
-  size = 'small',
+  size = "small",
   href,
   title,
   types,
   year,
-  description = '',
+  description = "",
   myColor,
   noShadow = false,
 } = Astro.props;
 
 const layoutClass = {
-  xsmall: 'col-span-6 md:col-span-1',
-  small: 'col-span-6 md:col-span-2',
-  mediumSmall: 'col-span-6 md:col-span-3',
-  medium: 'col-span-6 md:col-span-4',
-  featured: 'col-span-6', // full width
-  tall: 'col-span-6 md:col-span-2', // same width as small
-}[size ?? 'small'];
-
+  xsmall: "col-span-6 md:col-span-1",
+  small: "col-span-6 md:col-span-2",
+  mediumSmall: "col-span-6 md:col-span-3",
+  medium: "col-span-6 md:col-span-4",
+  featured: "col-span-6", // full width
+  tall: "col-span-6 md:col-span-2", // same width as small
+}[size ?? "small"];
 
 const heightClass = {
-  xsmall: 'row-span-1',
-  small: 'row-span-1',
-  mediumSmall: 'row-span-2',
-  medium: 'row-span-2',
-  featured: 'row-span-3',
-  tall: 'row-span-3', // spans more visual height
-}[size ?? 'small'];
+  xsmall: "row-span-1",
+  small: "row-span-1",
+  mediumSmall: "row-span-2",
+  medium: "row-span-2",
+  featured: "row-span-3",
+  tall: "row-span-3", // spans more visual height
+}[size ?? "small"];
 
-const linkClass = `block overflow-hidden w-full rounded-md ${noShadow ? '' : 'shadow group-hover:no-shadow'}`
-
+const linkClass = `block overflow-hidden w-full rounded-md ${noShadow ? "" : "shadow group-hover:no-shadow"}`;
 ---
 
-<a class=`group flex flex-col space-y-2 col-span-6 md:col-span-3 2xl:col-span-2 cursor-pointer` href={href}>
-  <div class="grid grid-cols-6 gap-4 p-4 bg-white rounded-lg border border-zinc-100 group-hover:border-zinc-200 transition card">
+<a
+  class=`group flex flex-col space-y-2 col-span-6 md:col-span-3 2xl:col-span-2 cursor-pointer`
+  href={href}
+>
+  <div
+    class="grid grid-cols-6 gap-4 p-4 bg-white rounded-lg border border-zinc-100 group-hover:border-zinc-200 transition card h-full"
+  >
     <div class="col-span-6">
       <div class="block overflow-hidden w-full rounded-md">
         <div class="bg-white">
@@ -56,14 +59,22 @@ const linkClass = `block overflow-hidden w-full rounded-md ${noShadow ? '' : 'sh
       </div>
     </div>
     <div class="col-span-6">
-      <CardLabel value={title} types={types} year={year} isLarge={false} description={description} />
+      <CardLabel
+        value={title}
+        types={types}
+        year={year}
+        isLarge={false}
+        description={description}
+      />
     </div>
   </div>
 </a>
 
 <style>
   .card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
     will-change: transform, box-shadow;
   }
 
