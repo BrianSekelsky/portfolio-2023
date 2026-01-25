@@ -22,12 +22,12 @@ const {
 } = Astro.props;
 ---
 
-<div class="border-b project-header load-in">
+<div class="border-b dark:border-dark-border project-header load-in">
   <div>
-    <div class="p-4 sm:p-8 border-b color">
+    <div class="p-4 sm:p-8 border-b dark:border-dark-border color">
       <a
         href="/"
-        class="font-mono border rounded-full px-4 py-1 hover:bg-verylightgray"
+        class="font-mono border dark:border-dark-border rounded-full px-4 py-1 hover:bg-verylightgray dark:hover:bg-dark-surface-hover"
         >← Back to projects</a
       >
       <div class="pt-4">
@@ -39,7 +39,7 @@ const {
       </div>
     </div>
     <div
-      class="flex flex-col gap-12 sm:gap-0 py-12 sm:py-0 lg:grid grid-cols-2 lg:divide-x"
+      class="flex flex-col gap-12 sm:gap-0 py-12 sm:py-0 lg:grid grid-cols-2 lg:divide-x dark:divide-dark-border"
     >
       <div class="col-span-1 p-4 py-0 sm:p-8">
         <SmallHeading text="Overview" />
@@ -82,6 +82,10 @@ const {
   <style define:vars={{ myColor }}>
     .color {
       background-color: white;
+    }
+
+    :global(.dark) .color {
+      background-color: #1a1d21;
     }
 
     .gap-1 {

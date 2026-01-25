@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
+	darkMode: 'class',
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
@@ -31,7 +32,13 @@ module.exports = {
 				'gray': '#8A817C',
 				'lightgray': "#ededed",
 				'verylightgray': "#ededed",
-				'ecru': "#A69658"
+				'ecru': "#A69658",
+				'dark-bg': '#0f1214',
+				'dark-surface': '#1a1d21',
+				'dark-surface-hover': '#232629',
+				'dark-border': '#2d3135',
+				'dark-text': '#e8e8e8',
+				'dark-text-muted': '#a8a8a8'
 			},
 			borderColor: {
 				DEFAULT: 'oklch(70.5% 0.015 286.067)',

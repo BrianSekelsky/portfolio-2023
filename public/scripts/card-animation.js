@@ -1,4 +1,9 @@
 function initCardEffects() {
+  // Get shadow color from CSS custom property
+  const getShadowColor = () => {
+    return getComputedStyle(document.documentElement)
+      .getPropertyValue('--card-shadow-color').trim();
+  };
 
   const cards = document.querySelectorAll('.card');
 
@@ -22,14 +27,17 @@ function initCardEffects() {
         const shadowX = (x - centerX) / 30;
         const shadowY = (y - centerY) / 30;
 
+        const shadowColor = getShadowColor();
+
         card.style.transform = `rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
-        card.style.boxShadow = `${-shadowX}px ${-shadowY}px 10px 5px oklch(87.1% 0.006 286.286)`;
+        card.style.boxShadow = `${-shadowX}px ${-shadowY}px 10px 5px ${shadowColor}`;
       });
     });
 
     card.addEventListener('mouseleave', () => {
+      const shadowColor = getShadowColor();
       card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-      card.style.boxShadow = '0px 0px 0px 0px oklch(87.1% 0.006 286.286)';
+      card.style.boxShadow = `0px 0px 0px 0px ${shadowColor}`;
     });
   });
 }

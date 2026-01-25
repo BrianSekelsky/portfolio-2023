@@ -1,9 +1,12 @@
 <div id="header" class="transition-all duration-500 cursor-default">
   <div
-    class="hidden sm:block p-8 sm:pt-8 max-w-full border-b bg cursor-pointer"
+    class="sm:mt-0 p-8 sm:pt-8 min-h-[400px] sm:min-h-[600px] max-w-full border-b dark:border-dark-border bg cursor-pointer"
     id="header"
   >
-    <div
+    <p class="sr-only">
+      Brian Sekelsky is a designer, working across user experience, visual design, and code.
+    </p>
+    <!-- <div
       id="manipulate"
       class="text-4xl w-min font-serif font-light overflow-hidden pb-48 leading-[1.325]"
     >
@@ -18,19 +21,32 @@ Brian Sekelsky is a designer & developer with 5+ years of experience across user
           >
         </h1>
       </div>
-    </div>
+    </div> -->
   </div>
-  <div class="block sm:hidden p-4 max-w-full border-b">
+  <!-- <div class="block sm:hidden p-4 max-w-full border-b">
     <p id="manipulate" class="text-4xl font-serif font-light py-4 text-left">
 Brian Sekelsky is a designer & developer with 5+ years of experience across user experience, visual design, & frontend development.
     </p>
-  </div>
+  </div> -->
 </div>
 
 <script type="module" src="/scripts/header-sketch.js"></script>
 
 <style>
-  .less-width {
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* .less-width {
     width: 100%;
   }
 
@@ -40,7 +56,7 @@ Brian Sekelsky is a designer & developer with 5+ years of experience across user
     }
   }
   .bg {
-  }
+  } */
 
   /* #main-text,
   #helper {
@@ -51,7 +67,7 @@ Brian Sekelsky is a designer & developer with 5+ years of experience across user
       2px 2px 0 #ffffff;
   } */
 
-  @keyframes glow {
+  /* @keyframes glow {
     0%,
     100% {
       box-shadow: 0 0 5px 2px oklch(93.2% 0.032 255.585);
@@ -65,5 +81,5 @@ Brian Sekelsky is a designer & developer with 5+ years of experience across user
     animation: glow 3s ease-in-out infinite;
     width: fit-content;
     transform: translateY(-3px);
-  }
+  } */
 </style>

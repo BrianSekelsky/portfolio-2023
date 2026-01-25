@@ -21,15 +21,25 @@ const { title } = Astro.props;
 
     <title>{title}</title>
 
+    <!-- <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const systemPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = stored === 'dark' || (stored === null && systemPref);
+        if (isDark) document.documentElement.classList.add('dark');
+      })();
+    </script> -->
+
     <link rel="stylesheet" href="https://use.typekit.net/abc2kbg.css">
     <script defer src="/scripts/card-animation.js"></script>
   </head>
-  <body class="overflow-x-hidden flex flex-col">
+  <body class="overflow-x-hidden flex flex-col dark:bg-dark-bg dark:text-dark-text">
     <ClientRouter />
     <div id="transition-overlay"></div>
-    <div class="border-t">
+
+    <div class="border-t dark:border-dark-border">
       <div
-        class="sm:fixed sm:h-screen sm:br-1 w-16 hidden sm:block sm:border-r sm:bg-white"
+        class="sm:fixed sm:h-screen sm:br-1 w-16 hidden sm:block sm:border-r sm:bg-white dark:sm:bg-dark-surface dark:border-dark-border"
       >
         <Nav />
       </div>
@@ -46,6 +56,15 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
+  :root {
+    --card-shadow-color: oklch(87.1% 0.006 286.286);
+    --transition-overlay-bg: rgba(244, 244, 244, 0.6);
+  }
+
+  .dark {
+    --card-shadow-color: oklch(20% 0.003 286.286);
+    --transition-overlay-bg: rgba(15, 18, 20, 0.8);
+  }
 
   body {
     height: 100%;
@@ -59,7 +78,7 @@ const { title } = Astro.props;
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    background: rgba(244, 244, 244, 0.6); /* semi-transparent */
+    background: var(--transition-overlay-bg);
     pointer-events: none;
     z-index: 999;
     opacity: 0;
@@ -67,13 +86,14 @@ const { title } = Astro.props;
     transition: backdrop-filter 0.3s ease;
   }
 
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     canvas {
       display: none;
     }
-  }
+  } */
 
 
 </style>
 
 <script type="module" src="/scripts/page-transition.js"></script>
+<!-- <script type="module" src="/scripts/theme-toggle.js"></script> -->

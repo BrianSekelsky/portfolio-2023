@@ -1,11 +1,30 @@
 import p5 from 'https://cdn.skypack.dev/p5@1.9.0';
 
-
-console.log("loaded");
+console.log("bubble text loaded");
 
 let sketchInstance;
-let mode = 0; // 0 = new sketch, 1–n = old sketches
 let isMouseInsideHeader = false;
+
+// Theme colors
+let currentTheme = {
+  background: 255,
+  bubbleMin: 0,
+  bubbleMax: 100
+};
+
+function getThemeColors() {
+  const isDark = document.documentElement.classList.contains('dark');
+  return {
+    background: isDark ? 15 : 255,
+    bubbleMin: isDark ? 155 : 0,
+    bubbleMax: isDark ? 255 : 100
+  };
+}
+
+// Listen for theme changes
+window.addEventListener('theme-change', () => {
+  currentTheme = getThemeColors();
+});
 
 function updateCanvasBlur() {
   const canvas = document.querySelector('canvas');
@@ -21,138 +40,287 @@ function updateCanvasBlur() {
 window.addEventListener('scroll', updateCanvasBlur);
 
 export function startSketch() {
-  console.log("start");
+  
   sketchInstance = new p5((p) => {
     let header;
-    let particles = [];
-    let prevMouseX = 0;
-    let prevMouseY = 0;
-    let shape = 0;
-    let shapeSize;
-    let gravity = 0.2;
-    let firstTime = true;
-    let randomSize = p.random(10, 100);
+    let bubbles = [];
+    let font;
+    
+    // Configuration
+    const displayText = "Brian Sekelsky is a designer, working across user experience, visual design, and code.";
+    
+    // Responsive settings - will be calculated in setup/resize
+    let fontSize;
+    let bubbleSize;
+    let gridSpacing;
+    let hoverRadius;
+    let leftMargin;
+    let canvasXPosition;
+    
+    // Fixed settings
+    const returnDelay = 3000;
+    const easeSpeed = 0.055;
+    const gravity = 0.25;
+    
+    // Breakpoint for mobile (matches Tailwind's sm: breakpoint)
+    const mobileBreakpoint = 640;
 
-    class NewParticle {
-
-      constructor(x, y, hue) {
-        this.pos = p.createVector(x, y);
-        this.vel = p.createVector(p.random(-0.5, 0.5), p.random(1, 2));
-        this.size = p.pow(p.random(), 2) * (randomSize - randomSize / 2) + randomSize / 2;
-        this.hue = hue;
-        this.alpha = 30;
-        this.settled = false;
-        this.shapeType = p.random(['ellipse', 'triangle', 'square']);
+    function calculateResponsiveValues() {
+      const width = p.width;
+      
+      if (width < 640) {
+        // Mobile phones
+        fontSize = 52;
+        bubbleSize = 1.25;
+        gridSpacing = 2.25;
+        hoverRadius = 30;
+        leftMargin = 16;
+      } else if (width < 768) {
+        // Tablets / large phones
+        fontSize = 52;
+        bubbleSize = 1.75;
+        gridSpacing = 2.75;
+        hoverRadius = 35;
+        leftMargin = 32;
+      } else if (width < 1024) {
+        // Small laptops / tablets landscape
+        fontSize = 72;
+        bubbleSize = 2;
+        gridSpacing = 3;
+        hoverRadius = 40;
+        leftMargin = 32;
+      } else {
+        // Desktop
+        fontSize = 100;
+        bubbleSize = 2;
+        gridSpacing = 3;
+        hoverRadius = 40;
+        leftMargin = 32;
       }
-
-      update(particles) {
-        if (!this.settled) {
-          this.vel.y += 0.1;
-          this.vel.x += p.random(-0.05, 0.05);
-          this.pos.add(this.vel);
-
-          if (this.pos.y + this.size / 2 >= p.height) {
-            this.pos.y = p.height - this.size / 2;
-            this.vel.set(0, 0);
-            this.settled = true;
-          } else {
-            for (let other of particles) {
-              if (other !== this && other.settled) {
-                let d = p5.Vector.dist(this.pos, other.pos);
-                let verticalGap = other.pos.y - this.pos.y;
-                if (d < this.size && verticalGap > 0 && verticalGap < this.size) {
-                  this.vel.set(0, 0);
-                  this.settled = true;
-                  break;
-                }
-              }
-            }
-          }
-        }
-
-        if (this.settled) {
-          this.pos.add(p.createVector(p.random(-0.1, 0.1), 0));
-        }
-
-        let mouse = p.createVector(p.mouseX, p.mouseY);
-        let dist = p5.Vector.dist(this.pos, mouse);
-        if (dist < 60) {
-          let repel = p5.Vector.sub(this.pos, mouse);
-          repel.setMag(1.5 * (1 - dist / 60));
-          this.pos.add(repel);
-          if (this.settled && repel.mag() > 0.5) {
-            this.settled = false;
-            this.vel = repel.copy().mult(0.2);
-          }
-        }
-
-        for (let other of particles) {
-          if (other !== this) {
-            let d = p5.Vector.dist(this.pos, other.pos);
-            let minDist = (this.size + other.size) / 2;
-            if (d < minDist) {
-              let push = p5.Vector.sub(this.pos, other.pos);
-              push.setMag((minDist - d) * 0.2);
-              this.pos.add(push);
-            }
-          }
-        }
+    }
+    
+    function getCanvasPosition() {
+      // Check if we're on mobile (nav at top) or desktop (nav on left)
+      if (window.innerWidth < mobileBreakpoint) {
+        // Mobile: nav is at top, canvas starts at left edge
+        return { x: 0, y: 88 };
+      } else {
+        // Desktop: nav is 64px wide on left
+        return { x: 64, y: 0 };
       }
-
-      display() {
-        p.stroke('#9f9fa9');
-        // p.fill(this.hue, 80, 40, this.alpha);
-        p.ellipse(this.pos.x, this.pos.y, this.size);
+    }
+    
+    function getCanvasDimensions() {
+      if (!header) return { width: window.innerWidth, height: window.innerHeight };
+      
+      if (window.innerWidth < mobileBreakpoint) {
+        // Mobile: full width, header height
+        return { 
+          width: window.innerWidth, 
+          height: header.offsetHeight 
+        };
+      } else {
+        // Desktop: width minus nav, header height
+        return { 
+          width: window.innerWidth - 64, 
+          height: header.offsetHeight 
+        };
       }
     }
 
-    class OldParticle {
+    class Bubble {
       constructor(x, y) {
+        this.homeX = x;
+        this.homeY = y;
         this.x = x;
         this.y = y;
-        this.yspeed = gravity;
+        this.vx = 0;
+        this.vy = 0;
+        this.size = bubbleSize + p.random(-0.5, 0.5);
+        this.falling = false;
+        this.fallTime = 0;
+        this.returning = false;
+
+        this.randomGray = p.random(0, 100);
+        
+        // Random value for jitter (unique per bubble)
+        this.jitterSeed = p.random(3);
+        
+        // Physics
+        this.bounceFactor = -0.6;
+        this.friction = 0.98;
+        
+        // Wobble
+        this.wobbleOffset = p.random(p.TWO_PI);
+        this.wobbleSpeed = p.random(0.02, 0.04);
+      }
+
+      checkHover(mx, my) {
+        let d = p.dist(mx, my, this.x, this.y);
+        if (d < hoverRadius && !this.returning) {
+          this.falling = true;
+          this.fallTime = p.millis();
+          // Push away from mouse
+          let angle = p.atan2(this.y - my, this.x - mx);
+          this.vx += p.cos(angle) * 2;
+          this.vy += p.sin(angle) * 0.5;
+        }
       }
 
       update() {
-        if (shape === 0 || shape === 1) {
-          this.y += this.yspeed;
-          this.yspeed += gravity * (shape === 1 ? 4 : 1);
-          if (this.y + shapeSize / 2 > p.height) {
-            this.y = p.height - shapeSize / 2;
-            this.yspeed *= shape === 1 ? -0.2 : -0.7;
-            if (Math.abs(this.yspeed) < 1) this.yspeed = 0;
+        if (this.falling) {
+          // Gravity
+          this.vy += gravity;
+          
+          // Friction
+          this.vx *= this.friction;
+          this.vy *= this.friction;
+          
+          // Move
+          this.x += this.vx;
+          this.y += this.vy;
+          
+          // Bounce off bottom
+          if (this.y > p.height - this.size) {
+            this.y = p.height - this.size;
+            this.vy *= this.bounceFactor;
+            this.vx *= 0.8;
           }
-        } else if (shape === 2) {
-          this.y -= this.yspeed;
-          this.yspeed += gravity;
+          
+          // Bounce off sides
+          if (this.x < this.size || this.x > p.width - this.size) {
+            this.vx *= -0.8;
+            this.x = p.constrain(this.x, this.size, p.width - this.size);
+          }
+          
+          // Time to return?
+          if (p.millis() - this.fallTime > returnDelay) {
+            this.returning = true;
+            this.falling = false;
+          }
+        }
+
+        if (this.returning) {
+          // Ease back home
+          let dx = this.homeX - this.x;
+          let dy = this.homeY - this.y;
+          
+          this.vx += dx * easeSpeed;
+          this.vy += dy * easeSpeed;
+          
+          // Damping
+          this.vx *= 0.65;
+          this.vy *= 0.65;
+          
+          this.x += this.vx;
+          this.y += this.vy;
+          
+          // Close enough?
+          if (p.abs(dx) < 0.5 && p.abs(dy) < 0.5 && p.abs(this.vx) < 0.1 && p.abs(this.vy) < 0.1) {
+            this.x = this.homeX;
+            this.y = this.homeY;
+            this.vx = 0;
+            this.vy = 0;
+            this.returning = false;
+          }
+        }
+
+        // Wobble at rest
+        if (!this.falling && !this.returning) {
+          this.wobbleOffset += this.wobbleSpeed;
         }
       }
 
       display() {
-        p.stroke('#9f9fa9');
-        p.fill(255);
-        if (shape === 0) {
-          p.ellipse(this.x, this.y, shapeSize, shapeSize);
-        } else if (shape === 1) {
-          p.rect(this.x - shapeSize / 2, this.y - shapeSize / 2, shapeSize, shapeSize);
-        } else if (shape === 2) {
-          p.line(
-            this.x - shapeSize / 2,
-            this.y + (this.x - p.width / 2) * 0.25,
-            this.x + shapeSize / 2,
-            this.y - (this.x - p.width / 2) * 0.25
-          );
-        } else if (shape === 3) {
-          p.triangle(
-            p.width / 2,
-            p.height / 2,
-            this.x,
-            this.y,
-            this.x + shapeSize,
-            this.y + shapeSize
-          );
+        // Map stored randomGray (0-100) to current theme range
+        const gray = p.map(this.randomGray, 0, 100, currentTheme.bubbleMin, currentTheme.bubbleMax);
+        p.fill(gray);
+        p.noStroke();
+        p.rectMode(p.CENTER);
+
+        let displaySize = this.size;
+        if (!this.falling && !this.returning) {
+          displaySize += p.sin(this.wobbleOffset) * 0.1;
+        }
+
+        p.rect(this.x, this.y, displaySize, displaySize);
+      }
+    }
+
+    // Check if a point is inside the text using a pixel-based approach
+    function isPointInText(x, y, pg) {
+      let px = Math.floor(x);
+      let py = Math.floor(y);
+      if (px < 0 || px >= pg.width || py < 0 || py >= pg.height) return false;
+      
+      let idx = 4 * (py * pg.width + px);
+      // Check if pixel is dark (text was drawn in black)
+      return pg.pixels[idx] < 128;
+    }
+
+    function createBubblesFromText() {
+      bubbles = [];
+      
+      calculateResponsiveValues();
+      
+      const lineHeight = fontSize * 1;
+      const maxWidth = p.width - leftMargin * 2; // leave margin on both sides
+      
+      // Create an off-screen graphics buffer to render text
+      let pg = p.createGraphics(p.width, p.height);
+      pg.pixelDensity(1);
+      pg.background(255);
+      pg.fill(0);
+      pg.textFont('freight-text-pro');
+      pg.textStyle(p.ITALIC);
+      pg.textSize(fontSize);
+      
+      // Split text into paragraphs (by \n), then wrap each paragraph
+      const paragraphs = displayText.split('\n');
+      let allLines = [];
+      
+      for (let para of paragraphs) {
+        let words = para.split(' ');
+        let currentLine = '';
+        
+        for (let word of words) {
+          let testLine = currentLine ? currentLine + ' ' + word : word;
+          let testWidth = pg.textWidth(testLine);
+          
+          if (testWidth > maxWidth && currentLine) {
+            allLines.push(currentLine);
+            currentLine = word;
+          } else {
+            currentLine = testLine;
+          }
+        }
+        if (currentLine) {
+          allLines.push(currentLine);
         }
       }
+      
+      // Draw each line
+      for (let i = 0; i < allLines.length; i++) {
+        let xOffset = leftMargin;
+        let yOffset = fontSize + i * lineHeight;
+        pg.text(allLines[i], xOffset, yOffset);
+      }
+      
+      pg.loadPixels();
+      
+      // Grid-based fill: check each point on a grid
+      for (let x = 0; x < p.width; x += gridSpacing) {
+        for (let y = 0; y < p.height; y += gridSpacing) {
+          let px = x + p.random(-gridSpacing * 0.1, gridSpacing * 0.1);
+          let py = y + p.random(-gridSpacing * 0.1, gridSpacing * 0.1);
+          
+          if (isPointInText(px, py, pg)) {
+            bubbles.push(new Bubble(px, py));
+          }
+        }
+      }
+      
+      pg.remove();
     }
 
     p.setup = () => {
@@ -167,87 +335,52 @@ export function startSketch() {
         isMouseInsideHeader = false;
       });
 
-      const canvas = p.createCanvas(header.offsetWidth, header.offsetHeight);
+      const dimensions = getCanvasDimensions();
+      const position = getCanvasPosition();
+      
+      const canvas = p.createCanvas(dimensions.width, dimensions.height);
       canvas.style('opacity', 0);
       canvas.style('transition', 'opacity 0.6s ease');
       setTimeout(() => canvas.style('opacity', 1), 1);
-      canvas.position(63, 0);
+      canvas.position(position.x, position.y);
       canvas.style('z-index', '-1');
 
-      p.colorMode(p.HSL, 360, 100, 100, 100);
-      shapeSize = p.random(20, 100);
+      // Initialize theme colors
+      currentTheme = getThemeColors();
+
+      createBubblesFromText();
     };
 
     p.draw = () => {
-      p.background(255, 255, 255, 100);
+      p.background(currentTheme.background);
 
-      if (mode === 0) {
-        // Only create new particles if mouse is inside header
-        if (isMouseInsideHeader && (p.mouseX !== prevMouseX || p.mouseY !== prevMouseY)) {
-          let hue = 200 + p.sin((p.frameCount * 0.01) * 30);
-          particles.push(new NewParticle(p.mouseX, p.mouseY, hue));
+      for (let bubble of bubbles) {
+        if (isMouseInsideHeader) {
+          bubble.checkHover(p.mouseX, p.mouseY);
         }
-
-        if (particles.length > 400) {
-          particles.splice(0, particles.length - 400);
-        }
-
-        for (let particle of particles) {
-          particle.update(particles);
-          particle.display();
-        }
-
-        prevMouseX = p.mouseX;
-        prevMouseY = p.mouseY;
-      }
-
-      if (mode === 0) {
-        if (p.mouseX !== prevMouseX || p.mouseY !== prevMouseY) {
-          let hue = 200 + p.sin((p.frameCount * 0.01) * 30);
-          particles.push(new NewParticle(p.mouseX, p.mouseY, hue));
-        }
-
-        if (particles.length > 400) {
-          particles.splice(0, particles.length - 400);
-        }
-
-        for (let particle of particles) {
-          particle.update(particles);
-          particle.display();
-        }
-
-        prevMouseX = p.mouseX;
-        prevMouseY = p.mouseY;
-      } else {
-        p.background(255);
-        for (let particle of particles) {
-          particle.update();
-          particle.display();
-        }
+        bubble.update();
+        bubble.display();
       }
     };
 
-    p.mouseMoved = () => {
-      if (!isMouseInsideHeader) return;
-
-      if (mode > 0 && p.mouseX < p.width && p.mouseY < p.height && p.mouseX > 0) {
-        if (firstTime) {
-          const helper = document.getElementById('helper');
-          if (helper) helper.classList.remove('opacity-0');
-          firstTime = false;
+    p.windowResized = () => {
+      if (header) {
+        const dimensions = getCanvasDimensions();
+        const position = getCanvasPosition();
+        
+        p.resizeCanvas(dimensions.width, dimensions.height);
+        
+        // Update canvas position
+        const canvas = document.querySelector('canvas');
+        if (canvas) {
+          canvas.style.left = position.x + 'px';
+          canvas.style.top = position.y + 'px';
         }
-        particles.push(new OldParticle(p.mouseX, p.mouseY));
+        
+        createBubblesFromText();
       }
     };
 
-    p.mouseClicked = () => {
-      const helper = document.getElementById('helper');
-      if (helper) helper.classList.add('opacity-0');
-      particles = [];
-      shapeSize = p.random(5, 200);
-      shape = (shape + 1) % 4;
-      mode = (mode + 1) % 5; // cycle through 0–4 (new sketch + 4 old shapes)
-    };
   });
 }
 

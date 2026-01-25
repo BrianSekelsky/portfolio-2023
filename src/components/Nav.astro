@@ -9,11 +9,23 @@ const currentPath = pathname.slice(1); // remove the first "/"
   <div class="mx-auto">
     <div class="flex flex-wrap sm:justify-between p-4">
       <div class="w-full sm:w-1/2">
-        <a href="/#" class="lg:first:ml-0 hover:text-blue transition-all"
+        <a href="/#" class="lg:first:ml-0 hover:text-blue dark:hover:text-blue-400 transition-all dark:text-dark-text"
           >Brian Sekelsky</a
         >
       </div>
       <div class="flex flex-wrap gap-8 pt-2 sm:pt-0 w-full">
+        <!-- <button
+            id="theme-toggle"
+            class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full border border-zinc-200 dark:border-dark-border bg-white dark:bg-dark-surface hover:bg-zinc-50 dark:hover:bg-dark-surface-hover transition-all duration-300 flex items-center justify-center shadow-lg"
+            aria-label="Toggle dark mode"
+          >
+            <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+            </svg>
+            <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+            </svg>
+        </button> -->
         <NavLink href="/" name="Projects" />
         <NavLink href="/about/" name="About" />
         <!-- <NavLink href="/music/" name="Music" /> -->
@@ -25,20 +37,32 @@ const currentPath = pathname.slice(1); // remove the first "/"
 <div class="hidden sm:block">
   <div class="">
     <div
-      class="flex justify-start sm:justify-between py-9 font-mono rotate-180 writing-mode min-h-full min-w-full items-center font-light"
+      class="flex justify-start sm:justify-between py-9 font-mono rotate-180 writing-mode min-h-full min-w-full items-center font-light dark:text-dark-text"
     >
       <div class="w-full sm:w-1/2 text-left">
         <a
           href="/#"
-          class="lg:first:ml-0 hover:text-blue hover:italic transition-all"
+          class="lg:first:ml-0 hover:text-blue dark:hover:text-blue-400 hover:italic transition-all"
           >Brian Sekelsky</a
         >
       </div>
-      <div class="flex flex-wrap gap-8 pt-6 sm:pt-0">
+      <div class="flex flex-wrap items-center gap-8 pt-6 sm:pt-0">
         <!-- <NavLink href="/music/" name="Music" /> -->
         <NavLink href="/teaching/" name="Teaching" />
         <NavLink href="/about/" name="About" />
         <NavLink href="/" name="Projects" />
+        <!-- <button
+            id="theme-toggle"
+            class="w-10 h-10 border border rounded-sm dark:border-dark-border bg-white dark:bg-dark-surface hover:bg-blue-300 dark:hover:bg-dark-surface-hover transition-all duration-300 flex items-center justify-center"
+            aria-label="Toggle dark mode"
+          >
+            <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+            </svg>
+            <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+            </svg>
+        </button> -->
       </div>
     </div>
   </div>
