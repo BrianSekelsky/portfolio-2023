@@ -1,30 +1,9 @@
-import p5 from 'p5';
+import p5 from 'https://cdn.skypack.dev/p5@1.9.0';
 
 console.log("bubble text loaded");
 
 let sketchInstance;
 let isMouseInsideHeader = false;
-
-// Theme colors
-let currentTheme = {
-  background: 255,
-  bubbleMin: 0,
-  bubbleMax: 100
-};
-
-function getThemeColors() {
-  const isDark = document.documentElement.classList.contains('dark');
-  return {
-    background: isDark ? 15 : 255,
-    bubbleMin: isDark ? 155 : 0,
-    bubbleMax: isDark ? 255 : 100
-  };
-}
-
-// Listen for theme changes
-window.addEventListener('theme-change', () => {
-  currentTheme = getThemeColors();
-});
 
 function updateCanvasBlur() {
   const canvas = document.querySelector('canvas');
@@ -40,12 +19,14 @@ function updateCanvasBlur() {
 window.addEventListener('scroll', updateCanvasBlur);
 
 export function startSketch() {
-  
+
   sketchInstance = new p5((p) => {
     let header;
     let bubbles = [];
     let font;
-    
+    let isLoading = true;
+    let loadingRotation = 0;
+
     // Configuration
     const displayText = "Brian Sekelsky is a designer, working across user experience, visual design, and code.";
     
@@ -70,21 +51,21 @@ export function startSketch() {
       
       if (width < 640) {
         // Mobile phones
-        fontSize = 52;
-        bubbleSize = 1.5;
-        gridSpacing = 2;
+        fontSize = 64;
+        bubbleSize = 1;
+        gridSpacing = 2.25;
         hoverRadius = 30;
         leftMargin = 16;
       } else if (width < 768) {
         // Tablets / large phones
-        fontSize = 52;
-        bubbleSize = 1.5;
-        gridSpacing = 2.25;
+        fontSize = 80;
+        bubbleSize = 2;
+        gridSpacing = 3;
         hoverRadius = 35;
         leftMargin = 32;
       } else if (width < 1024) {
         // Small laptops / tablets landscape
-        fontSize = 72;
+        fontSize = 86;
         bubbleSize = 2;
         gridSpacing = 3;
         hoverRadius = 40;
@@ -129,7 +110,7 @@ export function startSketch() {
     }
 
     class Bubble {
-      constructor(x, y) {
+      constructor(x, y, isLoadingBubble = false) {
         this.homeX = x;
         this.homeY = y;
         this.x = x;
@@ -140,16 +121,17 @@ export function startSketch() {
         this.falling = false;
         this.fallTime = 0;
         this.returning = false;
+        this.isLoading = isLoadingBubble;
 
         this.randomGray = p.random(0, 50);
-        
+
         // Random value for jitter (unique per bubble)
         this.jitterSeed = p.random(3);
-        
+
         // Physics
         this.bounceFactor = -0.6;
         this.friction = 0.98;
-        
+
         // Wobble
         this.wobbleOffset = p.random(p.TWO_PI);
         this.wobbleSpeed = p.random(0.02, 0.04);
@@ -232,8 +214,7 @@ export function startSketch() {
       }
 
       display() {
-        // Map stored randomGray (0-100) to current theme range
-        const gray = p.map(this.randomGray, 0, 100, currentTheme.bubbleMin, currentTheme.bubbleMax);
+        const gray = p.map(this.randomGray, 0, 100, 0, 100);
         p.fill(gray);
         p.noStroke();
         p.rectMode(p.CENTER);
@@ -307,20 +288,38 @@ export function startSketch() {
       }
       
       pg.loadPixels();
-      
+
       // Grid-based fill: check each point on a grid
       for (let x = 0; x < p.width; x += gridSpacing) {
         for (let y = 0; y < p.height; y += gridSpacing) {
           let px = x + p.random(-gridSpacing * 0.1, gridSpacing * 0.1);
           let py = y + p.random(-gridSpacing * 0.1, gridSpacing * 0.1);
-          
+
           if (isPointInText(px, py, pg)) {
-            bubbles.push(new Bubble(px, py));
+            bubbles.push(new Bubble(px, py, false));
           }
         }
       }
-      
+
       pg.remove();
+
+      // Loading state is complete, transition to interactive bubbles
+      isLoading = false;
+    }
+
+    function createLoadingBubbles() {
+      bubbles = [];
+      const centerX = p.width / 2;
+      const centerY = p.height / 2;
+      const radius = 60;
+      const numBubbles = 8;
+
+      for (let i = 0; i < numBubbles; i++) {
+        const angle = (p.TWO_PI / numBubbles) * i;
+        const x = centerX + p.cos(angle) * radius;
+        const y = centerY + p.sin(angle) * radius;
+        bubbles.push(new Bubble(x, y, true));
+      }
     }
 
     p.setup = () => {
@@ -337,7 +336,7 @@ export function startSketch() {
 
       const dimensions = getCanvasDimensions();
       const position = getCanvasPosition();
-      
+
       const canvas = p.createCanvas(dimensions.width, dimensions.height);
       canvas.style('opacity', 0);
       canvas.style('transition', 'opacity 0.6s ease');
@@ -345,21 +344,57 @@ export function startSketch() {
       canvas.position(position.x, position.y);
       canvas.style('z-index', '-1');
 
-      // Initialize theme colors
-      currentTheme = getThemeColors();
+      // Start with loading bubbles
+      createLoadingBubbles();
 
-      createBubblesFromText();
+      // Wait for font to load, then create text bubbles
+      if (window.Typekit && window.Typekit.load) {
+        Typekit.load({
+          active: () => {
+            createBubblesFromText();
+          },
+          inactive: () => {
+            // Fallback if fonts fail to load
+            createBubblesFromText();
+          }
+        });
+      } else if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          createBubblesFromText();
+        });
+      } else {
+        // Last resort fallback
+        setTimeout(() => {
+          createBubblesFromText();
+        }, 1500);
+      }
     };
 
     p.draw = () => {
-      p.background(currentTheme.background);
+      p.background(255);
 
-      for (let bubble of bubbles) {
-        if (isMouseInsideHeader) {
-          bubble.checkHover(p.mouseX, p.mouseY);
+      if (isLoading) {
+        // Animate loading bubbles in a circle
+        loadingRotation += 0.02;
+        const centerX = p.width / 2;
+        const centerY = p.height / 2;
+        const radius = 60;
+
+        for (let i = 0; i < bubbles.length; i++) {
+          const angle = (p.TWO_PI / bubbles.length) * i + loadingRotation;
+          bubbles[i].x = centerX + p.cos(angle) * radius;
+          bubbles[i].y = centerY + p.sin(angle) * radius;
+          bubbles[i].display();
         }
-        bubble.update();
-        bubble.display();
+      } else {
+        // Normal interactive bubbles
+        for (let bubble of bubbles) {
+          if (isMouseInsideHeader) {
+            bubble.checkHover(p.mouseX, p.mouseY);
+          }
+          bubble.update();
+          bubble.display();
+        }
       }
     };
 

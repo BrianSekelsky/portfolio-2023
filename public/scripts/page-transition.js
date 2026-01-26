@@ -1,6 +1,5 @@
-import gsap from 'gsap';
-
-import { startSketch, stopSketch } from './header-sketch.js';
+import gsap from 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js';
+import { stopSketch, startSketch } from './header-sketch.js';
 
 window.addEventListener('astro:beforeNavigate', () => {
   stopSketch();
