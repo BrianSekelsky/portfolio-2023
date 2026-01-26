@@ -37,13 +37,12 @@ import FrameCaption from "../../components/FrameCaption.astro"
       year="2022"
       myColor="mintcream"
     />
-    <div class="load-in">
-      <div class="mx-auto border-b">
-        <video playsinline autoplay muted loop>
-          <source src={videoHero} type="video/mp4" />
-        </video>
-      </div>
-      <ProjectGrid>
+    <div class="border-b load-in">
+      <video playsinline autoplay muted loop>
+        <source src={videoHero} type="video/mp4" />
+      </video>
+    </div>
+    <ProjectGrid>
         <div class="col-span-1">
           <SmallHeading text="Process" />
           <p>
@@ -55,11 +54,11 @@ import FrameCaption from "../../components/FrameCaption.astro"
         </div>
         <div class="col-span-1">
           <Image
-          class="pb-3 w-3/4 mx-auto"
-          src={italianAlps}
-          alt="Screenshot of figma file with images of the alps and data graphics"
+            class="rounded-md shadow w-3/4 mx-auto"
+            src={italianAlps}
+            alt="Research collection in Figma showing Alps imagery and data graphics"
           />
-          <Caption text="Collecting research in figma" />
+          <Caption text="Collecting research in Figma" />
         </div>
         <!--////////////////////////////-->
         <div class="col-span-1">
@@ -68,39 +67,42 @@ import FrameCaption from "../../components/FrameCaption.astro"
           </p>
         </div>
         <div class="col-span-1">
-          <div class="col-span-1 relative">
+          <div class="relative">
             <Image
-              class=""
+              class="rounded-md shadow"
               src={world}
-              alt="Data visualization of the world's glaciers shrinking over time"
+              alt="Data visualization showing global glacier shrinkage over time"
             />
-            <FrameCaption text="First processing sketch" />
+            <FrameCaption text="First Processing sketch" />
           </div>
         </div>
         <!--////////////////////////////-->
-        <!--////////////////////////////-->
         <div class="col-span-1">
           <Image
+            class="rounded-md"
             src={gulkana}
-            alt="gif of gulkana galcier represented as a wireframe cube that is shrinking"
+            alt="Gulkana glacier visualization as shrinking wireframe cube"
           />
         </div>
         <div class="col-span-1">
           <Image
+            class="rounded-md"
             src={wolverine}
-            alt="gif of wolverine galcier represented as a wireframe cube that is shrinking"
+            alt="Wolverine glacier visualization as shrinking wireframe cube"
           />
         </div>
         <div class="col-span-1">
           <Image
+            class="rounded-md"
             src={lemonCreek}
-            alt="gif of lemon creek galcier represented as a wireframe cube that is shrinking"
+            alt="Lemon Creek glacier visualization as shrinking wireframe cube"
           />
         </div>
         <div class="col-span-1">
           <Image
+            class="rounded-md"
             src={southCascade}
-            alt="gif of south cascade galcier represented as a wireframe cube that is shrinking"
+            alt="South Cascade glacier visualization as shrinking wireframe cube"
           />
         </div>
         <div class="col-span-1">
@@ -122,18 +124,17 @@ The website serves as an immersive and educational story, allowing visitors to e
           </p>
         </div>
         <div class="col-span-1">
-          <Image src={webpage1} class="" alt="webpage screenshot" />
+          <Image class="rounded-md shadow" src={webpage1} alt="Witnessing Glaciers website hero section" />
         </div>
         <div class="col-span-2">
-          <Image src={webpage2} class="" alt="webpage screenshot" />
+          <Image class="rounded-md shadow" src={webpage2} alt="Interactive globe showing glacier locations" />
         </div>
         <div class="col-span-2">
-          <Image src={webpage3} class="" alt="webpage screenshot" />
+          <Image class="rounded-md shadow" src={webpage3} alt="Glacier data visualization detail view" />
         </div>
         <div class="col-span-2">
-          <Image src={webpage4} class="" alt="webpage screenshot" />
+          <Image class="rounded-md shadow" src={webpage4} alt="Scrollytelling narrative section" />
         </div>
       </ProjectGrid>
-    </div>
   </main>
 </Layout>

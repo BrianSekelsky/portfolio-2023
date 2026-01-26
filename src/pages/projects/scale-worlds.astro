@@ -68,8 +68,7 @@ import FrameCaption from "../../components/FrameCaption.astro";
         <source src={webm} type="video/webm" />
       </video>
     </div>
-    <div class="">
-      <ProjectGrid>
+    <ProjectGrid>
         <div class="col-span-1 lg:col-span-2">
           <SmallHeading text="Background" />
           <p>
@@ -106,32 +105,32 @@ import FrameCaption from "../../components/FrameCaption.astro";
           </p>
         </div>
         <div class="col-span-1">
-          <Image class="pb-3" src={astro} alt="astronaut in scale worlds" />
+          <Image class="rounded-md shadow" src={astro} alt="Astronaut avatar in Scale Worlds virtual environment" />
         </div>
         <!--////////////////////////////-->
         <div class="col-span-2">
           <div class="grid grid-cols-3 gap-2">
-            <Image class="col-span-1" src={a} alt="a" />
-            <Image class="col-span-1" src={b} alt="b" />
-            <Image class="col-span-1" src={c} alt="c" />
-            <Image class="col-span-1" src={d} alt="d" />
-            <Image class="col-span-1" src={e} alt="e" />
-            <Image class="col-span-1" src={f} alt="f" />
+            <Image class="rounded-md" src={a} alt="Early prototype sketch of Scale Worlds" />
+            <Image class="rounded-md" src={b} alt="Scale Worlds environment concept" />
+            <Image class="rounded-md" src={c} alt="Entity scaling visualization" />
+            <Image class="rounded-md" src={d} alt="User interface exploration" />
+            <Image class="rounded-md" src={e} alt="Virtual environment layout" />
+            <Image class="rounded-md" src={f} alt="Scale comparison diagram" />
           </div>
         </div>
         <div class="col-span-1 relative">
           <Image
-          class="col-span-1"
-          src={cave}
-          alt="Imge of CAVE"
+            class="rounded-md shadow"
+            src={cave}
+            alt="User standing in CAVE virtual reality environment"
           />
           <FrameCaption text="Cave Augmented Virtual Environment (CAVE)" />
         </div>
-        <div class="grid-cols-1 relative">
+        <div class="col-span-1 relative">
           <Image
-            class="col-span-1"
+            class="rounded-md shadow"
             src={hmd}
-            alt="image of HMD with 3d model representing the user"
+            alt="Head-mounted display with 3D avatar representation"
           />
           <FrameCaption text="Head Mounted Display (HMD)" />
         </div>
@@ -143,20 +142,16 @@ import FrameCaption from "../../components/FrameCaption.astro";
           </p>
           <div class="grid grid-cols-3 gap-2">
             <div class="col-span-1">
-              <Image src={userinterface} alt="Imge of CAVE" />
-              <Caption text="user interface: flat interactive elements" />
+              <Image class="rounded-md shadow" src={userinterface} alt="User interface elements in Scale Worlds" />
+              <Caption text="User interface: flat interactive elements" />
             </div>
             <div class="col-span-1">
-              <Image src={armatures} alt="Imge of CAVE" />
-              <Caption
-                text="armatures: three-dimensional things which aren't entities"
-              />
+              <Image class="rounded-md shadow" src={armatures} alt="Armature structures in Scale Worlds" />
+              <Caption text="Armatures: three-dimensional structural elements" />
             </div>
             <div class="col-span-1">
-              <Image src={entities} alt="Imge of CAVE" />
-              <Caption
-                text="entities: three dimensional things like animals, stars, atoms, cells, etc. which are used as landmark things to measure"
-              />
+              <Image class="rounded-md shadow" src={entities} alt="Scientific entities in Scale Worlds" />
+              <Caption text="Entities: animals, stars, atoms, and cells used as scale landmarks" />
             </div>
           </div>
         </div>
@@ -170,14 +165,12 @@ import FrameCaption from "../../components/FrameCaption.astro";
           </p>
           <div class="grid grid-cols-2 gap-2">
             <div class="col-span-1">
-              <Image src={decimal} alt="gif of the decimal dance animation" />
+              <Image class="rounded-md shadow" src={decimal} alt="Animation showing decimal place movement" />
               <Caption text="Animation of decimal moving" />
             </div>
             <div class="col-span-1">
-              <Image src={numericpanel} alt="diagram of numeric panel" />
-              <Caption
-                text="Diagram of the numeric panel that the user interacs with"
-              />
+              <Image class="rounded-md shadow" src={numericpanel} alt="Diagram of the numeric panel interface" />
+              <Caption text="Diagram of the numeric panel that the user interacts with" />
             </div>
           </div>
         </div>
@@ -190,12 +183,12 @@ import FrameCaption from "../../components/FrameCaption.astro";
           </p>
           <div class="grid grid-cols-2 gap-2">
             <div class="col-span-1">
-              <Image src={forest} alt="diagram of forest layout" />
-              <Caption text="the forest" />
+              <Image class="rounded-md shadow" src={forest} alt="Forest environment layout diagram" />
+              <Caption text="The forest environment" />
             </div>
             <div class="col-span-1">
-              <Image src={path} alt="diagram of path layout" />
-              <Caption text="the path" />
+              <Image class="rounded-md shadow" src={path} alt="Path environment layout diagram" />
+              <Caption text="The path environment" />
             </div>
           </div>
         </div>
@@ -208,26 +201,30 @@ import FrameCaption from "../../components/FrameCaption.astro";
             </p>
             <div class="col-span-1">
               <Image
+                class="rounded-md shadow"
                 src={research1}
-                alt="image of some research descriptions"
+                alt="User research findings from usability study"
               />
             </div>
             <div class="col-span-1">
               <Image
+                class="rounded-md shadow"
                 src={research2}
-                alt="image of some research descriptions"
+                alt="User feedback on interface design"
               />
             </div>
             <div class="col-span-1">
               <Image
+                class="rounded-md shadow"
                 src={research3}
-                alt="image of some research descriptions"
+                alt="Usability study observations"
               />
             </div>
             <div class="col-span-1">
               <Image
+                class="rounded-md shadow"
                 src={research4}
-                alt="image of some research descriptions"
+                alt="Research insights on scale cognition"
               />
             </div>
           </div>
@@ -235,14 +232,13 @@ import FrameCaption from "../../components/FrameCaption.astro";
         <div class="col-span-2">
           <div class="grid grid-cols-2 gap-2">
             <div class="col-span-1">
-              <Image src={ruler1} alt="image of professor in cave" />
+              <Image class="rounded-md shadow" src={ruler1} alt="Professor demonstrating scale ruler in CAVE environment" />
             </div>
             <div class="col-span-1">
-              <Image src={ruler2} alt="image of proffessor in cave" />
+              <Image class="rounded-md shadow" src={ruler2} alt="Scale measurement demonstration in virtual reality" />
             </div>
           </div>
         </div>
       </ProjectGrid>
-    </div>
   </main>
 </Layout>

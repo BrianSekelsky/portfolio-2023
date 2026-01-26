@@ -27,7 +27,6 @@ import Link from "../../components/Link.astro";
 import Caption from "../../components/Caption.astro";
 
 import FrameCaption from "../../components/FrameCaption.astro";
-import Image from "astro/components/Image.astro";
 
 import mainpage from "../../images/fidelity/main-page.png"
 import mgmt from "../../images/fidelity/loan-mgmt.png"
@@ -59,23 +58,12 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
           alt="Screenshot of user experience work in figma"
         />
       </div>
-      <style></style>
     </div>
     <ProjectGrid>
       <div class="col-span-2">
-        <div class="flex justify-between gap-4 py-8">
-          <div class="lg:pl-4">
-            <Image src={mainbeforeafter} alt="screenshot of presentation showing before and after of the main dashboard" />
-          </div>
-        </div>
-          <div class="col-span-2"></div>
-          <div class="lg:pr-4">
-              <Image
-                src={mgmtbeforeafter}
-                alt="screenshot of presentation showing before and after of the loan management page"
-              />
-            </div>
-          </div>
+        <div class="flex flex-col gap-4 py-8">
+          <Image class="rounded-md shadow" src={mainbeforeafter} alt="Before and after comparison of the main dashboard redesign" />
+          <Image class="rounded-md shadow" src={mgmtbeforeafter} alt="Before and after comparison of the loan management page" />
         </div>
       </div>
       <div class="col-span-1">
@@ -126,21 +114,22 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
       <div class="col-span-1">
         <div class="relative">
           <Image
+            class="rounded-md shadow"
             src={uxr}
-            alt="screenshot of miro board and coding window, visual studio code"
+            alt="Miro board alongside Visual Studio Code for reference UI development"
           />
-          <Caption text="Miro board and screenshot from visual studio code" />
+          <Caption text="Miro board and screenshot from Visual Studio Code" />
         </div>
       </div>
       <div class="col-span-2 pt-8 bg-offwhite dark:bg-dark-surface">
         <SmallHeading text="Identifying pain points" />
         <div class="flex justify-between items-end py-8">
           <div class="lg:pr-4 w-1/2">
-            <Image src={painpoint} alt="painpoint about loan management" />
-            <Caption text="Users aren’t clear on loan management" />
+            <Image class="rounded-md shadow" src={painpoint} alt="Research finding about loan management confusion" />
+            <Caption text="Users aren't clear on loan management" />
           </div>
           <div class="lg:pl-4 w-1/2">
-            <Image src={painpoint2} alt="painpoint about communications" />
+            <Image class="rounded-md shadow" src={painpoint2} alt="Research finding about communication issues" />
             <Caption text="Communications are problematic" />
           </div>
         </div>
@@ -158,13 +147,11 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
         </p>
         <div class="flex justify-between items-start py-8">
           <div class="lg:pl-4">
-            <Image src={discussions} alt="painpoint about communications" />
-            <Caption
-              text="Discussions on Zoom, using Miro to collaborate on ideas"
-            />
+            <Image class="rounded-md shadow" src={discussions} alt="Zoom meeting with Miro board for collaborative ideation" />
+            <Caption text="Discussions on Zoom, using Miro to collaborate on ideas" />
           </div>
           <div class="lg:pr-4">
-            <Image src={sketching} alt="painpoint about loan management" />
+            <Image class="rounded-md shadow" src={sketching} alt="Hand-drawn sketches and flow diagrams" />
             <Caption text="Sketching, primarily with flow diagrams" />
           </div>
         </div>
@@ -186,18 +173,16 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
 
         <div class="flex justify-between gap-4 py-8">
           <div class="lg:pl-4">
-            <Image src={dashboard} alt="screenshot of new dashboard" />
-            <Caption
-              text="New additions to the dashboard include seperate actions for editing and adding loans"
-            />
+            <Image class="rounded-md shadow" src={dashboard} alt="Redesigned dashboard with separate edit and add loan actions" />
+            <Caption text="New additions to the dashboard include separate actions for editing and adding loans" />
           </div>
           <div class="lg:pr-4">
-            <Image src={editflow} alt="screenshot of new edit flow" />
+            <Image class="rounded-md shadow" src={editflow} alt="Edit loan flow wireframes" />
           </div>
         </div>
         <div class="flex justify-center">
           <div>
-            <Image src={addflow} alt="screenshot of add flow" />
+            <Image class="rounded-md shadow" src={addflow} alt="Add new loan flow wireframes" />
           </div>
         </div>
       </div>
@@ -209,13 +194,14 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
 
         <div class="flex justify-between gap-4 py-8">
           <div class="lg:pl-4">
-            <Image src={mainpage} alt="screenshot of new post-enrollment dashboard" />
+            <Image class="rounded-md shadow" src={mainpage} alt="Post-enrollment dashboard with new design system" />
             <Caption text="Updated look for the post-enrollment dashboard" />
           </div>
           <div class="lg:pr-4">
             <Image
+              class="rounded-md shadow"
               src={mgmt}
-              alt="screenshot of post-enrollment dashboard, editing loans"
+              alt="Loan management interface with new design patterns"
             />
             <Caption text="Updated look and pattern for loan management" />
           </div>
@@ -224,17 +210,18 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
       <div class="col-span-2 pt-8">
         <SmallHeading text="Telling the user what's wrong" />
         <p class="lg:w-1/2">
-          In the final iterations of the desin, we have introduced inline alerts that tell the user when there are problems with their loan. The alerts help users understand what about their current loan is problematic and how they can go about fixing their issue and getting back to recieving payments.
+          In the final iterations of the design, we have introduced inline alerts that tell the user when there are problems with their loan. The alerts help users understand what about their current loan is problematic and how they can go about fixing their issue and getting back to receiving payments.
         </p>
 
         <div class="flex justify-between gap-4 py-8">
           <div class="lg:pl-4">
-            <Image src={address} alt="screenshot of loan management with alert warning them that their payment address isn't recieving payments" />
+            <Image class="rounded-md shadow" src={address} alt="Loan management showing inline alert about payment address issues" />
           </div>
           <div class="lg:pr-4">
             <Image
+              class="rounded-md shadow"
               src={changeloan}
-              alt="screenshot of post-enrollment dashboard, editing loans"
+              alt="Change loan interface with error state handling"
             />
           </div>
         </div>

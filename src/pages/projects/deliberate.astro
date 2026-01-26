@@ -48,17 +48,16 @@ import web4 from "../../images/deliberate/web-4.png";
       ]}
       year="2022"
     />
-    <div class="load-in">
-      <div class="mx-auto flex justify-center border-b">
+    <div class="border-b load-in">
+      <div class="mx-auto flex justify-center">
         <Image
           class="transition-all"
           src={cover}
-          alt={"Image showing preview of some of the applications"}
+          alt="Preview of Deliberate AI applications"
         />
       </div>
     </div>
-    <div class="">
-      <ProjectGrid>
+    <ProjectGrid>
         <div class="col-span-1 lg:col-span-2">
           <SmallHeading text="Background" />
           <p>
@@ -82,7 +81,7 @@ import web4 from "../../images/deliberate/web-4.png";
           </p>
         </div>
         <div class="col-span-1">
-          <Image class="pb-3" src={userFlow} alt="image from figma" />
+          <Image class="rounded-md shadow" src={userFlow} alt="User flow diagram for clinician workflow" />
         </div>
         <div class="col-span-1 lg:col-span-2">
           <SmallHeading text="Basic Design System" />
@@ -96,59 +95,57 @@ import web4 from "../../images/deliberate/web-4.png";
         <div class="bg-offwhite dark:bg-dark-surface lg:col-span-2">
           <div class="col-span-2 flex gap-8 py-8">
             <div>
-              <Image class="shadow" src={one} alt="Screenshot of Universcale" />
+              <Image class="rounded-md shadow" src={one} alt="Design system color palette" />
             </div>
             <div>
               <Image
-                class="shadow"
+                class="rounded-md shadow"
                 src={two}
-                alt="Screenshots from Eames' Powers of Ten video"
+                alt="Typography specifications"
               />
-              <!-- <Caption text="Screenshots from Eames' Powers of Ten video" /> -->
             </div>
             <div>
               <Image
-                class="shadow"
+                class="rounded-md shadow"
                 src={three}
-                alt="Image from science textbook showing various scales"
+                alt="Button component variants"
               />
             </div>
             <div>
               <Image
-                class="shadow"
+                class="rounded-md shadow"
                 src={four}
-                alt="Image from science textbook showing various scales"
+                alt="Form input components"
               />
             </div>
           </div>
           <div class="col-span-2 flex gap-8 py-8">
             <div>
               <Image
-                class="shadow"
+                class="rounded-md shadow"
                 src={five}
-                alt="Screenshot of Universcale"
+                alt="Card component designs"
               />
             </div>
             <div>
               <Image
-                class="shadow"
+                class="rounded-md shadow"
                 src={six}
-                alt="Screenshots from Eames' Powers of Ten video"
+                alt="Navigation component patterns"
               />
-              <!-- <Caption text="Screenshots from Eames' Powers of Ten video" /> -->
             </div>
             <div>
               <Image
-                class="shadow"
+                class="rounded-md shadow"
                 src={seven}
-                alt="Image from science textbook showing various scales"
+                alt="Modal dialog components"
               />
             </div>
             <div>
               <Image
-                class="shadow"
+                class="rounded-md shadow"
                 src={eight}
-                alt="Image from science textbook showing various scales"
+                alt="Data table components"
               />
             </div>
           </div>
@@ -162,7 +159,7 @@ import web4 from "../../images/deliberate/web-4.png";
           </p>
         </div>
         <div class="col-span-1">
-          <Image class="pb-3" src={videopage} alt="image from figma" />
+          <Image class="rounded-md shadow" src={videopage} alt="Session transcript and analysis interface" />
         </div>
         <div class="col-span-1">
           <p>
@@ -172,17 +169,17 @@ import web4 from "../../images/deliberate/web-4.png";
           </p>
         </div>
         <div class="col-span-1 grid grid-cols-2 gap-4">
-          <div class="shadow-sm">
-            <Image class="" src={datavis1} alt="image from figma" />
+          <div>
+            <Image class="rounded-md shadow" src={datavis1} alt="Patient progress chart visualization" />
           </div>
-          <div class="shadow-sm">
-            <Image class="" src={datavis2} alt="image from figma" />
+          <div>
+            <Image class="rounded-md shadow" src={datavis2} alt="Mental health questionnaire scores over time" />
           </div>
-          <div class="shadow-sm">
-            <Image class="" src={datavis3} alt="image from figma" />
+          <div>
+            <Image class="rounded-md shadow" src={datavis3} alt="Treatment outcome metrics dashboard" />
           </div>
-          <div class="shadow-sm">
-            <Image class="" src={datavis4} alt="image from figma" />
+          <div>
+            <Image class="rounded-md shadow" src={datavis4} alt="Clinical assessment trend analysis" />
           </div>
         </div>
         <div class="col-span-1 lg:col-span-2">
@@ -194,18 +191,17 @@ import web4 from "../../images/deliberate/web-4.png";
           </p>
         </div>
         <div class="col-span-1">
-          <Image class="shadow" src={web1} alt="image from figma" />
+          <Image class="rounded-md shadow" src={web1} alt="Deliberate AI marketing website hero section" />
         </div>
         <div class="col-span-1">
-          <Image class="shadow" src={web2} alt="image from figma" />
+          <Image class="rounded-md shadow" src={web2} alt="Features overview for clinicians" />
         </div>
         <div class="col-span-1">
-          <Image class="shadow" src={web3} alt="image from figma" />
+          <Image class="rounded-md shadow" src={web3} alt="Supervisor dashboard preview" />
         </div>
         <div class="col-span-1">
-          <Image class="shadow" src={web4} alt="image from figma" />
+          <Image class="rounded-md shadow" src={web4} alt="Clinic director analytics view" />
         </div>
       </ProjectGrid>
-    </div>
   </main>
 </Layout>
