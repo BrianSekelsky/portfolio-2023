@@ -4,6 +4,11 @@ let sketchInstance;
 let isMouseInsideHeader = false;
 let canvasElement = null;
 
+// Scroll tracking for mobile interaction
+let lastScrollY = 0;
+let scrollVelocity = 0;
+let lastScrollTime = Date.now();
+
 function updateCanvasBlur() {
   if (!canvasElement) return;
 
@@ -12,6 +17,15 @@ function updateCanvasBlur() {
   const blurAmount = Math.min(8, (scrollTop / maxScroll) * 8);
 
   canvasElement.style.filter = `blur(${blurAmount.toFixed(1)}px)`;
+
+  // Calculate scroll velocity for mobile bubble interaction
+  const now = Date.now();
+  const dt = now - lastScrollTime;
+  if (dt > 0) {
+    scrollVelocity = (scrollTop - lastScrollY) / dt * 16; // Normalize to ~60fps
+  }
+  lastScrollY = scrollTop;
+  lastScrollTime = now;
 }
 
 window.addEventListener('scroll', updateCanvasBlur);
@@ -72,8 +86,8 @@ export function startSketch() {
       if (width < 640) {
         // Mobile phones
         fontSize = 58;
-        bubbleSize = 1.5;
-        gridSpacing = 2.25;
+        bubbleSize = 2;
+        gridSpacing = 2.5;
         hoverRadius = 30;
         leftMargin = 16;
       } else if (width < 768) {
@@ -496,6 +510,9 @@ export function startSketch() {
     p.draw = () => {
       p.background(bgRgb[0], bgRgb[1], bgRgb[2]);
 
+      // Decay scroll velocity each frame
+      scrollVelocity *= 0.5;
+
       if (isLoading) {
         // Loading state: bubbles float around randomly
         for (let i = bubbles.length - 1; i >= 0; i--) {
@@ -531,11 +548,43 @@ export function startSketch() {
         }
       } else {
         // Normal interactive bubbles
+        const isMobile = window.innerWidth < mobileBreakpoint;
+
         for (let i = bubbles.length - 1; i >= 0; i--) {
           const bubble = bubbles[i];
-          if (isMouseInsideHeader) {
+
+          // Desktop: mouse hover interaction
+          if (isMouseInsideHeader && !isMobile) {
             bubble.checkHover(p.mouseX, p.mouseY);
           }
+
+          // Mobile: scroll-based interaction
+          if (isMobile && Math.abs(scrollVelocity) > 0.5 && !bubble.returning) {
+            // Only affect bubbles that are at rest (not already falling/returning)
+            if (!bubble.falling) {
+              // Random chance to trigger based on scroll speed
+              const triggerChance = Math.min(0.15, Math.abs(scrollVelocity) * 0.02);
+              if (p.random() < triggerChance) {
+                bubble.falling = true;
+                bubble.fallTime = p.millis();
+
+                // Generate random color
+                if (!bubble.usesRandomColor) {
+                  bubble.randomColor = [
+                    Math.round(p.random(0, 255)),
+                    Math.round(p.random(0, 255)),
+                    Math.round(p.random(0, 255))
+                  ];
+                  bubble.usesRandomColor = true;
+                }
+
+                // Push in scroll direction with some horizontal spread
+                bubble.vx = p.random(-1.5, 1.5);
+                bubble.vy = scrollVelocity * 0.3;
+              }
+            }
+          }
+
           const isNowSettled = bubble.update(settledBubbles);
 
           // Manage settled bubbles set
@@ -550,7 +599,8 @@ export function startSketch() {
         }
 
         // Draw hover radius circle outline made of grid-aligned bubbles (pixel art style)
-        if (isMouseInsideHeader) {
+        // Only show on desktop, not mobile
+        if (isMouseInsideHeader && !isMobile) {
           p.noStroke();
           p.rectMode(p.CENTER);
 

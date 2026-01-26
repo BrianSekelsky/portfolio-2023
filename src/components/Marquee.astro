@@ -3,29 +3,39 @@ export interface Props {
   text?: string;
   speed?: number;
 }
-
-const { text = "OPEN TO WORK", speed = 100 } = Astro.props;
+const { text = "OPEN TO WORK", speed = 10 } = Astro.props;
 ---
 
 <div class="marquee-container border-b py-4 font-light text-xs bg-yellow-200 text-black font-mono">
   <div class="marquee" data-speed={speed}>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
-    <span class="marquee-text ">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>
+    <span class="marquee-content">{text}</span>                                
   </div>
 </div>
 
@@ -34,34 +44,50 @@ const { text = "OPEN TO WORK", speed = 100 } = Astro.props;
     width: 100%;
     overflow: hidden;
   }
-
+  
   .marquee-container:active {
     cursor: grabbing;
   }
-
+  
   .marquee {
     display: flex;
     width: fit-content;
-    animation: scroll linear infinite;
     gap: 2rem;
     will-change: transform;
   }
-
-  .marquee-text {
+  
+  .marquee-content {
     white-space: nowrap;
     line-height: 1;
+    animation: scroll linear infinite;
   }
-
+  
   @keyframes scroll {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-50% - 1rem));
+      transform: translateX(calc(-100% - 2rem));
     }
   }
-
-  .marquee {
-    animation-duration: calc(var(--marquee-duration, 60s));
-  }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const marquees = document.querySelectorAll('.marquee');
+    
+    marquees.forEach((marquee) => {
+      const speed = parseFloat(marquee.getAttribute('data-speed') || '100');
+      const firstContent = marquee.querySelector('.marquee-content');
+      
+      if (firstContent) {
+        const contentWidth = firstContent.offsetWidth;
+        const duration = contentWidth / speed;
+        
+        marquee.querySelectorAll('.marquee-content').forEach((content) => {
+          (content as HTMLElement).style.animationDuration = `${duration}s`;
+        });
+      }
+    });
+  });
+</script>
