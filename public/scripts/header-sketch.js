@@ -26,6 +26,8 @@ export function startSketch() {
     let font;
     let isLoading = true;
     let loadingRotation = 0;
+    let prevMouseX = 0;
+    let prevMouseY = 0;
 
     // Configuration
     const displayText = "Brian Sekelsky is a designer, working across user experience, visual design, and code.";
@@ -241,11 +243,14 @@ export function startSketch() {
 
     function createBubblesFromText() {
       bubbles = [];
-      
+
       calculateResponsiveValues();
-      
+
       const lineHeight = fontSize * 1;
-      const maxWidth = p.width - leftMargin * 2; // leave margin on both sides
+      // On desktop (non-mobile), constrain text to 3/4 width for readability
+      const isMobile = window.innerWidth < mobileBreakpoint;
+      const textWidthRatio = isMobile ? 1 : 0.75;
+      const maxWidth = (p.width * textWidthRatio) - leftMargin * 2; // leave margin on both sides
       
       // Create an off-screen graphics buffer to render text
       let pg = p.createGraphics(p.width, p.height);
@@ -394,6 +399,42 @@ export function startSketch() {
           }
           bubble.update();
           bubble.display();
+        }
+
+        // Draw hover radius circle outline made of grid-aligned bubbles (pixel art style)
+        if (isMouseInsideHeader) {
+          p.noStroke();
+          p.rectMode(p.CENTER);
+
+          // Check if mouse is moving
+          const mouseMoving = p.dist(p.mouseX, p.mouseY, prevMouseX, prevMouseY) > 0.5;
+
+          // Check grid points within hoverRadius of mouse - draw only outline
+          for (let x = p.mouseX - hoverRadius; x <= p.mouseX + hoverRadius; x += gridSpacing) {
+            for (let y = p.mouseY - hoverRadius; y <= p.mouseY + hoverRadius; y += gridSpacing) {
+              const d = p.dist(x, y, p.mouseX, p.mouseY);
+              // Only draw bubbles on the outline
+              if (d <= hoverRadius && d > hoverRadius - gridSpacing * 1.2) {
+                // Random gray value for each bubble only when mouse is moving
+                if (mouseMoving) {
+                  p.fill(p.random(50, 255));
+                } else {
+                  p.fill(125);
+                }
+
+                // Add wiggle for old video game effect
+                const jitterAmount = gridSpacing * 0.25;
+                const jitterX = p.sin(x * 0.1 + p.frameCount * 0.05) * jitterAmount;
+                const jitterY = p.cos(y * 0.1 + p.frameCount * 0.05) * jitterAmount;
+
+                p.rect(x + jitterX, y + jitterY, bubbleSize, bubbleSize);
+              }
+            }
+          }
+
+          // Update previous mouse position
+          prevMouseX = p.mouseX;
+          prevMouseY = p.mouseY;
         }
       }
     };
