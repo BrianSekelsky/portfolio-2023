@@ -36,7 +36,6 @@ export function startSketch() {
     let bubbles = [];
     let settledBubbles = new Set(); // Track only settled bubbles for collision detection
     let isLoading = true;
-    let loadingRotation = 0;
     let prevMouseX = 0;
     let prevMouseY = 0;
 
@@ -60,7 +59,7 @@ export function startSketch() {
     let canvasXPosition;
     
     // Fixed settings
-    const returnDelay = 5000;
+    const returnDelay = 3000;
     const easeSpeed = 0.055;
     const gravity = 0.25;
     
@@ -322,8 +321,7 @@ export function startSketch() {
       return pg.pixels[idx] < 128;
     }
 
-    function createBubblesFromText() {
-      bubbles = [];
+    function transitionLoadingBubblesToText() {
       settledBubbles.clear();
 
       calculateResponsiveValues();
@@ -375,36 +373,74 @@ export function startSketch() {
       
       pg.loadPixels();
 
-      // Grid-based fill: check each point on a grid
+      // Calculate text positions
+      let textPositions = [];
       for (let x = 0; x < p.width; x += gridSpacing) {
         for (let y = 0; y < p.height; y += gridSpacing) {
           let px = x + p.random(-gridSpacing * 0.1, gridSpacing * 0.1);
           let py = y + p.random(-gridSpacing * 0.1, gridSpacing * 0.1);
 
           if (isPointInText(px, py, pg)) {
-            bubbles.push(new Bubble(px, py, false));
+            textPositions.push({x: px, y: py});
           }
         }
       }
 
       pg.remove();
 
+      // Create additional bubbles if we need more than we have
+      while (bubbles.length < textPositions.length) {
+        const x = p.random(0, p.width);
+        const y = p.random(0, p.height);
+        const bubble = new Bubble(x, y, false);
+        bubble.randomColor = [p.random(100, 255), p.random(100, 255), p.random(100, 255)];
+        bubble.usesRandomColor = true;
+        bubbles.push(bubble);
+      }
+
+      // Assign home positions to bubbles and transition them
+      for (let i = 0; i < textPositions.length; i++) {
+        const bubble = bubbles[i];
+        bubble.homeX = textPositions[i].x;
+        bubble.homeY = textPositions[i].y;
+        bubble.size = bubbleSize;  // Ensure correct size after transition
+        bubble.vx = 0;  // Reset velocity
+        bubble.vy = 0;
+        bubble.returning = true;
+        // Change to grayscale
+        bubble.usesRandomColor = false;
+        bubble.randomOpacity = p.random(50, 100);
+        bubble.originalOpacity = bubble.randomOpacity;
+      }
+
+      // Send excess bubbles off screen
+      for (let i = textPositions.length; i < bubbles.length; i++) {
+        const bubble = bubbles[i];
+        bubble.homeX = bubble.x;
+        bubble.homeY = p.height + 100;
+        bubble.vx = 0;
+        bubble.vy = 0;
+        bubble.returning = true;
+        bubble.usesRandomColor = false;
+      }
+
       // Loading state is complete, transition to interactive bubbles
       isLoading = false;
     }
 
-    function createLoadingBubbles() {
+    function createRandomFloatingBubbles() {
       bubbles = [];
-      const centerX = p.width / 2;
-      const centerY = p.height / 2;
-      const radius = 60;
-      const numBubbles = 8;
-
+      calculateResponsiveValues(); // Ensure bubbleSize is set before creating bubbles
+      // Create colorful bubbles at random positions for loading state
+      const numBubbles = 80;
       for (let i = 0; i < numBubbles; i++) {
-        const angle = (p.TWO_PI / numBubbles) * i;
-        const x = centerX + p.cos(angle) * radius;
-        const y = centerY + p.sin(angle) * radius;
-        bubbles.push(new Bubble(x, y, true));
+        const x = p.random(0, p.width);
+        const y = p.random(0, p.height);
+        const bubble = new Bubble(x, y, false);
+        // Give them random full colors instead of grayscale
+        bubble.randomColor = [p.random(100, 255), p.random(100, 255), p.random(100, 255)];
+        bubble.usesRandomColor = true;
+        bubbles.push(bubble);
       }
     }
 
@@ -431,28 +467,28 @@ export function startSketch() {
       canvas.position(position.x, position.y);
       canvas.style('z-index', '-1');
 
-      // Start with loading bubbles
-      createLoadingBubbles();
+      // Start with random floating bubbles
+      createRandomFloatingBubbles();
 
-      // Wait for font to load, then create text bubbles
+      // Wait for font to load, then transition loading bubbles to text
       if (window.Typekit && window.Typekit.load) {
         Typekit.load({
           active: () => {
-            createBubblesFromText();
+            transitionLoadingBubblesToText();
           },
           inactive: () => {
             // Fallback if fonts fail to load
-            createBubblesFromText();
+            transitionLoadingBubblesToText();
           }
         });
       } else if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => {
-          createBubblesFromText();
+          transitionLoadingBubblesToText();
         });
       } else {
         // Last resort fallback
         setTimeout(() => {
-          createBubblesFromText();
+          transitionLoadingBubblesToText();
         }, 1500);
       }
     };
@@ -461,17 +497,37 @@ export function startSketch() {
       p.background(bgRgb[0], bgRgb[1], bgRgb[2]);
 
       if (isLoading) {
-        // Animate loading bubbles in a circle
-        loadingRotation += 0.02;
-        const centerX = p.width / 2;
-        const centerY = p.height / 2;
-        const radius = 60;
+        // Loading state: bubbles float around randomly
+        for (let i = bubbles.length - 1; i >= 0; i--) {
+          const bubble = bubbles[i];
 
-        for (let i = 0; i < bubbles.length; i++) {
-          const angle = (p.TWO_PI / bubbles.length) * i + loadingRotation;
-          bubbles[i].x = centerX + p.cos(angle) * radius;
-          bubbles[i].y = centerY + p.sin(angle) * radius;
-          bubbles[i].display();
+          // Apply gentle gravity and bouncing
+          bubble.vy += gravity * 0.5;
+          bubble.vx *= 0.98;
+          bubble.vy *= 0.98;
+
+          bubble.x += bubble.vx;
+          bubble.y += bubble.vy;
+
+          // Bounce off edges
+          if (bubble.x < bubble.size) {
+            bubble.x = bubble.size;
+            bubble.vx = -bubble.vx * 0.8;
+          }
+          if (bubble.x > p.width - bubble.size) {
+            bubble.x = p.width - bubble.size;
+            bubble.vx = -bubble.vx * 0.8;
+          }
+          if (bubble.y < bubble.size) {
+            bubble.y = bubble.size;
+            bubble.vy = -bubble.vy * 0.8;
+          }
+          if (bubble.y > p.height - bubble.size) {
+            bubble.y = p.height - bubble.size;
+            bubble.vy = -bubble.vy * 0.8;
+          }
+
+          bubble.display();
         }
       } else {
         // Normal interactive bubbles
@@ -554,7 +610,9 @@ export function startSketch() {
           canvasElement.style.top = position.y + 'px';
         }
 
-        createBubblesFromText();
+        if (!isLoading) {
+          transitionLoadingBubblesToText();
+        }
       }
     };
 
@@ -567,3 +625,6 @@ export function stopSketch() {
     sketchInstance = null;
   }
 }
+
+// Start sketch immediately to show loading spinner
+startSketch();
