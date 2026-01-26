@@ -1,4 +1,4 @@
-import p5 from 'https://cdn.skypack.dev/p5@1.9.0';
+import p5 from 'p5';
 
 console.log("bubble text loaded");
 
@@ -71,15 +71,15 @@ export function startSketch() {
       if (width < 640) {
         // Mobile phones
         fontSize = 52;
-        bubbleSize = 1.25;
-        gridSpacing = 2.25;
+        bubbleSize = 1.5;
+        gridSpacing = 2;
         hoverRadius = 30;
         leftMargin = 16;
       } else if (width < 768) {
         // Tablets / large phones
         fontSize = 52;
-        bubbleSize = 1.75;
-        gridSpacing = 2.75;
+        bubbleSize = 1.5;
+        gridSpacing = 2.25;
         hoverRadius = 35;
         leftMargin = 32;
       } else if (width < 1024) {
@@ -136,12 +136,12 @@ export function startSketch() {
         this.y = y;
         this.vx = 0;
         this.vy = 0;
-        this.size = bubbleSize + p.random(-0.5, 0.5);
+        this.size = bubbleSize;
         this.falling = false;
         this.fallTime = 0;
         this.returning = false;
 
-        this.randomGray = p.random(0, 100);
+        this.randomGray = p.random(0, 50);
         
         // Random value for jitter (unique per bubble)
         this.jitterSeed = p.random(3);

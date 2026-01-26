@@ -38,11 +38,10 @@ const alt = "Terrafirma logo and other branded materials including webpages";
       <source
         src={video}
         type="video/webm"
-        media="screen and (min-width:640px)"
       />
     </video>
   </div>
   <div class="gif block">
-    <Image src={gif} alt={alt} class="image-center" />
+    <Image src={gif} alt={alt} class="image-center" loading="lazy" />
   </div>
 </Card>

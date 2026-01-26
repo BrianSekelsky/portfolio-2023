@@ -35,13 +35,13 @@ const props = {
         loop
         preload="none"
       >
-        <source src={video} type="video/webm" media="(min-width: 640px)" />
-        <source src={videomp4} type="video/mp4" media="(min-width: 640px)" />
+        <source src={video} type="video/webm" />
+        <source src={videomp4} type="video/mp4" />
       </video>
     </div>
 
     <div class="flex md:hidden">
-      <Image src={gif} alt={props.alt} class="w-full transition-all" />
+      <Image src={gif} alt={props.alt} class="w-full transition-all" loading="lazy" />
     </div>
   </div>
 </Card>

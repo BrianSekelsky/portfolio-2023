@@ -23,7 +23,8 @@ import frankenstein from "../../images/critical-images/frankenstein.png";
 import Link from "../../components/Link.astro";
 import opportunitygaps from "../../images/critical-images/opportunitygaps.png";
 import combinedcity from "../../images/critical-images/combined-city.jpg";
-import around from "../../images/critical-images/around.gif";
+import aroundVideo from "../../images/critical-images/around.webm";
+import aroundVideoMp4 from "../../images/critical-images/around.mp4";
 import smallclassroom from "../../images/critical-images/smallclassroom.png";
 import broadside from "../../images/critical-images/broadside.png";
 import highestmountain from "../../images/homepage/highest-mountain.png";
@@ -61,7 +62,10 @@ import highestmountain from "../../images/homepage/highest-mountain.png";
           Technologies not as reflections of our world but shapers of it
         </div>
         <div class="mx-auto w-10/12">
-          <Image src={around} alt="around" />
+          <video playsinline autoplay muted loop>
+            <source src={aroundVideo} type="video/webm" />
+            <source src={aroundVideoMp4} type="video/mp4" />
+          </video>
           <div class="pt-2 pb-12 text-center mx-auto text-sm">
             Animated loop for a Winter Foe song
           </div>

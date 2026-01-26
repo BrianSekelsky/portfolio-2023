@@ -30,6 +30,8 @@ const { title } = Astro.props;
       })();
     </script> -->
 
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+    <link rel="dns-prefetch" href="https://use.typekit.net">
     <link rel="stylesheet" href="https://use.typekit.net/abc2kbg.css">
     <script defer src="/scripts/card-animation.js"></script>
   </head>
@@ -68,6 +70,7 @@ const { title } = Astro.props;
 
   body {
     height: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   .project-grid p {
@@ -95,5 +98,7 @@ const { title } = Astro.props;
 
 </style>
 
-<script type="module" src="/scripts/page-transition.js"></script>
+<script>
+  import('../scripts/page-transition.js').catch(err => console.error('Failed to load page transitions:', err));
+</script>
 <!-- <script type="module" src="/scripts/theme-toggle.js"></script> -->

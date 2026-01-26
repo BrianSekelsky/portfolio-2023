@@ -17,8 +17,8 @@ import wolverine from "../../images/glaciers/wolverine.gif";
 import southCascade from "../../images/glaciers/south-cascade.gif";
 import glaciers from "../../images/glaciers/glaciers.gif";
 
-import webm from "../../images/glaciers/witnessing_glaciers.mp4";
-import webm2 from "../../images/glaciers/a_dangerously_unscientific_study_on_glaciers_and_sea_level.mp4";
+import videoHero from "../../images/glaciers/witnessing_glaciers.mp4";
+import videoStudy from "../../images/glaciers/a_dangerously_unscientific_study_on_glaciers_and_sea_level.mp4";
 
 import webpage1 from "../../images/glaciers/webpage1.png";
 import webpage2 from "../../images/glaciers/webpage2.png";
@@ -40,7 +40,7 @@ import FrameCaption from "../../components/FrameCaption.astro"
     <div class="load-in">
       <div class="mx-auto border-b">
         <video playsinline autoplay muted loop>
-          <source src={webm} type="video/webm" />
+          <source src={videoHero} type="video/mp4" />
         </video>
       </div>
       <ProjectGrid>
@@ -110,7 +110,7 @@ import FrameCaption from "../../components/FrameCaption.astro"
         </div>
         <div class="col-span-1 relative">
           <video playsinline autoplay muted loop>
-            <source src={webm2} type="video/webm" />
+            <source src={videoStudy} type="video/mp4" />
           </video>
           <FrameCaption text="A dangerously unscientific study on glaciers and sea level" />
         </div>
