@@ -1,33 +1,52 @@
 import p5 from 'https://cdn.skypack.dev/p5@1.9.0';
 
-console.log("bubble text loaded");
-
 let sketchInstance;
 let isMouseInsideHeader = false;
+let canvasElement = null;
 
 function updateCanvasBlur() {
-  const canvas = document.querySelector('canvas');
-  if (!canvas) return;
+  if (!canvasElement) return;
 
   const scrollTop = window.scrollY;
   const maxScroll = document.body.scrollHeight - window.innerHeight;
   const blurAmount = Math.min(8, (scrollTop / maxScroll) * 8);
 
-  canvas.style.filter = `blur(${blurAmount.toFixed(1)}px)`;
+  canvasElement.style.filter = `blur(${blurAmount.toFixed(1)}px)`;
 }
 
 window.addEventListener('scroll', updateCanvasBlur);
+
+// Color configuration - change these hex codes to customize appearance
+const BG_COLOR = '#ffffff'; // Background color
+const FG_COLOR = '#000000'; // Foreground/bubble color
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? [
+    parseInt(result[1], 16),
+    parseInt(result[2], 16),
+    parseInt(result[3], 16)
+  ] : [0, 0, 0];
+}
 
 export function startSketch() {
 
   sketchInstance = new p5((p) => {
     let header;
     let bubbles = [];
-    let font;
+    let settledBubbles = new Set(); // Track only settled bubbles for collision detection
     let isLoading = true;
     let loadingRotation = 0;
     let prevMouseX = 0;
     let prevMouseY = 0;
+
+    // Detect Safari and disable stacking for performance
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const stackingEnabled = !isSafari;
+
+    // Parse colors
+    const bgRgb = hexToRgb(BG_COLOR);
+    const fgRgb = hexToRgb(FG_COLOR);
 
     // Configuration
     const displayText = "Brian Sekelsky is a designer, working across user experience, visual design, and code.";
@@ -41,7 +60,7 @@ export function startSketch() {
     let canvasXPosition;
     
     // Fixed settings
-    const returnDelay = 3000;
+    const returnDelay = 5000;
     const easeSpeed = 0.055;
     const gravity = 0.25;
     
@@ -123,12 +142,14 @@ export function startSketch() {
         this.falling = false;
         this.fallTime = 0;
         this.returning = false;
+        this.settled = false;
         this.isLoading = isLoadingBubble;
 
-        this.randomGray = p.random(0, 50);
-
-        // Random value for jitter (unique per bubble)
-        this.jitterSeed = p.random(3);
+        // Color handling
+        this.originalOpacity = p.random(50, 100);
+        this.randomOpacity = this.originalOpacity;
+        this.randomColor = null; // Will be set when bubble falls
+        this.usesRandomColor = false;
 
         // Physics
         this.bounceFactor = -0.6;
@@ -144,6 +165,16 @@ export function startSketch() {
         if (d < hoverRadius && !this.returning) {
           this.falling = true;
           this.fallTime = p.millis();
+
+          // Generate random color on first fall
+          if (!this.usesRandomColor) {
+            const r = Math.round(p.random(0, 255));
+            const g = Math.round(p.random(0, 255));
+            const b = Math.round(p.random(0, 255));
+            this.randomColor = [r, g, b];
+            this.usesRandomColor = true;
+          }
+
           // Push away from mouse
           let angle = p.atan2(this.y - my, this.x - mx);
           this.vx += p.cos(angle) * 2;
@@ -151,54 +182,90 @@ export function startSketch() {
         }
       }
 
-      update() {
+      update(settledBubbles) {
         if (this.falling) {
-          // Gravity
+          if (this.settled) {
+            // Waiting to return home
+            this.vx = 0;
+            this.vy = 0;
+
+            // Time to return?
+            if (p.millis() - this.fallTime > returnDelay) {
+              this.returning = true;
+              this.falling = false;
+              this.settled = false;
+              return false; // No longer settled
+            }
+            return true; // Still settled
+          }
+
+          // Actively falling
           this.vy += gravity;
-          
-          // Friction
           this.vx *= this.friction;
           this.vy *= this.friction;
-          
-          // Move
+
           this.x += this.vx;
           this.y += this.vy;
-          
+
+          // Check collision with settled bubbles (only if stacking enabled)
+          if (stackingEnabled) {
+            for (let other of settledBubbles.values()) {
+              const dx = this.x - other.x;
+
+              // Check if bubbles are close enough to collide (directional)
+              if (this.y > other.y - this.size &&
+                  this.y < other.y + this.size &&
+                  Math.abs(dx) < this.size + other.size) {
+                // Land on top of this bubble
+                this.y = other.y - this.size - other.size;
+                this.vx = 0;
+                this.vy = 0;
+                this.settled = true;
+                return true; // Just settled
+              }
+            }
+          }
+
           // Bounce off bottom
           if (this.y > p.height - this.size) {
             this.y = p.height - this.size;
             this.vy *= this.bounceFactor;
             this.vx *= 0.8;
+            this.settled = true;
+            return true; // Just settled
           }
-          
+
           // Bounce off sides
           if (this.x < this.size || this.x > p.width - this.size) {
             this.vx *= -0.8;
             this.x = p.constrain(this.x, this.size, p.width - this.size);
           }
-          
+
           // Time to return?
           if (p.millis() - this.fallTime > returnDelay) {
             this.returning = true;
             this.falling = false;
+            this.settled = false;
+            return false; // No longer settled
           }
+          return false; // Still falling, not settled
         }
 
         if (this.returning) {
           // Ease back home
           let dx = this.homeX - this.x;
           let dy = this.homeY - this.y;
-          
+
           this.vx += dx * easeSpeed;
           this.vy += dy * easeSpeed;
-          
+
           // Damping
           this.vx *= 0.65;
           this.vy *= 0.65;
-          
+
           this.x += this.vx;
           this.y += this.vy;
-          
+
           // Close enough?
           if (p.abs(dx) < 0.5 && p.abs(dy) < 0.5 && p.abs(this.vx) < 0.1 && p.abs(this.vy) < 0.1) {
             this.x = this.homeX;
@@ -206,6 +273,10 @@ export function startSketch() {
             this.vx = 0;
             this.vy = 0;
             this.returning = false;
+            // Reset to original color when home
+            this.randomOpacity = this.originalOpacity;
+            this.usesRandomColor = false;
+            this.randomColor = null;
           }
         }
 
@@ -216,10 +287,20 @@ export function startSketch() {
       }
 
       display() {
-        const gray = p.map(this.randomGray, 0, 100, 0, 100);
-        p.fill(gray);
         p.noStroke();
         p.rectMode(p.CENTER);
+
+        if (this.usesRandomColor && this.randomColor) {
+          // Use random color while falling or settled
+          p.fill(this.randomColor[0], this.randomColor[1], this.randomColor[2]);
+        } else {
+          // Use original grayscale color
+          const opacity = this.randomOpacity / 100;
+          const r = Math.round(fgRgb[0] * opacity + bgRgb[0] * (1 - opacity));
+          const g = Math.round(fgRgb[1] * opacity + bgRgb[1] * (1 - opacity));
+          const b = Math.round(fgRgb[2] * opacity + bgRgb[2] * (1 - opacity));
+          p.fill(r, g, b);
+        }
 
         let displaySize = this.size;
         if (!this.falling && !this.returning) {
@@ -243,10 +324,10 @@ export function startSketch() {
 
     function createBubblesFromText() {
       bubbles = [];
+      settledBubbles.clear();
 
       calculateResponsiveValues();
 
-      const lineHeight = fontSize * 1;
       // On desktop (non-mobile), constrain text to 3/4 width for readability
       const isMobile = window.innerWidth < mobileBreakpoint;
       const textWidthRatio = isMobile ? 1 : 0.75;
@@ -255,8 +336,8 @@ export function startSketch() {
       // Create an off-screen graphics buffer to render text
       let pg = p.createGraphics(p.width, p.height);
       pg.pixelDensity(1);
-      pg.background(255);
-      pg.fill(0);
+      pg.background(bgRgb[0], bgRgb[1], bgRgb[2]);
+      pg.fill(fgRgb[0], fgRgb[1], fgRgb[2]);
       pg.textFont('freight-text-pro');
       pg.textStyle(p.ITALIC);
       pg.textSize(fontSize);
@@ -288,7 +369,7 @@ export function startSketch() {
       // Draw each line
       for (let i = 0; i < allLines.length; i++) {
         let xOffset = leftMargin;
-        let yOffset = fontSize + i * lineHeight;
+        let yOffset = fontSize + i * fontSize;
         pg.text(allLines[i], xOffset, yOffset);
       }
       
@@ -343,6 +424,7 @@ export function startSketch() {
       const position = getCanvasPosition();
 
       const canvas = p.createCanvas(dimensions.width, dimensions.height);
+      canvasElement = canvas.canvas; // Cache DOM element for blur updates
       canvas.style('opacity', 0);
       canvas.style('transition', 'opacity 0.6s ease');
       setTimeout(() => canvas.style('opacity', 1), 1);
@@ -376,7 +458,7 @@ export function startSketch() {
     };
 
     p.draw = () => {
-      p.background(255);
+      p.background(bgRgb[0], bgRgb[1], bgRgb[2]);
 
       if (isLoading) {
         // Animate loading bubbles in a circle
@@ -393,11 +475,21 @@ export function startSketch() {
         }
       } else {
         // Normal interactive bubbles
-        for (let bubble of bubbles) {
+        for (let i = bubbles.length - 1; i >= 0; i--) {
+          const bubble = bubbles[i];
           if (isMouseInsideHeader) {
             bubble.checkHover(p.mouseX, p.mouseY);
           }
-          bubble.update();
+          const isNowSettled = bubble.update(settledBubbles);
+
+          // Manage settled bubbles set
+          if (isNowSettled && bubble.falling) {
+            settledBubbles.add(bubble);
+          } else if (!bubble.falling && settledBubbles.has(bubble)) {
+            // Bubble is returning home, remove from settled
+            settledBubbles.delete(bubble);
+          }
+
           bubble.display();
         }
 
@@ -415,11 +507,21 @@ export function startSketch() {
               const d = p.dist(x, y, p.mouseX, p.mouseY);
               // Only draw bubbles on the outline
               if (d <= hoverRadius && d > hoverRadius - gridSpacing * 1.2) {
-                // Random gray value for each bubble only when mouse is moving
+                // Color for hover circle bubbles based on foreground color
                 if (mouseMoving) {
-                  p.fill(p.random(50, 255));
+                  // Random variation of foreground color (60-100% opacity)
+                  const opacity = p.random(0.2, 0.9);
+                  const r = Math.round(fgRgb[0] * opacity + bgRgb[0] * (1 - opacity));
+                  const g = Math.round(fgRgb[1] * opacity + bgRgb[1] * (1 - opacity));
+                  const b = Math.round(fgRgb[2] * opacity + bgRgb[2] * (1 - opacity));
+                  p.fill(r, g, b);
                 } else {
-                  p.fill(125);
+                  // Static lighter version of foreground (70% opacity)
+                  const opacity = 0.6;
+                  const r = Math.round(fgRgb[0] * opacity + bgRgb[0] * (1 - opacity));
+                  const g = Math.round(fgRgb[1] * opacity + bgRgb[1] * (1 - opacity));
+                  const b = Math.round(fgRgb[2] * opacity + bgRgb[2] * (1 - opacity));
+                  p.fill(r, g, b);
                 }
 
                 // Add wiggle for old video game effect
@@ -443,16 +545,15 @@ export function startSketch() {
       if (header) {
         const dimensions = getCanvasDimensions();
         const position = getCanvasPosition();
-        
+
         p.resizeCanvas(dimensions.width, dimensions.height);
-        
+
         // Update canvas position
-        const canvas = document.querySelector('canvas');
-        if (canvas) {
-          canvas.style.left = position.x + 'px';
-          canvas.style.top = position.y + 'px';
+        if (canvasElement) {
+          canvasElement.style.left = position.x + 'px';
+          canvasElement.style.top = position.y + 'px';
         }
-        
+
         createBubblesFromText();
       }
     };
