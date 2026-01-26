@@ -72,8 +72,8 @@ export function startSketch() {
       
       if (width < 640) {
         // Mobile phones
-        fontSize = 64;
-        bubbleSize = 1;
+        fontSize = 58;
+        bubbleSize = 1.5;
         gridSpacing = 2.25;
         hoverRadius = 30;
         leftMargin = 16;
@@ -338,7 +338,7 @@ export function startSketch() {
       pg.pixelDensity(1);
       pg.background(bgRgb[0], bgRgb[1], bgRgb[2]);
       pg.fill(fgRgb[0], fgRgb[1], fgRgb[2]);
-      pg.textFont('freight-text-pro');
+      pg.textFont('freighttextcmp-pro');
       pg.textStyle(p.ITALIC);
       pg.textSize(fontSize);
       

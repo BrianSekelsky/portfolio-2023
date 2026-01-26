@@ -1,0 +1,67 @@
+---
+export interface Props {
+  text?: string;
+  speed?: number;
+}
+
+const { text = "OPEN TO WORK", speed = 100 } = Astro.props;
+---
+
+<div class="marquee-container border-b py-4 font-light text-xs bg-yellow-200 text-black">
+  <div class="marquee" data-speed={speed}>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+    <span class="marquee-text ">{text}</span>
+  </div>
+</div>
+
+<style>
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .marquee-container:active {
+    cursor: grabbing;
+  }
+
+  .marquee {
+    display: flex;
+    width: fit-content;
+    animation: scroll linear infinite;
+    gap: 2rem;
+    will-change: transform;
+  }
+
+  .marquee-text {
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 1rem));
+    }
+  }
+
+  .marquee {
+    animation-duration: calc(var(--marquee-duration, 60s));
+  }
+</style>

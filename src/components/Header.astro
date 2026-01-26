@@ -1,3 +1,7 @@
+---
+import Marquee from "./Marquee.astro";
+---
+
 <div id="header" class="transition-all duration-500">
   <div
     class="sm:mt-0 p-8 sm:pt-8 min-h-[400px] sm:min-h-[600px] max-w-full border-b dark:border-dark-border bg"
@@ -29,6 +33,8 @@ Brian Sekelsky is a designer & developer with 5+ years of experience across user
     </p>
   </div> -->
 </div>
+
+<Marquee text="OPEN TO WORK" speed={100} />
 
 <script type="module" src="/scripts/header-sketch.js" is:inline></script>
 

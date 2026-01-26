@@ -6,7 +6,8 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			serif: ["freight-text-pro", "sans-serif"],
-			sans: ["neue-haas-unica", "Helvetica", 'sans-serif']
+			sans: ["neue-haas-unica", "Helvetica", 'sans-serif'],
+			mono: ["freight-macro-pro", "Helvetica"]
 		},
 		maxWidth: {
 			'1/4': '25%',
