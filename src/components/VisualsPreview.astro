@@ -1,0 +1,144 @@
+---
+import { Image } from "astro:assets";
+
+// Import a selection of visual work images
+import apple from "../images/critical-images/apple.png";
+import balloon from "../images/critical-images/balloon.png";
+import broadside from "../images/critical-images/broadside.png";
+import contrarianism from "../images/critical-images/contrarianism.png";
+import frankenstein from "../images/critical-images/frankenstein.png";
+import mediums from "../images/critical-images/mediums.png";
+import newTypography from "../images/critical-images/new-new-typography.png";
+import physicalManifestation from "../images/critical-images/physical-manifestation.png";
+import programmingForgetting from "../images/critical-images/programming-is-forgetting.png";
+import technologies from "../images/critical-images/technologies.png";
+import whenDesignThinking from "../images/critical-images/when-design-thinking.png";
+
+const images = [
+  { src: apple, alt: "Apple illustration" },
+  { src: balloon, alt: "Balloon artwork" },
+  { src: broadside, alt: "Broadside typography" },
+  { src: contrarianism, alt: "Contrarianism visual" },
+  { src: frankenstein, alt: "Frankenstein artwork" },
+  { src: mediums, alt: "Mediums exploration" },
+  { src: newTypography, alt: "New typography experiment" },
+  { src: physicalManifestation, alt: "Physical manifestation" },
+  { src: programmingForgetting, alt: "Programming is forgetting" },
+  { src: technologies, alt: "Technologies visual" },
+  { src: whenDesignThinking, alt: "When design thinking" },
+];
+---
+
+<section class="py-12 border-t dark:border-dark-border overflow-hidden">
+  <div class="px-4 sm:px-8 mb-6 flex justify-between items-baseline">
+    <h2 class="font-sans font-bold">Artwork, experiments, and other projects</h2>
+    <a
+      href="/visuals"
+      class="text-sm font-sans hover:underline underline-offset-4 transition-all"
+    >
+      View all &rarr;
+    </a>
+  </div>
+
+  <div class="marquee-wrapper">
+    <div class="marquee-container">
+      <div class="marquee-track">
+        {/* First set of images */}
+        {images.map((image) => (
+          <div class="marquee-item">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="rounded-lg object-cover h-full w-auto"
+              loading="lazy"
+            />
+          </div>
+        ))}
+        {/* Duplicate for seamless loop */}
+        {images.map((image) => (
+          <div class="marquee-item">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="rounded-lg object-cover h-full w-auto"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-wrapper {
+    position: relative;
+    /* Match the site's grid padding */
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .marquee-wrapper {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    /* Feathered edges using mask */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    flex-shrink: 0;
+    height: 200px;
+  }
+
+  @media (min-width: 640px) {
+    .marquee-item {
+      height: 280px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .marquee-item {
+      height: 320px;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

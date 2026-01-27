@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// Import all visual work images
+import apple from "../images/critical-images/apple.png";
+import balloon from "../images/critical-images/balloon.png";
+import broadside from "../images/critical-images/broadside.png";
+import combinedCity from "../images/critical-images/combined-city.jpg";
+import contrarianism from "../images/critical-images/contrarianism.png";
+import frankenstein from "../images/critical-images/frankenstein.png";
+import mediums from "../images/critical-images/mediums.png";
+import newTypography from "../images/critical-images/new-new-typography.png";
+import opportunityGaps from "../images/critical-images/opportunitygaps.png";
+import physicalManifestation from "../images/critical-images/physical-manifestation.png";
+import programmingForgetting from "../images/critical-images/programming-is-forgetting.png";
+import technologies from "../images/critical-images/technologies.png";
+import whenDesignThinking from "../images/critical-images/when-design-thinking.png";
+import boxBob from "../images/critical-images/50-opac-box-bob.png";
+
+// Videos
+import aroundVideo from "../images/critical-images/around.webm";
+import mediumsVideo from "../images/critical-images/mediums.webm";
+import combinationismVideo from "../images/critical-images/combinationism.webm";
+
+const images = [
+  { src: physicalManifestation, alt: "The designer becomes the physical manifestation of the work", title: "Physical Manifestation" },
+  { src: contrarianism, alt: "Contrarianism visual exploration", title: "Contrarianism" },
+  { src: combinedCity, alt: "Combined city collage", title: "Combined City" },
+  { src: opportunityGaps, alt: "Opportunity gaps visualization", title: "Opportunity Gaps" },
+  { src: whenDesignThinking, alt: "When design thinking critique", title: "When Design Thinking" },
+  { src: technologies, alt: "Technologies visual", title: "Technologies" },
+  { src: programmingForgetting, alt: "Programming is forgetting", title: "Programming is Forgetting" },
+  { src: frankenstein, alt: "Frankenstein artwork", title: "Frankenstein" },
+  { src: apple, alt: "Apple illustration", title: "Apple" },
+  { src: balloon, alt: "Balloon artwork", title: "Balloon" },
+  { src: broadside, alt: "Broadside typography", title: "Broadside" },
+  { src: mediums, alt: "Mediums exploration", title: "Mediums" },
+  { src: newTypography, alt: "New typography experiment", title: "New Typography" },
+  { src: boxBob, alt: "Box bob experiment", title: "Box Bob" },
+];
+
+const videos = [
+  { src: aroundVideo, title: "Around" },
+  { src: mediumsVideo, title: "Mediums (Animated)" },
+  { src: combinationismVideo, title: "Combinationism" },
+];
+---
+
+<Layout title="Visuals — Brian Sekelsky">
+  <main>
+    <div class="px-4 sm:px-8 py-12">
+      <div class="mb-8">
+        <a href="/" class="text-sm font-sans hover:underline underline-offset-4">&larr; Back home</a>
+      </div>
+
+      <h1 class="font-serif italic text-4xl sm:text-5xl mb-4">Artwork, experiments, and other projects</h1>
+      <p class="font-sans text-zinc-600 dark:text-zinc-400 max-w-2xl mb-12">
+        A collection of visual explorations, speculative design work, and experiments
+        created during my time in grad school and beyond.
+      </p>
+
+      {/* Video section */}
+      <section class="mb-16">
+        <h2 class="font-sans font-bold mb-6">Motion</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {videos.map((video) => (
+            <div class="group">
+              <div class="rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+                <video
+                  class="w-full h-auto"
+                  playsinline
+                  autoplay
+                  muted
+                  loop
+                  preload="metadata"
+                >
+                  <source src={video.src} type="video/webm" />
+                </video>
+              </div>
+              <p class="mt-2 text-sm font-sans text-zinc-600 dark:text-zinc-400">{video.title}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Images grid */}
+      <section>
+        <h2 class="font-sans font-bold mb-6">Stills</h2>
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          {images.map((image) => (
+            <div class="break-inside-avoid group">
+              <div class="rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  class="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+              </div>
+              <p class="mt-2 text-sm font-sans text-zinc-600 dark:text-zinc-400">{image.title}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

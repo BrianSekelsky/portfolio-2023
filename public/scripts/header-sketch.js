@@ -118,10 +118,10 @@ export function startSketch() {
       // Check if we're on mobile (nav at top) or desktop (nav on left)
       if (window.innerWidth < mobileBreakpoint) {
         // Mobile: nav is at top, canvas starts at left edge
-        return { x: 0, y: 88 };
+        return { x: 0, y: 0 };
       } else {
         // Desktop: nav is 64px wide on left
-        return { x: 64, y: 0 };
+        return { x: 0, y: 88 };
       }
     }
     
@@ -353,6 +353,7 @@ export function startSketch() {
       pg.textFont('freighttextcmp-pro');
       pg.textStyle(p.ITALIC);
       pg.textSize(fontSize);
+      pg.textAlign(p.CENTER, p.CENTER);
       
       // Split text into paragraphs (by \n), then wrap each paragraph
       const paragraphs = displayText.split('\n');
@@ -378,10 +379,15 @@ export function startSketch() {
         }
       }
       
-      // Draw each line
+      // Calculate total text block height for vertical centering
+      const totalTextHeight = allLines.length * fontSize;
+      const verticalOffset = (p.height - totalTextHeight) / 3;
+
+      // Draw each line, centered vertically
+      // With textAlign(CENTER, CENTER), y position is the center of each line
       for (let i = 0; i < allLines.length; i++) {
-        let xOffset = leftMargin;
-        let yOffset = fontSize + i * fontSize;
+        let xOffset = p.width / 2;
+        let yOffset = verticalOffset + (fontSize / 2) + i * fontSize;
         pg.text(allLines[i], xOffset, yOffset);
       }
       
