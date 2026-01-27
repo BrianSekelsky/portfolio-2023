@@ -7,13 +7,13 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
 <div class="block">
   <div class="mx-auto">
-    <div class="flex sm:justify-between p-4 px-8 font-mono">
+    <div class="flex flex-wrap justify-center sm:flex-nowrap sm:justify-between p-4 px-8 font-mono">
       <div class="w-full">
-        <a href="/#" class="lg:first:ml-0 font-mono hover:text-blue-700 dark:hover:text-blue-400 transition-all dark:text-dark-text"
+        <a href="/#" class="w-full lg:first:ml-0 flex justify-center sm:justify-start font-mono hover:text-blue-700 dark:hover:text-blue-400 transition-all dark:text-dark-text"
           >Brian Sekelsky</a
         >
       </div>
-      <div class="flex flex-wrap justify-end gap-8 pt-2 sm:pt-0 w-full">
+      <div class="flex flex-wrap justify-center sm:justify-end gap-8 pt-2 sm:pt-0 w-full">
         <NavLink href="/" name="Projects" />
         <NavLink href="/about/" name="About" />
         <!-- <NavLink href="/music/" name="Music" /> -->

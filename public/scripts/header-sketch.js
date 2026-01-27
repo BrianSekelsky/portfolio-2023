@@ -115,32 +115,24 @@ export function startSketch() {
     }
     
     function getCanvasPosition() {
-      // Check if we're on mobile (nav at top) or desktop (nav on left)
-      if (window.innerWidth < mobileBreakpoint) {
-        // Mobile: nav is at top, canvas starts at left edge
-        return { x: 0, y: 0 };
-      } else {
-        // Desktop: nav is 64px wide on left
-        return { x: 0, y: 88 };
-      }
+      if (!header) return { x: 0, y: 0 };
+
+      // Get the header's position relative to the viewport
+      const rect = header.getBoundingClientRect();
+      return {
+        x: rect.left + window.scrollX,
+        y: rect.top + window.scrollY
+      };
     }
-    
+
     function getCanvasDimensions() {
       if (!header) return { width: window.innerWidth, height: window.innerHeight };
-      
-      if (window.innerWidth < mobileBreakpoint) {
-        // Mobile: full width, header height
-        return { 
-          width: window.innerWidth, 
-          height: header.offsetHeight 
-        };
-      } else {
-        // Desktop: width minus nav, header height
-        return { 
-          width: window.innerWidth - 64, 
-          height: header.offsetHeight 
-        };
-      }
+
+      // Match the header element's dimensions exactly
+      return {
+        width: header.offsetWidth,
+        height: header.offsetHeight
+      };
     }
 
     class Bubble {
