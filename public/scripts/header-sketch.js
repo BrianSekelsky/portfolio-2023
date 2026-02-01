@@ -31,8 +31,8 @@ function updateCanvasBlur() {
 window.addEventListener('scroll', updateCanvasBlur);
 
 // Color configuration - change these hex codes to customize appearance
-const BG_COLOR = '#ffffff'; // Background color
-const FG_COLOR = '#000000'; // Foreground/bubble color
+const BG_COLOR = '#F9F9F9'; // Background color (light gray-white)
+const FG_COLOR = '#050517'; // Foreground/bubble color (near black)
 
 function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -482,27 +482,41 @@ export function startSketch() {
       // Start with random floating bubbles
       createRandomFloatingBubbles();
 
-      // Wait for font to load, then transition loading bubbles to text
-      if (window.Typekit && window.Typekit.load) {
-        Typekit.load({
-          active: () => {
+      // Wait for the specific font to load before rendering text
+      const fontSpec = 'italic 100px freighttextcmp-pro';
+
+      async function waitForFont() {
+        try {
+          // Explicitly trigger the browser to download this font
+          await document.fonts.load(fontSpec);
+
+          // Verify it actually loaded
+          if (document.fonts.check(fontSpec)) {
             transitionLoadingBubblesToText();
-          },
-          inactive: () => {
-            // Fallback if fonts fail to load
+            return;
+          }
+        } catch (e) {
+          // document.fonts.load failed
+        }
+
+        // Font didn't load on first try — poll until it arrives or timeout
+        let elapsed = 0;
+        const interval = 200;
+        const maxWait = 5000;
+        const poll = setInterval(() => {
+          elapsed += interval;
+          if (document.fonts.check(fontSpec)) {
+            clearInterval(poll);
+            transitionLoadingBubblesToText();
+          } else if (elapsed >= maxWait) {
+            clearInterval(poll);
+            // Fall back to rendering with whatever font is available
             transitionLoadingBubblesToText();
           }
-        });
-      } else if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => {
-          transitionLoadingBubblesToText();
-        });
-      } else {
-        // Last resort fallback
-        setTimeout(() => {
-          transitionLoadingBubblesToText();
-        }, 1500);
+        }, interval);
       }
+
+      waitForFont();
     };
 
     p.draw = () => {

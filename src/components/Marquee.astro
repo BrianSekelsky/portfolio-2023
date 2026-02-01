@@ -6,7 +6,7 @@ export interface Props {
 const { text = "OPEN TO WORK", speed = 10 } = Astro.props;
 ---
 
-<div class="marquee-container border-b py-4 font-light text-xs bg-yellow-200 text-black font-mono">
+<div class="marquee-container border-b py-4 font-light text-xs bg-accent-yellow text-black font-mono">
   <div class="marquee" data-speed={speed}>
     <span class="marquee-content">{text}</span>
     <span class="marquee-content">{text}</span>

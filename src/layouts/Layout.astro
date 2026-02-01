@@ -35,7 +35,7 @@ const { title } = Astro.props;
     <link rel="stylesheet" href="https://use.typekit.net/abc2kbg.css">
     <script defer src="/scripts/card-animation.js"></script>
   </head>
-  <body class="overflow-x-hidden flex flex-col dark:bg-dark-bg dark:text-dark-text">
+  <body class="overflow-x-hidden flex flex-col bg-white text-black dark:bg-dark-bg dark:text-dark-text">
     <ClientRouter />
     <div id="transition-overlay"></div>
 
@@ -46,7 +46,7 @@ const { title } = Astro.props;
         <Nav />
       </div> -->
       <div class="h-screen w-100 flex flex-col">
-        <div class="block border-b">
+        <div class="block border-b bg-purewhite">
           <Nav />
         </div>
         <main data-astro-transition>
@@ -59,8 +59,8 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   :root {
-    --card-shadow-color: oklch(87.1% 0.006 286.286);
-    --transition-overlay-bg: rgba(244, 244, 244, 0.6);
+    --card-shadow-color: #e0e0e0;
+    --transition-overlay-bg: rgba(249, 249, 249, 0.6);
   }
 
   .dark {

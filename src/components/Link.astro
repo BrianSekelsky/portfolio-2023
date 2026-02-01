@@ -16,14 +16,14 @@ const { href, name, footer = false, newtab = false } = Astro.props;
     <a
       target="_blank"
       rel="noopener noreferrer"
-      class={footer ? "underline" : "underline hover:text-blue-700"}
+      class={footer ? "underline" : "underline hover:text-accent-blue"}
       href={href}
     >
       {name}
     </a>
   ) : (
     <a
-      class={footer ? "underline" : "underline hover:text-blue-700"}
+      class={footer ? "underline" : "underline hover:text-accent-blue"}
       href={href}
       >
       {name}

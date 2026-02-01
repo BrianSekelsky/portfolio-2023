@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
 	darkMode: 'class',
@@ -25,24 +27,30 @@ module.exports = {
 			'full': '100rem',
 			'none': '0px',
 		},
+		colors: {
+			...colors,
+			'black': '#050517',
+			'white': '#F9F9F9',
+			'purewhite': '#FFFFFF',
+			'offwhite': '#F3EFE0',
+			'almostwhite': '#F9F7F0',
+			'gray': '#8A817C',
+			'lightgray': "#e8e4d5",
+			'verylightgray': "#ebe7d8",
+			'ecru': "#A69658",
+			'accent-yellow': '#FEF08A',
+			'accent-green': '#04724D',
+			'accent-blue': '#007FFF',
+			'dark-bg': '#050517',
+			'dark-surface': '#0a0a1a',
+			'dark-surface-hover': '#14142a',
+			'dark-border': '#1e1e3a',
+			'dark-text': '#F9F9F9',
+			'dark-text-muted': '#a8a8a8'
+		},
 		extend: {
-			colors: {
-				'black': '#212427',
-				'white': '#fff',
-				'offwhite': '#f5f5f5',
-				'gray': '#8A817C',
-				'lightgray': "#ededed",
-				'verylightgray': "#ededed",
-				'ecru': "#A69658",
-				'dark-bg': '#0f1214',
-				'dark-surface': '#1a1d21',
-				'dark-surface-hover': '#232629',
-				'dark-border': '#2d3135',
-				'dark-text': '#e8e8e8',
-				'dark-text-muted': '#a8a8a8'
-			},
 			borderColor: {
-				DEFAULT: 'oklch(70.5% 0.015 286.067)',
+				DEFAULT: '#9f9fa9',
 			},
 		}
 	},
