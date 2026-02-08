@@ -13,6 +13,7 @@ import NPCA from "./Gallery-cards/NPCA.astro";
 import Greenways from "./Gallery-cards/Greenways.astro";
 import FriendsOfTanzania from "./Gallery-cards/FriendsOfTanzania.astro";
 import FidelitySDR from "./Gallery-cards/Fidelity-SDR.astro";
+import LAS from "./Gallery-cards/LAS.astro";
 
 
 export default [
@@ -21,6 +22,7 @@ export default [
   { Component: FriendsOfTanzania, typeClass: "wordpress website ux" },
   { Component: Fidelity, typeClass: "website ux research" },
   { Component: WitnessingGlaciers, typeClass: "website branding development" },
+  { Component: LAS, typeClass: "ux research" },
   { Component: DeliberateAI, typeClass: "website userExperience" },
   { Component: NPCA, typeClass: "website" },
   { Component: PossibleInternet, typeClass: "userExperience" },

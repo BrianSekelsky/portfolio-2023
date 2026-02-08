@@ -1,56 +1,29 @@
 ---
-import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import { Image } from "astro:assets";
 
-import gif from "../../images/homepage/las.gif";
-import video from "../../images/homepage/las.webm";
-import png from "../../images/homepage/las2.png";
+import png from "../../images/homepage/lasbackup.png";
 
 const title = "Laboratory for Analytic Sciences";
-const description = "asdf";
 const year = "2022";
 const types = [
   { text: "UX", special: false },
   { text: "AI", special: false },
   { text: "CaseStudy", special: true },
 ];
-const size = "medium";
-const hasVideo = false;
 const alt =
   "Three images of prototypes made for this project overlayed on one another and a purple gradient background";
+const description="Designing an interface for knowledge workers, in partnership with NC State's Laboratory for Analytic Sciences."
 ---
 
 <Card
-  size="medium"
   href="projects/las"
   title={title}
   types={types}
   year={year}
-  myColor="#E1E5DC"
+  description={description}
 >
-  <!-- <div class="video hidden md:block">
-    <video
-      class="transition-all"
-      playsinline
-      autoplay
-      muted
-      loop
-      preload="none"
-    >
-      <source src={video} type="video/webm" />
-    </video>
-  </div> -->
-  <div class="flex justify-center items-center bg-color h-full">
-    <div class="shadow-xl video w-5/6 h-min">
-      <Image src={png} alt={alt} class="image" loading="lazy" />
-    </div>
+  <div class="block">
+    <Image src={png} alt={alt} loading="lazy" />
   </div>
 </Card>
-
-<style>
-  .bg-color {
-    position: relative;
-    background-color: var(--myColor);
-  }
-</style>

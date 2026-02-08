@@ -1,5 +1,4 @@
 ---
-import Marquee from "./Marquee.astro";
 ---
 
 <div class="transition-all duration-500">
@@ -10,36 +9,12 @@ import Marquee from "./Marquee.astro";
     <p class="sr-only">
       Brian Sekelsky is a designer, working across user experience, visual design, and code.
     </p>
-    <!-- <div
-      id="manipulate"
-      class="text-4xl w-min font-serif font-light overflow-hidden pb-48 leading-[1.325]"
-    >
-      <div
-        class="backdrop-blur-[5px] w-[60vw] rounded-lg px-4 py-2 border border-zinc-100"
-      >
-        <h1 id="main-text">
-Brian Sekelsky is a designer & developer with 5+ years of experience across user experience, visual design, & frontend development.
-          <span
-            class="ml-2 h-100 py-1 px-3 inline-block align-middle glow-pill bg-blue-50 rounded-full border border-blue-300 text-blue-500 text-sm italic font-serif font-regular"
-            >Open to work</span
-          >
-        </h1>
-      </div>
-    </div> -->
   </div>
-  <!-- <div class="block sm:hidden p-4 max-w-full border-b">
-    <p id="manipulate" class="text-4xl font-serif font-light py-4 text-left">
-Brian Sekelsky is a designer & developer with 5+ years of experience across user experience, visual design, & frontend development.
-    </p>
-  </div> -->
 </div>
-
-<!-- <Marquee text="OPEN TO WORK" speed={10} /> -->
 
 <script type="module" src="/scripts/header-sketch.js" is:inline></script>
 
 <style>
-
   .sr-only {
     position: absolute;
     width: 1px;
@@ -51,41 +26,4 @@ Brian Sekelsky is a designer & developer with 5+ years of experience across user
     white-space: nowrap;
     border: 0;
   }
-
-  /* .less-width {
-    width: 100%;
-  }
-
-  @media (min-width: 1024px) {
-    .less-width {
-      width: 98%;
-    }
-  }
-  .bg {
-  } */
-
-  /* #main-text,
-  #helper {
-    text-shadow:
-      -2px -2px 0 #ffffff,
-      2px -2px 0 #ffffff,
-      -2px 2px 0 #ffffff,
-      2px 2px 0 #ffffff;
-  } */
-
-  /* @keyframes glow {
-    0%,
-    100% {
-      box-shadow: 0 0 5px 2px oklch(93.2% 0.032 255.585);
-    }
-    50% {
-      box-shadow: 0 0 5px 3px oklch(80.9% 0.105 251.813);
-    }
-  }
-
-  .glow-pill {
-    animation: glow 3s ease-in-out infinite;
-    width: fit-content;
-    transform: translateY(-3px);
-  } */
 </style>

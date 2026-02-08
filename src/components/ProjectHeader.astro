@@ -4,11 +4,10 @@ interface Props {
   title: string;
   objective: string;
   types: string[];
-  collborators: string[];
+  collaborators: string[];
   year: string;
   outboundLink?: string;
   music?: boolean;
-  myColor?: string;
 }
 const {
   title,
@@ -18,7 +17,6 @@ const {
   year,
   outboundLink = "",
   music = false,
-  myColor = "white",
 } = Astro.props;
 ---
 
@@ -79,26 +77,13 @@ const {
     </div>
   </div>
 
-  <style define:vars={{ myColor }}>
+  <style>
     .color {
       background-color: white;
     }
 
     :global(.dark) .color {
       background-color: #1a1d21;
-    }
-
-    .gap-1 {
-      gap: 1px;
-    }
-
-    .grid-template {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .w-max-content {
-      width: max-content;
-      max-width: 50%;
     }
   </style>
 </div>
