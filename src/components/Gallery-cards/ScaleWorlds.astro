@@ -1,64 +1,42 @@
 ---
-import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import { Image } from "astro:assets";
-import image from "../../images/homepage/scale-worlds.png";
-import video from "../../images/homepage/scale-worlds.webm";
-import videomp4 from "../../images/homepage/scale-worlds.mp4";
+import image from "../../images/homepage/size-scale-still.png";
+import video from "../../images/homepage/size&scale.webm";
+import videomp4 from "../../images/homepage/size&scale.mp4";
 
 const title = "Scale Worlds";
-const description = "this is an explanation about project 1";
-const year = "2021–⁠2023";
+const year = "2021–2023";
 const types = [
-  { text: "UX", special: false },
-  { text: "Virtual Reality", special: false },
+  { text: "VR", special: false },
+  { text: "Web", special: false },
+  { text: "Research", special: false },
 ];
-const size = "medium";
-const hasVideo = true;
-const alt =
-  "Clip of zooming out from astronaut perspective up to whale perspective";
+const alt = "Scale Worlds web interface showing size comparison across scales";
+const description = "Designing immersive learning environments—first in VR, then adapted for the web—to help students understand size and scale.";
 ---
 
 <Card
-  size="medium"
   href="projects/scale-worlds"
   title={title}
   types={types}
   year={year}
-  myColor="#E7F5FE"
-  description="Creating an immersive virtual environment, where students can see various scientific entities in relation to their own bodies and conduct realistic size comparisons that cannot be replicated in everyday experience."
+  description={description}
 >
   <div class="hidden md:block">
     <video
-      class="transition-all video-center"
+      class="transition-all"
       playsinline
       autoplay
       muted
       loop
       preload="none"
     >
-      <source
-        src={video}
-        type="video/webm"
-      />
-      <source
-        src={videomp4}
-        type="video/mp4"
-      />
+      <source src={video} type="video/webm" />
+      <source src={videomp4} type="video/mp4" />
     </video>
   </div>
   <div class="flex md:hidden">
     <Image class="transition-all" src={image} alt={alt} loading="lazy" />
   </div>
 </Card>
-
-<style>
-  img {
-    width: 100%;
-  }
-
-  .bg-color {
-    position: relative;
-    background-color: var(--myColor);
-  }
-</style>
