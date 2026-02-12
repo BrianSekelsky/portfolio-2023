@@ -7,6 +7,8 @@ import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
 import webm from "../../images/homepage/around.webm";
+import webmMp4 from "../../images/homepage/around.mp4";
+import poster from "../../images/homepage/around-poster.jpg";
 ---
 
 <Layout title="Brian Sekelsky">
@@ -20,8 +22,9 @@ import webm from "../../images/homepage/around.webm";
     />
     <div class="">
       <div class="mx-auto flex justify-center">
-        <video class="w-1/2" playsinline autoplay muted loop>
+        <video class="w-1/2" playsinline autoplay muted loop preload="metadata" poster={poster.src}>
           <source src={webm} type="video/webm" />
+          <source src={webmMp4} type="video/mp4" />
         </video>
       </div>
     </div>

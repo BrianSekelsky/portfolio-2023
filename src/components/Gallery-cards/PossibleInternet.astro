@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 
 import video from "../../images/homepage/possible-internet2.webm";
 import videomp4 from "../../images/homepage/possible-internet2.mp4";
+import poster from "../../images/homepage/possible-internet2-poster.jpg";
 import image from "../../images/homepage/possible-internet.png";
 
 const title = "Possible Internet";
@@ -37,7 +38,8 @@ const alt = "";
       autoplay
       muted
       loop
-      preload="none"
+      preload="metadata"
+      poster={poster.src}
     >
       <source
         src={video}

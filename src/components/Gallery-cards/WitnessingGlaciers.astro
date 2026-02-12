@@ -3,6 +3,7 @@ import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import video from "../../images/homepage/glaciers.webm";
 import videomp4 from "../../images/homepage/glaciers.mp4";
+import poster from "../../images/homepage/glaciers-poster.jpg";
 import { Image } from "astro:assets";
 import gif from "../../images/homepage/glaciers.png";
 
@@ -28,14 +29,15 @@ const alt =
   myColor="ghostwhite"
   description="Web-based storytelling project sharing data about landmark glaciers and emphathizing environmental urgency."
 >
-  <div class="video hidden md:flex justify-center items-center bg-color h-full">
+  <div class="hidden md:flex justify-center items-center bg-color h-full">
     <video
       class="transition-all"
       playsinline
       autoplay
       muted
       loop
-      preload="none"
+      preload="metadata"
+      poster={poster.src}
     >
       <source
         src={video}

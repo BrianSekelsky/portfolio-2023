@@ -12,10 +12,14 @@ import designThinking from "../../images/critical-images/when-design-thinking.pn
 import newNewTypography from "../../images/critical-images/new-new-typography.png";
 import contrarianism from "../../images/critical-images/contrarianism.png";
 import combinationism from "../../images/critical-images/combinationism.webm";
+import combinationismMp4 from "../../images/critical-images/combinationism.mp4";
+import combinationismPoster from "../../images/critical-images/combinationism-poster.jpg";
 import opacBox from "../../images/critical-images/50-opac-box-bob.png";
 import programmingIsForgetting from "../../images/critical-images/programming-is-forgetting.png";
 import mediums from "../../images/critical-images/mediums.png";
 import mediums2 from "../../images/critical-images/mediums.webm";
+import mediums2Mp4 from "../../images/critical-images/mediums.mp4";
+import mediums2Poster from "../../images/critical-images/mediums-poster.jpg";
 import balloon from "../../images/critical-images/balloon.png";
 import apple from "../../images/critical-images/apple.png";
 import interfaces from "../../images/critical-images/interface.jpeg";
@@ -62,7 +66,7 @@ import highestmountain from "../../images/homepage/highest-mountain.png";
           Technologies not as reflections of our world but shapers of it
         </div>
         <div class="mx-auto w-10/12">
-          <video playsinline autoplay muted loop>
+          <video playsinline autoplay muted loop preload="metadata">
             <source src={aroundVideo} type="video/webm" />
             <source src={aroundVideoMp4} type="video/mp4" />
           </video>
@@ -79,8 +83,9 @@ import highestmountain from "../../images/homepage/highest-mountain.png";
           Album art for Winter Foe
         </div>
         <div class="mx-auto">
-          <video playsinline autoplay muted loop>
+          <video playsinline autoplay muted loop preload="metadata" poster={combinationismPoster.src}>
             <source src={combinationism} type="video/webm" />
+            <source src={combinationismMp4} type="video/mp4" />
           </video>
         </div>
         <div class="pt-2 pb-12 text-center text-sm">
@@ -115,8 +120,9 @@ import highestmountain from "../../images/homepage/highest-mountain.png";
           thinking
         </div>
         <div class="mx-auto">
-          <video playsinline autoplay muted loop>
+          <video playsinline autoplay muted loop preload="metadata" poster={mediums2Poster.src}>
             <source src={mediums2} type="video/webm" />
+            <source src={mediums2Mp4} type="video/mp4" />
           </video>
         </div>
         <div class="pt-2 pb-12 text-center text-sm">

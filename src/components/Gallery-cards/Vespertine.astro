@@ -3,6 +3,7 @@ import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
 import video from "../../images/homepage/vespertine.webm";
 import videomp4 from "../../images/homepage/vespertine.mp4";
+import poster from "../../images/homepage/vespertine-poster.jpg";
 import image from "../../images/homepage/vespertine.png";
 import { Image } from "astro:assets";
 
@@ -34,7 +35,8 @@ const alt =
       autoplay
       muted
       loop
-      preload="none"
+      preload="metadata"
+      poster={poster.src}
     >
       <source
         src={video}

@@ -36,7 +36,11 @@ import swcave from "../../images/scale-worlds/swcave.gif";
 
 // Scale Worlds Web images
 import webmVR from "../../images/scale-worlds/scale-movement.webm";
+import webmVRMp4 from "../../images/scale-worlds/scale-movement.mp4";
+import webmVRPoster from "../../images/scale-worlds/scale-movement-poster.jpg";
 import webmWeb from "../../images/size-and-scale/size&scale.webm";
+import webmWebMp4 from "../../images/homepage/size&scale.mp4";
+import webmWebPoster from "../../images/homepage/size&scale-poster.jpg";
 import universcale from "../../images/size-and-scale/universcale.png";
 import powersoften from "../../images/size-and-scale/powersoften.jpeg";
 import fmtable from "../../images/size-and-scale/fm-table.png";
@@ -67,8 +71,9 @@ import website4 from "../../images/size-and-scale/website-4.png";
 
     <!-- Hero Video -->
     <div class="border-b load-in">
-      <video playsinline autoplay muted loop>
+      <video playsinline autoplay muted loop preload="metadata" poster={webmVRPoster.src}>
         <source src={webmVR} type="video/webm" />
+        <source src={webmVRMp4} type="video/mp4" />
       </video>
     </div>
 
@@ -216,8 +221,9 @@ import website4 from "../../images/size-and-scale/website-4.png";
 
     <!-- Web Adaptation Section -->
     <div class="border-t relative">
-      <video playsinline autoplay muted loop>
+      <video playsinline autoplay muted loop preload="metadata" poster={webmWebPoster.src}>
         <source src={webmWeb} type="video/webm" />
+        <source src={webmWebMp4} type="video/mp4" />
       </video>
       <FrameCaption text="Scale Worlds Web" />
     </div>

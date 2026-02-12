@@ -18,7 +18,9 @@ import southCascade from "../../images/glaciers/south-cascade.gif";
 import glaciers from "../../images/glaciers/glaciers.gif";
 
 import videoHero from "../../images/glaciers/witnessing_glaciers.mp4";
+import videoHeroPoster from "../../images/glaciers/witnessing_glaciers-poster.jpg";
 import videoStudy from "../../images/glaciers/a_dangerously_unscientific_study_on_glaciers_and_sea_level.mp4";
+import videoStudyPoster from "../../images/glaciers/a_dangerously_unscientific_study_on_glaciers_and_sea_level-poster.jpg";
 
 import webpage1 from "../../images/glaciers/webpage1.png";
 import webpage2 from "../../images/glaciers/webpage2.png";
@@ -38,7 +40,7 @@ import FrameCaption from "../../components/FrameCaption.astro"
       myColor="mintcream"
     />
     <div class="border-b load-in">
-      <video playsinline autoplay muted loop>
+      <video playsinline autoplay muted loop preload="metadata" poster={videoHeroPoster.src}>
         <source src={videoHero} type="video/mp4" />
       </video>
     </div>
@@ -111,7 +113,7 @@ import FrameCaption from "../../components/FrameCaption.astro"
           </p>
         </div>
         <div class="col-span-1 relative">
-          <video playsinline autoplay muted loop>
+          <video playsinline autoplay muted loop preload="metadata" poster={videoStudyPoster.src}>
             <source src={videoStudy} type="video/mp4" />
           </video>
           <FrameCaption text="A dangerously unscientific study on glaciers and sea level" />

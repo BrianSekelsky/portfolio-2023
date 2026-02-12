@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import image from "../../images/homepage/size-scale-still.png";
 import video from "../../images/homepage/size&scale.webm";
 import videomp4 from "../../images/homepage/size&scale.mp4";
+import poster from "../../images/homepage/size&scale-poster.jpg";
 
 const title = "Scale Worlds";
 const year = "2021–2023";
@@ -30,7 +31,8 @@ const description = "Designing immersive learning environments—first in VR, th
       autoplay
       muted
       loop
-      preload="none"
+      preload="metadata"
+      poster={poster.src}
     >
       <source src={video} type="video/webm" />
       <source src={videomp4} type="video/mp4" />

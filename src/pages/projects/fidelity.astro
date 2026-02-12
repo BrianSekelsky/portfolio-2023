@@ -8,6 +8,8 @@ import { Image } from "astro:assets";
 
 import preview from "../../images/fidelity/FDS.png";
 import miro from "../../images/fidelity/miro.webm";
+import miroMp4 from "../../images/fidelity/miro.mp4";
+import miroPoster from "../../images/fidelity/miro-poster.jpg";
 import uxr from "../../images/fidelity/uxr.png";
 
 import sketching from "../../images/fidelity/sketching.png";
@@ -87,8 +89,9 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
       </div>
       <div class="col-span-1">
         <div class="relative">
-          <video playsinline autoplay muted loop>
+          <video playsinline autoplay muted loop preload="metadata" poster={miroPoster.src}>
             <source src={miro} type="video/webm" />
+            <source src={miroMp4} type="video/mp4" />
           </video>
           <Caption text="UX lifecycles miro board" />
         </div>

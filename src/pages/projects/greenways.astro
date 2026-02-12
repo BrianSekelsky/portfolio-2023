@@ -16,6 +16,7 @@ import NewSiteMap from "../../images/greenways/new-sitemap.png";
 import greenwaysHome from "../../images/greenways/greenways-homescreen.png";
 import greenwaysRec from "../../images/greenways/greenways-rec.webm";
 import greenwaysRecMp4 from "../../images/greenways/greenways-rec.mp4";
+import greenwaysRecPoster from "../../images/greenways/greenways-rec-poster.jpg";
 
 import Homepage2 from "../../images/greenways/Homepage-2.png";
 import HomepageChuck from "../../images/greenways/homepage-chuck.png";
@@ -23,6 +24,7 @@ import offerings from "../../images/greenways/offerings.png";
 
 import mobile from "../../images/greenways/greenways-mobile.webm";
 import mobileMp4 from "../../images/greenways/greenways-mobile.mp4";
+import mobilePoster from "../../images/greenways/greenways-mobile-poster.jpg";
 
 import project1 from "../../images/greenways/project-1.png";
 import project2 from "../../images/greenways/project-2.png";
@@ -51,7 +53,7 @@ import project5 from "../../images/greenways/project-5.png";
       myColor="honeydew"
     />
     <div class="border-b load-in relative">
-      <video class="w-full" playsinline autoplay muted loop>
+      <video class="w-full" playsinline autoplay muted loop preload="metadata" poster={greenwaysRecPoster.src}>
         <source src={greenwaysRec} type="video/webm" />
         <source src={greenwaysRecMp4} type="video/mp4" />
       </video>
@@ -205,7 +207,7 @@ import project5 from "../../images/greenways/project-5.png";
   </div>
   <div class="col-span-4">
     <div class="flex justify-center">
-      <video playsinline autoplay muted loop class="rounded-md shadow">
+      <video playsinline autoplay muted loop preload="metadata" poster={mobilePoster.src} class="rounded-md shadow">
         <source src={mobile} type="video/webm" />
         <source src={mobileMp4} type="video/mp4" />
       </video>
@@ -220,7 +222,7 @@ import project5 from "../../images/greenways/project-5.png";
     </p>
   </div>
   <div class="col-span-4">
-    <video playsinline autoplay muted loop>
+    <video playsinline autoplay muted loop preload="metadata" poster={greenwaysRecPoster.src}>
       <source src={greenwaysRec} type="video/webm" />
       <source src={greenwaysRecMp4} type="video/mp4" />
     </video>
