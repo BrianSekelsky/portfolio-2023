@@ -2,8 +2,19 @@
 ---
 
 <div class="transition-all duration-500">
+  <!-- Mobile: Static text -->
   <div
-    class="sm:mt-0 p-8 sm:pt-8 min-h-[60vh] sm:min-h-[600px] max-w-full border-b dark:border-dark-border bg"
+    class="flex items-center md:hidden px-4 py-8 min-h-[40vh] border-b dark:border-dark-border"
+    id="header-mobile"
+  >
+    <p class="text-5xl italic font-serif font-thin text-center light leading-[1.1]">
+      Brian Sekelsky is a designer, working across user experience, visual design, and code.
+    </p>
+  </div>
+
+  <!-- Desktop: p5.js sketch -->
+  <div
+    class="hidden md:block sm:mt-0 p-8 sm:pt-8 min-h-[600px] max-w-full border-b dark:border-dark-border bg"
     id="header"
   >
     <p class="sr-only">
@@ -12,7 +23,12 @@
   </div>
 </div>
 
-<script type="module" src="/scripts/header-sketch.js" is:inline></script>
+<script type="module" is:inline>
+  // Only load sketch on desktop
+  if (window.innerWidth >= 768) {
+    import('/scripts/header-sketch.js');
+  }
+</script>
 
 <style>
   .sr-only {

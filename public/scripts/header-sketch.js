@@ -237,7 +237,7 @@ export function startSketch() {
 
       // Draw text
       const totalHeight = lines.length * fontSize;
-      const verticalOffset = (p.height - totalHeight) / 3;
+      const verticalOffset = ((p.height - totalHeight) / 3) + 25;
 
       for (let i = 0; i < lines.length; i++) {
         pg.text(lines[i], p.width / 2, verticalOffset + (fontSize / 2) + i * fontSize);
