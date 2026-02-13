@@ -114,6 +114,74 @@ const { title } = Astro.props;
     }
   }
 
+  /* ==========================================
+     LOAD-IN ANIMATIONS
+     ========================================== */
+  @keyframes loadIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .load-in {
+    opacity: 0;
+    animation: loadIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Stagger children within project grids */
+  .project-grid > * {
+    opacity: 0;
+    animation: loadIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .project-grid > *:nth-child(1) { animation-delay: 0.05s; }
+  .project-grid > *:nth-child(2) { animation-delay: 0.1s; }
+  .project-grid > *:nth-child(3) { animation-delay: 0.15s; }
+  .project-grid > *:nth-child(4) { animation-delay: 0.2s; }
+  .project-grid > *:nth-child(5) { animation-delay: 0.25s; }
+  .project-grid > *:nth-child(6) { animation-delay: 0.3s; }
+  .project-grid > *:nth-child(7) { animation-delay: 0.35s; }
+  .project-grid > *:nth-child(8) { animation-delay: 0.4s; }
+  .project-grid > *:nth-child(n+9) { animation-delay: 0.45s; }
+
+  /* Stagger multiple load-in elements */
+  .load-in:nth-of-type(1) { animation-delay: 0s; }
+  .load-in:nth-of-type(2) { animation-delay: 0.1s; }
+  .load-in:nth-of-type(3) { animation-delay: 0.2s; }
+  .load-in:nth-of-type(4) { animation-delay: 0.3s; }
+
+  /* Stagger gallery cards */
+  #gallery > * {
+    opacity: 0;
+    animation: loadIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  #gallery > *:nth-child(1) { animation-delay: 0.1s; }
+  #gallery > *:nth-child(2) { animation-delay: 0.15s; }
+  #gallery > *:nth-child(3) { animation-delay: 0.2s; }
+  #gallery > *:nth-child(4) { animation-delay: 0.25s; }
+  #gallery > *:nth-child(5) { animation-delay: 0.3s; }
+  #gallery > *:nth-child(6) { animation-delay: 0.35s; }
+  #gallery > *:nth-child(7) { animation-delay: 0.4s; }
+  #gallery > *:nth-child(8) { animation-delay: 0.45s; }
+  #gallery > *:nth-child(n+9) { animation-delay: 0.5s; }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .load-in,
+    .project-grid > *,
+    #gallery > * {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   /* Site border utility - uses CSS variables */
   .site-border {
     border-color: var(--border-color);

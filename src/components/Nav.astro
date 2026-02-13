@@ -5,7 +5,7 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<div class="block">
+<nav class="nav-load-in">
   <div class="mx-auto">
     <div class="flex flex-wrap justify-center gap-4 lg:flex-nowrap sm:justify-between p-4 py-8 site-padding">
       <div class="w-full">
@@ -21,14 +21,27 @@ const currentPath = pathname.slice(1); // remove the first "/"
       </div>
     </div>
   </div>
-</div>
-      </div>
-    </div>
-  </div>
-</div>
+</nav>
 
 <style>
-  .writing-mode {
-    writing-mode: vertical-rl;
+  .nav-load-in {
+    opacity: 0;
+    animation: navLoadIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes navLoadIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-load-in {
+      animation: none;
+      opacity: 1;
+    }
   }
 </style>

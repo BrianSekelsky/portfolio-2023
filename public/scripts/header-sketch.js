@@ -28,12 +28,24 @@ export function startSketch() {
     const displayText = "Brian Sekelsky is a designer, working across user experience, visual design, and code.";
 
     // Responsive settings
-    let fontSize, bubbleSize, gridSpacing, hoverRadius, leftMargin;
+    let fontSize, bubbleSize, gridSpacing, hoverRadius, hoverRadiusSq, leftMargin;
 
+    // Physics constants
     const returnDelay = 2500;
     const easeSpeed = 0.06;
-    const gravity = 0.3;
+    const gravity = 0.00;
+    const friction = 0.98;
+    const bounce = -0.5;
+    const returnFriction = 0.7;
+    const sizeEase = 0.1;
     const mobileBreakpoint = 640;
+    const displacedSizeMultiplier = 1.3;
+    const pushStrength = 2.5;
+
+    // Frame cache
+    let frameTime = 0;
+    let canvasWidth = 0;
+    let canvasHeight = 0;
 
     function calculateResponsiveValues() {
       const width = p.width;
@@ -63,11 +75,12 @@ export function startSketch() {
         hoverRadius = 50;
         leftMargin = 32;
       }
+      // Pre-calculate squared radius for distance checks
+      hoverRadiusSq = hoverRadius * hoverRadius;
     }
 
     function getCanvasDimensions() {
       if (!header) return { width: window.innerWidth, height: window.innerHeight };
-      // Use clientWidth/clientHeight to exclude border from dimensions
       return { width: header.clientWidth, height: header.clientHeight };
     }
 
@@ -79,121 +92,131 @@ export function startSketch() {
         this.y = y;
         this.vx = 0;
         this.vy = 0;
-        this.size = bubbleSize;
-        this.falling = false;
+        this.baseSize = bubbleSize;
+        this.targetSize = bubbleSize * displacedSizeMultiplier;
+        this.displaySize = bubbleSize;
+        this.state = 0; // 0 = resting, 1 = falling, 2 = returning
         this.fallTime = 0;
-        this.returning = false;
 
-        // Grayscale opacity for resting state
-        this.opacity = p.random(0.65, 1.0);
+        // Pre-calculate grayscale color (cached, not recalculated each frame)
+        const opacity = 0.85 + Math.random();
+        this.restR = Math.round(fgRgb[0] * opacity + bgRgb[0] * (1 - opacity));
+        this.restG = Math.round(fgRgb[1] * opacity + bgRgb[1] * (1 - opacity));
+        this.restB = Math.round(fgRgb[2] * opacity + bgRgb[2] * (1 - opacity));
 
-        // Random color when falling
-        this.randomColor = null;
+        // Random color (generated once when needed)
+        this.colorR = 0;
+        this.colorG = 0;
+        this.colorB = 0;
         this.hasColor = false;
       }
 
       checkHover(mx, my) {
-        if (this.returning) return;
-        const d = p.dist(mx, my, this.x, this.y);
-        if (d < hoverRadius) {
-          this.falling = true;
-          this.fallTime = p.millis();
+        if (this.state === 2) return; // Skip if returning
 
-          // Generate random color on fall
+        // Squared distance (avoids sqrt)
+        const dx = mx - this.x;
+        const dy = my - this.y;
+        const distSq = dx * dx + dy * dy;
+
+        if (distSq < hoverRadiusSq) {
+          this.state = 1;
+          this.fallTime = frameTime;
+
           if (!this.hasColor) {
-            this.randomColor = [
-              Math.round(p.random(50, 255)),
-              Math.round(p.random(50, 255)),
-              Math.round(p.random(50, 255))
-            ];
+            this.colorR = 50 + Math.floor(Math.random() * 205);
+            this.colorG = 50 + Math.floor(Math.random() * 205);
+            this.colorB = 50 + Math.floor(Math.random() * 205);
             this.hasColor = true;
           }
 
-          // Push away from mouse
-          const angle = p.atan2(this.y - my, this.x - mx);
-          this.vx += p.cos(angle) * 2.5;
-          this.vy += p.sin(angle) * 1;
+          // Push away from mouse (native Math is faster)
+          const angle = Math.atan2(this.y - my, this.x - mx);
+          this.vx += Math.cos(angle) * pushStrength;
+          this.vy += Math.sin(angle) * pushStrength;
         }
       }
 
       update() {
-        if (this.falling) {
-          // Apply gravity and friction
+        const state = this.state;
+
+        if (state === 1) { // Falling
           this.vy += gravity;
-          this.vx *= 0.98;
-          this.vy *= 0.98;
+          this.vx *= friction;
+          this.vy *= friction;
 
           this.x += this.vx;
           this.y += this.vy;
 
-          // Bounce off bottom
-          if (this.y > p.height - this.size) {
-            this.y = p.height - this.size;
-            this.vy *= -0.5;
-            this.vx *= 0.7;
+          // Bounce off walls
+          const size = this.displaySize;
+          if (this.y > canvasHeight - size) {
+            this.y = canvasHeight - size;
+            this.vy *= bounce;
+          } else if (this.y < size) {
+            this.y = size;
+            this.vy *= bounce;
           }
 
-          // Bounce off sides
-          if (this.x < this.size || this.x > p.width - this.size) {
-            this.vx *= -0.8;
-            this.x = p.constrain(this.x, this.size, p.width - this.size);
+          if (this.x < size) {
+            this.x = size;
+            this.vx *= bounce;
+          } else if (this.x > canvasWidth - size) {
+            this.x = canvasWidth - size;
+            this.vx *= bounce;
           }
+
+          // Grow size
+          this.displaySize += (this.targetSize - this.displaySize) * sizeEase;
 
           // Time to return?
-          if (p.millis() - this.fallTime > returnDelay) {
-            this.returning = true;
-            this.falling = false;
+          if (frameTime - this.fallTime > returnDelay) {
+            this.state = 2;
           }
-        }
-
-        if (this.returning) {
-          // Ease back home
+        } else if (state === 2) { // Returning
           const dx = this.homeX - this.x;
           const dy = this.homeY - this.y;
 
           this.vx += dx * easeSpeed;
           this.vy += dy * easeSpeed;
-          this.vx *= 0.7;
-          this.vy *= 0.7;
+          this.vx *= returnFriction;
+          this.vy *= returnFriction;
 
           this.x += this.vx;
           this.y += this.vy;
 
+          // Shrink back
+          this.displaySize += (this.baseSize - this.displaySize) * sizeEase;
+
           // Close enough?
-          if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
+          if (dx * dx + dy * dy < 0.25) { // 0.5 * 0.5
             this.x = this.homeX;
             this.y = this.homeY;
             this.vx = 0;
             this.vy = 0;
-            this.returning = false;
-            // Reset to grayscale when home
+            this.displaySize = this.baseSize;
+            this.state = 0;
             this.hasColor = false;
-            this.randomColor = null;
           }
         }
+        // state === 0: resting, no update needed
       }
 
       display() {
-        if (this.hasColor && this.randomColor) {
-          // Use random color while falling or returning
-          p.fill(this.randomColor[0], this.randomColor[1], this.randomColor[2]);
+        if (this.hasColor) {
+          p.fill(this.colorR, this.colorG, this.colorB);
         } else {
-          // Grayscale when at rest
-          const r = Math.round(fgRgb[0] * this.opacity + bgRgb[0] * (1 - this.opacity));
-          const g = Math.round(fgRgb[1] * this.opacity + bgRgb[1] * (1 - this.opacity));
-          const b = Math.round(fgRgb[2] * this.opacity + bgRgb[2] * (1 - this.opacity));
-          p.fill(r, g, b);
+          p.fill(this.restR, this.restG, this.restB);
         }
-        p.noStroke();
-        p.rect(this.x, this.y, this.size, this.size);
+        p.rect(this.x, this.y, this.displaySize, this.displaySize);
       }
     }
 
     function isPointInText(x, y, pg) {
-      const px = Math.floor(x);
-      const py = Math.floor(y);
+      const px = x | 0; // Fast floor
+      const py = y | 0;
       if (px < 0 || px >= pg.width || py < 0 || py >= pg.height) return false;
-      const idx = 4 * (py * pg.width + px);
+      const idx = (py * pg.width + px) << 2; // * 4 using bit shift
       return pg.pixels[idx] < 128;
     }
 
@@ -204,7 +227,6 @@ export function startSketch() {
       const textWidthRatio = isMobile ? 1 : 0.75;
       const maxWidth = (p.width * textWidthRatio) - leftMargin * 2;
 
-      // Create offscreen buffer for text
       const pg = p.createGraphics(p.width, p.height);
       pg.pixelDensity(1);
       pg.background(bgRgb[0], bgRgb[1], bgRgb[2]);
@@ -219,7 +241,8 @@ export function startSketch() {
       const lines = [];
       let currentLine = '';
 
-      for (const word of words) {
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
         const testLine = currentLine ? currentLine + ' ' + word : word;
         if (pg.textWidth(testLine) > maxWidth && currentLine) {
           lines.push(currentLine);
@@ -233,26 +256,30 @@ export function startSketch() {
       // Draw text
       const totalHeight = lines.length * fontSize;
       const verticalOffset = ((p.height - totalHeight) / 3) + 25;
+      const centerX = p.width / 2;
 
       for (let i = 0; i < lines.length; i++) {
-        pg.text(lines[i], p.width / 2, verticalOffset + (fontSize / 2) + i * fontSize);
+        pg.text(lines[i], centerX, verticalOffset + (fontSize / 2) + i * fontSize);
       }
 
       pg.loadPixels();
 
       // Sample points from text
-      bubbles = [];
+      const newBubbles = [];
+      const jitter = gridSpacing * 0.1;
+
       for (let x = 0; x < p.width; x += gridSpacing) {
         for (let y = 0; y < p.height; y += gridSpacing) {
-          const px = x + p.random(-gridSpacing * 0.1, gridSpacing * 0.1);
-          const py = y + p.random(-gridSpacing * 0.1, gridSpacing * 0.1);
+          const px = x + (Math.random() * 2 - 1) * jitter;
+          const py = y + (Math.random() * 2 - 1) * jitter;
 
           if (isPointInText(px, py, pg)) {
-            bubbles.push(new Bubble(px, py));
+            newBubbles.push(new Bubble(px, py));
           }
         }
       }
 
+      bubbles = newBubbles;
       pg.remove();
       isLoading = false;
     }
@@ -265,9 +292,11 @@ export function startSketch() {
       header.addEventListener('mouseleave', () => { isMouseInsideHeader = false; });
 
       const dimensions = getCanvasDimensions();
+      canvasWidth = dimensions.width;
+      canvasHeight = dimensions.height;
 
-      const canvas = p.createCanvas(dimensions.width, dimensions.height);
-      canvas.parent(header); // Append canvas inside header for proper clipping
+      const canvas = p.createCanvas(canvasWidth, canvasHeight);
+      canvas.parent(header);
       canvas.style('position', 'absolute');
       canvas.style('top', '0');
       canvas.style('left', '0');
@@ -276,14 +305,16 @@ export function startSketch() {
       canvas.style('margin', '0');
       canvas.style('padding', '0');
 
-      // Wait for font then create bubbles
+      // Set once, not every frame
+      p.rectMode(p.CENTER);
+      p.noStroke();
+
       const fontSpec = 'italic 100px freighttextcmp-pro';
 
       document.fonts.load(fontSpec).then(() => {
         if (document.fonts.check(fontSpec)) {
           createBubblesFromText();
         } else {
-          // Fallback: try after short delay
           setTimeout(createBubblesFromText, 1000);
         }
       }).catch(() => {
@@ -293,23 +324,34 @@ export function startSketch() {
 
     p.draw = () => {
       p.background(bgRgb[0], bgRgb[1], bgRgb[2]);
-      p.rectMode(p.CENTER);
 
-      if (isLoading) {
-        // Just show blank background while loading
-        return;
-      }
+      if (isLoading) return;
 
-      const isMobile = window.innerWidth < mobileBreakpoint;
+      // Cache values for this frame
+      frameTime = p.millis();
+      const mx = p.mouseX;
+      const my = p.mouseY;
+      const checkHover = isMouseInsideHeader && window.innerWidth >= mobileBreakpoint;
+      const len = bubbles.length;
 
-      for (const bubble of bubbles) {
-        // Desktop hover interaction
-        if (isMouseInsideHeader && !isMobile) {
-          bubble.checkHover(p.mouseX, p.mouseY);
+      for (let i = 0; i < len; i++) {
+        const bubble = bubbles[i];
+
+        if (checkHover) {
+          bubble.checkHover(mx, my);
         }
 
         bubble.update();
         bubble.display();
+      }
+
+      // Draw cursor circle when hovering over sketch
+      if (checkHover && mx > 0 && mx < canvasWidth && my > 0 && my < canvasHeight) {
+        p.noFill();
+        p.stroke(fgRgb[0], fgRgb[1], fgRgb[2], 80);
+        p.strokeWeight(1.5);
+        p.ellipse(mx, my, hoverRadius * 2, hoverRadius * 2);
+        p.noStroke(); // Reset for next frame
       }
     };
 
@@ -317,7 +359,9 @@ export function startSketch() {
       if (!header) return;
 
       const dimensions = getCanvasDimensions();
-      p.resizeCanvas(dimensions.width, dimensions.height);
+      canvasWidth = dimensions.width;
+      canvasHeight = dimensions.height;
+      p.resizeCanvas(canvasWidth, canvasHeight);
 
       if (!isLoading) {
         createBubblesFromText();
