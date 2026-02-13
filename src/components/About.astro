@@ -6,14 +6,25 @@ import { Image } from "astro:assets";
 import brianImage from "../images/about/brian-lake.JPG";
 ---
 
-<div class="h-full">
-  <div class="mx-auto h-full">
-    <div class="load-in grid grid-cols-1 lg:flex lg:justify-stretch h-full">
-      <div class="flex flex-col shrink justify-stretch">
-        <div class="bg-white dark:bg-dark-surface pt-4 border-b dark:border-dark-border px-4 py-8 sm:p-8">
+<div class="site-padding load-in">
+  <div class="header-card">
+    <!-- Title section -->
+    <!-- <div class="title-section p-6 sm:p-8">
+      <h1
+        class="font-serif font-extralight text-4xl sm:text-6xl md:text-7xl leading-[1.1]"
+      >
+        About
+      </h1>
+    </div> -->
+
+    <!-- Content grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      <!-- Left column: Info sections -->
+      <div class="flex flex-col">
+        <div class="p-6 sm:p-8 border-b border-[--border-color]">
           <SmallHeading text="Basics" />
-          <div class="sm:flex">
-            <div class="w-1/2">
+          <div class="sm:flex gap-12">
+            <div>
               <div class="mb-0">he/him</div>
               <div class="mb-0">briansekelsky@gmail.com</div>
               <div>
@@ -24,42 +35,40 @@ import brianImage from "../images/about/brian-lake.JPG";
                 />
               </div>
             </div>
-            <br />
-            <div class="">
+            <div class="mt-4 sm:mt-0">
               <div>
-                <div>
-                  <Link
-                    href="https://www.instagram.com/briansekelsky/"
-                    name="Instagram"
-                  />
-                </div>
-                <div>
-                  <Link
-                    href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
-                    name="Spotify"
-                  />
-                </div>
-                <div>
-                  <Link
-                    href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
-                    name="Youtube"
-                  />
-                </div>
-                <div>
-                  <Link
-                    href="https://www.linkedin.com/in/brian-sekelsky/"
-                    name="LinkedIn"
-                  />
-                </div>
+                <Link
+                  href="https://www.instagram.com/briansekelsky/"
+                  name="Instagram"
+                />
+              </div>
+              <div>
+                <Link
+                  href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
+                  name="Spotify"
+                />
+              </div>
+              <div>
+                <Link
+                  href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
+                  name="Youtube"
+                />
+              </div>
+              <div>
+                <Link
+                  href="https://www.linkedin.com/in/brian-sekelsky/"
+                  name="LinkedIn"
+                />
               </div>
             </div>
           </div>
         </div>
-        <div class="bg-white dark:bg-dark-surface border-b dark:border-dark-border p-4 sm:p-8">
+
+        <div class="p-6 sm:p-8 border-b border-[--border-color]">
           <SmallHeading text="Bio" />
           <p>
             I'm a designer, developer, and teacher. I spent two years in the Peace Corps teaching math and computer skills in Tanzania,
-            and I'm always looking for work that connects to education and expanding opportunity. I've worked in nonprofits, academia, 
+            and I'm always looking for work that connects to education and expanding opportunity. I've worked in nonprofits, academia,
             and corporate environments, but the projects I care most about are the ones that help people and strive to make the world a better place.
           </p>
           <p>
@@ -67,11 +76,11 @@ import brianImage from "../images/about/brian-lake.JPG";
             their student debt at
             <Link
               name="Fidelity Investments."
-              href="https://www.fidelityworkplace.com/s/studentdebt?ccsource=sem%7Cgoogle%7Cgoogle.com%7Cexact%7Chavas-wps-sd-search%7Cfidelity-student-debt%7Cstudentdebtb2bbrand-studentloans%7C%7Ceid%3Dep61486480236%7C&gclid=Cj0KCQjwpc-oBhCGARIsAH6ote9g7PwdorVXfwVC6jNwrIJ_-DeyJ8dgYuvkgFbjMvqEfBEAt_FrY5QaAq-LEALw_wcB&gclsrc=aw.ds"
+              href="https://www.fidelityworkplace.com/s/studentdebt"
             />
             Sometimes, I teach design and tech classes as an adjunct instructor. I also co-run a mini design studio called
             <Link
-              name="Best Parts."  
+              name="Best Parts."
               href="http://bestparts.design"
             />
           </p>
@@ -79,7 +88,8 @@ import brianImage from "../images/about/brian-lake.JPG";
             In my free time, <Link name="I make music" href="/music" />, <Link name="post on youtube" href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ" />, <Link name="watch movies" href="https://letterboxd.com/briansekelsky/" />, <Link name="read books" href="https://app.thestorygraph.com/profile/briansekelsky" />, go on long runs, and explore the great outdoors.
           </p>
         </div>
-        <div class="p-4 sm:p-8 grow">
+
+        <div class="p-6 sm:p-8 grow">
           <SmallHeading text="About this site" />
           <p>
             This site is a portfolio and archive for my designs, art, and music.
@@ -93,38 +103,27 @@ import brianImage from "../images/about/brian-lake.JPG";
             />. It is open source, meaning you are free to clone it and reuse
             any part of it.
           </p>
-          <p class="pt-2">
-            <SmallHeading text="Archived versions of this site" />
-            <Link name="2023" href="/2023/" />
-          </p>
         </div>
       </div>
-      <div class="bg-white dark:bg-dark-surface md:min-w-fit border-t lg:border-t-0 lg:border-l dark:border-dark-border h-full">
+
+      <!-- Right column: Image -->
+      <div class="border-t lg:border-t-0 lg:border-l border-[--border-color]">
         <Image
-          class="object-cover"
+          class="w-full h-full object-cover"
           src={brianImage}
           alt="Image of Brian Sekelsky outside"
         />
       </div>
     </div>
   </div>
-
-  <style>
-    #manipulate {
-      /* cursor: pointer; */
-    }
-
-    .gap-1 {
-      gap: 1px;
-    }
-    p {
-      margin-bottom: 0.7rem;
-    }
-
-    .object-cover {
-      min-width: 100%;
-      min-height: 100%;
-    }
-  </style>
-
 </div>
+
+<style>
+  .title-section {
+    /* Match ProjectHeader styling */
+  }
+
+  p {
+    margin-bottom: 0.7rem;
+  }
+</style>

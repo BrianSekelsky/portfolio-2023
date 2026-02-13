@@ -37,13 +37,9 @@ import FrameCaption from "../../components/FrameCaption.astro"
       types={["Website", "Research", "Data-driven"]}
       collaborators={[]}
       year="2022"
-      myColor="mintcream"
+      heroVideoMp4={videoHero}
+      heroPoster={videoHeroPoster.src}
     />
-    <div class="border-b load-in">
-      <video playsinline autoplay muted loop preload="metadata" poster={videoHeroPoster.src}>
-        <source src={videoHero} type="video/mp4" />
-      </video>
-    </div>
     <ProjectGrid>
         <div class="col-span-1">
           <SmallHeading text="Process" />

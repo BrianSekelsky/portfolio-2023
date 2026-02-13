@@ -51,16 +51,9 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
       ]}
       collaborators={[]}
       year="2024 – 2025"
+      heroImage={preview}
+      heroAlt="Screenshot of user experience work in figma"
     />
-    <div class="load-in border-b">
-      <div class="mx-auto flex justify-center">
-        <Image
-          class=""
-          src={preview}
-          alt="Screenshot of user experience work in figma"
-        />
-      </div>
-    </div>
     <ProjectGrid>
       <div class="col-span-2">
         <div class="flex flex-col gap-4 py-8">
@@ -124,16 +117,25 @@ import mgmtbeforeafter from "../../images/fidelity/mgmt-beforeafter.png"
           <Caption text="Miro board and screenshot from Visual Studio Code" />
         </div>
       </div>
-      <div class="col-span-2 pt-8 bg-offwhite dark:bg-dark-surface">
-        <SmallHeading text="Identifying pain points" />
-        <div class="flex justify-between items-end py-8">
-          <div class="lg:pr-4 w-1/2">
-            <Image class="rounded-md shadow" src={painpoint} alt="Research finding about loan management confusion" />
-            <Caption text="Users aren't clear on loan management" />
+      <div class="col-span-2">
+        <div class="header-card">
+          <div class="p-4 sm:p-6">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <Image class="rounded-md" src={painpoint} alt="Research finding about loan management confusion" />
+                <Caption text="Users aren't clear on loan management" />
+              </div>
+              <div>
+                <Image class="rounded-md" src={painpoint2} alt="Research finding about communication issues" />
+                <Caption text="Communications are problematic" />
+              </div>
+            </div>
           </div>
-          <div class="lg:pl-4 w-1/2">
-            <Image class="rounded-md shadow" src={painpoint2} alt="Research finding about communication issues" />
-            <Caption text="Communications are problematic" />
+          <div class="p-4 sm:p-6 border-t border-[--border-color]">
+            <SmallHeading text="Identifying pain points" />
+            <p class="!pb-0">
+              Through our research sessions, we identified key friction points in the user experience that were causing confusion and frustration for employees trying to manage their student debt benefits.
+            </p>
           </div>
         </div>
       </div>

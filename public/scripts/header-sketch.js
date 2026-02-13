@@ -4,7 +4,7 @@ let sketchInstance;
 let isMouseInsideHeader = false;
 
 // Color configuration
-const BG_COLOR = '#F9F9F9';
+const BG_COLOR = '#FFFFFF';
 const FG_COLOR = '#050517';
 
 function hexToRgb(hex) {
@@ -67,13 +67,8 @@ export function startSketch() {
 
     function getCanvasDimensions() {
       if (!header) return { width: window.innerWidth, height: window.innerHeight };
-      return { width: header.offsetWidth, height: header.offsetHeight };
-    }
-
-    function getCanvasPosition() {
-      if (!header) return { x: 0, y: 0 };
-      const rect = header.getBoundingClientRect();
-      return { x: rect.left + window.scrollX, y: rect.top + window.scrollY };
+      // Use clientWidth/clientHeight to exclude border from dimensions
+      return { width: header.clientWidth, height: header.clientHeight };
     }
 
     class Bubble {
@@ -270,11 +265,16 @@ export function startSketch() {
       header.addEventListener('mouseleave', () => { isMouseInsideHeader = false; });
 
       const dimensions = getCanvasDimensions();
-      const position = getCanvasPosition();
 
       const canvas = p.createCanvas(dimensions.width, dimensions.height);
-      canvas.position(position.x, position.y);
-      canvas.style('z-index', '-1');
+      canvas.parent(header); // Append canvas inside header for proper clipping
+      canvas.style('position', 'absolute');
+      canvas.style('top', '0');
+      canvas.style('left', '0');
+      canvas.style('z-index', '0');
+      canvas.style('display', 'block');
+      canvas.style('margin', '0');
+      canvas.style('padding', '0');
 
       // Wait for font then create bubbles
       const fontSpec = 'italic 100px freighttextcmp-pro';
@@ -296,11 +296,7 @@ export function startSketch() {
       p.rectMode(p.CENTER);
 
       if (isLoading) {
-        // Simple loading indicator
-        p.fill(fgRgb[0], fgRgb[1], fgRgb[2], 100);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.textSize(16);
-        p.text('Loading...', p.width / 2, p.height / 2);
+        // Just show blank background while loading
         return;
       }
 
@@ -321,15 +317,7 @@ export function startSketch() {
       if (!header) return;
 
       const dimensions = getCanvasDimensions();
-      const position = getCanvasPosition();
-
       p.resizeCanvas(dimensions.width, dimensions.height);
-
-      const canvas = document.querySelector('canvas');
-      if (canvas) {
-        canvas.style.left = position.x + 'px';
-        canvas.style.top = position.y + 'px';
-      }
 
       if (!isLoading) {
         createBubblesFromText();

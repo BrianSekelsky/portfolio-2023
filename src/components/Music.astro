@@ -1,79 +1,89 @@
 ---
 import Link from "./Link.astro";
-import ProjectHeader from "./ProjectHeader.astro";
 import SmallHeading from "./SmallHeading.astro";
-
-import SectionHeader from "./SectionHeader.astro";
 
 let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
 ---
 
-<div
-  class="load-in flex flex-col lg:grid grid-cols-2 text-lg lg:divide-x border-b"
->
-  <div class="col-span-1 p-4 sm:p-8 sm:pb-16">
-    <SmallHeading text="Winter Foe" />
-    Winter Foe is a music project that I have been working on since around 2018.
-    I am searching for new ways to combine digital sounds, electronics, acoustic
-    instruments, and field recordings. Through this project I have expanded my
-    visual vocabulary by producing album art, animations, and videos. I have
-    also had the opportunity to collaborate with some amazing musicians.
+<div class="site-padding load-in">
+  <div class="header-card">
+    <!-- Title section -->
+    <div class="title-section p-6 sm:p-8">
+      <h1
+        class="font-serif font-extralight text-4xl sm:text-6xl md:text-7xl leading-[1.1]"
+      >
+        Winter Foe
+      </h1>
+    </div>
 
-    <div
-      class="flex-col sm:flex-row flex flex-wrap gap-4 sm:gap-12 my-4 sm:mb-0 sm:mt-8"
-    >
-      <Link
-        href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N"
-        name="Spotify"
-      />
-      <Link
-        href="https://music.apple.com/us/artist/winter-foe/1336473956"
-        name="Apple Music"
-      />
-      <Link href="https://winterfoe.bandcamp.com/" name="Bandcamp" />
-      <Link href="https://soundcloud.com/winter-foe" name="Soundcloud" />
+    <!-- Details bar -->
+    <div class="details-bar p-6 sm:p-8">
+      <div class="flex flex-wrap gap-6 sm:gap-12">
+        <div class="flex-1 min-w-[200px]">
+          <SmallHeading text="About" />
+          <p class="text-sm sm:text-base">
+            Winter Foe is a music project that I have been working on since around 2018.
+            I am searching for new ways to combine digital sounds, electronics, acoustic
+            instruments, and field recordings. Through this project I have expanded my
+            visual vocabulary by producing album art, animations, and videos. I have
+            also had the opportunity to collaborate with some amazing musicians.
+          </p>
+          <div class="flex flex-wrap gap-4 sm:gap-8 mt-4">
+            <Link
+              href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N"
+              name="Spotify"
+            />
+            <Link
+              href="https://music.apple.com/us/artist/winter-foe/1336473956"
+              name="Apple Music"
+            />
+            <Link href="https://winterfoe.bandcamp.com/" name="Bandcamp" />
+            <Link href="https://soundcloud.com/winter-foe" name="Soundcloud" />
+          </div>
+        </div>
+        <div class="flex gap-6 sm:gap-10 flex-wrap">
+          <div>
+            <SmallHeading text="Genres" />
+            <div>
+              {types.map((type) => <p class="text-sm">{type}</p>)}
+            </div>
+          </div>
+          <div>
+            <SmallHeading text="Year" />
+            <p class="text-sm">2018 – Present</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <slot />
-  </div>
-  <div
-    class="hidden sm:flex justify-between gap-12 col-span-1 p-4 sm:p-8 sm:pb-16"
-  >
-    <div>
-      <div class="mb-4">
-        <SmallHeading text="Genres" />
-      </div>
-      <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
-        {types.map((type) => <p class="">{type}</p>)}
-      </div>
-    </div>
-    <div class="">
-      <div class="mb-4">
-        <SmallHeading text="Year" />
-      </div>
-      <p class="">2018 – Present</p>
-    </div>
-    <div class="invisible">
-      <div class="mb-4">
-        <SmallHeading text="Collaborators" />
-      </div>
-      <div>Collaborators</div>
+
+    <!-- Video embed -->
+    <div class="video-section">
+      <iframe
+        class="w-full aspect-video border-0"
+        src="https://www.youtube.com/embed/ci7wcKekVwo?si=Cjjt6Is0VnBBdF_y"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 </div>
-<div class="load-in flex flex-col md:flex-row justify-stretch">
-  <div class="md:flex-1">
-    <iframe
-      width="100%"
-      height="750"
-      src="https://www.youtube.com/embed/ci7wcKekVwo?si=Cjjt6Is0VnBBdF_y"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
-  </div>
-</div>
+
 <style>
-  #manipulate {
-    margin-bottom: 0.7rem;
+  .details-bar {
+    border-top: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  :global(.dark) .details-bar {
+    background: rgba(10, 10, 26, 0.5);
+  }
+
+  .video-section {
+    border-top: 1px solid var(--border-color);
+  }
+
+  .video-section iframe {
+    display: block;
   }
 </style>

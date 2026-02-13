@@ -19,15 +19,10 @@ import poster from "../../images/homepage/speculative-design-workshop-poster.jpg
       types={["Education"]}
       collaborators={[]}
       year="2022"
+      heroVideo={webm}
+      heroVideoMp4={webmMp4}
+      heroPoster={poster.src}
     />
-    <div class="load-in">
-      <div class="mx-auto flex justify-center">
-        <video class="w-1/2" playsinline autoplay muted loop preload="metadata" poster={poster.src}>
-          <source src={webm} type="video/webm" />
-          <source src={webmMp4} type="video/mp4" />
-        </video>
-      </div>
-    </div>
     <style></style>
   </main>
 </Layout>

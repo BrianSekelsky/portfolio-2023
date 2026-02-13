@@ -25,14 +25,16 @@ const { title } = Astro.props;
     <link rel="dns-prefetch" href="https://use.typekit.net">
     <link rel="stylesheet" href="https://use.typekit.net/abc2kbg.css">
     <script defer src="/scripts/card-animation.js"></script>
+    <!-- Custom cursor disabled for now -->
+    <!-- <script defer src="/scripts/cursor.js"></script> -->
   </head>
-  <body class="overflow-x-hidden flex flex-col bg-white text-black dark:bg-dark-bg dark:text-dark-text">
+  <body class="overflow-x-hidden flex flex-col text-black dark:bg-dark-bg dark:text-dark-text">
     <ClientRouter />
     <div id="transition-overlay"></div>
 
-    <div class="border-t dark:border-dark-border">
+    <div class="site-container">
       <div class="h-screen w-100 flex flex-col">
-        <div class="block border-b bg-purewhite">
+        <div class="block bg-purewhite">
           <Nav />
         </div>
         <main data-astro-transition>
@@ -45,11 +47,31 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   :root {
+    /* ==========================================
+       SITE MARGINS - Tweak these values!
+       ========================================== */
+    --site-padding-mobile: 0.5rem;  /* 8px - nearly full width on mobile */
+    --site-padding-desktop: 8rem;   /* 128px */
+
+    /* ==========================================
+       MAX WIDTH - Content won't stretch beyond this
+       ========================================== */
+    --site-max-width: 1600px;
+
+    /* ==========================================
+       BORDER COLORS - Tweak these values!
+       ========================================== */
+    --border-color: #E3E1DD;        /* Light mode borders */
+    --border-color-subtle: #BFB8B0; /* Lighter borders for dividers */
+    --card-border-radius: 1rem;     /* Card corner radius */
+
     --card-shadow-color: #e0e0e0;
     --transition-overlay-bg: rgba(249, 249, 249, 0.6);
   }
 
   .dark {
+    --border-color: #1e1e3a;        /* Dark mode borders */
+    --border-color-subtle: #141428; /* Darker subtle borders */
     --card-shadow-color: oklch(20% 0.003 286.286);
     --transition-overlay-bg: rgba(15, 18, 20, 0.8);
   }
@@ -57,6 +79,62 @@ const { title } = Astro.props;
   body {
     height: 100%;
     -webkit-text-size-adjust: 100%;
+  }
+
+  /* Site container with max-width */
+  .site-container {
+    max-width: var(--site-max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Site padding utility - uses the CSS variables above */
+  .site-padding {
+    padding-left: var(--site-padding-mobile);
+    padding-right: var(--site-padding-mobile);
+  }
+
+  @media (min-width: 640px) {
+    .site-padding {
+      padding-left: var(--site-padding-desktop);
+      padding-right: var(--site-padding-desktop);
+    }
+  }
+
+  /* Apply site padding to children (for grids) */
+  .site-padding-children > * {
+    padding-left: var(--site-padding-mobile);
+    padding-right: var(--site-padding-mobile);
+  }
+
+  @media (min-width: 640px) {
+    .site-padding-children > * {
+      padding-left: var(--site-padding-desktop);
+      padding-right: var(--site-padding-desktop);
+    }
+  }
+
+  /* Site border utility - uses CSS variables */
+  .site-border {
+    border-color: var(--border-color);
+  }
+
+  .site-border-subtle {
+    border-color: var(--border-color-subtle);
+  }
+
+  /* Shared card styling for header areas */
+  .header-card {
+    background: #FFFFFF;
+    border-radius: var(--card-border-radius);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .dark .header-card {
+    background: #0a0a1a;
+    border-color: var(--border-color);
   }
 
   .project-grid p {
@@ -74,6 +152,109 @@ const { title } = Astro.props;
     backdrop-filter: blur(0px);
     transition: backdrop-filter 0.3s ease;
   }
+
+  /* Custom cursor styles - disabled for now
+  .cursor-dot,
+  .cursor-circle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    will-change: transform;
+  }
+
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    margin-top: -4px;
+    background: #050517;
+    border-radius: 50%;
+    transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, background 0.2s ease;
+  }
+
+  .cursor-circle {
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    border: 1.5px solid rgba(5, 5, 23, 0.4);
+    border-radius: 50%;
+    transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .cursor-dot.hovering {
+    width: 12px;
+    height: 12px;
+    margin-left: -6px;
+    margin-top: -6px;
+    background: #007FFF;
+  }
+
+  .cursor-circle.hovering {
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    border-color: rgba(0, 127, 255, 0.5);
+    background: rgba(0, 127, 255, 0.05);
+  }
+
+  .cursor-dot.clicking {
+    transform: scale(0.8);
+  }
+
+  .cursor-circle.clicking {
+    width: 35px;
+    height: 35px;
+    margin-left: -17.5px;
+    margin-top: -17.5px;
+  }
+
+  .cursor-dot.hidden,
+  .cursor-circle.hidden {
+    opacity: 0;
+  }
+
+  .dark .cursor-dot {
+    background: #F9F9F9;
+  }
+
+  .dark .cursor-circle {
+    border-color: rgba(249, 249, 249, 0.4);
+  }
+
+  .dark .cursor-dot.hovering {
+    background: #007FFF;
+  }
+
+  .dark .cursor-circle.hovering {
+    border-color: rgba(0, 127, 255, 0.6);
+    background: rgba(0, 127, 255, 0.1);
+  }
+
+  input, textarea, select {
+    cursor: auto !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    html {
+      cursor: none;
+    }
+
+    a, button, [role="button"] {
+      cursor: none;
+    }
+  }
+
+  @media (hover: none) or (pointer: coarse) {
+    .cursor-dot,
+    .cursor-circle {
+      display: none !important;
+    }
+  }
+  */
 
 </style>
 

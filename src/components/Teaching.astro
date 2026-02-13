@@ -3,7 +3,6 @@ import Link from "./Link.astro";
 import SmallHeading from "./SmallHeading.astro";
 
 import { Image } from "astro:assets";
-import brianImage from "../images/about/brian.png";
 
 // Foundations of graphic design images
 import bumpkiss1 from "../images/studentwork/foundations/bumpkiss1.png";
@@ -34,178 +33,174 @@ import magic from "../images/studentwork/tech/magic.png";
 import smile from "../images/studentwork/tech/smile.gif";
 ---
 
-<!-- <script is:inline>
-document.body.style.backgroundColor = "#9DC5BB";
-</script> -->
-<div class="load-in">
-    <div class="mx-auto">
-        <div class="grid grid-cols-1 lg:flex lg:justify-stretch">
-            <div class="flex flex-col shrink justify-stretch">
-                <div class="bg-white dark:bg-dark-surface pt-4 border-b dark:border-dark-border px-4 py-8 sm:p-8">
-                    <SmallHeading text="Classes" />
-                    <table class="table-fixed">
-                        <tbody class="divide-y-10 border-white dark:border-dark-surface">
-                            <tr>
-                                <td>Foundations of Graphic Design</td>
-                                <td>University of North Carolina Chapel Hill</td
-                                >
-                                <td>Fall 2024</td>
-                                <td>
-                                    <Link
-                                        href="https://docs.google.com/document/d/1k_dUV1C_aTN7J4Ylh494rwMVqL1yR-LkWMw3P9FZfCI/edit"
-                                        name="Syllabus"
-                                    /></td
-                                >
-                            </tr>
-                            <tr>
-                                <td>Tech Tinkering</td>
-                                <td>North Carolina Statue University</td>
-                                <td>Spring 2024</td>
-                                <td>
-                                    <Link
-                                        href="https://docs.google.com/document/d/1WC3XdD-5z1Dz4kn_b43A6ZKSKemnKqgqdj_WIBOhhVs/edit?usp=drive_link"
-                                        name="Syllabus"
-                                    />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="bg-white dark:bg-dark-surface pt-4 border-b dark:border-dark-border px-4 py-8 sm:p-8">
-                    <SmallHeading text="Publications" />
-                    <div class="pb-2">2023</div>
-                    <div>
-                        <Link
-                            href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7nX--IoAAAAJ&citation_for_view=7nX--IoAAAAJ:u-x6o8ySG0sC"
-                            name="Preserving theoretically-grounded functions across media platforms in interaction design"
-                        />
-                    </div>
-                    <div>
-                        <Link
-                            href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7nX--IoAAAAJ&citation_for_view=7nX--IoAAAAJ:u5HHmVD_uO8C"
-                            name="Shrink or grow the kids? Scale cognition in an immersive virtual environment for K-12 summer camp"
-                        />
-                    </div>
-                    <div>
-                        <Link
-                            href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7nX--IoAAAAJ&citation_for_view=7nX--IoAAAAJ:9yKSN-GCB0IC"
-                            name="Scale Worlds: Iterative refinement, evaluation, and theory-usability balance of an immersive virtual learning environment"
-                        />
-                    </div>
-                    <div class="py-2">2022</div>
-                    <div>
-                        <Link
-                            href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7nX--IoAAAAJ&citation_for_view=7nX--IoAAAAJ:d1gkVwhDpl0C"
-                            name="Immersive virtual environment for scale cognition and learning: Expert-based evaluation for balancing usability versus cognitive theories"
-                        />
-                    </div>
-                </div>
-                <div class="bg-white dark:bg-dark-surface pt-4 border-b dark:border-dark-border px-4 py-8 sm:p-8">
-                    <SmallHeading text="Student Work" />
-                    <p>
-                        Foundations of Graphic Design - University of North
-                        Carolina Chapel Hill
-                    </p>
-                    <div class="grid grid-cols-3 gap-4">
-                        <Image src={bumpkiss1} alt="Bumpkiss" />
-                        <Image src={bumpkiss2} alt="Bumpkiss" />
-                        <Image src={bumpkiss3} alt="Bumpkiss" />
-                        <Image src={type1} alt="Type" />
-                        <Image src={fineprinting} alt="Fine Printing" />
-                        <Image src={ai} alt="AI" />
-                        <Image
-                            src={languageofvision}
-                            alt="Language of Vision"
-                        />
-                        <Image src={flamenco1} alt="Flamenco" />
-                        <Image src={flamenco2} alt="Flamenco" />
-                        <Image src={gentleglade1} alt="Gentle Glade" />
-                        <Image src={gentleglade2} alt="Gentle Glade" />
-                        <Image src={isakov} alt="Isakov" />
-                        <Image src={letseat1} alt="Let's Eat" />
-                        <Image src={letseat2} alt="Let's Eat" />
-                        <Image src={modernmuse} alt="Modern Muse" />
-                        <Image src={shunday1} alt="Shunday" />
-                        <Image src={shunday2} alt="Shunday" />
-                    </div>
-                    <p class="pt-12">
-                        Tech Tinkering - North Carolina State University
-                    </p>
-                    <div class="grid grid-cols-3 gap-4">
-                        <Image src={ar} alt="AR" />
-                        <Image src={combative} alt="Combative" />
-                        <Image src={cupcake} alt="Cupcake" />
-                        <Image src={lineo1} alt="Lineo" />
-                        <Image src={lineo2} alt="Lineo" />
-                        <Image src={magic} alt="Magic" />
-                        <Image src={smile} alt="Smile" />
-                    </div>
-                </div>
-                <div class="bg-white dark:bg-dark-surface pt-4 px-4 py-8 sm:p-8 sm:w-3/4">
-                    <SmallHeading text="Teaching Philosophy" />
-                    <ol class="list-decimal list-inside">
-                        <li class="pb-2">
-                            The tools that designers use are constantly changing
-                            so design education should be tool agnostic.
-                        </li>
-                        <li class="pb-2">
-                            There is no single right way to approach a design
-                            problem. It is useful to study and understand design
-                            methods but I don’t expect or want students to
-                            follow step-by-step instructions when they design.
-                        </li>
-                        <li class="pb-2">
-                            I want students to analyze the way that they work,
-                            so that they may develop their own understanding
-                            about what designers do and how they work and
-                            perhaps uncover new ways of working.
-                        </li>
-                        <li class="pb-2">
-                            A lot can be learned through creating. I encourage
-                            students to start creating, and creating in lots of
-                            different ways, right away.
-                        </li>
-                        <li class="pb-2">
-                            Job readiness is important to most students but the
-                            types of jobs that designers do is varied and
-                            constantly changing. So preparing students for
-                            current jobs must be balanced with a holistic
-                            education that will prepare them for future design
-                            jobs as well.
-                        </li>
-                        <li class="pb-2">
-                            The most important aspect of my teaching is to treat
-                            every student with respect, remain open minded, and
-                            be equitable in my approach.
-                        </li>
-                    </ol>
-                </div>
-            </div>
+<div class="site-padding load-in">
+  <div class="header-card">
+    <!-- Title section -->
+    <!-- <div class="title-section p-6 sm:p-8">
+      <h1
+        class="font-serif font-extralight text-4xl sm:text-6xl md:text-7xl leading-[1.1]"
+      >
+        Teaching
+      </h1>
+    </div> -->
 
-            <style>
-                .gap-1 {
-                    gap: 1px;
-                }
-                p {
-                    margin-bottom: 0.7rem;
-                }
-
-                .object-cover {
-                    min-width: 100%;
-                    min-height: 100%;
-                }
-
-                td:not(:first-child) {
-                    padding: 0px 25px 0px 25px;
-                }
-
-                tbody,
-                tr {
-                    padding: 20px;
-                }
-            </style>
-
-            <!-- <script src="./header.js"></script> -->
-        </div>
+    <!-- Classes section -->
+    <div class="content-section p-6 sm:p-8">
+      <SmallHeading text="Classes" />
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <tbody>
+            <tr class="">
+              <td class="py-2 pr-4">Foundations of Graphic Design</td>
+              <td class="py-2 px-4">University of North Carolina Chapel Hill</td>
+              <td class="py-2 px-4">Fall 2024</td>
+              <td class="py-2 pl-4">
+                <Link
+                  href="https://docs.google.com/document/d/1k_dUV1C_aTN7J4Ylh494rwMVqL1yR-LkWMw3P9FZfCI/edit"
+                  name="Syllabus"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">Tech Tinkering</td>
+              <td class="py-2 px-4">North Carolina State University</td>
+              <td class="py-2 px-4">Spring 2024</td>
+              <td class="py-2 pl-4">
+                <Link
+                  href="https://docs.google.com/document/d/1WC3XdD-5z1Dz4kn_b43A6ZKSKemnKqgqdj_WIBOhhVs/edit?usp=drive_link"
+                  name="Syllabus"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
+    <!-- Publications section -->
+    <div class="content-section p-6 sm:p-8">
+      <SmallHeading text="Publications" />
+      <div class="space-y-4">
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">2023</p>
+          <div class="space-y-1">
+            <div>
+              <Link
+                href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7nX--IoAAAAJ&citation_for_view=7nX--IoAAAAJ:u-x6o8ySG0sC"
+                name="Preserving theoretically-grounded functions across media platforms in interaction design"
+              />
+            </div>
+            <div>
+              <Link
+                href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7nX--IoAAAAJ&citation_for_view=7nX--IoAAAAJ:u5HHmVD_uO8C"
+                name="Shrink or grow the kids? Scale cognition in an immersive virtual environment for K-12 summer camp"
+              />
+            </div>
+            <div>
+              <Link
+                href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7nX--IoAAAAJ&citation_for_view=7nX--IoAAAAJ:9yKSN-GCB0IC"
+                name="Scale Worlds: Iterative refinement, evaluation, and theory-usability balance of an immersive virtual learning environment"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">2022</p>
+          <div>
+            <Link
+              href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7nX--IoAAAAJ&citation_for_view=7nX--IoAAAAJ:d1gkVwhDpl0C"
+              name="Immersive virtual environment for scale cognition and learning: Expert-based evaluation for balancing usability versus cognitive theories"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Work section -->
+    <div class="content-section p-6 sm:p-8">
+      <SmallHeading text="Student Work" />
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        Foundations of Graphic Design - University of North Carolina Chapel Hill
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <Image src={bumpkiss1} alt="Student work - Bumpkiss" />
+        <Image src={bumpkiss2} alt="Student work - Bumpkiss" />
+        <Image src={bumpkiss3} alt="Student work - Bumpkiss" />
+        <Image src={type1} alt="Student work - Type" />
+        <Image src={fineprinting} alt="Student work - Fine Printing" />
+        <Image src={ai} alt="Student work - AI" />
+        <Image src={languageofvision} alt="Student work - Language of Vision" />
+        <Image src={flamenco1} alt="Student work - Flamenco" />
+        <Image src={flamenco2} alt="Student work - Flamenco" />
+        <Image src={gentleglade1} alt="Student work - Gentle Glade" />
+        <Image src={gentleglade2} alt="Student work - Gentle Glade" />
+        <Image src={isakov} alt="Student work - Isakov" />
+        <Image src={letseat1} alt="Student work - Let's Eat" />
+        <Image src={letseat2} alt="Student work - Let's Eat" />
+        <Image src={modernmuse} alt="Student work - Modern Muse" />
+        <Image src={shunday1} alt="Student work - Shunday" />
+        <Image src={shunday2} alt="Student work - Shunday" />
+      </div>
+
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 mt-8">
+        Tech Tinkering - North Carolina State University
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <Image src={ar} alt="Student work - AR" />
+        <Image src={combative} alt="Student work - Combative" />
+        <Image src={cupcake} alt="Student work - Cupcake" />
+        <Image src={lineo1} alt="Student work - Lineo" />
+        <Image src={lineo2} alt="Student work - Lineo" />
+        <Image src={magic} alt="Student work - Magic" />
+        <Image src={smile} alt="Student work - Smile" />
+      </div>
+    </div>
+
+    <!-- Teaching Philosophy section -->
+    <div class="content-section p-6 sm:p-8">
+      <SmallHeading text="Teaching Philosophy" />
+      <ol class="list-decimal list-inside space-y-2 sm:w-3/4">
+        <li>
+          The tools that designers use are constantly changing
+          so design education should be tool agnostic.
+        </li>
+        <li>
+          There is no single right way to approach a design
+          problem. It is useful to study and understand design
+          methods but I don't expect or want students to
+          follow step-by-step instructions when they design.
+        </li>
+        <li>
+          I want students to analyze the way that they work,
+          so that they may develop their own understanding
+          about what designers do and how they work and
+          perhaps uncover new ways of working.
+        </li>
+        <li>
+          A lot can be learned through creating. I encourage
+          students to start creating, and creating in lots of
+          different ways, right away.
+        </li>
+        <li>
+          Job readiness is important to most students but the
+          types of jobs that designers do is varied and
+          constantly changing. So preparing students for
+          current jobs must be balanced with a holistic
+          education that will prepare them for future design
+          jobs as well.
+        </li>
+        <li>
+          The most important aspect of my teaching is to treat
+          every student with respect, remain open minded, and
+          be equitable in my approach.
+        </li>
+      </ol>
+    </div>
+  </div>
 </div>
+
+<style>
+  .content-section {
+    /* border-top: 1px solid var(--border-color); */
+  }
+</style>

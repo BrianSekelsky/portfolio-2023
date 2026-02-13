@@ -30,7 +30,7 @@ const images = [
 ---
 
 <section class="py-12 border-t dark:border-dark-border overflow-hidden">
-  <div class="px-4 sm:px-8 mb-6 flex justify-between items-baseline">
+  <div class="site-padding mb-6 flex justify-between items-baseline">
     <h2 class="font-sans font-bold">Artwork, experiments, and other projects</h2>
     <a
       href="/visuals"
@@ -73,15 +73,15 @@ const images = [
 <style>
   .marquee-wrapper {
     position: relative;
-    /* Match the site's grid padding */
-    padding-left: 1rem;
-    padding-right: 1rem;
+    /* Match the site's grid padding - uses CSS variables from Layout.astro */
+    padding-left: var(--site-padding-mobile);
+    padding-right: var(--site-padding-mobile);
   }
 
   @media (min-width: 640px) {
     .marquee-wrapper {
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding-left: var(--site-padding-desktop);
+      padding-right: var(--site-padding-desktop);
     }
   }
 

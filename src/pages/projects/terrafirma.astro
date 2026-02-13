@@ -36,16 +36,10 @@ import poster from "../../images/homepage/terrafirma-poster.jpg";
         "Molly Mills",
       ]}
       year="2021"
-      outboundLink="https://www.terrafirmasoftware.com/"
+      heroVideo={webm}
+      heroVideoMp4={webmMp4}
+      heroPoster={poster.src}
     />
-    <div class="border-b load-in">
-      <div class="mx-auto flex justify-center">
-        <video class="w-1/2" playsinline autoplay muted loop preload="metadata" poster={poster.src}>
-          <source src={webm} type="video/webm" />
-          <source src={webmMp4} type="video/mp4" />
-        </video>
-      </div>
-    </div>
     <ProjectGrid>
       <div class="col-span-1">
         <SmallHeading text="Problem" />

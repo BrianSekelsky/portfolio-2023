@@ -6,7 +6,6 @@ import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
-import main from "../../images/npca/main.png";
 import two from "../../images/npca/2.png";
 import three from "../../images/npca/3.png";
 import four from "../../images/npca/4.png";
@@ -38,13 +37,10 @@ import eighteen from "../../images/npca/18.png";
       collaborators={[]}
       year="2021 – 2022"
       outboundLink="https://www.peacecorpsconnect.org/cpages/home"
+      heroImage={two}
+      heroAlt="The Peace Corps is on the way back"
     />
     <div class="content-center load-in">
-      <div class="border-b">
-        <div>
-          <Image src={two} alt="The Peace Corps is on the way back." />
-        </div>
-      </div>
       <div
         class="grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 m-8 auto-rows-min items-center justify-items-center"
       >

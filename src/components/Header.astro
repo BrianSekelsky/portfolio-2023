@@ -1,20 +1,20 @@
 ---
 ---
 
-<div class="transition-all duration-500">
-  <!-- Mobile: Static text -->
+<div class="transition-all duration-500 site-padding">
+  <!-- Mobile: Static text in card -->
   <div
-    class="flex items-center md:hidden px-4 py-8 min-h-[40vh] border-b dark:border-dark-border"
+    class="flex items-center justify-center md:hidden min-h-[40vh] header-card"
     id="header-mobile"
   >
-    <p class="text-5xl italic font-serif font-thin text-center light leading-[1.1]">
+    <p class="text-5xl italic font-serif font-thin text-center light leading-[1.1] p-8">
       Brian Sekelsky is a designer, working across user experience, visual design, and code.
     </p>
   </div>
 
-  <!-- Desktop: p5.js sketch -->
+  <!-- Desktop: p5.js sketch in card -->
   <div
-    class="hidden md:block sm:mt-0 p-8 sm:pt-8 min-h-[600px] max-w-full border-b dark:border-dark-border bg"
+    class="hidden md:block min-h-[600px] max-w-full header-card"
     id="header"
   >
     <p class="sr-only">
@@ -31,6 +31,18 @@
 </script>
 
 <style>
+  /* .header-card styles are now in Layout.astro for shared use */
+
+  /* Ensure canvas fills the header properly */
+  #header {
+    box-sizing: border-box;
+  }
+
+  #header :global(canvas) {
+    display: block;
+    border-radius: inherit;
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;

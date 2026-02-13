@@ -9,7 +9,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
 const year = new Date().getFullYear();
 ---
 
-<div class="h-full border-t dark:border-dark-border px-3 sm:px-8 pb-4 bg-purewhite dark:bg-dark-surface text-sm dark:text-dark-text">
+<div class="h-full dark:border-dark-border site-padding pb-4 bg-purewhite dark:bg-dark-surface text-sm dark:text-dark-text">
   <div class="mx-auto">
     <!-- <div class="pt-6">
       <SectionHeader text="Links" />
@@ -20,38 +20,33 @@ const year = new Date().getFullYear();
           class="flex justify-start sm:justify-between flex-wrap gap-y-4 py-4 gap-8"
         >
           <div class="">
-            <Link
+            <NavLink
               href="https://www.instagram.com/briansekelsky/"
               name="Instagram"
-              footer="true"
             />
           </div>
           <div>
-            <Link
+            <NavLink
               href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
               name="Spotify"
-              footer="true"
             />
           </div>
           <div>
-            <Link
+            <NavLink
               href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
               name="Youtube"
-              footer="true"
             />
           </div>
           <div>
-            <Link
+            <NavLink
               href="https://www.linkedin.com/in/brian-sekelsky/"
               name="LinkedIn"
-              footer="true"
             />
           </div>
           <div>
-            <Link
+            <NavLink
               href="https://www.are.na/brian-sekelsky"
               name="Arena"
-              footer="true"
             />
           </div>
           <!-- <div>

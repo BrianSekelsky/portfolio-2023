@@ -49,15 +49,10 @@ import project5 from "../../images/greenways/project-5.png";
         "Elizabeth Gabriel",
       ]}
       year="2025"
-      outboundLink="https://greenways.com"
-      myColor="honeydew"
+      heroVideo={greenwaysRec}
+      heroVideoMp4={greenwaysRecMp4}
+      heroPoster={greenwaysRecPoster.src}
     />
-    <div class="border-b load-in relative">
-      <video class="w-full" playsinline autoplay muted loop preload="metadata" poster={greenwaysRecPoster.src}>
-        <source src={greenwaysRec} type="video/webm" />
-        <source src={greenwaysRecMp4} type="video/mp4" />
-      </video>
-    </div>
     <ProjectGrid6Cols>
   <div class="col-span-2">
     <SmallHeading text="Our approach" />
@@ -121,52 +116,46 @@ import project5 from "../../images/greenways/project-5.png";
       <Caption text="After" />
     </div>
   </div>
-<div class="col-span-6 py-8 bg-offwhite dark:bg-dark-surface">
-    <div class="grid grid-cols-3 gap-4 mb-4">
-      <div class="flex flex-col items-center">
-        <Image
-          src={project1}
-          alt="Botanical illustration for project one"
-          class="rounded-md shadow"
-        />
+  <div class="col-span-6">
+    <div class="header-card">
+      <div class="p-4 sm:p-6">
+        <div class="grid grid-cols-3 gap-4 mb-4">
+          <Image
+            src={project1}
+            alt="Botanical illustration for project one"
+            class="rounded-md"
+          />
+          <Image
+            src={project2}
+            alt="Botanical illustration for project two"
+            class="rounded-md"
+          />
+          <Image
+            src={project3}
+            alt="Botanical illustration for project three"
+            class="rounded-md"
+          />
+        </div>
+        <div class="grid grid-cols-2 gap-4 mx-auto max-w-xl">
+          <Image
+            src={project4}
+            alt="Botanical illustration for project four"
+            class="rounded-md"
+          />
+          <Image
+            src={project5}
+            alt="Botanical illustration for project five"
+            class="rounded-md"
+          />
+        </div>
       </div>
-      <div class="flex flex-col items-center">
-        <Image
-          src={project2}
-          alt="Botanical illustration for project two"
-          class="rounded-md shadow"
-        />
+      <div class="p-4 sm:p-6 border-t border-[--border-color]">
+        <SmallHeading text="Custom project illustrations" />
+        <p class="!pb-0">
+          Elizabeth created a bespoke botanical illustration for each of Chuck's five highlighted projects.
+          Each drawing features a plant native to its region, grounding the site in real landscapes and adding a layer of local storytelling.
+        </p>
       </div>
-      <div class="flex flex-col items-center">
-        <Image
-          src={project3}
-          alt="Botanical illustration for project three"
-          class="rounded-md shadow"
-        />
-      </div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 mx-auto max-w-2xl">
-      <div class="flex flex-col items-center">
-        <Image
-          src={project4}
-          alt="Botanical illustration for project four"
-          class="rounded-md shadow"
-        />
-      </div>
-      <div class="flex flex-col items-center">
-        <Image
-          src={project5}
-          alt="Botanical illustration for project five"
-          class="rounded-md shadow"
-        />
-      </div>
-    </div>
-    <div class="mt-6">
-      <SmallHeading text="Custom project illustrations" />
-      <p>
-        Elizabeth created a bespoke botanical illustration for each of Chuck's five highlighted projects.
-        Each drawing features a plant native to its region, grounding the site in real landscapes and adding a layer of local storytelling.
-      </p>
     </div>
   </div>
   <div class="col-span-2">

@@ -6,7 +6,6 @@ import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
-import webm from "../../images/homepage/public-transit.webm";
 import Caption from "../../components/Caption.astro";
 
 import pt1 from "../../images/imagine-public-transport/1.png";
@@ -26,13 +25,9 @@ import process from "../../images/imagine-public-transport/process.png";
       types={["Graphic Design", "Speculative"]}
       collaborators={[]}
       year="2023"
-      myColor="skyblue"
+      heroImage={pt3}
+      heroAlt="Billboard design for Imagine Public Transportation"
     />
-    <div class="load-in">
-      <div class="mx-auto flex justify-center border-b">
-        <Image src={pt3} alt="Logo for terrafirma software" />
-      </div>
-    </div>
     <ProjectGrid>
       <div class="col-span-1">
         <SmallHeading text="Problem" />
@@ -63,15 +58,17 @@ import process from "../../images/imagine-public-transport/process.png";
       <div class="col-span-1">
         <Image src={pt6} alt="Logo for Imagine Public Transit" />
       </div>
-      <div class="col-span-2 bg-offwhite dark:bg-dark-surface pb-4 negative-margin">
-        <Image src={process} alt="Screenshot of figma showing process work" />
-        <Caption text="Some process work" />
+      <div class="col-span-2">
+        <div class="header-card">
+          <div class="p-4 sm:p-6">
+            <Image src={process} alt="Screenshot of figma showing process work" class="rounded-md" />
+          </div>
+          <div class="p-4 sm:p-6 border-t border-[--border-color]">
+            <SmallHeading text="Process work" />
+            <p class="!pb-0">Early explorations and iterations in Figma showing the development of the billboard designs.</p>
+          </div>
+        </div>
       </div>
     </ProjectGrid>
-    <style>
-      .negative-margin {
-        margin-bottom: -2rem;
-      }
-    </style>
   </main>
 </Layout>

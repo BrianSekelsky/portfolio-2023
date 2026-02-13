@@ -8,7 +8,6 @@ import SmallHeading from "../../components/SmallHeading.astro";
 import ProjectGrid from "../../components/ProjectGrid.astro";
 import { Image } from "astro:assets";
 
-import webm from "../../images/homepage/deliberate.webm";
 import cover from "../../images/deliberate/cover.png";
 
 import userFlow from "../../images/deliberate/user-flow.png";
@@ -47,16 +46,9 @@ import web4 from "../../images/deliberate/web-4.png";
         "Yuri Guimarães",
       ]}
       year="2022"
+      heroImage={cover}
+      heroAlt="Preview of Deliberate AI applications"
     />
-    <div class="border-b load-in">
-      <div class="mx-auto flex justify-center">
-        <Image
-          class="transition-all"
-          src={cover}
-          alt="Preview of Deliberate AI applications"
-        />
-      </div>
-    </div>
     <ProjectGrid>
         <div class="col-span-1 lg:col-span-2">
           <SmallHeading text="Background" />
@@ -84,69 +76,29 @@ import web4 from "../../images/deliberate/web-4.png";
           <Image class="rounded-md shadow" src={userFlow} alt="User flow diagram for clinician workflow" />
         </div>
         <div class="col-span-1 lg:col-span-2">
-          <SmallHeading text="Basic Design System" />
-          <p>
-            Coming into the role, I encountered cluttered figma documents with
-            inconsistent components, colors, and typography. I created a simple
-            design system, with figma components, to tie together the brand
-            identity and and user interface.
-          </p>
-        </div>
-        <div class="bg-offwhite dark:bg-dark-surface lg:col-span-2">
-          <div class="col-span-2 flex gap-8 py-8">
-            <div>
-              <Image class="rounded-md shadow" src={one} alt="Design system color palette" />
+          <div class="header-card">
+            <div class="p-4 sm:p-6">
+              <div class="grid grid-cols-4 gap-4 mb-4">
+                <Image class="rounded-md" src={one} alt="Design system color palette" />
+                <Image class="rounded-md" src={two} alt="Typography specifications" />
+                <Image class="rounded-md" src={three} alt="Button component variants" />
+                <Image class="rounded-md" src={four} alt="Form input components" />
+              </div>
+              <div class="grid grid-cols-4 gap-4">
+                <Image class="rounded-md" src={five} alt="Card component designs" />
+                <Image class="rounded-md" src={six} alt="Navigation component patterns" />
+                <Image class="rounded-md" src={seven} alt="Modal dialog components" />
+                <Image class="rounded-md" src={eight} alt="Data table components" />
+              </div>
             </div>
-            <div>
-              <Image
-                class="rounded-md shadow"
-                src={two}
-                alt="Typography specifications"
-              />
-            </div>
-            <div>
-              <Image
-                class="rounded-md shadow"
-                src={three}
-                alt="Button component variants"
-              />
-            </div>
-            <div>
-              <Image
-                class="rounded-md shadow"
-                src={four}
-                alt="Form input components"
-              />
-            </div>
-          </div>
-          <div class="col-span-2 flex gap-8 py-8">
-            <div>
-              <Image
-                class="rounded-md shadow"
-                src={five}
-                alt="Card component designs"
-              />
-            </div>
-            <div>
-              <Image
-                class="rounded-md shadow"
-                src={six}
-                alt="Navigation component patterns"
-              />
-            </div>
-            <div>
-              <Image
-                class="rounded-md shadow"
-                src={seven}
-                alt="Modal dialog components"
-              />
-            </div>
-            <div>
-              <Image
-                class="rounded-md shadow"
-                src={eight}
-                alt="Data table components"
-              />
+            <div class="p-4 sm:p-6 border-t border-[--border-color]">
+              <SmallHeading text="Basic Design System" />
+              <p class="!pb-0">
+                Coming into the role, I encountered cluttered figma documents with
+                inconsistent components, colors, and typography. I created a simple
+                design system, with figma components, to tie together the brand
+                identity and and user interface.
+              </p>
             </div>
           </div>
         </div>

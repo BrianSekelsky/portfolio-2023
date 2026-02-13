@@ -11,7 +11,6 @@ import mp4 from "../../images/possible-internet/possible-internet.mp4";
 import sketch1 from "../../images/possible-internet/sketches.jpg";
 import sketch2 from "../../images/possible-internet/sketches-2.jpg";
 import research from "../../images/possible-internet/research.jpg";
-import Caption from "../../components/Caption.astro";
 
 import antlers from "../../images/possible-internet/Antlers.png";
 import reference from "../../images/possible-internet/Expanded Reference.png";
@@ -125,16 +124,17 @@ import webofreferences from "../../images/possible-internet/Web of References.pn
             class="overflow-hidden rounded-sm"
             src="https://editor.p5js.org/bsekels/full/20gwFcDb6"></iframe>
         </div>
-        <div class="col-span-2 bg-offwhite dark:bg-dark-surface py-8 flex justify-center">
-          <div>
+        <div class="col-span-2">
+          <div class="header-card overflow-hidden">
             <iframe
               src="https://player.vimeo.com/video/769969951?h=0d93dceb26"
-              width="720"
-              height="400"
-              frameborder="0"
+              class="w-full aspect-video border-0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen></iframe>
-            <Caption text="Made in Blender" />
+            <div class="p-4 sm:p-6 border-t border-[--border-color]">
+              <SmallHeading text="Final prototype video" />
+              <p class="!pb-0">Made in Blender, this video demonstrates how extended reality could transform academic literature review sessions.</p>
+            </div>
           </div>
         </div>
         <div class="col-span-1">

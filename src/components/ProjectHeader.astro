@@ -1,5 +1,7 @@
 ---
 import SmallHeading from "./SmallHeading.astro";
+import { Image } from "astro:assets";
+
 interface Props {
   title: string;
   objective: string;
@@ -8,6 +10,12 @@ interface Props {
   year: string;
   outboundLink?: string;
   music?: boolean;
+  // Hero media props
+  heroImage?: ImageMetadata;
+  heroVideo?: string;
+  heroVideoMp4?: string;
+  heroPoster?: string;
+  heroAlt?: string;
 }
 const {
   title,
@@ -17,73 +25,130 @@ const {
   year,
   outboundLink = "",
   music = false,
+  heroImage,
+  heroVideo,
+  heroVideoMp4,
+  heroPoster,
+  heroAlt = "Project hero image",
 } = Astro.props;
+
+const hasHero = heroImage || heroVideo;
 ---
 
-<div class="border-b dark:border-dark-border project-header load-in">
-  <div>
-    <div class="p-4 sm:p-8 border-b dark:border-dark-border color">
-      <a
+<div class="site-padding project-header load-in">
+  <div class="header-card flex flex-col">
+    <!-- Title section -->
+    <div class="title-section p-6 sm:p-8">
+      <!-- <a
         href="/"
-        class="font-mono border dark:border-dark-border rounded-full px-4 py-1 hover:bg-verylightgray dark:hover:bg-dark-surface-hover"
+        class="inline-block w-fit font-mono text-sm border rounded-full px-4 py-1 mb-4 hover:bg-verylightgray dark:hover:bg-dark-surface-hover transition-colors back-link"
         >← Back to projects</a
+      > -->
+      <h1
+        class="font-serif font-extralight text-4xl sm:text-6xl md:text-7xl break-words sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
       >
-      <div class="pt-4">
-        <h1
-          class="font-serif font-extralight text-6xl sm:text-8xl break-words sm:break-normal hyphens-auto sm:hyphens-manual"
-        >
-          {title}
+        {title}
       </h1>
-      </div>
     </div>
-    <div
-      class="flex flex-col gap-12 sm:gap-0 py-12 sm:py-0 lg:grid grid-cols-2 lg:divide-x dark:divide-dark-border"
-    >
-      <div class="col-span-1 p-4 py-0 sm:p-8">
-        <SmallHeading text="Overview" />
-        {objective}
-        <slot />
-      </div>
-      <div class="flex justify-between gap-12 col-span-1 p-4 py-0 sm:p-8">
-        <div class={music === false ? "hidden sm:block" : "hidden"}>
-          <SmallHeading text="Type" />
-          <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
-            {types.map((type) => <p>{type}</p>)}
+
+    <!-- Project details bar at bottom -->
+    <div class="project-details-bar p-6 sm:p-8 mt-auto">
+      <div class="flex flex-wrap gap-6 sm:gap-12">
+        <div class="flex-1 min-w-[200px]">
+          <SmallHeading text="Overview" />
+          <p class="text-sm sm:text-base">{objective}</p>
+          <slot />
+        </div>
+        <div class="flex gap-6 sm:gap-10 flex-wrap">
+          <div class={music === false ? "block" : "hidden"}>
+            <SmallHeading text="Type" />
+            <div class={types.length > 0 ? "block" : "hidden"}>
+              {types.map((type) => <p class="text-sm">{type}</p>)}
+            </div>
           </div>
-        </div>
-        <div class={music === true ? "hidden sm:block" : "hidden"}>
-          <SmallHeading text="Genres" />
-          <div class={types.length > 0 ? "hidden sm:block" : "hidden"}>
-            {types.map((type) => <p class="">{type}</p>)}
+          <div class={music === true ? "block" : "hidden"}>
+            <SmallHeading text="Genres" />
+            <div class={types.length > 0 ? "block" : "hidden"}>
+              {types.map((type) => <p class="text-sm">{type}</p>)}
+            </div>
           </div>
-        </div>
-        <div class="">
-          <SmallHeading text="Year" />
-          <p class="">
-            {year}
-          </p>
-        </div>
-        <div class={collaborators.length > 0 ? "hidden sm:block" : "invisible"}>
-          <SmallHeading text="Collaborators" />
           <div>
-            {
-              collaborators.map((collaborator) => (
-                <p class="">{collaborator}</p>
-              ))
-            }
+            <SmallHeading text="Year" />
+            <p class="text-sm">{year}</p>
+          </div>
+          <div class={collaborators.length > 0 ? "block" : "hidden"}>
+            <SmallHeading text="Collaborators" />
+            <div>
+              {collaborators.map((collaborator) => (
+                <p class="text-sm">{collaborator}</p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </div>
+        <!-- Hero media section -->
+    {hasHero && (
+      <div class="hero-media">
+        {heroVideo ? (
+          <video
+            playsinline
+            autoplay
+            muted
+            loop
+            preload="metadata"
+            poster={heroPoster}
+            class="w-full h-full object-cover"
+          >
+            <source src={heroVideo} type="video/webm" />
+            {heroVideoMp4 && <source src={heroVideoMp4} type="video/mp4" />}
+          </video>
+        ) : heroImage ? (
+          <Image
+            src={heroImage}
+            alt={heroAlt}
+            class="w-full h-full object-cover"
+          />
+        ) : null}
+      </div>
+    )}
   </div>
-
-  <style>
-    .color {
-      background-color: white;
-    }
-
-    :global(.dark) .color {
-      background-color: #1a1d21;
-    }
-  </style>
 </div>
+
+<style>
+  .back-link {
+    border-color: var(--border-color);
+  }
+
+  .hero-media {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-top: 1px solid var(--border-color);
+  }
+
+  @media (min-width: 640px) {
+    .hero-media {
+      height: 400px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-media {
+      height: 600px;
+    }
+  }
+
+  .title-section {
+    /* border-top: 1px solid var(--border-color); */
+  }
+
+  .project-details-bar {
+    border-top: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  :global(.dark) .project-details-bar {
+    background: rgba(10, 10, 26, 0.5);
+  }
+</style>
