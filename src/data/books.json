@@ -1,0 +1,29 @@
+{
+  "currentlyReading": [
+    {
+      "title": "Add your current book here",
+      "author": "Author Name",
+      "coverUrl": ""
+    }
+  ],
+  "read": [
+    {
+      "title": "Example Book from 2025",
+      "author": "Author Name",
+      "coverUrl": "",
+      "year": 2025
+    },
+    {
+      "title": "Another Book from 2025",
+      "author": "Another Author",
+      "coverUrl": "",
+      "year": 2025
+    },
+    {
+      "title": "A Book from 2024",
+      "author": "Some Author",
+      "coverUrl": "",
+      "year": 2024
+    }
+  ]
+}

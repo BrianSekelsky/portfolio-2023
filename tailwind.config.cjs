@@ -40,7 +40,7 @@ module.exports = {
 			'ecru': "#A69658",
 			'accent-yellow': '#FEF08A',
 			'accent-green': '#04724D',
-			'accent-blue': '#007FFF',
+			'accent-blue': '#0000FF',
 			'dark-bg': '#050517',
 			'dark-surface': '#0a0a1a',
 			'dark-surface-hover': '#14142a',

@@ -5,7 +5,7 @@ let isMouseInsideHeader = false;
 
 // Color configuration
 const BG_COLOR = '#FFFFFF';
-const FG_COLOR = '#050517';
+const FG_COLOR = '#000000';
 
 function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
