@@ -34,7 +34,7 @@ export function startSketch() {
     const returnDelay = 2500;
     const easeSpeed = 0.06;
     const gravity = 0.00;
-    const friction = 0.98;
+    const friction = 0.99;
     const bounce = -0.5;
     const returnFriction = 0.7;
     const sizeEase = 0.1;
