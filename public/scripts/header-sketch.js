@@ -1,4 +1,4 @@
-import p5 from 'https://cdn.skypack.dev/p5@1.9.0';
+import p5 from 'https://cdn.jsdelivr.net/npm/p5@1.11.8/+esm';
 
 let sketchInstance;
 let isMouseInsideHeader = false;
@@ -309,17 +309,69 @@ export function startSketch() {
       p.rectMode(p.CENTER);
       p.noStroke();
 
-      const fontSpec = 'italic 100px freighttextcmp-pro';
-
-      document.fonts.load(fontSpec).then(() => {
-        if (document.fonts.check(fontSpec)) {
-          createBubblesFromText();
-        } else {
-          setTimeout(createBubblesFromText, 1000);
+      // More robust font loading for Safari
+      const initWithFont = () => {
+        createBubblesFromText();
+        // Hide loading indicator
+        const loadingEl = document.getElementById('header-loading');
+        if (loadingEl) {
+          loadingEl.classList.add('hidden');
         }
-      }).catch(() => {
-        setTimeout(createBubblesFromText, 1000);
-      });
+      };
+
+      const checkFontReady = (attempt = 0) => {
+        const maxAttempts = 20; // ~4 seconds total
+        const fontSpec = 'italic 100px freighttextcmp-pro';
+
+        // Try document.fonts.check first
+        if (document.fonts && document.fonts.check(fontSpec)) {
+          initWithFont();
+          return;
+        }
+
+        // Fallback: measure text width to detect font
+        const testCanvas = document.createElement('canvas');
+        const ctx = testCanvas.getContext('2d');
+        ctx.font = fontSpec;
+        const testWidth = ctx.measureText('Brian Sekelsky').width;
+
+        // Generic font would be ~different width than loaded custom font
+        // If we get a reasonable width (not default), font is likely loaded
+        if (testWidth > 100 && testWidth < 1000) {
+          // Do a second check after a frame to be sure
+          requestAnimationFrame(() => {
+            ctx.font = fontSpec;
+            const confirmWidth = ctx.measureText('Brian Sekelsky').width;
+            if (Math.abs(confirmWidth - testWidth) < 1) {
+              initWithFont();
+            } else if (attempt < maxAttempts) {
+              setTimeout(() => checkFontReady(attempt + 1), 200);
+            } else {
+              initWithFont(); // Give up, use whatever font is available
+            }
+          });
+          return;
+        }
+
+        if (attempt < maxAttempts) {
+          setTimeout(() => checkFontReady(attempt + 1), 200);
+        } else {
+          initWithFont(); // Give up after max attempts
+        }
+      };
+
+      // Wait for document.fonts.ready first (most reliable)
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          // Small delay for Safari to fully render fonts
+          setTimeout(() => checkFontReady(), 50);
+        }).catch(() => {
+          setTimeout(() => checkFontReady(), 500);
+        });
+      } else {
+        // No FontFaceSet API, use timeout fallback
+        setTimeout(() => checkFontReady(), 500);
+      }
     };
 
     p.draw = () => {
@@ -374,6 +426,11 @@ export function stopSketch() {
   if (sketchInstance) {
     sketchInstance.remove();
     sketchInstance = null;
+  }
+  // Reset loading indicator for next page load
+  const loadingEl = document.getElementById('header-loading');
+  if (loadingEl) {
+    loadingEl.classList.remove('hidden');
   }
 }
 

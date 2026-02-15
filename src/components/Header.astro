@@ -17,6 +17,12 @@
     class="hidden md:block min-h-[600px] max-w-full header-card"
     id="header"
   >
+    <!-- Loading state - shows while sketch initializes -->
+    <div id="header-loading" class="header-loading">
+      <p class="header-loading-text">
+        Brian Sekelsky is a designer, working across user experience, visual design, and code.
+      </p>
+    </div>
     <p class="sr-only">
       Brian Sekelsky is a designer, working across user experience, visual design, and code.
     </p>
@@ -36,11 +42,72 @@
   /* Ensure canvas fills the header properly */
   #header {
     box-sizing: border-box;
+    position: relative;
   }
 
   #header :global(canvas) {
     display: block;
     border-radius: inherit;
+  }
+
+  /* Loading state */
+  .header-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 1;
+    transition: opacity 0.4s ease-out;
+  }
+
+  .header-loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .header-loading-text {
+    font-family: 'freight-text-pro', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 2.75rem;
+    line-height: 1.15;
+    text-align: center;
+    max-width: 85%;
+    color: #ccc;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* Scale up at larger breakpoints to match sketch sizing */
+  @media (min-width: 900px) {
+    .header-loading-text {
+      font-size: 3.25rem;
+      max-width: 80%;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .header-loading-text {
+      font-size: 3.75rem;
+      max-width: 75%;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .header-loading-text {
+      font-size: 4.5rem;
+      max-width: 70%;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+  }
+
+  :global(.dark) .header-loading-text {
+    color: #333;
   }
 
   .sr-only {
