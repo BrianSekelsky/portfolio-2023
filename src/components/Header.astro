@@ -2,9 +2,16 @@
 ---
 
 <div class="transition-all duration-500 site-padding">
-  <!-- p5.js sketch in card (all screen sizes) -->
+  <!-- Mobile: Static dark card -->
+  <div class="flex items-center justify-center md:hidden min-h-[40vh] header-card header-mobile">
+    <p class="header-mobile-text">
+      Brian Sekelsky is a designer, working across user experience, visual design, and code.
+    </p>
+  </div>
+
+  <!-- Desktop: p5.js sketch in card -->
   <div
-    class="min-h-[50vh] md:min-h-[600px] max-w-full header-card"
+    class="hidden md:block min-h-[600px] max-w-full header-card"
     id="header"
   >
     <!-- Loading state - shows while sketch initializes -->
@@ -106,5 +113,22 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+
+  /* Mobile dark header */
+  .header-mobile {
+    background: #0a0a1a;
+    padding: 2rem;
+  }
+
+  .header-mobile-text {
+    font-family: 'freight-text-pro', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.75rem;
+    line-height: 1.4;
+    text-align: center;
+    max-width: 400px;
+    color: rgba(255, 255, 255, 0.7);
   }
 </style>
