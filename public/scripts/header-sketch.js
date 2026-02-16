@@ -95,7 +95,7 @@ export function startSketch() {
 
         // Pre-calculate grayscale color with distinct shading levels
         // Use stepped shading for a more intentional pixel look
-        const shadeSteps = [0.4, 0.5, 0.6, 0.7, 0.8];
+        const shadeSteps = [0.6, 0.7, 0.8];
         const opacity = shadeSteps[Math.floor(Math.random() * shadeSteps.length)];
         this.restR = Math.round(fgRgb[0] * opacity + bgRgb[0] * (1 - opacity));
         this.restG = Math.round(fgRgb[1] * opacity + bgRgb[1] * (1 - opacity));
@@ -205,7 +205,7 @@ export function startSketch() {
         } else {
           p.fill(this.restR, this.restG, this.restB);
         }
-        p.rect(this.x, this.y, this.displaySize, this.displaySize);
+        p.ellipse(this.x, this.y, this.displaySize, this.displaySize);
       }
     }
 
