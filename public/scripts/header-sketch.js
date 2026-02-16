@@ -4,8 +4,8 @@ let sketchInstance;
 let isMouseInsideHeader = false;
 
 // Color configuration
-const BG_COLOR = '#FFFFFF';
-const FG_COLOR = '#000000';
+const BG_COLOR = '#F9F9F9';
+const FG_COLOR = '#050517';
 
 function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -21,6 +21,7 @@ export function startSketch() {
     let header;
     let bubbles = [];
     let isLoading = true;
+    let outlineGraphics = null;
 
     const bgRgb = hexToRgb(BG_COLOR);
     const fgRgb = hexToRgb(FG_COLOR);
@@ -31,16 +32,16 @@ export function startSketch() {
     let fontSize, bubbleSize, gridSpacing, hoverRadius, hoverRadiusSq, leftMargin;
 
     // Physics constants
-    const returnDelay = 2500;
-    const easeSpeed = 0.06;
+    const returnDelay = 3500;
+    const easeSpeed = 0.05;
     const gravity = 0.00;
     const friction = 0.99;
     const bounce = -0.5;
-    const returnFriction = 0.7;
-    const sizeEase = 0.1;
+    const returnFriction = 0.75;
+    const sizeEase = 0.08;
     const mobileBreakpoint = 640;
-    const displacedSizeMultiplier = 1.3;
-    const pushStrength = 2.5;
+    const displacedSizeMultiplier = 1.15;
+    const pushStrength = 1.8;
 
     // Frame cache
     let frameTime = 0;
@@ -50,28 +51,22 @@ export function startSketch() {
     function calculateResponsiveValues() {
       const width = p.width;
 
-      if (width < 640) {
+      if (width < 940) {
         fontSize = 58;
         bubbleSize = 2;
-        gridSpacing = 3;
+        gridSpacing = 2.5;
         hoverRadius = 35;
         leftMargin = 16;
-      } else if (width < 768) {
+      } else if (width < 1020) {
         fontSize = 80;
-        bubbleSize = 2;
-        gridSpacing = 3.5;
-        hoverRadius = 40;
-        leftMargin = 32;
-      } else if (width < 1024) {
-        fontSize = 86;
-        bubbleSize = 2;
-        gridSpacing = 3.5;
+        bubbleSize = 1.8;
+        gridSpacing = 2.5;
         hoverRadius = 45;
         leftMargin = 32;
       } else {
-        fontSize = 100;
+        fontSize = 86;
         bubbleSize = 2;
-        gridSpacing = 3.5;
+        gridSpacing = 2.5;
         hoverRadius = 50;
         leftMargin = 32;
       }
@@ -98,8 +93,10 @@ export function startSketch() {
         this.state = 0; // 0 = resting, 1 = falling, 2 = returning
         this.fallTime = 0;
 
-        // Pre-calculate grayscale color (cached, not recalculated each frame)
-        const opacity = 0.85 + Math.random();
+        // Pre-calculate grayscale color with distinct shading levels
+        // Use stepped shading for a more intentional pixel look
+        const shadeSteps = [0.4, 0.5, 0.6, 0.7, 0.8];
+        const opacity = shadeSteps[Math.floor(Math.random() * shadeSteps.length)];
         this.restR = Math.round(fgRgb[0] * opacity + bgRgb[0] * (1 - opacity));
         this.restG = Math.round(fgRgb[1] * opacity + bgRgb[1] * (1 - opacity));
         this.restB = Math.round(fgRgb[2] * opacity + bgRgb[2] * (1 - opacity));
@@ -232,7 +229,7 @@ export function startSketch() {
       pg.background(bgRgb[0], bgRgb[1], bgRgb[2]);
       pg.fill(fgRgb[0], fgRgb[1], fgRgb[2]);
       pg.textFont('freighttextcmp-pro');
-      pg.textStyle(p.ITALIC);
+      // pg.textStyle(p.ITALIC);
       pg.textSize(fontSize);
       pg.textAlign(p.CENTER, p.CENTER);
 
@@ -264,23 +261,44 @@ export function startSketch() {
 
       pg.loadPixels();
 
-      // Sample points from text
+      // Sample points from text (skip on mobile - just show placeholder)
       const newBubbles = [];
-      const jitter = gridSpacing * 0.1;
+      if (window.innerWidth >= mobileBreakpoint) {
+        const jitter = gridSpacing * 0.05;
 
-      for (let x = 0; x < p.width; x += gridSpacing) {
-        for (let y = 0; y < p.height; y += gridSpacing) {
-          const px = x + (Math.random() * 2 - 1) * jitter;
-          const py = y + (Math.random() * 2 - 1) * jitter;
+        for (let x = 0; x < p.width; x += gridSpacing) {
+          for (let y = 0; y < p.height; y += gridSpacing) {
+            const px = x + (Math.random() * 2 - 1) * jitter;
+            const py = y + (Math.random() * 2 - 1) * jitter;
 
-          if (isPointInText(px, py, pg)) {
-            newBubbles.push(new Bubble(px, py));
+            if (isPointInText(px, py, pg)) {
+              newBubbles.push(new Bubble(px, py));
+            }
           }
         }
       }
 
       bubbles = newBubbles;
       pg.remove();
+
+      // Create static placeholder text (smooth, filled with outer stroke)
+      if (outlineGraphics) outlineGraphics.remove();
+      outlineGraphics = p.createGraphics(p.width, p.height);
+      // Keep default pixelDensity for anti-aliasing (smoother edges)
+      outlineGraphics.clear();
+      outlineGraphics.textFont('freighttextcmp-pro');
+      outlineGraphics.textSize(fontSize);
+      outlineGraphics.textAlign(p.CENTER, p.CENTER);
+
+      // Draw with stroke for visible outer edge
+      outlineGraphics.stroke(fgRgb[0], fgRgb[1], fgRgb[2], 40);
+      outlineGraphics.strokeWeight(2);
+      outlineGraphics.fill(fgRgb[0], fgRgb[1], fgRgb[2], 25);
+
+      for (let i = 0; i < lines.length; i++) {
+        outlineGraphics.text(lines[i], centerX, verticalOffset + (fontSize / 2) + i * fontSize);
+      }
+
       isLoading = false;
     }
 
@@ -319,58 +337,18 @@ export function startSketch() {
         }
       };
 
-      const checkFontReady = (attempt = 0) => {
-        const maxAttempts = 20; // ~4 seconds total
-        const fontSpec = 'italic 100px freighttextcmp-pro';
-
-        // Try document.fonts.check first
-        if (document.fonts && document.fonts.check(fontSpec)) {
-          initWithFont();
-          return;
-        }
-
-        // Fallback: measure text width to detect font
-        const testCanvas = document.createElement('canvas');
-        const ctx = testCanvas.getContext('2d');
-        ctx.font = fontSpec;
-        const testWidth = ctx.measureText('Brian Sekelsky').width;
-
-        // Generic font would be ~different width than loaded custom font
-        // If we get a reasonable width (not default), font is likely loaded
-        if (testWidth > 100 && testWidth < 1000) {
-          // Do a second check after a frame to be sure
-          requestAnimationFrame(() => {
-            ctx.font = fontSpec;
-            const confirmWidth = ctx.measureText('Brian Sekelsky').width;
-            if (Math.abs(confirmWidth - testWidth) < 1) {
-              initWithFont();
-            } else if (attempt < maxAttempts) {
-              setTimeout(() => checkFontReady(attempt + 1), 200);
-            } else {
-              initWithFont(); // Give up, use whatever font is available
-            }
-          });
-          return;
-        }
-
-        if (attempt < maxAttempts) {
-          setTimeout(() => checkFontReady(attempt + 1), 200);
-        } else {
-          initWithFont(); // Give up after max attempts
-        }
-      };
-
-      // Wait for document.fonts.ready first (most reliable)
+      // Wait for all fonts to be ready, then initialize
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => {
-          // Small delay for Safari to fully render fonts
-          setTimeout(() => checkFontReady(), 50);
+          // Small delay to ensure font is fully rendered
+          setTimeout(initWithFont, 100);
         }).catch(() => {
-          setTimeout(() => checkFontReady(), 500);
+          // Fallback if fonts.ready fails
+          setTimeout(initWithFont, 500);
         });
       } else {
         // No FontFaceSet API, use timeout fallback
-        setTimeout(() => checkFontReady(), 500);
+        setTimeout(initWithFont, 500);
       }
     };
 
@@ -379,11 +357,20 @@ export function startSketch() {
 
       if (isLoading) return;
 
+      // Draw static placeholder text
+      if (outlineGraphics) {
+        p.image(outlineGraphics, 0, 0);
+      }
+
+      // On mobile, just show placeholder text (no bubbles)
+      const isMobile = window.innerWidth < mobileBreakpoint;
+      if (isMobile) return;
+
       // Cache values for this frame
       frameTime = p.millis();
       const mx = p.mouseX;
       const my = p.mouseY;
-      const checkHover = isMouseInsideHeader && window.innerWidth >= mobileBreakpoint;
+      const checkHover = isMouseInsideHeader;
       const len = bubbles.length;
 
       for (let i = 0; i < len; i++) {
@@ -400,8 +387,8 @@ export function startSketch() {
       // Draw cursor circle when hovering over sketch
       if (checkHover && mx > 0 && mx < canvasWidth && my > 0 && my < canvasHeight) {
         p.noFill();
-        p.stroke(fgRgb[0], fgRgb[1], fgRgb[2], 80);
-        p.strokeWeight(1.5);
+        p.stroke(fgRgb[0], fgRgb[1], fgRgb[2], 40);
+        p.strokeWeight(1);
         p.ellipse(mx, my, hoverRadius * 2, hoverRadius * 2);
         p.noStroke(); // Reset for next frame
       }

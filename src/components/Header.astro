@@ -2,19 +2,9 @@
 ---
 
 <div class="transition-all duration-500 site-padding">
-  <!-- Mobile: Static text in card (matches loading state style) -->
+  <!-- p5.js sketch in card (all screen sizes) -->
   <div
-    class="flex items-center justify-center md:hidden min-h-[40vh] header-card header-mobile"
-    id="header-mobile"
-  >
-    <p class="header-mobile-text">
-      Brian Sekelsky is a designer, working across user experience, visual design, and code.
-    </p>
-  </div>
-
-  <!-- Desktop: p5.js sketch in card -->
-  <div
-    class="hidden md:block min-h-[600px] max-w-full header-card"
+    class="min-h-[50vh] md:min-h-[600px] max-w-full header-card"
     id="header"
   >
     <!-- Loading state - shows while sketch initializes -->
@@ -31,10 +21,8 @@
 </div>
 
 <script type="module" is:inline>
-  // Only load sketch on desktop
-  if (window.innerWidth >= 768) {
-    import('/scripts/header-sketch.js');
-  }
+  // Load sketch on all screen sizes
+  import('/scripts/header-sketch.js');
 </script>
 
 <style>
@@ -44,6 +32,7 @@
   #header {
     box-sizing: border-box;
     position: relative;
+    background: #FFFFFF;
   }
 
   #header :global(canvas) {
@@ -105,23 +94,6 @@
   /* Dark mode - already dark, so no change needed */
   :global(.dark) .header-loading {
     background: #0a0a1a;
-  }
-
-  /* Mobile header - dark with serif text */
-  .header-mobile {
-    background: #0a0a1a;
-    padding: 2rem;
-  }
-
-  .header-mobile-text {
-    font-family: 'freight-text-pro', Georgia, serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.75rem;
-    line-height: 1.25;
-    text-align: center;
-    max-width: 90%;
-    color: rgba(255, 255, 255, 0.7);
   }
 
   .sr-only {
