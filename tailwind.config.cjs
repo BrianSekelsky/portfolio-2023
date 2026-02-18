@@ -8,8 +8,8 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			serif: ["freight-text-pro", "sans-serif"],
-			sans: ["neue-haas-unica", "Helvetica", 'sans-serif'],
-			mono: ["freight-macro-pro", "Helvetica"]
+			sans: ["neue-haas-grotesk", "Helvetica", 'sans-serif'],
+			compSerif: ["freighttextcmp-pro", "sans-serif"]
 		},
 		maxWidth: {
 			'1/4': '25%',

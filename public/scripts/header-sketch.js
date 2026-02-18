@@ -337,19 +337,31 @@ export function startSketch() {
         }
       };
 
-      // Wait for all fonts to be ready, then initialize
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => {
-          // Small delay to ensure font is fully rendered
-          setTimeout(initWithFont, 100);
-        }).catch(() => {
-          // Fallback if fonts.ready fails
-          setTimeout(initWithFont, 500);
-        });
-      } else {
-        // No FontFaceSet API, use timeout fallback
-        setTimeout(initWithFont, 500);
-      }
+      // Explicitly wait for the specific font we need
+      const waitForFont = async () => {
+        if (document.fonts && document.fonts.load) {
+          try {
+            // Explicitly load the font with the style we use
+            await document.fonts.load('300 1em freighttextcmp-pro');
+            // Double-check it's available
+            const maxAttempts = 20;
+            let attempts = 0;
+            while (!document.fonts.check('300 1em freighttextcmp-pro') && attempts < maxAttempts) {
+              await new Promise(resolve => setTimeout(resolve, 100));
+              attempts++;
+            }
+            initWithFont();
+          } catch {
+            // Fallback if font loading fails
+            setTimeout(initWithFont, 1000);
+          }
+        } else {
+          // No FontFaceSet API, use timeout fallback
+          setTimeout(initWithFont, 1000);
+        }
+      };
+
+      waitForFont();
     };
 
     p.draw = () => {
