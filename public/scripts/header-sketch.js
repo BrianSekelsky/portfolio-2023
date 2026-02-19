@@ -309,6 +309,11 @@ export function startSketch() {
       header.addEventListener('mouseenter', () => { isMouseInsideHeader = true; });
       header.addEventListener('mouseleave', () => { isMouseInsideHeader = false; });
 
+      // If the cursor is already inside the header when the sketch loads, mouseenter won't fire
+      if (header.matches(':hover')) {
+        isMouseInsideHeader = true;
+      }
+
       const dimensions = getCanvasDimensions();
       canvasWidth = dimensions.width;
       canvasHeight = dimensions.height;
