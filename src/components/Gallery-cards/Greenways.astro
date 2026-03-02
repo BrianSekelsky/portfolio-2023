@@ -1,7 +1,9 @@
 ---
 import Card from "../Card.astro";
 import { Image } from "astro:assets";
-import thumbnail from "../../images/homepage/greenways.png";
+import video from "../../images/greenways/homepage-thumb.webm";
+import videoMp4 from "../../images/greenways/homepage-thumb.mp4";
+import poster from "../../images/greenways/greenways-rec-poster.jpg";
 
 const props = {
   title: "Greenways.com",
@@ -21,9 +23,26 @@ const props = {
 ---
 
 <Card {...props}>
-  <div class="flex justify-center items-center bg-color h-full">
-    <div class="block">
-      <Image src={thumbnail} alt={props.alt} class="w-full transition-all" loading="lazy" />
-    </div>
+  <div class="hidden md:block">
+    <video
+      class="transition-all"
+      playsinline
+      autoplay
+      muted
+      loop
+      preload="metadata"
+      poster={poster.src}
+    >
+      <source src={video} type="video/webm" />
+      <source src={videoMp4} type="video/mp4" />
+    </video>
+  </div>
+  <div class="flex md:hidden">
+    <Image
+      class="transition-all"
+      src={poster}
+      alt={props.alt}
+      loading="lazy"
+    />
   </div>
 </Card>
