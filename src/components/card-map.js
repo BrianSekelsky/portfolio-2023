@@ -1,3 +1,4 @@
+import CozyStream from './Gallery-cards/CozyStream.astro';
 import Fidelity from './Gallery-cards/Fidelity.astro';
 import Vespertine from './Gallery-cards/Vespertine.astro';
 import DeliberateAI from './Gallery-cards/DeliberateAI.astro';
@@ -14,6 +15,7 @@ import FriendsOfTanzania from "./Gallery-cards/FriendsOfTanzania.astro";
 import LAS from "./Gallery-cards/LAS.astro";
 
 export default [
+  { Component: CozyStream, typeClass: "ux development" },
   { Component: Greenways, typeClass: "branding wordpress ux development" },
   { Component: ScaleWorlds, typeClass: "vr website ux research education" },
   { Component: FriendsOfTanzania, typeClass: "wordpress website ux" },

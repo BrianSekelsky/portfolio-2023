@@ -98,7 +98,7 @@ const hasHero = heroImage || heroVideo;
             loop
             preload="metadata"
             poster={heroPoster}
-            class="w-full h-full object-cover"
+            class="w-full block"
           >
             <source src={heroVideo} type="video/webm" />
             {heroVideoMp4 && <source src={heroVideoMp4} type="video/mp4" />}
@@ -107,7 +107,7 @@ const hasHero = heroImage || heroVideo;
           <Image
             src={heroImage}
             alt={heroAlt}
-            class="w-full h-full object-cover"
+            class="w-full block"
           />
         ) : null}
       </div>
@@ -122,21 +122,8 @@ const hasHero = heroImage || heroVideo;
 
   .hero-media {
     width: 100%;
-    height: 300px;
     overflow: hidden;
     border-top: 1px solid var(--border-color);
-  }
-
-  @media (min-width: 640px) {
-    .hero-media {
-      height: 400px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .hero-media {
-      height: 600px;
-    }
   }
 
   .title-section {

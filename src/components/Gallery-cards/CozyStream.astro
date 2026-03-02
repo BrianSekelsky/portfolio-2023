@@ -1,0 +1,42 @@
+---
+import Card from "../Card.astro";
+import { Image } from "astro:assets";
+import video from "../../images/cozystream/homepage-thumb.webm";
+import videoMp4 from "../../images/cozystream/homepage-thumb.mp4";
+import poster from "../../images/cozystream/hero-walkthrough-poster.jpg";
+
+const title = "Cozystream";
+const year = "2026";
+const types = [
+  { text: "Product Design", special: false },
+  { text: "Engineering", special: false },
+];
+const alt = "Cozystream media server browse interface";
+const description = "Designing and building a self-hosted media streaming platform for web, Smart TV, and desktop.";
+---
+
+<Card
+  href="projects/cozystream"
+  title={title}
+  types={types}
+  year={year}
+  description={description}
+>
+  <div class="hidden md:block">
+    <video
+      class="transition-all"
+      playsinline
+      autoplay
+      muted
+      loop
+      preload="metadata"
+      poster={poster.src}
+    >
+      <source src={video} type="video/webm" />
+      <source src={videoMp4} type="video/mp4" />
+    </video>
+  </div>
+  <div class="flex md:hidden">
+    <Image class="transition-all" src={poster} alt={alt} loading="lazy" />
+  </div>
+</Card>
