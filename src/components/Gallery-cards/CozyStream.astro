@@ -26,11 +26,11 @@ const description = "Designing and building a self-hosted media streaming platfo
     <video
       class="transition-all"
       playsinline
-      autoplay
       muted
       loop
-      preload="metadata"
+      preload="none"
       poster={poster.src}
+      data-lazy-video
     >
       <source src={video} type="video/webm" />
       <source src={videoMp4} type="video/mp4" />

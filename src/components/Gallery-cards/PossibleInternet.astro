@@ -35,11 +35,11 @@ const alt = "";
     <video
       class="transition-all video-center"
       playsinline
-      autoplay
       muted
       loop
-      preload="metadata"
+      preload="none"
       poster={poster.src}
+      data-lazy-video
     >
       <source
         src={video}

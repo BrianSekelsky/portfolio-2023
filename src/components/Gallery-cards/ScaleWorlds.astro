@@ -28,11 +28,11 @@ const description = "Designing immersive learning environments—first in VR, th
     <video
       class="transition-all"
       playsinline
-      autoplay
       muted
       loop
-      preload="metadata"
+      preload="none"
       poster={poster.src}
+      data-lazy-video
     >
       <source src={video} type="video/webm" />
       <source src={videomp4} type="video/mp4" />
