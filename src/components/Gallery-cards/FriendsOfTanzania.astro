@@ -22,7 +22,14 @@ const props = {
 <Card {...props}>
   <div class="flex justify-center items-center bg-color h-full">
     <div class="block">
-      <Image src={thumbnail} alt={props.alt} class="w-full transition-all" loading="lazy" />
+      <Image
+        src={thumbnail}
+        alt={props.alt}
+        class="w-full transition-all"
+        loading="lazy"
+        widths={[320, 480, 640, 960]}
+        sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+      />
     </div>
   </div>
 </Card>

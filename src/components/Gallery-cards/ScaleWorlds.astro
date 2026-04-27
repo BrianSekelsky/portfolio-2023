@@ -39,6 +39,13 @@ const description = "Designing immersive learning environments—first in VR, th
     </video>
   </div>
   <div class="flex md:hidden">
-    <Image class="transition-all" src={image} alt={alt} loading="lazy" />
+    <Image
+      class="transition-all"
+      src={image}
+      alt={alt}
+      loading="lazy"
+      widths={[320, 480, 640, 960]}
+      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+    />
   </div>
 </Card>

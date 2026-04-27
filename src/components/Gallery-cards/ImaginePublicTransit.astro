@@ -45,6 +45,13 @@ const alt =
     </video>
   </div>
   <div class="gif block">
-    <Image src={gif} alt={alt} class="image-center" loading="lazy" />
+    <Image
+      src={gif}
+      alt={alt}
+      class="image-center"
+      loading="lazy"
+      widths={[320, 480, 640, 960]}
+      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+    />
   </div>
 </Card>

@@ -27,9 +27,9 @@ export default defineConfig({
       cssCodeSplit: true,
       rollupOptions: {
         output: {
-          manualChunks: {
-            'p5': ['p5'],
-            'gsap': ['gsap']
+          manualChunks(id) {
+            if (id.includes('node_modules/p5/')) return 'p5';
+            if (id.includes('node_modules/gsap/')) return 'gsap';
           }
         }
       }

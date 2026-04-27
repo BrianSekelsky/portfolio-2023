@@ -42,7 +42,13 @@ const alt = "Screenshot of user experience work in figma";
     </video>
   </div>
   <div class="block">
-    <Image src={preview} alt={alt} loading="lazy" />
+    <Image
+      src={preview}
+      alt={alt}
+      loading="lazy"
+      widths={[320, 480, 640, 960]}
+      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+    />
   </div>
 </Card>
 

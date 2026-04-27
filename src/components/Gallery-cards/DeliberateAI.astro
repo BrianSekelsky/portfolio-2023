@@ -31,7 +31,14 @@ const alt =
   description="Creating a design system and discovery interfaces for a start-up bringing artificial intelligence capabilities to mental health clinicians."
 >
   <div class="gif">
-    <Image src={image} alt={alt} class="" loading="lazy" />
+    <Image
+      src={image}
+      alt={alt}
+      class=""
+      loading="lazy"
+      widths={[320, 480, 640, 960]}
+      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+    />
   </div>
 </Card>
 

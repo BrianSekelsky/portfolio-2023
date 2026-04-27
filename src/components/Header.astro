@@ -27,9 +27,9 @@
   </div>
 </div>
 
-<script type="module" is:inline>
-  // Load sketch on all screen sizes
-  import('/scripts/header-sketch.js');
+<script>
+  // Header sketch is loaded via page-transition.js (which imports header-sketch.js).
+  // It self-initializes when #header exists in the DOM.
 </script>
 
 <style>

@@ -37,6 +37,14 @@ const description = "Designing and building a self-hosted media streaming platfo
     </video>
   </div>
   <div class="flex md:hidden">
-    <Image class="transition-all" src={poster} alt={alt} loading="lazy" />
+    <Image
+      class="transition-all"
+      src={poster}
+      alt={alt}
+      loading="eager"
+      fetchpriority="high"
+      widths={[320, 480, 640, 960]}
+      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+    />
   </div>
 </Card>

@@ -24,6 +24,12 @@ const description="Designing an interface for knowledge workers, in partnership 
   description={description}
 >
   <div class="block">
-    <Image src={png} alt={alt} loading="lazy" />
+    <Image
+      src={png}
+      alt={alt}
+      loading="lazy"
+      widths={[320, 480, 640, 960]}
+      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+    />
   </div>
 </Card>

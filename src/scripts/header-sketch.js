@@ -1,4 +1,4 @@
-import p5 from 'https://cdn.jsdelivr.net/npm/p5@1.11.8/+esm';
+import p5 from 'p5';
 
 let sketchInstance;
 let isMouseInsideHeader = false;
@@ -438,4 +438,6 @@ export function stopSketch() {
   }
 }
 
-startSketch();
+if (document.getElementById('header')) {
+  startSketch();
+}
