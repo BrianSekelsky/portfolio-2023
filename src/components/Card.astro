@@ -9,46 +9,51 @@ interface Props {
   description?: string;
 }
 
-const {
-  href,
-  title,
-  types,
-  year,
-  description = "",
-} = Astro.props;
+const { href, title, types, year, description = "" } = Astro.props;
 ---
 
 <a
-  class=`group flex flex-col space-y-2 col-span-6 md:col-span-3 2xl:col-span-2 cursor-pointer`
+  class=`group flex flex-col col-span-6 md:col-span-3 2xl:col-span-2 cursor-pointer bg-purewhite border-r border-b border-[#d6daff] card h-full`
   href={href}
 >
-  <div
-    class="grid grid-cols-6 bg-purewhite gap-4 p-4 dark:bg-dark-surface rounded-lg border border-zinc-200 dark:border-dark-border group-hover:border-zinc-300 dark:group-hover:border-dark-surface-hover transition card h-full"
-  >
-    <div class="col-span-6">
-      <div class="block overflow-hidden w-full rounded-md">
-        <div class="bg-white dark:bg-dark-surface">
-          <slot />
-        </div>
-      </div>
-    </div>
-    <div class="col-span-6">
-      <CardLabel
-        value={title}
-        types={types}
-        year={year}
-        isLarge={false}
-        description={description}
-      />
-    </div>
+  <div class="aspect-17/10 overflow-hidden w-full bg-white card-media">
+    <slot />
+  </div>
+  <div class="p-4 flex-1">
+    <CardLabel
+      value={title}
+      types={types}
+      year={year}
+      isLarge={false}
+      description={description}
+    />
   </div>
 </a>
 
 <style>
   .card {
+    position: relative;
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
     will-change: transform, box-shadow;
+  }
+
+  /* Lift the hovered card above its flush neighbors so its shadow shows */
+  .card:hover {
+    z-index: 10;
+  }
+
+  /* Make every slotted image/video fill the fixed-aspect frame uniformly */
+  .card-media > :global(div) {
+    height: 100%;
+  }
+
+  .card-media :global(img),
+  .card-media :global(video) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 </style>

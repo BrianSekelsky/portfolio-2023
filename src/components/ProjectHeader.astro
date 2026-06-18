@@ -33,9 +33,10 @@ const {
 } = Astro.props;
 
 const hasHero = heroImage || heroVideo;
+const hasCollaborators = collaborators.length > 0;
 ---
 
-<div class="site-padding project-header load-in">
+<div class="site-padding-flush project-header load-in">
   <div class="header-card flex flex-col">
     <!-- Title section -->
     <div class="title-section p-6 sm:p-8">
@@ -45,7 +46,7 @@ const hasHero = heroImage || heroVideo;
         >← Back to projects</a
       > -->
       <h1
-        class="font-compSerif font-extralight text-4xl sm:text-6xl md:text-7xl break-words sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
+        class="font-sans py-4 font-light text-4xl sm:text-6xl md:text-7xl wrap-break-word sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
       >
         {title}
       </h1>
@@ -53,65 +54,98 @@ const hasHero = heroImage || heroVideo;
 
     <!-- Project details bar at bottom -->
     <div class="project-details-bar p-6 sm:p-8 mt-auto">
-      <div class="flex flex-wrap gap-6 sm:gap-12">
-        <div class="flex-1 min-w-[200px]">
-          <SmallHeading text="Overview" />
+      <div class="flex flex-col sm:flex-row flex-wrap gap-8 sm:gap-16 pb-8">
+        <div class="flex-1 min-w-[200px] sm:max-w-3/5">
+          <p
+            class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
+          >
+            Overview
+          </p>
           <p class="text-sm sm:text-base">{objective}</p>
           <slot />
         </div>
-        <div class="flex gap-6 sm:gap-10 flex-wrap">
-          <div class={music === false ? "block" : "hidden"}>
-            <SmallHeading text="Type" />
-            <div class={types.length > 0 ? "block" : "hidden"}>
-              {types.map((type) => <p class="text-sm">{type}</p>)}
-            </div>
-          </div>
-          <div class={music === true ? "block" : "hidden"}>
-            <SmallHeading text="Genres" />
-            <div class={types.length > 0 ? "block" : "hidden"}>
-              {types.map((type) => <p class="text-sm">{type}</p>)}
-            </div>
-          </div>
-          <div>
-            <SmallHeading text="Year" />
-            <p class="text-sm">{year}</p>
-          </div>
-          <div class={collaborators.length > 0 ? "block" : "hidden"}>
-            <SmallHeading text="Collaborators" />
+        <div class="flex gap-8 sm:gap-16 flex-wrap">
+          {hasCollaborators ? (
             <div>
-              {collaborators.map((collaborator) => (
-                <p class="text-sm">{collaborator}</p>
-              ))}
+              <p
+                class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
+              >
+                Collaborators
+              </p>
+              <div>
+                {collaborators.map((collaborator) => (
+                  <p class="text-sm">{collaborator}</p>
+                ))}
+              </div>
             </div>
+          ) : (
+            <div>
+              <p
+                class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
+              >
+                Year
+              </p>
+              <p class="text-sm">{year}</p>
+            </div>
+          )}
+          <div class="flex flex-col gap-6">
+            <div class={music === false ? "block" : "hidden"}>
+              <p
+                class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
+              >
+                Type
+              </p>
+              <div class={types.length > 0 ? "block" : "hidden"}>
+                {types.map((type) => <p class="text-sm">{type}</p>)}
+              </div>
+            </div>
+            <div class={music === true ? "block" : "hidden"}>
+              <p
+                class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
+              >
+                Genres
+              </p>
+              <div class={types.length > 0 ? "block" : "hidden"}>
+                {types.map((type) => <p class="text-sm">{type}</p>)}
+              </div>
+            </div>
+            {hasCollaborators && (
+              <div>
+                <p
+                  class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
+                >
+                  Year
+                </p>
+                <p class="text-sm">{year}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
-        <!-- Hero media section -->
-    {hasHero && (
-      <div class="hero-media">
-        {heroVideo ? (
-          <video
-            playsinline
-            autoplay
-            muted
-            loop
-            preload="metadata"
-            poster={heroPoster}
-            class="w-full block"
-          >
-            <source src={heroVideo} type="video/webm" />
-            {heroVideoMp4 && <source src={heroVideoMp4} type="video/mp4" />}
-          </video>
-        ) : heroImage ? (
-          <Image
-            src={heroImage}
-            alt={heroAlt}
-            class="w-full block"
-          />
-        ) : null}
-      </div>
-    )}
+    <!-- Hero media section -->
+    {
+      hasHero && (
+        <div class="hero-media">
+          {heroVideo ? (
+            <video
+              playsinline
+              autoplay
+              muted
+              loop
+              preload="metadata"
+              poster={heroPoster}
+              class="w-full block"
+            >
+              <source src={heroVideo} type="video/webm" />
+              {heroVideoMp4 && <source src={heroVideoMp4} type="video/mp4" />}
+            </video>
+          ) : heroImage ? (
+            <Image src={heroImage} alt={heroAlt} class="w-full block" />
+          ) : null}
+        </div>
+      )
+    }
   </div>
 </div>
 
@@ -131,11 +165,11 @@ const hasHero = heroImage || heroVideo;
   }
 
   .project-details-bar {
-    border-top: 1px solid var(--border-color);
-    background: rgba(255, 255, 255, 0.5);
+    /* border-top: 1px solid var(--border-color); */
+    /* background: rgba(255, 255, 255, 0.5); */
   }
 
   :global(.dark) .project-details-bar {
-    background: rgba(10, 10, 26, 0.5);
+    /* background: rgba(10, 10, 26, 0.5); */
   }
 </style>

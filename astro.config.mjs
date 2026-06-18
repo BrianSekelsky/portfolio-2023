@@ -1,9 +1,8 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
   output: "static",
   // adapter: netlify()
 
@@ -23,6 +22,7 @@ export default defineConfig({
 
   // Vite optimizations for code splitting
   vite: {
+    plugins: [tailwindcss()],
     build: {
       cssCodeSplit: true,
       rollupOptions: {

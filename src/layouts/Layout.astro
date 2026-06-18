@@ -2,6 +2,7 @@
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -21,8 +22,8 @@ const { title } = Astro.props;
 
     <title>{title}</title>
 
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="preconnect" href="https://p.typekit.net" crossorigin />
     <link
       rel="preload"
       as="style"
@@ -33,12 +34,14 @@ const { title } = Astro.props;
       <link rel="stylesheet" href="https://use.typekit.net/abc2kbg.css" />
     </noscript>
   </head>
-  <body class="overflow-x-hidden flex flex-col text-black dark:bg-dark-bg dark:text-dark-text">
+  <body
+    class="overflow-x-hidden flex flex-col text-black dark:bg-dark-bg dark:text-dark-text"
+  >
     <ClientRouter />
     <div id="transition-overlay"></div>
 
     <div class="site-container">
-      <div class="h-screen w-100 flex flex-col">
+      <div class="h-screen w-full flex flex-col">
         <div class="block bg-purewhite">
           <Nav />
         </div>
@@ -52,30 +55,28 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   :root {
-    /* ==========================================
-       SITE MARGINS - Tweak these values!
-       ========================================== */
-    --site-padding-mobile: 0.5rem;  /* 8px - nearly full width on mobile */
-    --site-padding-desktop: 8rem;   /* 128px */
+    --site-padding-mobile: 0.5rem; /* 8px - nearly full width on mobile */
+    --site-padding-desktop: 8rem; /* 128px */
 
-    /* ==========================================
-       MAX WIDTH - Content won't stretch beyond this
-       ========================================== */
     --site-max-width: 1600px;
 
-    /* ==========================================
-       BORDER COLORS - Tweak these values!
-       ========================================== */
-    --border-color: #E3E1DD;        /* Light mode borders */
-    --border-color-subtle: #BFB8B0; /* Lighter borders for dividers */
-    --card-border-radius: 1rem;     /* Card corner radius */
+    /* Margin rails align to the content gutter */
+    --rail-gutter: var(--site-padding-mobile);
+
+    /* Gap from the rail so site-padding content lines up with the cards'
+       inner padding (p-6 mobile / p-8 desktop) */
+    --rail-content-gap: 1.5rem;
+
+    --border-color: #d6daff; /* Light mode borders */
+    --border-color-subtle: #bfb8b0; /* Lighter borders for dividers */
+    --card-border-radius: 0; /* Card corner radius (squared off) */
 
     --card-shadow-color: #e0e0e0;
     --transition-overlay-bg: rgba(249, 249, 249, 0.6);
   }
 
   .dark {
-    --border-color: #1e1e3a;        /* Dark mode borders */
+    --border-color: #1e1e3a; /* Dark mode borders */
     --border-color-subtle: #141428; /* Darker subtle borders */
     --card-shadow-color: oklch(20% 0.003 286.286);
     --transition-overlay-bg: rgba(15, 18, 20, 0.8);
@@ -93,14 +94,71 @@ const { title } = Astro.props;
     margin-right: auto;
   }
 
-  /* Site padding utility - uses the CSS variables above */
+  /* Stripe-style margin rails: full-height vertical guides at the content
+     gutter on both sides. Fixed + pointer-events:none so they overlay content
+     without affecting layout or blocking clicks. */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 1px dashed #d6daff;
+    z-index: 50;
+    pointer-events: none;
+    /* Rails only show at lg and up */
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    body::before,
+    body::after {
+      display: block;
+    }
+  }
+
+  body::before {
+    left: calc(
+      max(0px, (100vw - var(--site-max-width)) / 2) + var(--rail-gutter)
+    );
+  }
+
+  body::after {
+    right: calc(
+      max(0px, (100vw - var(--site-max-width)) / 2) + var(--rail-gutter)
+    );
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --rail-gutter: var(--site-padding-desktop);
+      --rail-content-gap: 2rem;
+    }
+  }
+
+  /* Site padding utility - rail gutter + 16px gap so content clears the rails */
   .site-padding {
+    padding-left: calc(var(--site-padding-mobile) + var(--rail-content-gap));
+    padding-right: calc(var(--site-padding-mobile) + var(--rail-content-gap));
+  }
+
+  @media (min-width: 640px) {
+    .site-padding {
+      padding-left: calc(var(--site-padding-desktop) + var(--rail-content-gap));
+      padding-right: calc(var(--site-padding-desktop) + var(--rail-content-gap));
+    }
+  }
+
+  /* Flush variant: padding stops at the rail gutter (no 16px gap), so the
+     element sits flush against the margin rails (e.g. project hero, home cards) */
+  .site-padding-flush {
     padding-left: var(--site-padding-mobile);
     padding-right: var(--site-padding-mobile);
   }
 
   @media (min-width: 640px) {
-    .site-padding {
+    .site-padding-flush {
       padding-left: var(--site-padding-desktop);
       padding-right: var(--site-padding-desktop);
     }
@@ -108,14 +166,14 @@ const { title } = Astro.props;
 
   /* Apply site padding to children (for grids) */
   .site-padding-children > * {
-    padding-left: var(--site-padding-mobile);
-    padding-right: var(--site-padding-mobile);
+    padding-left: calc(var(--site-padding-mobile) + var(--rail-content-gap));
+    padding-right: calc(var(--site-padding-mobile) + var(--rail-content-gap));
   }
 
   @media (min-width: 640px) {
     .site-padding-children > * {
-      padding-left: var(--site-padding-desktop);
-      padding-right: var(--site-padding-desktop);
+      padding-left: calc(var(--site-padding-desktop) + var(--rail-content-gap));
+      padding-right: calc(var(--site-padding-desktop) + var(--rail-content-gap));
     }
   }
 
@@ -144,21 +202,47 @@ const { title } = Astro.props;
     animation: loadIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .project-grid > *:nth-child(1) { animation-delay: 0.05s; }
-  .project-grid > *:nth-child(2) { animation-delay: 0.1s; }
-  .project-grid > *:nth-child(3) { animation-delay: 0.15s; }
-  .project-grid > *:nth-child(4) { animation-delay: 0.2s; }
-  .project-grid > *:nth-child(5) { animation-delay: 0.25s; }
-  .project-grid > *:nth-child(6) { animation-delay: 0.3s; }
-  .project-grid > *:nth-child(7) { animation-delay: 0.35s; }
-  .project-grid > *:nth-child(8) { animation-delay: 0.4s; }
-  .project-grid > *:nth-child(n+9) { animation-delay: 0.45s; }
+  .project-grid > *:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+  .project-grid > *:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .project-grid > *:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+  .project-grid > *:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+  .project-grid > *:nth-child(5) {
+    animation-delay: 0.25s;
+  }
+  .project-grid > *:nth-child(6) {
+    animation-delay: 0.3s;
+  }
+  .project-grid > *:nth-child(7) {
+    animation-delay: 0.35s;
+  }
+  .project-grid > *:nth-child(8) {
+    animation-delay: 0.4s;
+  }
+  .project-grid > *:nth-child(n + 9) {
+    animation-delay: 0.45s;
+  }
 
   /* Stagger multiple load-in elements */
-  .load-in:nth-of-type(1) { animation-delay: 0s; }
-  .load-in:nth-of-type(2) { animation-delay: 0.1s; }
-  .load-in:nth-of-type(3) { animation-delay: 0.2s; }
-  .load-in:nth-of-type(4) { animation-delay: 0.3s; }
+  .load-in:nth-of-type(1) {
+    animation-delay: 0s;
+  }
+  .load-in:nth-of-type(2) {
+    animation-delay: 0.1s;
+  }
+  .load-in:nth-of-type(3) {
+    animation-delay: 0.2s;
+  }
+  .load-in:nth-of-type(4) {
+    animation-delay: 0.3s;
+  }
 
   /* Stagger gallery cards */
   #gallery > * {
@@ -166,15 +250,33 @@ const { title } = Astro.props;
     animation: loadIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  #gallery > *:nth-child(1) { animation-delay: 0.1s; }
-  #gallery > *:nth-child(2) { animation-delay: 0.15s; }
-  #gallery > *:nth-child(3) { animation-delay: 0.2s; }
-  #gallery > *:nth-child(4) { animation-delay: 0.25s; }
-  #gallery > *:nth-child(5) { animation-delay: 0.3s; }
-  #gallery > *:nth-child(6) { animation-delay: 0.35s; }
-  #gallery > *:nth-child(7) { animation-delay: 0.4s; }
-  #gallery > *:nth-child(8) { animation-delay: 0.45s; }
-  #gallery > *:nth-child(n+9) { animation-delay: 0.5s; }
+  #gallery > *:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  #gallery > *:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  #gallery > *:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  #gallery > *:nth-child(4) {
+    animation-delay: 0.25s;
+  }
+  #gallery > *:nth-child(5) {
+    animation-delay: 0.3s;
+  }
+  #gallery > *:nth-child(6) {
+    animation-delay: 0.35s;
+  }
+  #gallery > *:nth-child(7) {
+    animation-delay: 0.4s;
+  }
+  #gallery > *:nth-child(8) {
+    animation-delay: 0.45s;
+  }
+  #gallery > *:nth-child(n + 9) {
+    animation-delay: 0.5s;
+  }
 
   /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
@@ -198,9 +300,12 @@ const { title } = Astro.props;
 
   /* Shared card styling for header areas */
   .header-card {
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: var(--card-border-radius);
-    border: 1px solid var(--border-color);
+    /* No top/bottom border so it doesn't double the nav/footer dashed lines;
+       left/right sit at the margin rails. */
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
     overflow: hidden;
     position: relative;
   }
@@ -216,8 +321,10 @@ const { title } = Astro.props;
 
   #transition-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: var(--transition-overlay-bg);
     pointer-events: none;
     z-index: 999;
@@ -328,7 +435,6 @@ const { title } = Astro.props;
     }
   }
   */
-
 </style>
 
 <script>

@@ -1,21 +1,19 @@
 ---
-import cardMap from './card-map.js';
-import SmallHeading from './SmallHeading.astro';
+import cardMap from "./card-map.js";
+import SmallHeading from "./SmallHeading.astro";
 ---
 
-<div class="site-padding py-8">
+<div class="site-padding-flush">
   <!-- <p class="pb-4">Select Projects</p> -->
   <!-- <SmallHeading text="Select Projects" /> -->
-  <div
-    id="gallery"
-    class="grid grid-cols-6 gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-6"
-  >
-    {cardMap.map(({ Component, typeClass, size }) => (
-      <Component typeClass={typeClass} size={size} />
-    ))}
+  <div id="gallery" class="grid grid-cols-6 border-t border-l border-[#d6daff]">
+    {
+      cardMap.map(({ Component, typeClass, size }) => (
+        <Component typeClass={typeClass} size={size} />
+      ))
+    }
   </div>
 </div>
-
 
 <style>
   .auto-rows-auto {

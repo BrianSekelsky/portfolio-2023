@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 import brianImage from "../images/about/brian-lake.JPG";
 ---
 
-<div class="site-padding load-in">
+<div class="site-padding-flush load-in">
   <div class="header-card">
     <!-- Title section -->
     <!-- <div class="title-section p-6 sm:p-8">
@@ -21,18 +21,14 @@ import brianImage from "../images/about/brian-lake.JPG";
     <div class="grid grid-cols-1 lg:grid-cols-2">
       <!-- Left column: Info sections -->
       <div class="flex flex-col">
-        <div class="p-6 sm:p-8 border-b border-[--border-color]">
+        <div class="p-6 sm:p-8 border-b border-(--border-color)">
           <SmallHeading text="Basics" />
           <div class="sm:flex gap-12">
             <div>
               <div class="mb-0">he/him</div>
               <div class="mb-0">briansekelsky@gmail.com</div>
               <div>
-                <Link
-                  newtab
-                  href="/Sekelsky-Resume-2026-2.pdf"
-                  name="Résumé"
-                />
+                <Link newtab href="/Sekelsky-Resume-2026-2.pdf" name="Résumé" />
               </div>
             </div>
             <div class="mt-4 sm:mt-0">
@@ -64,12 +60,15 @@ import brianImage from "../images/about/brian-lake.JPG";
           </div>
         </div>
 
-        <div class="p-6 sm:p-8 border-b border-[--border-color]">
+        <div class="p-6 sm:p-8 border-b border-(--border-color)">
           <SmallHeading text="Bio" />
           <p>
-            I'm a designer, developer, and teacher. I spent two years in the Peace Corps teaching math and computer skills in Tanzania,
-            and I'm always looking for work that connects to education and expanding opportunity. I've worked in nonprofits, academia,
-            and corporate environments, but the projects I care most about are the ones that help people and strive to make the world a better place.
+            I'm a designer, developer, and teacher. I spent two years in the
+            Peace Corps teaching math and computer skills in Tanzania, and I'm
+            always looking for work that connects to education and expanding
+            opportunity. I've worked in nonprofits, academia, and corporate
+            environments, but the projects I care most about are the ones that
+            help people and strive to make the world a better place.
           </p>
           <p>
             I currently design products that help users manage and pay down
@@ -78,14 +77,21 @@ import brianImage from "../images/about/brian-lake.JPG";
               name="Fidelity Investments."
               href="https://www.fidelityworkplace.com/s/studentdebt"
             />
-            Sometimes, I teach design and tech classes as an adjunct instructor. I also co-run a mini design studio called
-            <Link
-              name="Best Parts."
-              href="http://bestparts.design"
-            />
+            Sometimes, I teach design and tech classes as an adjunct instructor. I
+            also co-run a mini design studio called
+            <Link name="Best Parts." href="http://bestparts.design" />
           </p>
           <p>
-            In my free time, <Link name="I make music" href="/music" />, <Link name="post on youtube" href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ" />, <Link name="watch movies" href="https://letterboxd.com/briansekelsky/" />, <Link name="read books" href="https://app.thestorygraph.com/journal" />, go on long runs, and explore the great outdoors.
+            In my free time, <Link name="I make music" href="/music" />, <Link
+              name="post on youtube"
+              href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
+            />, <Link
+              name="watch movies"
+              href="https://letterboxd.com/briansekelsky/"
+            />, <Link
+              name="read books"
+              href="https://app.thestorygraph.com/journal"
+            />, go on long runs, and explore the great outdoors.
           </p>
         </div>
 
@@ -107,7 +113,7 @@ import brianImage from "../images/about/brian-lake.JPG";
       </div>
 
       <!-- Right column: Image -->
-      <div class="border-t lg:border-t-0 lg:border-l border-[--border-color]">
+      <div class="border-t lg:border-t-0 lg:border-l border-(--border-color)">
         <Image
           class="w-full h-full object-cover"
           src={brianImage}

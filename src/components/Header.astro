@@ -1,20 +1,27 @@
 ---
+
 ---
 
-<div class="transition-all duration-500 site-padding">
-  <!-- Mobile: Static dark card -->
+<div
+  class="min-h-[500px] flex items-center justify-center text-center m-auto text-4xl lg:text-6xl text-white font-serif font-extralight w-3/4 border-bottom border-dashed"
+>
+  <h1 class="pb-10">
+    <span>Brian Sekelsky</span> is a designer, working across user experience, visual
+    design, and code.
+  </h1>
+</div>
+
+<!-- <div class="transition-all duration-500 site-padding">
   <div class="flex items-center justify-center md:hidden min-h-[40vh] header-card header-mobile">
     <p class="header-mobile-text">
       Brian Sekelsky is a designer, working across user experience, visual design, and code.
     </p>
   </div>
 
-  <!-- Desktop: p5.js sketch in card -->
   <div
     class="hidden md:block min-h-[600px] max-w-full header-card"
     id="header"
   >
-    <!-- Loading state - shows while sketch initializes -->
     <div id="header-loading" class="header-loading">
       <p class="header-loading-text">
         Brian Sekelsky is a designer, working across user experience, visual design, and code.
@@ -25,12 +32,7 @@
       Brian Sekelsky is a designer, working across user experience, visual design, and code.
     </p>
   </div>
-</div>
-
-<script>
-  // Header sketch is loaded via page-transition.js (which imports header-sketch.js).
-  // It self-initializes when #header exists in the DOM.
-</script>
+</div> -->
 
 <style>
   /* .header-card styles are now in Layout.astro for shared use */
@@ -39,7 +41,7 @@
   #header {
     box-sizing: border-box;
     position: relative;
-    background: #FFFFFF;
+    background: #ffffff;
   }
 
   #header :global(canvas) {
@@ -69,7 +71,10 @@
   }
 
   .header-loading-text {
-    font-family: 'neue-haas-grotesk', -apple-system, sans-serif;
+    font-family:
+      "neue-haas-grotesk",
+      -apple-system,
+      sans-serif;
     font-weight: 400;
     font-size: 1.125rem;
     line-height: 1.5;
@@ -95,7 +100,9 @@
   }
 
   @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   /* Dark mode - already dark, so no change needed */
@@ -122,7 +129,7 @@
   }
 
   .header-mobile-text {
-    font-family: 'freighttextcmp-pro', Georgia, serif;
+    font-family: "freighttextcmp-pro", Georgia, serif;
     /* font-style: italic; */
     font-weight: 300;
     font-size: 1.75rem;

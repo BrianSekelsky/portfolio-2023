@@ -12,16 +12,16 @@ const { value, types, year, description } = Astro.props;
 
 <div class="flex flex-col justify-between h-full">
   <div>
-    <h3 class="transition-all font-medium text-lg">{value}</h3>
+    <h3 class="transition-all font-medium text-lg font-sans">{value}</h3>
     <p class="text-xs pt-2 pb-2">{year}</p>
-    <p class="font-serif">
+    <p class="font-sans">
       {description}
     </p>
   </div>
   <div class="pt-4">
     {
       types.map((type, i) => (
-        <span class="mr-2 font-serif font-light text-xs text-zinc-700 rounded-full px-4 py-1 bg-zinc-100">
+        <span class="mr-2 font-sans text-xs text-zinc-700 rounded-full px-4 py-1 bg-zinc-100">
           {type.text}
           {i < types.length - 1 ? "" : ""}
         </span>
