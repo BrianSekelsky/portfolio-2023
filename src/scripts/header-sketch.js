@@ -3,9 +3,9 @@ import p5 from 'p5';
 let sketchInstance;
 let isMouseInsideHeader = false;
 
-// Color configuration
-const BG_COLOR = '#F9F9F9';
-const FG_COLOR = '#050517';
+// Color configuration — tuned for the pure-blue header background (bg-pureblue)
+const BG_COLOR = '#1e2ffe'; // matches --color-pureblue
+const FG_COLOR = '#F9F9F9'; // off-white text/bubbles for contrast on blue
 
 function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -93,9 +93,10 @@ export function startSketch() {
         this.state = 0; // 0 = resting, 1 = falling, 2 = returning
         this.fallTime = 0;
 
-        // Pre-calculate grayscale color with distinct shading levels
-        // Use stepped shading for a more intentional pixel look
-        const shadeSteps = [0.6, 0.7, 0.8];
+        // Pre-calculate shading levels by blending the off-white text color
+        // toward the blue background. Kept high so the text stays legibly white
+        // on the saturated blue rather than turning muddy/lavender.
+        const shadeSteps = [0.8, 0.9, 1.0];
         const opacity = shadeSteps[Math.floor(Math.random() * shadeSteps.length)];
         this.restR = Math.round(fgRgb[0] * opacity + bgRgb[0] * (1 - opacity));
         this.restG = Math.round(fgRgb[1] * opacity + bgRgb[1] * (1 - opacity));

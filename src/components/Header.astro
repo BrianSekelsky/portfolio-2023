@@ -3,9 +3,9 @@
 ---
 
 <div
-  class="min-h-[400px] text-4xl lg:text-6xl text-white font-sans font-extralight w-3/4 border-bottom border-dashed"
+  class="min-h-[400px] flex flex-col justify-center lg:block text-center lg:w-3/4 lg:text-left text-4xl lg:text-6xl text-white font-sans font-extralight border-bottom border-dashed"
 >
-  <h1 class="pb-10 pt-8 pl-8">
+  <h1 class="pb-10 pt-8 lg:pl-8 translate">
     <span>Brian Sekelsky</span> is a designer, working across user experience, visual
     design, and code.
   </h1>
@@ -137,5 +137,12 @@
     text-align: center;
     max-width: 400px;
     color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Only nudge on lg screens and above (Tailwind lg = 1024px) */
+  @media (min-width: 1024px) {
+    .translate {
+      transform: translateX(-2px);
+    }
   }
 </style>
