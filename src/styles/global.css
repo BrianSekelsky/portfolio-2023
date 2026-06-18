@@ -4,7 +4,7 @@
 
 @theme {
   --font-*: initial;
-  --font-serif: itc-american-typewriter, Courier, serif;
+  --font-serif: itc-american-typewriter, sans-serif;
   --font-sans: neue-haas-grotesk, Helvetica, sans-serif;
 
   --container-*: initial;
