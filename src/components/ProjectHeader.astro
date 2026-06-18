@@ -46,7 +46,7 @@ const hasCollaborators = collaborators.length > 0;
         >← Back to projects</a
       > -->
       <h1
-        class="font-sans py-4 font-light text-4xl sm:text-6xl md:text-7xl wrap-break-word sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
+        class="font-sans font-extralight font-light text-4xl sm:text-6xl md:text-7xl wrap-break-word sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
       >
         {title}
       </h1>
@@ -65,29 +65,27 @@ const hasCollaborators = collaborators.length > 0;
           <slot />
         </div>
         <div class="flex gap-8 sm:gap-16 flex-wrap">
-          {hasCollaborators ? (
-            <div>
-              <p
-                class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
-              >
-                Collaborators
-              </p>
+          {
+            hasCollaborators ? (
               <div>
-                {collaborators.map((collaborator) => (
-                  <p class="text-sm">{collaborator}</p>
-                ))}
+                <p class="text-xs font-serif font-medium uppercase pb-2 tracking-widest">
+                  Collaborators
+                </p>
+                <div>
+                  {collaborators.map((collaborator) => (
+                    <p class="text-sm">{collaborator}</p>
+                  ))}
+                </div>
               </div>
-            </div>
-          ) : (
-            <div>
-              <p
-                class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
-              >
-                Year
-              </p>
-              <p class="text-sm">{year}</p>
-            </div>
-          )}
+            ) : (
+              <div>
+                <p class="text-xs font-serif font-medium uppercase pb-2 tracking-widest">
+                  Year
+                </p>
+                <p class="text-sm">{year}</p>
+              </div>
+            )
+          }
           <div class="flex flex-col gap-6">
             <div class={music === false ? "block" : "hidden"}>
               <p
@@ -109,16 +107,16 @@ const hasCollaborators = collaborators.length > 0;
                 {types.map((type) => <p class="text-sm">{type}</p>)}
               </div>
             </div>
-            {hasCollaborators && (
-              <div>
-                <p
-                  class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
-                >
-                  Year
-                </p>
-                <p class="text-sm">{year}</p>
-              </div>
-            )}
+            {
+              hasCollaborators && (
+                <div>
+                  <p class="text-xs font-serif font-medium uppercase pb-2 tracking-widest">
+                    Year
+                  </p>
+                  <p class="text-sm">{year}</p>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

@@ -33,15 +33,22 @@ const { href, title, types, year, description = "" } = Astro.props;
 <style>
   .card {
     position: relative;
+    /* Clip the slotted media to the card's (animating) corner radius */
+    overflow: hidden;
     transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-    will-change: transform, box-shadow;
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-radius 0.25s ease;
+    will-change: transform;
   }
 
-  /* Lift the hovered card above its flush neighbors so its shadow shows */
   .card:hover {
-    z-index: 10;
+    /* transform: scale(1.03); */
+    /* border-radius: 0.5rem; */
+    /* Soft even shadow like the old JS hover (--card-shadow-color #e0e0e0),
+       a little more pronounced. */
+    box-shadow: 0 6px 26px 7px var(--card-shadow-color);
+    z-index: 60;
   }
 
   /* Make every slotted image/video fill the fixed-aspect frame uniformly */

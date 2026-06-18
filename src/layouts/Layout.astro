@@ -238,10 +238,11 @@ const { title } = Astro.props;
     animation-delay: 0.3s;
   }
 
-  /* Stagger gallery cards */
+  /* Stagger gallery cards. Use `backwards` (not `forwards`) so the entrance
+     animation doesn't keep holding a transform after it finishes — otherwise it
+     overrides the JS hover transform (tilt/scale) on .card. */
   #gallery > * {
-    opacity: 0;
-    animation: loadIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: loadIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 
   #gallery > *:nth-child(1) {
@@ -432,7 +433,7 @@ const { title } = Astro.props;
 </style>
 
 <script>
-  import "../scripts/card-animation.js";
+  // import "../scripts/card-animation.js";
   import "../scripts/page-transition.js";
   import "../scripts/lazy-video.js";
 </script>

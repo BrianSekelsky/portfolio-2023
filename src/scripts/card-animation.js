@@ -29,14 +29,14 @@ function initCardEffects() {
 
         const shadowColor = getShadowColor();
 
-        card.style.transform = `rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
+        card.style.transform = `rotateX(${-rotateX}deg) rotateY(${-rotateY}deg) scale(1.01)`;
         card.style.boxShadow = `${-shadowX}px ${-shadowY}px 10px 5px ${shadowColor}`;
       });
     });
 
     card.addEventListener('mouseleave', () => {
       const shadowColor = getShadowColor();
-      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
       card.style.boxShadow = `0px 0px 0px 0px ${shadowColor}`;
     });
   });
