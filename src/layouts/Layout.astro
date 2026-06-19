@@ -88,6 +88,17 @@ const { title } = Astro.props;
     --transition-overlay-bg: rgba(249, 249, 249, 0.6);
   }
 
+  /* On mobile, drop the side gutter so flush content (header, gallery cards)
+     runs edge to edge. Padded text content keeps its --rail-content-gap. */
+  @media (max-width: 767.98px) {
+    :root {
+      /* Must keep a length unit (0px, not 0) — a unitless 0 makes the
+         max() in --site-gutter mix <number> with <length>, which is
+         invalid and collapses --site-gutter (and .site-padding) to 0. */
+      --site-padding-mobile: 0px;
+    }
+  }
+
   .dark {
     --border-color: #1e1e3a; /* Dark mode borders */
     --border-color-subtle: #141428; /* Darker subtle borders */
@@ -308,6 +319,17 @@ const { title } = Astro.props;
   .dark .header-card {
     background: #0a0a1a;
     border-color: var(--border-color);
+  }
+
+  /* Standalone hero band for project pages whose hero (video/iframe embeds)
+     lives outside ProjectHeader. Wrap in `.site-padding-flush > .header-card`
+     to match the in-header hero width; this adds the matching top/bottom
+     borders. */
+  .project-hero {
+    width: 100%;
+    overflow: hidden;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
   }
 
   .project-grid p {

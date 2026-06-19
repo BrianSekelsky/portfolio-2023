@@ -1,5 +1,4 @@
 ---
-import NavLink from "./Nav-link.astro";
 import Link from "./Link.astro";
 import SectionHeader from "./SectionHeader.astro";
 
@@ -9,7 +8,9 @@ const currentPath = pathname.slice(1); // remove the first "/"
 const year = new Date().getFullYear();
 ---
 
-<div class="h-full site-padding pb-4 bg-purewhite text-sm border-t border-dashed">
+<div
+  class="h-full site-padding pb-4 bg-purewhite text-sm border-t border-dashed"
+>
   <div class="mx-auto">
     <!-- <div class="pt-6">
       <SectionHeader text="Links" />
@@ -20,31 +21,36 @@ const year = new Date().getFullYear();
           class="flex justify-start sm:justify-between flex-wrap gap-y-4 py-4 gap-8"
         >
           <div class="">
-            <NavLink
-              href="https://www.instagram.com/briansekelsky/"
-              name="Instagram"
-            />
+            <a
+              class="underline hover:text-accent-blue"
+              href="https://www.instagram.com/briansekelsky/">Instagram</a
+            >
           </div>
           <div>
-            <NavLink
+            <a
+              class="underline hover:text-accent-blue"
               href="https://open.spotify.com/artist/4GYawQUhnxYepBC7WhUJ4N?si=UOrw0Pc-SQOmT_3K44T8Xg"
-              name="Spotify"
-            />
+              >Spotify</a
+            >
           </div>
           <div>
-            <NavLink
+            <a
+              class="underline hover:text-accent-blue"
               href="https://www.youtube.com/channel/UCiHaEMWLCmFCeUkskrNeObQ"
-              name="Youtube"
-            />
+              >Youtube</a
+            >
           </div>
           <div>
-            <NavLink
-              href="https://www.linkedin.com/in/brian-sekelsky/"
-              name="LinkedIn"
-            />
+            <a
+              class="underline hover:text-accent-blue"
+              href="https://www.linkedin.com/in/brian-sekelsky/">LinkedIn</a
+            >
           </div>
           <div>
-            <NavLink href="https://www.are.na/brian-sekelsky" name="Arena" />
+            <a
+              class="underline hover:text-accent-blue"
+              href="https://www.are.na/brian-sekelsky">Arena</a
+            >
           </div>
           <!-- <div>
             <Link
