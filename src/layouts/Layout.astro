@@ -66,11 +66,13 @@ const { title } = Astro.props;
     --site-content-width: 1344px;
 
     /* Side inset that centers content into the fixed-width column. Shrinks as
-       the viewport narrows, with --site-padding-mobile as the floor. Resolves
-       per-element (the 100% is the element's own width). */
+       the viewport narrows, with --site-padding-mobile as the floor. Uses
+       100vw to match the fixed-position margin rails (which also resolve
+       against the viewport), so content stays aligned with the rails even
+       when a classic (non-overlay) scrollbar is present. */
     --site-gutter: max(
       var(--site-padding-mobile),
-      (100% - var(--site-content-width)) / 2
+      (100vw - var(--site-content-width)) / 2
     );
 
     /* Margin rails align to the content gutter */
