@@ -55,7 +55,7 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   :root {
-    --site-padding-mobile: 0.5rem; /* 8px - nearly full width on mobile */
+    --site-padding-mobile: 2rem; /* 16px */
     --site-padding-desktop: 8rem; /* 128px */
 
     --site-max-width: 1600px;
@@ -90,9 +90,9 @@ const { title } = Astro.props;
     --transition-overlay-bg: rgba(249, 249, 249, 0.6);
   }
 
-  /* On mobile, drop the side gutter so flush content (header, gallery cards)
-     runs edge to edge. Padded text content keeps its --rail-content-gap. */
-  @media (max-width: 767.98px) {
+  /* Below lg (where margin rails aren't visible), drop the side gutter so
+     flush content (header, gallery cards) runs edge to edge. */
+  @media (max-width: 1023.98px) {
     :root {
       /* Must keep a length unit (0px, not 0) — a unitless 0 makes the
          max() in --site-gutter mix <number> with <length>, which is
