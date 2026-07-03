@@ -67,9 +67,9 @@ import website4 from "../../images/size-and-scale/website-4.png";
         "Elizabeth Chen",
       ]}
       year="2021–2023"
-      heroVideo={webmVR}
-      heroVideoMp4={webmVRMp4}
-      heroPoster={webmVRPoster.src}
+      heroVideo={webmWeb}
+      heroVideoMp4={webmWebMp4}
+      heroPoster={webmWebPoster.src}
     />
 
     <ProjectGrid>
@@ -95,7 +95,7 @@ import website4 from "../../images/size-and-scale/website-4.png";
         </p>
       </div>
       <div class="col-span-1">
-        <Image class="rounded-md shadow-sm" src={astro} alt="Astronaut avatar in Scale Worlds virtual environment" />
+        <Image class="shadow-sm" src={astro} alt="Astronaut avatar in Scale Worlds virtual environment" />
       </div>
 
       <!-- Early Prototypes -->
@@ -105,124 +105,17 @@ import website4 from "../../images/size-and-scale/website-4.png";
           The project began with extensive prototyping to explore how users might navigate across extreme scales. These early sketches established the visual language and interaction patterns that would carry through to the final implementations.
         </p>
         <div class="grid grid-cols-3 gap-2 pt-4">
-          <Image class="rounded-md" src={a} alt="Early prototype sketch of Scale Worlds" />
-          <Image class="rounded-md" src={b} alt="Scale Worlds environment concept" />
-          <Image class="rounded-md" src={c} alt="Entity scaling visualization" />
-          <Image class="rounded-md" src={d} alt="User interface exploration" />
-          <Image class="rounded-md" src={e} alt="Virtual environment layout" />
-          <Image class="rounded-md" src={f} alt="Scale comparison diagram" />
+          <Image class="" src={a} alt="Early prototype sketch of Scale Worlds" />
+          <Image class="" src={b} alt="Scale Worlds environment concept" />
+          <Image class="" src={c} alt="Entity scaling visualization" />
+          <Image class="" src={d} alt="User interface exploration" />
+          <Image class="" src={e} alt="Virtual environment layout" />
+          <Image class="" src={f} alt="Scale comparison diagram" />
         </div>
       </div>
     </ProjectGrid>
 
-    <!-- VR Platforms Section -->
-    <div class="border-t">
-      <ProjectGrid>
-        <div class="col-span-2">
-          <SmallHeading text="VR Implementation" />
-          <p>
-            We developed Scale Worlds for two VR platforms: a room-scale CAVE (Cave Automatic Virtual Environment) and consumer head-mounted displays. Each platform offered unique affordances for embodied learning about scale.
-          </p>
-        </div>
-        <div class="col-span-1 relative">
-          <Image class="rounded-md shadow-sm" src={cave} alt="User standing in CAVE virtual reality environment" />
-          <FrameCaption text="Cave Automatic Virtual Environment (CAVE)" />
-        </div>
-        <div class="col-span-1 relative">
-          <Image class="rounded-md shadow-sm" src={hmd} alt="Head-mounted display with 3D avatar representation" />
-          <FrameCaption text="Head Mounted Display (HMD)" />
-        </div>
-
-        <!-- Design System -->
-        <div class="col-span-2">
-          <SmallHeading text="Design System" />
-          <p>
-            The environment architecture was organized into three distinct layers, each serving a specific purpose in the learning experience:
-          </p>
-          <div class="grid grid-cols-3 gap-2 pt-4">
-            <div class="col-span-1">
-              <Image class="rounded-md shadow-sm" src={userinterface} alt="User interface elements in Scale Worlds" />
-              <Caption text="User interface: flat interactive elements" />
-            </div>
-            <div class="col-span-1">
-              <Image class="rounded-md shadow-sm" src={armatures} alt="Armature structures in Scale Worlds" />
-              <Caption text="Armatures: three-dimensional structural elements" />
-            </div>
-            <div class="col-span-1">
-              <Image class="rounded-md shadow-sm" src={entities} alt="Scientific entities in Scale Worlds" />
-              <Caption text="Entities: animals, stars, atoms, and cells as scale landmarks" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Interaction Design -->
-        <div class="col-span-2">
-          <SmallHeading text="Curriculum-Aligned Interaction" />
-          <p>
-            The scaling interaction was designed to mirror mathematical concepts students encounter in American science and math curricula: changing exponents in scientific notation and moving decimal places in standard notation.
-          </p>
-          <div class="grid grid-cols-2 gap-2 pt-4">
-            <div class="col-span-1">
-              <Image class="rounded-md shadow-sm" src={decimal} alt="Animation showing decimal place movement" />
-              <Caption text="Animation showing decimal place movement" />
-            </div>
-            <div class="col-span-1">
-              <Image class="rounded-md shadow-sm" src={numericpanel} alt="Diagram of the numeric panel interface" />
-              <Caption text="Numeric panel interface for scale navigation" />
-            </div>
-          </div>
-        </div>
-
-        <!-- Environment Variations -->
-        <div class="col-span-2">
-          <SmallHeading text="Environment Testing" />
-          <p>
-            Multiple environment schemes were designed and tested with user interface experts to determine optimal layouts for learning. These studies informed decisions about spatial organization, entity placement, and navigation flow.
-          </p>
-          <div class="grid grid-cols-2 gap-2 pt-4">
-            <div class="col-span-1">
-              <Image class="rounded-md shadow-sm" src={forest} alt="Forest environment layout diagram" />
-              <Caption text="Forest environment variant" />
-            </div>
-            <div class="col-span-1">
-              <Image class="rounded-md shadow-sm" src={path} alt="Path environment layout diagram" />
-              <Caption text="Path environment variant" />
-            </div>
-          </div>
-        </div>
-
-        <!-- User Research -->
-        <div class="col-span-2">
-          <SmallHeading text="User Research" />
-          <p>
-            I assisted in running two rounds of qualitative usability studies. The research revealed insights about how users conceptualize scale and opened discussions about balancing usability with theoretical grounding.
-          </p>
-          <div class="grid grid-cols-2 gap-2 pt-4">
-            <Image class="rounded-md shadow-sm" src={research1} alt="User research findings from usability study" />
-            <Image class="rounded-md shadow-sm" src={research2} alt="User feedback on interface design" />
-            <Image class="rounded-md shadow-sm" src={research3} alt="Usability study observations" />
-            <Image class="rounded-md shadow-sm" src={research4} alt="Research insights on scale cognition" />
-          </div>
-        </div>
-
-        <div class="col-span-2">
-          <div class="grid grid-cols-2 gap-2">
-            <Image class="rounded-md shadow-sm" src={ruler1} alt="Professor demonstrating scale ruler in CAVE environment" />
-            <Image class="rounded-md shadow-sm" src={ruler2} alt="Scale measurement demonstration in virtual reality" />
-          </div>
-        </div>
-      </ProjectGrid>
-    </div>
-
     <!-- Web Adaptation Section -->
-    <div class="border-t relative">
-      <video playsinline autoplay muted loop preload="metadata" poster={webmWebPoster.src}>
-        <source src={webmWeb} type="video/webm" />
-        <source src={webmWebMp4} type="video/mp4" />
-      </video>
-      <FrameCaption text="Scale Worlds Web" />
-    </div>
-
     <ProjectGrid>
       <div class="col-span-2">
         <SmallHeading text="Web Adaptation" />
@@ -285,6 +178,115 @@ import website4 from "../../images/size-and-scale/website-4.png";
         <Image src={website3} alt="Scale Worlds web entity view" />
       </div>
     </ProjectGrid>
+
+    <!-- VR Section -->
+    <div class="site-padding-flush">
+      <div class="header-card overflow-hidden relative">
+        <video playsinline autoplay muted loop preload="metadata" poster={webmVRPoster.src} class="w-full block">
+          <source src={webmVR} type="video/webm" />
+          <source src={webmVRMp4} type="video/mp4" />
+        </video>
+        <FrameCaption text="Scale Worlds VR" />
+      </div>
+    </div>
+
+    <div>
+      <ProjectGrid>
+        <div class="col-span-2">
+          <SmallHeading text="VR Implementation" />
+          <p>
+            We developed Scale Worlds for two VR platforms: a room-scale CAVE (Cave Automatic Virtual Environment) and consumer head-mounted displays. Each platform offered unique affordances for embodied learning about scale.
+          </p>
+        </div>
+        <div class="col-span-1 relative">
+          <Image class="shadow-sm" src={cave} alt="User standing in CAVE virtual reality environment" />
+          <FrameCaption text="Cave Automatic Virtual Environment (CAVE)" />
+        </div>
+        <div class="col-span-1 relative">
+          <Image class="shadow-sm" src={hmd} alt="Head-mounted display with 3D avatar representation" />
+          <FrameCaption text="Head Mounted Display (HMD)" />
+        </div>
+
+        <!-- Design System -->
+        <div class="col-span-2">
+          <SmallHeading text="Design System" />
+          <p>
+            The environment architecture was organized into three distinct layers, each serving a specific purpose in the learning experience:
+          </p>
+          <div class="grid grid-cols-3 gap-2 pt-4">
+            <div class="col-span-1">
+              <Image class="shadow-sm" src={userinterface} alt="User interface elements in Scale Worlds" />
+              <Caption text="User interface: flat interactive elements" />
+            </div>
+            <div class="col-span-1">
+              <Image class="shadow-sm" src={armatures} alt="Armature structures in Scale Worlds" />
+              <Caption text="Armatures: three-dimensional structural elements" />
+            </div>
+            <div class="col-span-1">
+              <Image class="shadow-sm" src={entities} alt="Scientific entities in Scale Worlds" />
+              <Caption text="Entities: animals, stars, atoms, and cells as scale landmarks" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Interaction Design -->
+        <div class="col-span-2">
+          <SmallHeading text="Curriculum-Aligned Interaction" />
+          <p>
+            The scaling interaction was designed to mirror mathematical concepts students encounter in American science and math curricula: changing exponents in scientific notation and moving decimal places in standard notation.
+          </p>
+          <div class="grid grid-cols-2 gap-2 pt-4">
+            <div class="col-span-1">
+              <Image class="shadow-sm" src={decimal} alt="Animation showing decimal place movement" />
+              <Caption text="Animation showing decimal place movement" />
+            </div>
+            <div class="col-span-1">
+              <Image class="shadow-sm" src={numericpanel} alt="Diagram of the numeric panel interface" />
+              <Caption text="Numeric panel interface for scale navigation" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Environment Variations -->
+        <div class="col-span-2">
+          <SmallHeading text="Environment Testing" />
+          <p>
+            Multiple environment schemes were designed and tested with user interface experts to determine optimal layouts for learning. These studies informed decisions about spatial organization, entity placement, and navigation flow.
+          </p>
+          <div class="grid grid-cols-2 gap-2 pt-4">
+            <div class="col-span-1">
+              <Image class="shadow-sm" src={forest} alt="Forest environment layout diagram" />
+              <Caption text="Forest environment variant" />
+            </div>
+            <div class="col-span-1">
+              <Image class="shadow-sm" src={path} alt="Path environment layout diagram" />
+              <Caption text="Path environment variant" />
+            </div>
+          </div>
+        </div>
+
+        <!-- User Research -->
+        <div class="col-span-2">
+          <SmallHeading text="User Research" />
+          <p>
+            I assisted in running two rounds of qualitative usability studies. The research revealed insights about how users conceptualize scale and opened discussions about balancing usability with theoretical grounding.
+          </p>
+          <div class="grid grid-cols-2 gap-2 pt-4">
+            <Image class="shadow-sm" src={research1} alt="User research findings from usability study" />
+            <Image class="shadow-sm" src={research2} alt="User feedback on interface design" />
+            <Image class="shadow-sm" src={research3} alt="Usability study observations" />
+            <Image class="shadow-sm" src={research4} alt="Research insights on scale cognition" />
+          </div>
+        </div>
+
+        <div class="col-span-2">
+          <div class="grid grid-cols-2 gap-2">
+            <Image class="shadow-sm" src={ruler1} alt="Professor demonstrating scale ruler in CAVE environment" />
+            <Image class="shadow-sm" src={ruler2} alt="Scale measurement demonstration in virtual reality" />
+          </div>
+        </div>
+      </ProjectGrid>
+    </div>
   </main>
 </Layout>
 

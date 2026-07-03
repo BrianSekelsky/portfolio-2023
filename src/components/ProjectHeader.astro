@@ -32,7 +32,7 @@ const {
   heroAlt = "Project hero image",
 } = Astro.props;
 
-const hasHero = heroImage || heroVideo;
+const hasHero = heroImage || heroVideo || heroVideoMp4;
 const hasCollaborators = collaborators.length > 0;
 ---
 
@@ -125,7 +125,7 @@ const hasCollaborators = collaborators.length > 0;
     {
       hasHero && (
         <div class="hero-media">
-          {heroVideo ? (
+          {(heroVideo || heroVideoMp4) ? (
             <video
               playsinline
               autoplay
