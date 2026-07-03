@@ -1,26 +1,16 @@
-import p5 from 'p5';
-
 let sketchInstance;
 let isMouseInsideHeader = false;
+let mode = 0; // 0 = bouncing circles, 1–4 = old shape variants
 
-// Color configuration — tuned for the pure-blue header background (bg-pureblue)
-const BG_COLOR = '#1e2ffe'; // matches --color-pureblue
+// Color configuration — tuned for the pure-blue header background (#1e2ffe)
+const bgRgb = [30, 47, 254];
 
-function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? [
-    parseInt(result[1], 16),
-    parseInt(result[2], 16),
-    parseInt(result[3], 16)
-  ] : [0, 0, 0];
-}
+export async function startSketch() {
+  const { default: p5 } = await import('p5');
 
-export function startSketch() {
   sketchInstance = new p5((p) => {
     let header;
     let bubbles = [];
-
-    const bgRgb = hexToRgb(BG_COLOR);
 
     // Physics constants
     const gravity = 0.3;
@@ -31,6 +21,12 @@ export function startSketch() {
 
     // Spawn settings
     const spawnRate = 3; // bubbles per frame while mouse moves
+
+    // Mode 1–4 (old shapes) settings
+    let shape = 0; // 0=ellipse, 1=rect, 2=line, 3=triangle
+    let shapeSize;
+    const gravity1 = 0.2;
+
     let prevMouseX = 0;
     let prevMouseY = 0;
 
@@ -111,6 +107,58 @@ export function startSketch() {
       }
     }
 
+    // Modes 1–4: old shape particle
+    class OldParticle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.yspeed = gravity1;
+      }
+
+      update() {
+        if (shape === 0 || shape === 1) {
+          this.y += this.yspeed;
+          this.yspeed += gravity1 * (shape === 1 ? 4 : 1);
+          if (this.y + shapeSize / 2 > canvasHeight) {
+            this.y = canvasHeight - shapeSize / 2;
+            this.yspeed *= shape === 1 ? -0.2 : -0.7;
+            if (Math.abs(this.yspeed) < 1) this.yspeed = 0;
+          }
+        } else if (shape === 2) {
+          this.y -= this.yspeed;
+          this.yspeed += gravity1;
+        }
+      }
+
+      display() {
+        p.stroke(255);
+        p.strokeWeight(1);
+        p.fill(bgRgb[0], bgRgb[1], bgRgb[2]);
+        if (shape === 0) {
+          p.ellipse(this.x, this.y, shapeSize, shapeSize);
+        } else if (shape === 1) {
+          p.rect(this.x - shapeSize / 2, this.y - shapeSize / 2, shapeSize, shapeSize);
+        } else if (shape === 2) {
+          p.line(
+            this.x - shapeSize / 2,
+            this.y + (this.x - canvasWidth / 2) * 0.25,
+            this.x + shapeSize / 2,
+            this.y - (this.x - canvasWidth / 2) * 0.25
+          );
+        } else if (shape === 3) {
+          p.triangle(
+            canvasWidth / 2,
+            canvasHeight / 2,
+            this.x,
+            this.y,
+            this.x + shapeSize,
+            this.y + shapeSize
+          );
+        }
+        p.noStroke();
+      }
+    }
+
     p.setup = () => {
       header = document.getElementById('header');
       if (!header) return;
@@ -136,6 +184,7 @@ export function startSketch() {
       canvas.style('margin', '0');
       canvas.style('padding', '0');
 
+      shapeSize = p.random(20, 100);
       p.noStroke();
     };
 
@@ -145,33 +194,58 @@ export function startSketch() {
       const mx = p.mouseX;
       const my = p.mouseY;
 
-      // Spawn bubbles at mouse position when moving
-      if (isMouseInsideHeader) {
-        const mouseMoved = Math.abs(mx - prevMouseX) > 1 || Math.abs(my - prevMouseY) > 1;
-        if (mouseMoved && mx > 0 && mx < canvasWidth && my > 0 && my < canvasHeight) {
-          for (let i = 0; i < spawnRate; i++) {
-            bubbles.push(new Bubble(mx + p.random(-5, 5), my + p.random(-5, 5)));
+      if (mode === 0) {
+        // Bouncing circles mode
+        if (isMouseInsideHeader) {
+          const mouseMoved = Math.abs(mx - prevMouseX) > 1 || Math.abs(my - prevMouseY) > 1;
+          if (mouseMoved && mx > 0 && mx < canvasWidth && my > 0 && my < canvasHeight) {
+            for (let i = 0; i < spawnRate; i++) {
+              bubbles.push(new Bubble(mx + p.random(-5, 5), my + p.random(-5, 5)));
+            }
           }
+        }
+
+        if (bubbles.length > maxBubbles) {
+          bubbles.splice(0, bubbles.length - maxBubbles);
+        }
+
+        for (let i = bubbles.length - 1; i >= 0; i--) {
+          const bubble = bubbles[i];
+          bubble.update();
+          bubble.display();
+          if (bubble.isDead()) {
+            bubbles.splice(i, 1);
+          }
+        }
+      } else {
+        // Old shape modes (1–4)
+        for (let i = 0; i < bubbles.length; i++) {
+          bubbles[i].update();
+          bubbles[i].display();
         }
       }
 
       prevMouseX = mx;
       prevMouseY = my;
+    };
 
-      // Cap total bubbles
-      if (bubbles.length > maxBubbles) {
-        bubbles.splice(0, bubbles.length - maxBubbles);
-      }
+    p.mouseMoved = () => {
+      if (!isMouseInsideHeader) return;
 
-      // Update and draw bubbles, remove dead ones
-      for (let i = bubbles.length - 1; i >= 0; i--) {
-        const bubble = bubbles[i];
-        bubble.update();
-        bubble.display();
-        if (bubble.isDead()) {
-          bubbles.splice(i, 1);
+      // In old shape modes, spawn particles on mouse move
+      if (mode > 0 && p.mouseX > 0 && p.mouseX < canvasWidth && p.mouseY > 0 && p.mouseY < canvasHeight) {
+        bubbles.push(new OldParticle(p.mouseX, p.mouseY));
+        if (bubbles.length > 400) {
+          bubbles.splice(0, bubbles.length - 400);
         }
       }
+    };
+
+    p.mouseClicked = () => {
+      bubbles = [];
+      shapeSize = p.random(5, 200);
+      shape = (shape + 1) % 4;
+      mode = (mode + 1) % 5; // cycle through 0–4 (bouncing circles + 4 old shapes)
     };
 
     p.windowResized = () => {
