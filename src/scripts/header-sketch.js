@@ -5,6 +5,7 @@ let isMouseInsideHeader = false;
 
 // Color configuration — tuned for the pure-blue header background (bg-pureblue)
 const BG_COLOR = '#1e2ffe'; // matches --color-pureblue
+const FG_COLOR = '#F9F9F9'; // off-white text/bubbles for contrast on blue
 
 function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -19,23 +20,59 @@ export function startSketch() {
   sketchInstance = new p5((p) => {
     let header;
     let bubbles = [];
+    let isLoading = true;
+    let outlineGraphics = null;
 
     const bgRgb = hexToRgb(BG_COLOR);
+    const fgRgb = hexToRgb(FG_COLOR);
+
+    const displayText = "Brian Sekelsky is a designer, working across user experience, visual design, and code.";
+
+    // Responsive settings
+    let fontSize, bubbleSize, gridSpacing, hoverRadius, hoverRadiusSq, leftMargin;
 
     // Physics constants
-    const gravity = 0.3;
-    const damping = 0.99;
-    const bounceFactor = 0.6;
-    const bubbleSize = 12;
-    const maxBubbles = 200;
+    const returnDelay = 3500;
+    const easeSpeed = 0.05;
+    const gravity = 0.00;
+    const friction = 0.99;
+    const bounce = -0.5;
+    const returnFriction = 0.75;
+    const sizeEase = 0.08;
+    const mobileBreakpoint = 640;
+    const displacedSizeMultiplier = 1.15;
+    const pushStrength = 1.8;
 
-    // Spawn settings
-    const spawnRate = 3; // bubbles per frame while mouse moves
-    let prevMouseX = 0;
-    let prevMouseY = 0;
-
+    // Frame cache
+    let frameTime = 0;
     let canvasWidth = 0;
     let canvasHeight = 0;
+
+    function calculateResponsiveValues() {
+      const width = p.width;
+
+      if (width < 940) {
+        fontSize = 58;
+        bubbleSize = 2;
+        gridSpacing = 2.5;
+        hoverRadius = 35;
+        leftMargin = 16;
+      } else if (width < 1020) {
+        fontSize = 80;
+        bubbleSize = 1.8;
+        gridSpacing = 2.5;
+        hoverRadius = 45;
+        leftMargin = 32;
+      } else {
+        fontSize = 86;
+        bubbleSize = 200;
+        gridSpacing = 2.5;
+        hoverRadius = 50;
+        leftMargin = 32;
+      }
+      // Pre-calculate squared radius for distance checks
+      hoverRadiusSq = hoverRadius * hoverRadius;
+    }
 
     function getCanvasDimensions() {
       if (!header) return { width: window.innerWidth, height: window.innerHeight };
@@ -44,71 +81,226 @@ export function startSketch() {
 
     class Bubble {
       constructor(x, y) {
+        this.homeX = x;
+        this.homeY = y;
         this.x = x;
         this.y = y;
-        this.vx = p.random(-2, 2);
-        this.vy = p.random(-3, -1);
-        this.size = p.random(bubbleSize * 0.5, bubbleSize * 3);
-        // Random color option (uncomment to enable)
-        // this.colorR = Math.round(p.random(100, 255));
-        // this.colorG = Math.round(p.random(100, 255));
-        // this.colorB = Math.round(p.random(100, 255));
-        this.alpha = 255;
+        this.vx = 0;
+        this.vy = 0;
+        this.baseSize = bubbleSize;
+        this.targetSize = bubbleSize * displacedSizeMultiplier;
+        this.displaySize = bubbleSize;
+        this.state = 0; // 0 = resting, 1 = falling, 2 = returning
+        this.fallTime = 0;
+
+        // Pre-calculate shading levels by blending the off-white text color
+        // toward the blue background. Kept high so the text stays legibly white
+        // on the saturated blue rather than turning muddy/lavender.
+        const shadeSteps = [0.8, 0.9, 1.0];
+        const opacity = shadeSteps[Math.floor(Math.random() * shadeSteps.length)];
+        this.restR = Math.round(fgRgb[0] * opacity + bgRgb[0] * (1 - opacity));
+        this.restG = Math.round(fgRgb[1] * opacity + bgRgb[1] * (1 - opacity));
+        this.restB = Math.round(fgRgb[2] * opacity + bgRgb[2] * (1 - opacity));
+
+        // Random color (generated once when needed)
+        this.colorR = 0;
+        this.colorG = 0;
+        this.colorB = 0;
+        this.hasColor = false;
+      }
+
+      checkHover(mx, my) {
+        if (this.state === 2) return; // Skip if returning
+
+        // Squared distance (avoids sqrt)
+        const dx = mx - this.x;
+        const dy = my - this.y;
+        const distSq = dx * dx + dy * dy;
+
+        if (distSq < hoverRadiusSq) {
+          this.state = 1;
+          this.fallTime = frameTime;
+
+          if (!this.hasColor) {
+            this.colorR = 50 + Math.floor(Math.random() * 205);
+            this.colorG = 50 + Math.floor(Math.random() * 205);
+            this.colorB = 50 + Math.floor(Math.random() * 205);
+            this.hasColor = true;
+          }
+
+          // Push away from mouse (native Math is faster)
+          const angle = Math.atan2(this.y - my, this.x - mx);
+          this.vx += Math.cos(angle) * pushStrength;
+          this.vy += Math.sin(angle) * pushStrength;
+        }
       }
 
       update() {
-        // Apply gravity
-        this.vy += gravity;
+        const state = this.state;
 
-        // Apply damping
-        this.vx *= damping;
-        this.vy *= damping;
+        if (state === 1) { // Falling
+          this.vy += gravity;
+          this.vx *= friction;
+          this.vy *= friction;
 
-        this.x += this.vx;
-        this.y += this.vy;
+          this.x += this.vx;
+          this.y += this.vy;
 
-        // Bounce off bottom
-        if (this.y > canvasHeight - this.size / 2) {
-          this.y = canvasHeight - this.size / 2;
-          this.vy *= -bounceFactor;
-          this.vx *= 0.95;
+          // Bounce off walls
+          const size = this.displaySize;
+          if (this.y > canvasHeight - size) {
+            this.y = canvasHeight - size;
+            this.vy *= bounce;
+          } else if (this.y < size) {
+            this.y = size;
+            this.vy *= bounce;
+          }
+
+          if (this.x < size) {
+            this.x = size;
+            this.vx *= bounce;
+          } else if (this.x > canvasWidth - size) {
+            this.x = canvasWidth - size;
+            this.vx *= bounce;
+          }
+
+          // Grow size
+          this.displaySize += (this.targetSize - this.displaySize) * sizeEase;
+
+          // Time to return?
+          if (frameTime - this.fallTime > returnDelay) {
+            this.state = 2;
+          }
+        } else if (state === 2) { // Returning
+          const dx = this.homeX - this.x;
+          const dy = this.homeY - this.y;
+
+          this.vx += dx * easeSpeed;
+          this.vy += dy * easeSpeed;
+          this.vx *= returnFriction;
+          this.vy *= returnFriction;
+
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Shrink back
+          this.displaySize += (this.baseSize - this.displaySize) * sizeEase;
+
+          // Close enough?
+          if (dx * dx + dy * dy < 0.25) { // 0.5 * 0.5
+            this.x = this.homeX;
+            this.y = this.homeY;
+            this.vx = 0;
+            this.vy = 0;
+            this.displaySize = this.baseSize;
+            this.state = 0;
+            this.hasColor = false;
+          }
         }
-
-        // Bounce off sides
-        if (this.x < this.size / 2) {
-          this.x = this.size / 2;
-          this.vx *= -bounceFactor;
-        }
-        if (this.x > canvasWidth - this.size / 2) {
-          this.x = canvasWidth - this.size / 2;
-          this.vx *= -bounceFactor;
-        }
-
-        // Bounce off top
-        if (this.y < this.size / 2) {
-          this.y = this.size / 2;
-          this.vy *= -bounceFactor;
-        }
-
-        // Fade out slowly once settled
-        if (Math.abs(this.vy) < 0.5 && this.y > canvasHeight - this.size) {
-          this.alpha -= 1.5;
-        }
+        // state === 0: resting, no update needed
       }
 
       display() {
-        p.stroke(255, this.alpha);
-        p.strokeWeight(1);
-        // Random color option (uncomment and comment the line below to enable)
-        // p.fill(this.colorR, this.colorG, this.colorB, this.alpha);
-        p.fill(bgRgb[0], bgRgb[1], bgRgb[2], this.alpha);
-        p.ellipse(this.x, this.y, this.size, this.size);
-        p.noStroke();
+        if (this.hasColor) {
+          p.fill(this.colorR, this.colorG, this.colorB);
+        } else {
+          p.fill(this.restR, this.restG, this.restB);
+        }
+        p.ellipse(this.x, this.y, this.displaySize, this.displaySize);
+      }
+    }
+
+    function isPointInText(x, y, pg) {
+      const px = x | 0; // Fast floor
+      const py = y | 0;
+      if (px < 0 || px >= pg.width || py < 0 || py >= pg.height) return false;
+      const idx = (py * pg.width + px) << 2; // * 4 using bit shift
+      return pg.pixels[idx] < 128;
+    }
+
+    function createuFromText() {
+      calculateResponsiveValues();
+
+      const isMobile = window.innerWidth < mobileBreakpoint;
+      const textWidthRatio = isMobile ? 1 : 0.75;
+      const maxWidth = (p.width * textWidthRatio) - leftMargin * 2;
+
+      const pg = p.createGraphics(p.width, p.height);
+      pg.pixelDensity(1);
+      pg.background(bgRgb[0], bgRgb[1], bgRgb[2]);
+      pg.fill(fgRgb[0], fgRgb[1], fgRgb[2]);
+      pg.textFont('neue-haas-grotesk');
+      // pg.textStyle(p.ITALIC);
+      pg.textSize(fontSize);
+      pg.textAlign(p.CENTER, p.CENTER);
+
+      // Word wrap
+      const words = displayText.split(' ');
+      const lines = [];
+      let currentLine = '';
+
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        const testLine = currentLine ? currentLine + ' ' + word : word;
+        if (pg.textWidth(testLine) > maxWidth && currentLine) {
+          lines.push(currentLine);
+          currentLine = word;
+        } else {
+          currentLine = testLine;
+        }
+      }
+      if (currentLine) lines.push(currentLine);
+
+      // Draw text
+      const totalHeight = lines.length * fontSize;
+      const verticalOffset = ((p.height - totalHeight) / 3) + 25;
+      const centerX = p.width / 2;
+
+      for (let i = 0; i < lines.length; i++) {
+        pg.text(lines[i], centerX, verticalOffset + (fontSize / 2) + i * fontSize);
       }
 
-      isDead() {
-        return this.alpha <= 0;
+      pg.loadPixels();
+
+      // Sample points from text (skip on mobile - just show placeholder)
+      const newBubbles = [];
+      if (window.innerWidth >= mobileBreakpoint) {
+        const jitter = gridSpacing * 0.05;
+
+        for (let x = 0; x < p.width; x += gridSpacing) {
+          for (let y = 0; y < p.height; y += gridSpacing) {
+            const px = x + (Math.random() * 2 - 1) * jitter;
+            const py = y + (Math.random() * 2 - 1) * jitter;
+
+            if (isPointInText(px, py, pg)) {
+              newBubbles.push(new Bubble(px, py));
+            }
+          }
+        }
       }
+
+      bubbles = newBubbles;
+      pg.remove();
+
+      // Create static placeholder text (smooth, filled with outer stroke)
+      if (outlineGraphics) outlineGraphics.remove();
+      outlineGraphics = p.createGraphics(p.width, p.height);
+      // Keep default pixelDensity for anti-aliasing (smoother edges)
+      outlineGraphics.clear();
+      outlineGraphics.textFont('neue-haas-grotesk');
+      outlineGraphics.textSize(fontSize);
+      outlineGraphics.textAlign(p.CENTER, p.CENTER);
+
+      // Draw with stroke for visible outer edge
+      outlineGraphics.stroke(fgRgb[0], fgRgb[1], fgRgb[2], 40);
+      outlineGraphics.strokeWeight(2);
+      outlineGraphics.fill(fgRgb[0], fgRgb[1], fgRgb[2], 25);
+
+      for (let i = 0; i < lines.length; i++) {
+        outlineGraphics.text(lines[i], centerX, verticalOffset + (fontSize / 2) + i * fontSize);
+      }
+
+      isLoading = false;
     }
 
     p.setup = () => {
@@ -118,6 +310,7 @@ export function startSketch() {
       header.addEventListener('mouseenter', () => { isMouseInsideHeader = true; });
       header.addEventListener('mouseleave', () => { isMouseInsideHeader = false; });
 
+      // If the cursor is already inside the header when the sketch loads, mouseenter won't fire
       if (header.matches(':hover')) {
         isMouseInsideHeader = true;
       }
@@ -136,41 +329,52 @@ export function startSketch() {
       canvas.style('margin', '0');
       canvas.style('padding', '0');
 
+      // Set once, not every frame
+      p.rectMode(p.CENTER);
       p.noStroke();
+
+      createBubblesFromText();
     };
 
     p.draw = () => {
       p.background(bgRgb[0], bgRgb[1], bgRgb[2]);
 
+      if (isLoading) return;
+
+      // Draw static placeholder text
+      if (outlineGraphics) {
+        p.image(outlineGraphics, 0, 0);
+      }
+
+      // On mobile, just show placeholder text (no bubbles)
+      const isMobile = window.innerWidth < mobileBreakpoint;
+      if (isMobile) return;
+
+      // Cache values for this frame
+      frameTime = p.millis();
       const mx = p.mouseX;
       const my = p.mouseY;
+      const checkHover = isMouseInsideHeader;
+      const len = bubbles.length;
 
-      // Spawn bubbles at mouse position when moving
-      if (isMouseInsideHeader) {
-        const mouseMoved = Math.abs(mx - prevMouseX) > 1 || Math.abs(my - prevMouseY) > 1;
-        if (mouseMoved && mx > 0 && mx < canvasWidth && my > 0 && my < canvasHeight) {
-          for (let i = 0; i < spawnRate; i++) {
-            bubbles.push(new Bubble(mx + p.random(-5, 5), my + p.random(-5, 5)));
-          }
-        }
-      }
-
-      prevMouseX = mx;
-      prevMouseY = my;
-
-      // Cap total bubbles
-      if (bubbles.length > maxBubbles) {
-        bubbles.splice(0, bubbles.length - maxBubbles);
-      }
-
-      // Update and draw bubbles, remove dead ones
-      for (let i = bubbles.length - 1; i >= 0; i--) {
+      for (let i = 0; i < len; i++) {
         const bubble = bubbles[i];
+
+        if (checkHover) {
+          bubble.checkHover(mx, my);
+        }
+
         bubble.update();
         bubble.display();
-        if (bubble.isDead()) {
-          bubbles.splice(i, 1);
-        }
+      }
+
+      // Draw cursor circle when hovering over sketch
+      if (checkHover && mx > 0 && mx < canvasWidth && my > 0 && my < canvasHeight) {
+        p.noFill();
+        p.stroke(fgRgb[0], fgRgb[1], fgRgb[2], 40);
+        p.strokeWeight(1);
+        p.ellipse(mx, my, hoverRadius * 2, hoverRadius * 2);
+        p.noStroke(); // Reset for next frame
       }
     };
 
@@ -181,6 +385,10 @@ export function startSketch() {
       canvasWidth = dimensions.width;
       canvasHeight = dimensions.height;
       p.resizeCanvas(canvasWidth, canvasHeight);
+
+      if (!isLoading) {
+        createBubblesFromText();
+      }
     };
   });
 }
@@ -189,6 +397,11 @@ export function stopSketch() {
   if (sketchInstance) {
     sketchInstance.remove();
     sketchInstance = null;
+  }
+  // Reset loading indicator for next page load
+  const loadingEl = document.getElementById('header-loading');
+  if (loadingEl) {
+    loadingEl.classList.remove('hidden');
   }
 }
 
