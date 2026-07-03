@@ -2,49 +2,35 @@
 
 ---
 
-<div
-  class="min-h-[400px] text-white flex flex-col justify-center text-left lg:w-3/4 border-bottom border-dashed pb-10 pt-8 px-8"
->
-  <h1 class="translate text-4xl lg:text-6xl font-sans font-extralight">
-    <span>Brian Sekelsky</span> is a designer, working across user experience, visual
-    design, and code.
-  </h1>
-  <!-- <h3 class="font-sans pt-8 w-3/4">
-    Currently @Fidelity Investments + US Digital Response.
-  </h3> -->
-</div>
-
-<!-- <div class="transition-all duration-500 site-padding">
-  <div class="flex items-center justify-center md:hidden min-h-[40vh] header-card header-mobile">
-    <p class="header-mobile-text">
-      Brian Sekelsky is a designer, working across user experience, visual design, and code.
-    </p>
-  </div>
-
-  <div
-    class="hidden md:block min-h-[600px] max-w-full header-card"
-    id="header"
-  >
-    <div id="header-loading" class="header-loading">
-      <p class="header-loading-text">
-        Brian Sekelsky is a designer, working across user experience, visual design, and code.
-      </p>
-      <div class="header-spinner"></div>
-    </div>
-    <p class="sr-only">
-      Brian Sekelsky is a designer, working across user experience, visual design, and code.
-    </p>
-  </div>
+<!-- Mobile: static text fallback -->
+<!-- <div class="flex items-center justify-center md:hidden min-h-[40vh] header-card header-mobile">
+  <p class="header-mobile-text">
+    I'm a designer with experience across graphic design, user experience, and creative code. I also teach and make music.
+  </p>
 </div> -->
 
-<style>
-  /* .header-card styles are now in Layout.astro for shared use */
+<!-- Desktop: p5.js bouncing circles canvas with text overlay -->
+<div
+  class="min-h-[600px] max-w-full header-card"
+  id="header"
+>
+  <div class="header-text">
+    <h1 class="text-5xl md:text-6xl font-sans font-extralight text-white leading-[1.1] w-4/5">
+      <p>I'm a designer with experience across graphic design, user experience, and creative code. I also teach and make music.
+    </h1>
+  </div>
+</div>
 
-  /* Ensure canvas fills the header properly */
+<script>
+  import "../scripts/header-sketch.js";
+</script>
+
+<style>
   #header {
     box-sizing: border-box;
     position: relative;
-    background: #ffffff;
+    background: #1e2ffe;
+    overflow: hidden;
   }
 
   #header :global(canvas) {
@@ -52,100 +38,34 @@
     border-radius: inherit;
   }
 
-  /* Loading state - reversed colors */
-  .header-loading {
-    position: absolute;
-    inset: 0;
+  /* Text sits on top of the canvas */
+  .header-text {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    min-height: 500px;
     padding: 2rem;
-    gap: 2rem;
-    z-index: 1;
-    background: #0a0a1a;
-    border-radius: inherit;
-    transition: opacity 0.5s ease-out;
-  }
-
-  .header-loading.hidden {
-    opacity: 0;
+    /* width: 75%; */
     pointer-events: none;
-  }
-
-  .header-loading-text {
-    font-family:
-      "neue-haas-grotesk",
-      -apple-system,
-      sans-serif;
-    font-weight: 400;
-    font-size: 1.125rem;
-    line-height: 1.5;
-    text-align: center;
-    max-width: 480px;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  @media (min-width: 1024px) {
-    .header-loading-text {
-      font-size: 1.25rem;
-    }
-  }
-
-  /* Spinner */
-  .header-spinner {
-    width: 48px;
-    height: 48px;
-    border: 4px solid transparent;
-    border-top-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* Dark mode - already dark, so no change needed */
-  :global(.dark) .header-loading {
-    background: #0a0a1a;
-  }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    -webkit-text-stroke: 1px #1e2ffe;
+    paint-order: stroke fill;
   }
 
   /* Mobile dark header */
-  .header-mobile {
+  /* .header-mobile {
     background: #0a0a1a;
     padding: 2rem;
-  }
+  } */
 
-  .header-mobile-text {
-    font-family: "freighttextcmp-pro", Georgia, serif;
-    /* font-style: italic; */
+  /* .header-mobile-text {
+    font-family: "neue-haas-grotesk", -apple-system, sans-serif;
     font-weight: 300;
     font-size: 1.75rem;
     line-height: 1.4;
     text-align: center;
     max-width: 400px;
     color: rgba(255, 255, 255, 0.7);
-  }
-
-  /* Only nudge on lg screens and above (Tailwind lg = 1024px) */
-  @media (min-width: 1024px) {
-    .translate {
-      transform: translateX(-2px);
-    }
-  }
+  } */
 </style>
