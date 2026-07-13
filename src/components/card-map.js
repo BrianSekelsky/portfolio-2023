@@ -14,12 +14,15 @@ import Greenways from "./Gallery-cards/Greenways.astro";
 import FriendsOfTanzania from "./Gallery-cards/FriendsOfTanzania.astro";
 import LAS from "./Gallery-cards/LAS.astro";
 
-export default [
+export const caseStudies = [
   { Component: CozyStream, typeClass: "ux development" },
-  { Component: Greenways, typeClass: "branding wordpress ux development" },
-  { Component: ScaleWorlds, typeClass: "vr website ux research education" },
-  { Component: FriendsOfTanzania, typeClass: "wordpress website ux" },
   { Component: Fidelity, typeClass: "website ux research" },
+  { Component: ScaleWorlds, typeClass: "vr website ux research education" },
+  { Component: Greenways, typeClass: "branding wordpress ux development" },
+];
+
+export const otherProjects = [
+  { Component: FriendsOfTanzania, typeClass: "wordpress website ux" },
   { Component: WitnessingGlaciers, typeClass: "website branding development" },
   { Component: LAS, typeClass: "ux research" },
   { Component: DeliberateAI, typeClass: "website userExperience" },
@@ -31,3 +34,5 @@ export default [
   { Component: CriticalImages, typeClass: "branding" },
   { Component: Nothing, typeClass: "userExperience" },
 ];
+
+export default [...caseStudies, ...otherProjects];

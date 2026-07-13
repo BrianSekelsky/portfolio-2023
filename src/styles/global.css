@@ -4,7 +4,7 @@
 
 @theme {
   --font-*: initial;
-  --font-serif: itc-american-typewriter, sans-serif;
+  --font-serif: "Crimson Pro", Georgia, serif;
   --font-sans: neue-haas-grotesk, Helvetica, sans-serif;
 
   --container-*: initial;
@@ -356,6 +356,8 @@
   --color-accent-yellow: #fef08a;
   --color-accent-green: #04724d;
   --color-accent-blue: #0000ff;
+  --color-highlight-blue: #E3F0FE;
+  --color-royal-blue: #2152CC;
   --color-dark-bg: #050517;
   --color-dark-surface: #0a0a1a;
   --color-dark-surface-hover: #14142a;
@@ -381,4 +383,33 @@
   ::file-selector-button {
     border-color: #d6daff;
   }
+}
+
+/* Floating pill that replaces the pointer while hovering a project card. */
+.card-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  margin: 18px 0 0 18px; /* sit at the bottom-right of the pointer */
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  background: #fff;
+  color: #000;
+  font-size: 0.75rem;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+
+.card-cursor.is-visible {
+  opacity: 1;
 }

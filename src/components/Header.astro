@@ -2,64 +2,66 @@
 
 ---
 
-<!-- Mobile: static text fallback -->
-<!-- <div class="flex items-center justify-center md:hidden min-h-[40vh] header-card header-mobile">
+<!-- Mobile: static text fallback --><!-- <div class="flex items-center justify-center md:hidden min-h-[40vh] header-card header-mobile">
   <p class="header-mobile-text">
     I'm a designer with experience across graphic design, user experience, and creative code. I also teach and make music.
   </p>
-</div> -->
-
-<!-- Desktop: p5.js bouncing circles canvas with text overlay -->
-<div
-  class="min-h-[600px] max-w-full header-card"
-  id="header"
->
+</div> --><!-- Desktop: p5.js bouncing circles canvas with text overlay -->
+<div class="min-h-[400px] max-w-full header-card border-bottom" id="header">
   <div class="header-text">
-    <h1 class="text-5xl md:text-6xl font-sans font-extralight text-white leading-[1.1] w-4/5">
-      <p>I’m a designer with experience across graphic design, user experience, and creative code. I also teach and make music.
+    <h1
+      class="text-4xl md:text-5xl font-serif font-extralight text-black w-4/7 tracking-tight leading-12"
+    >
+      <p>
+        Hello, I’m an NYC-based designer working across user experience and
+        code. I’m currently a Senior UX Designer at Fidelity Investments.
+      </p>
     </h1>
   </div>
-</div>
 
-<script>
-  import "../scripts/header-sketch.js";
-</script>
+  <script>
+    import "../scripts/header-sketch.js";
+    import "../scripts/header-cursor.js";
+  </script>
 
-<style>
-  #header {
-    box-sizing: border-box;
-    position: relative;
-    background: #1e2ffe;
-    overflow: hidden;
-  }
+  <style>
+    #header {
+      box-sizing: border-box;
+      position: relative;
+      background: #ffffff;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-color);
+    }
 
-  #header :global(canvas) {
-    display: block;
-    border-radius: inherit;
-  }
+    #header :global(canvas) {
+      display: block;
+      border-radius: inherit;
+    }
 
-  /* Text sits on top of the canvas */
-  .header-text {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 500px;
-    padding: 2rem;
-    /* width: 75%; */
-    pointer-events: none;
-    -webkit-text-stroke: 1px #1e2ffe;
-    paint-order: stroke fill;
-  }
+    /* Text sits on top of the canvas */
+    .header-text {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 300px;
+      padding: 2rem;
+      /* width: 75%; */
+      pointer-events: none;
+      /* Thin white stroke behind the glyphs to separate the text from the
+         sketch. paint-order draws the stroke first so it reads as a halo. */
+      -webkit-text-stroke: 2px #ffffff;
+      paint-order: stroke fill;
+    }
 
-  /* Mobile dark header */
-  /* .header-mobile {
+    /* Mobile dark header */
+    /* .header-mobile {
     background: #0a0a1a;
     padding: 2rem;
   } */
 
-  /* .header-mobile-text {
+    /* .header-mobile-text {
     font-family: "neue-haas-grotesk", -apple-system, sans-serif;
     font-weight: 300;
     font-size: 1.75rem;
@@ -68,4 +70,5 @@
     max-width: 400px;
     color: rgba(255, 255, 255, 0.7);
   } */
-</style>
+  </style>
+</div>

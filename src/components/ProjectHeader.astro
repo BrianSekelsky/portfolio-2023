@@ -46,7 +46,7 @@ const hasCollaborators = collaborators.length > 0;
         >← Back to projects</a
       > -->
       <h1
-        class="font-sans font-extralight font-light text-4xl sm:text-6xl md:text-7xl wrap-break-word sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
+        class="font-serif font-extralight text-4xl sm:text-5xl wrap-break-word sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
       >
         {title}
       </h1>
@@ -125,7 +125,7 @@ const hasCollaborators = collaborators.length > 0;
     {
       hasHero && (
         <div class="hero-media">
-          {(heroVideo || heroVideoMp4) ? (
+          {heroVideo || heroVideoMp4 ? (
             <video
               playsinline
               autoplay

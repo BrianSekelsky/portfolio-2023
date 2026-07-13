@@ -13,13 +13,13 @@ const { href, title, types, year, description = "" } = Astro.props;
 ---
 
 <a
-  class=`group flex flex-col col-span-6 md:col-span-3 cursor-pointer bg-purewhite border-r border-b border-[#d6daff] card h-full`
+  class=`group flex flex-col col-span-6 md:col-span-3 cursor-pointer bg-purewhite card h-full`
   href={href}
 >
   <div class="md:aspect-17/10 overflow-hidden w-full bg-white card-media">
     <slot />
   </div>
-  <div class="p-4 flex-1">
+  <div class="py-4 flex-1">
     <CardLabel
       value={title}
       types={types}
@@ -29,6 +29,10 @@ const { href, title, types, year, description = "" } = Astro.props;
     />
   </div>
 </a>
+
+<script>
+  import "../scripts/card-cursor.js";
+</script>
 
 <style>
   .card {
@@ -43,11 +47,6 @@ const { href, title, types, year, description = "" } = Astro.props;
   }
 
   .card:hover {
-    /* transform: scale(1.03); */
-    /* border-radius: 0.5rem; */
-    /* Soft even shadow like the old JS hover (--card-shadow-color #e0e0e0),
-       a little more pronounced. */
-    box-shadow: 0 6px 26px 7px var(--card-shadow-color);
     z-index: 60;
   }
 

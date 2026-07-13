@@ -15,7 +15,6 @@
     "fontfaceobserver": "^2.3.0",
     "gsap": "^3.12.5",
     "mime": "^4.0.7",
-    "p5": "^1.11.8",
     "path-to-regexp": "^8.2.0",
     "tailwindcss": "^4.3.1"
   },

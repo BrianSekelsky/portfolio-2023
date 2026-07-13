@@ -1,14 +1,41 @@
 ---
-import cardMap from "./card-map.js";
+import { caseStudies, otherProjects } from "./card-map.js";
 import SmallHeading from "./SmallHeading.astro";
 ---
 
 <div class="site-padding-flush">
   <!-- <p class="pb-4">Select Projects</p> -->
-  <!-- <SmallHeading text="Select Projects" /> -->
-  <div id="gallery" class="grid grid-cols-6 border-t border-l border-[#d6daff]">
+  <div class="pt-8 pb-2 px-8 flex">
+    <div
+      class="font-serif text-2xl font-extralight bg-highlight-blue text-royal-blue"
+    >
+      Case studies
+    </div>
+  </div>
+  <div
+    id="gallery"
+    class="grid grid-cols-6 gap-8 ml-8 mr-8 my-8 border-[#d6daff]"
+  >
     {
-      cardMap.map(({ Component, typeClass, size }) => (
+      caseStudies.map(({ Component, typeClass, size }) => (
+        <Component typeClass={typeClass} size={size} />
+      ))
+    }
+  </div>
+
+  <div class="pt-16 pb-2 px-8 flex border-t">
+    <div
+      class="font-serif text-2xl font-extralight bg-highlight-blue text-royal-blue"
+    >
+      Other projects and experiments
+    </div>
+  </div>
+  <div
+    id="gallery-other"
+    class="grid grid-cols-12 gap-8 ml-8 mr-8 my-8 border-[#d6daff]"
+  >
+    {
+      otherProjects.map(({ Component, typeClass, size }) => (
         <Component typeClass={typeClass} size={size} />
       ))
     }
@@ -18,5 +45,17 @@ import SmallHeading from "./SmallHeading.astro";
 <style>
   .auto-rows-auto {
     grid-auto-rows: 1fr;
+  }
+
+  /* "Other projects and experiments" — image only, hide the text label. */
+  #gallery-other :global(.card) :global(.flex-1) {
+    display: none;
+  }
+
+  /* White background behind images that don't fill the frame
+     (overrides each card's tinted --myColor background). */
+  #gallery-other :global(.card-media),
+  #gallery-other :global(.card-media) :global(div) {
+    background-color: #fff;
   }
 </style>

@@ -1,5 +1,5 @@
 const buttons = document.querySelectorAll('.gallery-button');
-const cards = document.querySelectorAll('#gallery > *');
+const cards = document.querySelectorAll('#gallery > *, #gallery-other > *');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
