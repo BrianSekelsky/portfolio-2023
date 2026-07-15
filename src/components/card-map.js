@@ -16,14 +16,14 @@ import LAS from "./Gallery-cards/LAS.astro";
 
 export const caseStudies = [
   { Component: CozyStream, typeClass: "ux development" },
-  { Component: Fidelity, typeClass: "website ux research" },
+    { Component: Greenways, typeClass: "branding wordpress ux development" },
+  // { Component: Fidelity, typeClass: "website ux research" },
   { Component: ScaleWorlds, typeClass: "vr website ux research education" },
-  { Component: Greenways, typeClass: "branding wordpress ux development" },
+  { Component: WitnessingGlaciers, typeClass: "website branding development" },
 ];
 
 export const otherProjects = [
   { Component: FriendsOfTanzania, typeClass: "wordpress website ux" },
-  { Component: WitnessingGlaciers, typeClass: "website branding development" },
   { Component: LAS, typeClass: "ux research" },
   { Component: DeliberateAI, typeClass: "website userExperience" },
   { Component: NPCA, typeClass: "website" },
