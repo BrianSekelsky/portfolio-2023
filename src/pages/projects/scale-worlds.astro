@@ -54,7 +54,13 @@ import website4 from "../../images/size-and-scale/website-4.png";
     <ProjectHeader
       title="Scale Worlds"
       objective="A two-year research project designing immersive learning environments, first in VR and then adapted for the web, to help students build an intuitive understanding of size and scale across 42 orders of magnitude."
-      types={["Virtual Reality", "UX Design", "Research", "Education", "Web Development"]}
+      types={[
+        "Virtual Reality",
+        "UX Design",
+        "Research",
+        "Education",
+        "Web Development",
+      ]}
       collaborators={[
         "Dr. Matthew Peterson",
         "Dr. Karen Chen",
@@ -70,17 +76,37 @@ import website4 from "../../images/size-and-scale/website-4.png";
       heroVideo={webmWeb}
       heroVideoMp4={webmWebMp4}
       heroPoster={webmWebPoster.src}
-    />
+    >
+      <p class="text-sm sm:text-base pt-8">
+        <Link
+          name="Try the live build"
+          href="https://scale-worlds-web.netlify.app/"
+          newtab
+        />
+      </p>
+    </ProjectHeader>
 
     <ProjectGrid>
       <!-- Background & Context -->
       <div class="col-span-2">
         <SmallHeading text="Background" />
         <p>
-          Scale Worlds is a virtual learning environment that helps students understand size and scale, a concept that shows up everywhere in STEM education. The project was funded through a National Science Foundation award titled <Link name="Virtual Reality to Improve Students' Understanding of Scale in STEM." href="https://nsf.gov/awardsearch/showAward?AWD_ID=2055680" />
+          Scale Worlds is a virtual learning environment that helps students
+          understand size and scale, a concept that shows up everywhere in STEM
+          education. The project was funded through a National Science
+          Foundation award titled <Link
+            name="Virtual Reality to Improve Students' Understanding of Scale in STEM."
+            href="https://nsf.gov/awardsearch/showAward?AWD_ID=2055680"
+          />
         </p>
         <p>
-          For two years I worked under <Link href="https://textimage.org/" name="Dr. Matthew Peterson" />, alongside professors and doctoral students from the Human Factors Engineering and STEM Education departments. I drafted design documents, planned user experiences, coded in C#, modeled in Blender, developed in Unity, and managed three design technicians.
+          For two years I worked under <Link
+            href="https://textimage.org/"
+            name="Dr. Matthew Peterson"
+          />, alongside professors and doctoral students from the Human Factors
+          Engineering and STEM Education departments. I drafted design
+          documents, planned user experiences, coded in C#, modeled in Blender,
+          developed in Unity, and managed three design technicians.
         </p>
       </div>
 
@@ -88,24 +114,39 @@ import website4 from "../../images/size-and-scale/website-4.png";
       <div class="col-span-1">
         <SmallHeading text="Theoretical Foundation" />
         <p>
-          We grounded our design decisions in academic literature on scale cognition, particularly Alejandra Magaña's Framework for Size and Scale Cognition, which identifies the core concepts students need in order to grasp scale, from subatomic particles to cosmic structures.
+          We grounded our design decisions in academic literature on scale
+          cognition, particularly Alejandra Magaña's Framework for Size and
+          Scale Cognition, which identifies the core concepts students need in
+          order to grasp scale, from subatomic particles to cosmic structures.
         </p>
         <p>
-          Results from our first round of usability studies were published in a Human Factors journal.
+          Results from our first round of usability studies were published in a
+          Human Factors journal.
         </p>
       </div>
       <div class="col-span-1">
-        <Image class="shadow-sm" src={astro} alt="Astronaut avatar in Scale Worlds virtual environment" />
+        <Image
+          class="shadow-sm"
+          src={astro}
+          alt="Astronaut avatar in Scale Worlds virtual environment"
+        />
       </div>
 
       <!-- Early Prototypes -->
       <div class="col-span-2">
         <SmallHeading text="Early Prototypes" />
         <p>
-          The project began with a lot of prototyping to figure out how users might navigate across extreme scales. These early sketches set the visual language and interaction patterns that carried through to the final implementations.
+          The project began with a lot of prototyping to figure out how users
+          might navigate across extreme scales. These early sketches set the
+          visual language and interaction patterns that carried through to the
+          final implementations.
         </p>
         <div class="grid grid-cols-3 gap-2 pt-4">
-          <Image class="" src={a} alt="Early prototype sketch of Scale Worlds" />
+          <Image
+            class=""
+            src={a}
+            alt="Early prototype sketch of Scale Worlds"
+          />
           <Image class="" src={b} alt="Scale Worlds environment concept" />
           <Image class="" src={c} alt="Entity scaling visualization" />
           <Image class="" src={d} alt="User interface exploration" />
@@ -120,7 +161,9 @@ import website4 from "../../images/size-and-scale/website-4.png";
       <div class="col-span-2">
         <SmallHeading text="Web Adaptation" />
         <p>
-          Most students don't have access to expensive VR equipment, so we built a web version. That meant translating an immersive VR experience to a flat screen without losing the core learning objectives.
+          Most students don't have access to expensive VR equipment, so we built
+          a web version. That meant translating an immersive VR experience to a
+          flat screen without losing the core learning objectives.
         </p>
       </div>
 
@@ -128,15 +171,27 @@ import website4 from "../../images/size-and-scale/website-4.png";
       <div class="col-span-1">
         <SmallHeading text="Function Mapping Methodology" />
         <p>
-          To manage the move from VR to web, our team developed a design methodology we call function mapping. We wrote a paper about the process, <Link href="https://dl.designresearchsociety.org/iasdr/iasdr2023/fullpapers/184/" name="Preserving theoretically-grounded functions across media platforms in interaction design," /> which I presented at IASDR 2023 in Milan.
+          To manage the move from VR to web, our team developed a design
+          methodology we call function mapping. We wrote a paper about the
+          process, <Link
+            href="https://dl.designresearchsociety.org/iasdr/iasdr2023/fullpapers/184/"
+            name="Preserving theoretically-grounded functions across media platforms in interaction design,"
+          /> which I presented at IASDR 2023 in Milan.
         </p>
         <p>
-          Function mapping starts with the key concepts learners need in order to comprehend scale, drawn from Magaña's framework and other academic literature. We charted specific features against each learning concept, so we could see the core objectives survive the move from VR to web even as the interfaces diverged.
+          Function mapping starts with the key concepts learners need in order
+          to comprehend scale, drawn from Magaña's framework and other academic
+          literature. We charted specific features against each learning
+          concept, so we could see the core objectives survive the move from VR
+          to web even as the interfaces diverged.
         </p>
       </div>
       <div class="col-span-1 flex justify-center items-start">
         <div class="lg:w-3/4 shadow-md">
-          <Image src={fmtable} alt="Function mapping table showing features tracked across platforms" />
+          <Image
+            src={fmtable}
+            alt="Function mapping table showing features tracked across platforms"
+          />
         </div>
       </div>
 
@@ -144,7 +199,9 @@ import website4 from "../../images/size-and-scale/website-4.png";
       <div class="col-span-2 pt-8">
         <SmallHeading text="Precedent Analysis" />
         <p>
-          We studied existing approaches to visualizing scale, from the Eames' Powers of Ten to Nikon's Universcale to ordinary textbook diagrams, to understand the conventions and spot where we could do something new.
+          We studied existing approaches to visualizing scale, from the Eames'
+          Powers of Ten to Nikon's Universcale to ordinary textbook diagrams, to
+          understand the conventions and spot where we could do something new.
         </p>
         <div class="grid grid-cols-2 gap-8 pt-4">
           <div>
@@ -152,7 +209,10 @@ import website4 from "../../images/size-and-scale/website-4.png";
             <Caption text="Universcale by Nikon" />
           </div>
           <div>
-            <Image src={powersoften} alt="Screenshots from Eames' Powers of Ten video" />
+            <Image
+              src={powersoften}
+              alt="Screenshots from Eames' Powers of Ten video"
+            />
             <Caption text="Eames' Powers of Ten (1977)" />
           </div>
         </div>
@@ -162,10 +222,17 @@ import website4 from "../../images/size-and-scale/website-4.png";
       <div class="col-span-1">
         <SmallHeading text="Implementation" />
         <p>
-          With the function mapping table as my guide, I sketched interface ideas on paper and in Figma. Because the key features were already pinned down, iterating on solutions went quickly.
+          With the function mapping table as my guide, I sketched interface
+          ideas on paper and in Figma. Because the key features were already
+          pinned down, iterating on solutions went quickly.
         </p>
         <p>
-          I built the designs into a working prototype with HTML, CSS, JavaScript, and Three.js powering the 3D experience in the browser.
+          I built the designs into a working prototype with HTML, CSS,
+          JavaScript, and Three.js powering the 3D experience in the browser.
+          You can <Link
+            name="try the live build"
+            href="https://scale-worlds-web.netlify.app/"
+          /> yourself.
         </p>
       </div>
       <div class="col-span-1">
@@ -182,7 +249,15 @@ import website4 from "../../images/size-and-scale/website-4.png";
     <!-- VR Section -->
     <div class="site-padding-flush">
       <div class="header-card overflow-hidden relative">
-        <video playsinline autoplay muted loop preload="metadata" poster={webmVRPoster.src} class="w-full block">
+        <video
+          playsinline
+          autoplay
+          muted
+          loop
+          preload="metadata"
+          poster={webmVRPoster.src}
+          class="w-full block"
+        >
           <source src={webmVR} type="video/webm" />
           <source src={webmVRMp4} type="video/mp4" />
         </video>
@@ -195,15 +270,26 @@ import website4 from "../../images/size-and-scale/website-4.png";
         <div class="col-span-2">
           <SmallHeading text="VR Implementation" />
           <p>
-            We developed Scale Worlds for two VR platforms, a room-scale CAVE (Cave Automatic Virtual Environment) and consumer head-mounted displays. Each gave students a different way to experience scale with their whole body.
+            We developed Scale Worlds for two VR platforms, a room-scale CAVE
+            (Cave Automatic Virtual Environment) and consumer head-mounted
+            displays. Each gave students a different way to experience scale
+            with their whole body.
           </p>
         </div>
         <div class="col-span-1 relative">
-          <Image class="shadow-sm" src={cave} alt="User standing in CAVE virtual reality environment" />
+          <Image
+            class="shadow-sm"
+            src={cave}
+            alt="User standing in CAVE virtual reality environment"
+          />
           <FrameCaption text="Cave Automatic Virtual Environment (CAVE)" />
         </div>
         <div class="col-span-1 relative">
-          <Image class="shadow-sm" src={hmd} alt="Head-mounted display with 3D avatar representation" />
+          <Image
+            class="shadow-sm"
+            src={hmd}
+            alt="Head-mounted display with 3D avatar representation"
+          />
           <FrameCaption text="Head Mounted Display (HMD)" />
         </div>
 
@@ -211,20 +297,37 @@ import website4 from "../../images/size-and-scale/website-4.png";
         <div class="col-span-2">
           <SmallHeading text="Design System" />
           <p>
-            We organized the environment into three layers, each with its own job in the learning experience.
+            We organized the environment into three layers, each with its own
+            job in the learning experience.
           </p>
           <div class="grid grid-cols-3 gap-2 pt-4">
             <div class="col-span-1">
-              <Image class="shadow-sm" src={userinterface} alt="User interface elements in Scale Worlds" />
+              <Image
+                class="shadow-sm"
+                src={userinterface}
+                alt="User interface elements in Scale Worlds"
+              />
               <Caption text="User interface: flat interactive elements" />
             </div>
             <div class="col-span-1">
-              <Image class="shadow-sm" src={armatures} alt="Armature structures in Scale Worlds" />
-              <Caption text="Armatures: three-dimensional structural elements" />
+              <Image
+                class="shadow-sm"
+                src={armatures}
+                alt="Armature structures in Scale Worlds"
+              />
+              <Caption
+                text="Armatures: three-dimensional structural elements"
+              />
             </div>
             <div class="col-span-1">
-              <Image class="shadow-sm" src={entities} alt="Scientific entities in Scale Worlds" />
-              <Caption text="Entities: animals, stars, atoms, and cells as scale landmarks" />
+              <Image
+                class="shadow-sm"
+                src={entities}
+                alt="Scientific entities in Scale Worlds"
+              />
+              <Caption
+                text="Entities: animals, stars, atoms, and cells as scale landmarks"
+              />
             </div>
           </div>
         </div>
@@ -233,15 +336,25 @@ import website4 from "../../images/size-and-scale/website-4.png";
         <div class="col-span-2">
           <SmallHeading text="Curriculum-Aligned Interaction" />
           <p>
-            We designed the scaling interaction to mirror the math students already see in American classrooms, changing exponents in scientific notation and moving decimal places in standard notation.
+            We designed the scaling interaction to mirror the math students
+            already see in American classrooms, changing exponents in scientific
+            notation and moving decimal places in standard notation.
           </p>
           <div class="grid grid-cols-2 gap-2 pt-4">
             <div class="col-span-1">
-              <Image class="shadow-sm" src={decimal} alt="Animation showing decimal place movement" />
+              <Image
+                class="shadow-sm"
+                src={decimal}
+                alt="Animation showing decimal place movement"
+              />
               <Caption text="Animation showing decimal place movement" />
             </div>
             <div class="col-span-1">
-              <Image class="shadow-sm" src={numericpanel} alt="Diagram of the numeric panel interface" />
+              <Image
+                class="shadow-sm"
+                src={numericpanel}
+                alt="Diagram of the numeric panel interface"
+              />
               <Caption text="Numeric panel interface for scale navigation" />
             </div>
           </div>
@@ -251,15 +364,26 @@ import website4 from "../../images/size-and-scale/website-4.png";
         <div class="col-span-2">
           <SmallHeading text="Environment Testing" />
           <p>
-            We designed multiple environment schemes and tested them with user interface experts to find the layouts that worked best for learning. Those studies shaped our decisions about spatial organization, entity placement, and navigation flow.
+            We designed multiple environment schemes and tested them with user
+            interface experts to find the layouts that worked best for learning.
+            Those studies shaped our decisions about spatial organization,
+            entity placement, and navigation flow.
           </p>
           <div class="grid grid-cols-2 gap-2 pt-4">
             <div class="col-span-1">
-              <Image class="shadow-sm" src={forest} alt="Forest environment layout diagram" />
+              <Image
+                class="shadow-sm"
+                src={forest}
+                alt="Forest environment layout diagram"
+              />
               <Caption text="Forest environment variant" />
             </div>
             <div class="col-span-1">
-              <Image class="shadow-sm" src={path} alt="Path environment layout diagram" />
+              <Image
+                class="shadow-sm"
+                src={path}
+                alt="Path environment layout diagram"
+              />
               <Caption text="Path environment variant" />
             </div>
           </div>
@@ -269,20 +393,47 @@ import website4 from "../../images/size-and-scale/website-4.png";
         <div class="col-span-2">
           <SmallHeading text="User Research" />
           <p>
-            I helped run two rounds of qualitative usability studies. The research taught us a lot about how users think about scale, and it opened up honest conversations about how to balance usability against theoretical grounding.
+            I helped run two rounds of qualitative usability studies. The
+            research taught us a lot about how users think about scale, and it
+            opened up honest conversations about how to balance usability
+            against theoretical grounding.
           </p>
           <div class="grid grid-cols-2 gap-2 pt-4">
-            <Image class="shadow-sm" src={research1} alt="User research findings from usability study" />
-            <Image class="shadow-sm" src={research2} alt="User feedback on interface design" />
-            <Image class="shadow-sm" src={research3} alt="Usability study observations" />
-            <Image class="shadow-sm" src={research4} alt="Research insights on scale cognition" />
+            <Image
+              class="shadow-sm"
+              src={research1}
+              alt="User research findings from usability study"
+            />
+            <Image
+              class="shadow-sm"
+              src={research2}
+              alt="User feedback on interface design"
+            />
+            <Image
+              class="shadow-sm"
+              src={research3}
+              alt="Usability study observations"
+            />
+            <Image
+              class="shadow-sm"
+              src={research4}
+              alt="Research insights on scale cognition"
+            />
           </div>
         </div>
 
         <div class="col-span-2">
           <div class="grid grid-cols-2 gap-2">
-            <Image class="shadow-sm" src={ruler1} alt="Professor demonstrating scale ruler in CAVE environment" />
-            <Image class="shadow-sm" src={ruler2} alt="Scale measurement demonstration in virtual reality" />
+            <Image
+              class="shadow-sm"
+              src={ruler1}
+              alt="Professor demonstrating scale ruler in CAVE environment"
+            />
+            <Image
+              class="shadow-sm"
+              src={ruler2}
+              alt="Scale measurement demonstration in virtual reality"
+            />
           </div>
         </div>
       </ProjectGrid>

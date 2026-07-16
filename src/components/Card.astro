@@ -16,7 +16,7 @@ const { href, title, types, year, description = "" } = Astro.props;
   class=`group flex flex-col col-span-6 md:col-span-3 cursor-pointer bg-purewhite card h-full`
   href={href}
 >
-  <div class="md:aspect-17/10 overflow-hidden w-full bg-white card-media">
+  <div class="md:aspect-18/10 overflow-hidden w-full bg-white card-media">
     <slot />
   </div>
   <div class="py-4 flex-1">
@@ -37,7 +37,6 @@ const { href, title, types, year, description = "" } = Astro.props;
 <style>
   .card {
     position: relative;
-    /* Clip the slotted media to the card's (animating) corner radius */
     overflow: hidden;
     transition:
       transform 0.25s ease,
@@ -50,8 +49,6 @@ const { href, title, types, year, description = "" } = Astro.props;
     z-index: 60;
   }
 
-  /* Mobile: no fixed aspect — let each image set its own height so it isn't
-     cropped. */
   .card-media > :global(div) {
     height: auto;
   }
@@ -63,8 +60,6 @@ const { href, title, types, year, description = "" } = Astro.props;
     display: block;
   }
 
-  /* md and up: cards sit in a multi-column grid, so lock them to the fixed
-     aspect frame and cover-crop for a uniform layout. */
   @media (min-width: 768px) {
     .card-media > :global(div) {
       height: 100%;
