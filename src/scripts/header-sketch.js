@@ -58,6 +58,18 @@ export function startSketch() {
   let isMouseInsideHeader = false;
   let rafId = null;
 
+  // All physics constants above were tuned against a 60Hz display, where
+  // requestAnimationFrame fires every ~16.7ms. On higher-refresh monitors
+  // (120Hz/144Hz+) rAF fires more often, so without correction gravity,
+  // damping, and spawning would all advance proportionally faster. `dt`
+  // below is elapsed time expressed as "how many 60fps frames' worth of
+  // time passed," and every continuous per-frame term is scaled by it so
+  // the sketch plays at the same speed everywhere.
+  const FRAME_MS = 1000 / 60;
+  const MAX_DT = 3; // clamp so a backgrounded-tab resume can't cause a physics jolt
+  let lastFrameTime = null;
+  let spawnAccumulator = 0;
+
   function resize() {
     canvasWidth = header.clientWidth;
     canvasHeight = header.clientHeight;
@@ -79,12 +91,15 @@ export function startSketch() {
       this.alpha = 255;
     }
 
-    update() {
-      this.vy += gravity;
-      this.vx *= damping;
-      this.vy *= damping;
-      this.x += this.vx;
-      this.y += this.vy;
+    update(dt) {
+      this.vy += gravity * dt;
+      // damping is a per-frame multiplicative decay; raising it to the dt
+      // power keeps the exponential falloff correct at any frame rate.
+      const dampFactor = Math.pow(damping, dt);
+      this.vx *= dampFactor;
+      this.vy *= dampFactor;
+      this.x += this.vx * dt;
+      this.y += this.vy * dt;
 
       // Bounce off bottom
       if (this.y > canvasHeight - this.size / 2) {
@@ -108,7 +123,7 @@ export function startSketch() {
       }
       // Fade out slowly once settled
       if (Math.abs(this.vy) < 0.5 && this.y > canvasHeight - this.size) {
-        this.alpha -= 1.5;
+        this.alpha -= 1.5 * dt;
       }
     }
 
@@ -136,18 +151,18 @@ export function startSketch() {
       this.yspeed = gravity1;
     }
 
-    update() {
+    update(dt) {
       if (shape === 0 || shape === 1) {
-        this.y += this.yspeed;
-        this.yspeed += gravity1 * (shape === 1 ? 4 : 1);
+        this.y += this.yspeed * dt;
+        this.yspeed += gravity1 * (shape === 1 ? 4 : 1) * dt;
         if (this.y + shapeSize / 2 > canvasHeight) {
           this.y = canvasHeight - shapeSize / 2;
           this.yspeed *= shape === 1 ? -0.2 : -0.7;
           if (Math.abs(this.yspeed) < 1) this.yspeed = 0;
         }
       } else if (shape === 2) {
-        this.y -= this.yspeed;
-        this.yspeed += gravity1;
+        this.y -= this.yspeed * dt;
+        this.yspeed += gravity1 * dt;
       }
     }
 
@@ -182,7 +197,7 @@ export function startSketch() {
     }
   }
 
-  function drawFrame() {
+  function drawFrame(dt) {
     ctx.fillStyle = `rgb(${bgRgb[0]},${bgRgb[1]},${bgRgb[2]})`;
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
@@ -193,8 +208,13 @@ export function startSketch() {
       if (isMouseInsideHeader) {
         const mouseMoved = Math.abs(mx - prevMouseX) > 1 || Math.abs(my - prevMouseY) > 1;
         if (mouseMoved && mx > 0 && mx < canvasWidth && my > 0 && my < canvasHeight) {
-          for (let i = 0; i < spawnRate; i++) {
+          // Accumulate a fractional spawn budget rather than spawning a
+          // fixed count per call, so total bubbles-per-second stays constant
+          // regardless of how often drawFrame runs.
+          spawnAccumulator += spawnRate * dt;
+          while (spawnAccumulator >= 1) {
             bubbles.push(new Bubble(mx + rand(-5, 5), my + rand(-5, 5)));
+            spawnAccumulator -= 1;
           }
         }
       }
@@ -205,7 +225,7 @@ export function startSketch() {
 
       for (let i = bubbles.length - 1; i >= 0; i--) {
         const bubble = bubbles[i];
-        bubble.update();
+        bubble.update(dt);
         bubble.display();
         if (bubble.isDead()) {
           bubbles.splice(i, 1);
@@ -213,7 +233,7 @@ export function startSketch() {
       }
     } else {
       for (let i = 0; i < bubbles.length; i++) {
-        bubbles[i].update();
+        bubbles[i].update(dt);
         bubbles[i].display();
       }
     }
@@ -224,14 +244,23 @@ export function startSketch() {
 
   // Only animate while there is something to animate. This keeps the sketch
   // idle (zero CPU) at rest and resumes on interaction.
-  function loop() {
-    drawFrame();
+  function loop(now) {
+    let dt = 1;
+    if (lastFrameTime !== null) {
+      dt = (now - lastFrameTime) / FRAME_MS;
+      if (!Number.isFinite(dt) || dt <= 0) dt = 1;
+      dt = Math.min(dt, MAX_DT);
+    }
+    lastFrameTime = now;
+
+    drawFrame(dt);
     if (bubbles.length > 0 || isMouseInsideHeader) {
       rafId = requestAnimationFrame(loop);
     } else {
       // Final clear so no settled frame lingers, then park the loop.
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
       rafId = null;
+      lastFrameTime = null; // start clean, not with a stale timestamp, next run
     }
   }
 
