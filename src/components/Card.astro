@@ -58,6 +58,12 @@ const { href, title, types, year, description = "" } = Astro.props;
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover .card-media :global(img),
+  .card:hover .card-media :global(video) {
+    transform: scale(1.05);
   }
 
   @media (min-width: 768px) {
