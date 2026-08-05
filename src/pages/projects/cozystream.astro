@@ -49,25 +49,9 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="Why not just use Plex?" />
         <p>
-          When I started looking for a way to share my movie library with my
-          partner and her parents, Plex was the obvious option. I tried it, and
-          pretty quickly realized it wasn't what I wanted.
-        </p>
-        <p class="mt-4">
-          The home screen was full of things I didn't ask for: recommendations,
-          free ad-supported movies mixed in with my own library, and a layout
-          that felt more like a streaming service than a personal collection.
-          Streaming remotely requires a paid subscription. And the whole thing
-          runs through Plex's cloud, so your account, your metadata, your
-          viewing activity, it's all going through their servers.
-        </p>
-        <p class="mt-4">
-          I just wanted something simple. A clean way to browse my movies, share
-          them with a few people, and keep everything local. The idea was
-          partially sparked by my time in the Peace Corps, when we'd share movie
-          files on thumb drives and all end up watching the same movies. It was
-          a really fun way to bond and build community. I wanted to recreate
-          that feeling, so I started designing one.
+          Plex mixed ads into my library, charged for remote streaming, and ran
+          everything through its cloud. I wanted my movies, shared with a few
+          people, kept local.
         </p>
       </div>
       <div class="col-span-4">
@@ -83,29 +67,23 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <!-- Section: Three users, three contexts -->
       <div class="col-span-6">
         <SmallHeading text="Three users, three contexts" />
+      </div>
+      <div class="col-span-2">
         <p>
-          I'm designing for three people, and they all use the app differently.
+          <strong>Me.</strong> The admin. I add movies, organize collections, and
+          fix metadata.
         </p>
       </div>
       <div class="col-span-2">
         <p>
-          <strong>Me:</strong> I'm the admin. I add movies, organize collections,
-          tweak the metadata, and adjust settings. I want that experience to be fast
-          and not annoying.
+          <strong>My partner.</strong> Open, scroll, pick a movie, resume where
+          she left off.
         </p>
       </div>
       <div class="col-span-2">
         <p>
-          <strong>My partner:</strong> She just wants to find something to watch.
-          She should be able to open the app, scroll through, pick a movie, and play
-          it. Resume where she left off. That's it.
-        </p>
-      </div>
-      <div class="col-span-2">
-        <p>
-          <strong>Her parents:</strong> They're not technical. They'd use it on their
-          LG TV with a remote. Big text, simple navigation, no error messages about
-          file formats. If it doesn't just work, they'll call us.
+          <strong>Her parents.</strong> Not technical, watching on an LG TV with
+          a remote. If it doesn't just work, they'll call us.
         </p>
       </div>
 
@@ -127,8 +105,8 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
               keys and an OK button, it works for everyone.
             </li>
             <li>
-              <strong>Make it feel like yours.</strong> Themes, colors, fonts, spacing,
-              the whole look is adjustable. A personal media server should feel personal.
+              <strong>Make it feel like yours.</strong> Themes, colors, fonts, and
+              spacing are all adjustable. A personal media server should feel personal.
             </li>
           </ol>
         </div>
@@ -138,21 +116,10 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="The UI should feel like yours" />
         <p>
-          This is something I care about a lot and plan to keep building on. A
-          media server is something you look at regularly, so it should look the
-          way you want it to.
-        </p>
-        <p class="mt-4">
-          Right now, Cozystream has six color themes (each with dark and light
-          modes), eight accent colors plus a custom color picker, four
-          independent font controls for different parts of the UI, and layout
-          settings for card size, spacing, corner radius, and row density. Every
-          change applies instantly.
-        </p>
-        <p class="mt-4">
-          The accent color picker has a built-in contrast checker. If your color
-          doesn't read well against the background, it tells you and suggests
-          alternatives.
+          Six themes, eight accent colors, four font controls, and layout
+          settings for card size, spacing, and density. Every change applies
+          instantly. The accent picker checks contrast and suggests alternatives
+          when a color doesn't read.
         </p>
       </div>
       <div class="col-span-4 flex flex-col items-center">
@@ -187,12 +154,9 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       </div>
       <div class="col-span-6">
         <p>
-          I wanted the design to feel reminiscent of analog movie sharing.
-          Browsing a shelf, picking up a case, reading the back. DVD Case mode
-          leans into that. It swaps the flat poster grid for 3D cases with
-          spines. Hovering lifts the poster to reveal a label underneath. It's
-          not more functional than the default grid, but it gives the library a
-          physical, tactile feel that I like.
+          DVD Case mode is a nod to browsing a shelf. It swaps the flat grid for
+          3D cases with spines, and hovering lifts the poster off a label
+          underneath. No more functional than the default, just more physical.
         </p>
       </div>
 
@@ -205,9 +169,8 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="Browse" />
         <p>
-          The browse page is a poster grid organized into rows, some manually
-          curated collections ("Studio Ghibli," "Watch with Mom"), some
-          auto-generated by genre, director, or decade.
+          Poster rows. Some I curate ("Studio Ghibli," "Watch with Mom"), some
+          generate themselves by genre, director, or decade.
         </p>
       </div>
       <div class="col-span-4">
@@ -224,11 +187,8 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="Detail page" />
         <p>
-          Three layout options: a full-bleed backdrop image, a contained poster
-          header, or no image at all. All three keep the same information
-          hierarchy: title, genres, metadata, description, play button, then
-          credits below. Backdrop mode has blur and tint controls so you can
-          tune readability depending on the image.
+          Three layouts, same hierarchy. Backdrop mode adds blur and tint
+          controls so text stays readable over any image.
         </p>
       </div>
       <div class="col-span-4 grid grid-cols-2 gap-4">
@@ -256,10 +216,8 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="Quick metadata editing" />
         <p>
-          When Cozystream pulls in metadata for a movie, it doesn't always grab
-          the right one. Rather than making that a tedious fix, I built a
-          quick-edit flow. Search for the correct movie, select it, and the
-          metadata updates instantly.
+          Cozystream doesn't always pull the right metadata. Search for the
+          correct movie, select it, done.
         </p>
       </div>
       <div class="col-span-4">
@@ -282,9 +240,8 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="Poster selection" />
         <p>
-          The default poster isn't always the best one. Cozystream pulls a set
-          of poster options from the web so you can pick the one you like best.
-          No manual uploading or file hunting.
+          The default poster isn't always the best one. Pick from a set pulled
+          off the web, with no uploading or file hunting.
         </p>
       </div>
       <div class="col-span-4">
@@ -307,10 +264,9 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="Player" />
         <p>
-          Controls auto-hide during playback and reappear on mouse movement.
-          Progress bar is thin at rest, expands on hover. For files the browser
-          can't play natively, the server transcodes to HLS on the fly with
-          FFmpeg. The user just presses play.
+          Controls hide during playback and come back on mouse movement. When
+          the browser can't play a file natively, the server transcodes it to
+          HLS with FFmpeg. The user just presses play.
         </p>
       </div>
       <div class="col-span-4">
@@ -333,13 +289,9 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="Smart TV" />
         <p>
-          The TV app is currently in progress. It's built for remote control
-          navigation with spatial focus management that moves a visible focus
-          ring between elements using arrow keys.
-        </p>
-        <p class="mt-4">
-          It runs as a web app inside LG's webOS and Samsung's Tizen browsers,
-          which are constrained environments. Screenshots coming soon.
+          In progress. A visible focus ring moves between elements with the
+          arrow keys, running as a web app inside LG's webOS and Samsung's
+          Tizen browsers. Screenshots coming soon.
         </p>
       </div>
 
@@ -347,23 +299,11 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2">
         <SmallHeading text="How I built it this fast" />
         <p>
-          I designed Cozystream and I built it, with Claude Code handling a lot
-          of the implementation speed. Having a tool that can work across the
-          full stack (Angular components, Node.js routes, FFmpeg transcoding,
-          SQLite queries) meant I could move from a design idea to a working
-          feature in a single sitting.
-        </p>
-        <p class="mt-4">
-          The design decisions are mine: the layout system, the customization
-          approach, the TV navigation patterns, the information hierarchy.
-          Claude's role was letting me execute on them quickly. Instead of
-          spending hours debugging a CSS 3D transform for DVD case mode or
-          wiring up HLS transcoding, I could describe what I needed and stay
-          focused on the design problem.
-        </p>
-        <p class="mt-4">
-          It's a workflow I'd use again. Design the experience, then build it
-          fast enough that you can actually use it and refine it the same day.
+          I designed and built Cozystream, using Claude Code as part of my
+          workflow across Angular, Node.js, FFmpeg, and SQLite. The layout
+          system, customization approach, TV navigation, and information
+          hierarchy are my decisions. Working this way, I can design a feature
+          and be using it the same day.
         </p>
       </div>
 
@@ -371,14 +311,8 @@ import playerDemoPoster from "../../images/cozystream/player-demo-poster.jpg";
       <div class="col-span-2 sm:col-start-5">
         <SmallHeading text="Still building" />
         <ul class="space-y-2">
-          <li>
-            Getting it in front of my actual users (my partner and her parents)
-            and redesigning based on their feedback
-          </li>
-          <li>
-            A guided onboarding flow so first-time setup doesn't require
-            technical knowledge
-          </li>
+          <li>Getting it in front of my partner and her parents, then redesigning around what they tell me</li>
+          <li>A guided onboarding flow for non-technical first-time setup</li>
           <li>A real responsive pass for phone and tablet</li>
           <li>More customization options</li>
           <li>An accessibility audit beyond the contrast checker</li>
