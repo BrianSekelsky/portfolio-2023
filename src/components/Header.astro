@@ -39,6 +39,14 @@
       border-bottom: 1px solid var(--border-color);
     }
 
+    /* Below lg the site gutter collapses to 0, so the header runs edge to
+       edge and its side borders would sit against the viewport edges. */
+    @media (max-width: 1023.98px) {
+      #header {
+        border-inline: none;
+      }
+    }
+
     #header :global(canvas) {
       display: block;
       border-radius: inherit;

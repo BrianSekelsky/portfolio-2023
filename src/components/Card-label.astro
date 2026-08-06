@@ -13,7 +13,7 @@ const { value, types, year, description } = Astro.props;
 <div class="">
   <div>
     <h3 class="font-sans text-3xl transition-all pt-4">{value}</h3>
-    <p class="font-sans pt-4 max-w-1/2">{description}</p>
+    <p class="font-sans pt-4 md:max-w-1/2">{description}</p>
     <div class="flex flex-wrap gap-2 pt-6">
       {
         types.map((type) => (

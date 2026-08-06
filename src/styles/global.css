@@ -392,7 +392,7 @@
   --site-gutter: max(var(--site-padding-mobile),
       (100vw - var(--site-content-width)) / 2);
   --rail-gutter: var(--site-padding-mobile);
-  --rail-content-gap: 3.5rem;
+  --rail-content-gap: 1.5rem;
   --border-color: #d6daff;
   --border-color-subtle: #bfb8b0;
   --card-shadow-color: #e0e0e0;
