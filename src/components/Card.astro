@@ -35,15 +35,14 @@ const { href, title, types, year, description = "" } = Astro.props;
 </script>
 
 <style>
-  @media (min-width: 768px) {
-    .card-media > :global(div) {
-      height: 100%;
-    }
+  .card-media {
+    flex-shrink: 0;
+  }
 
-    .card-media :global(img),
-    .card-media :global(video) {
-      height: 100%;
-      object-fit: cover;
-    }
+  .card-media :global(img),
+  .card-media :global(video) {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 </style>

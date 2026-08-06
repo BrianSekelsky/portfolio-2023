@@ -28,7 +28,7 @@ const alt = "Slideshow of images from class on animism";
 >
   <div class="video hidden md:block">
     <video
-      class="transition-all rounded-sm"
+      class="transition-all"
       playsinline
       autoplay
       muted
@@ -38,7 +38,7 @@ const alt = "Slideshow of images from class on animism";
       <source src={video} type="video/webm" />
     </video>
   </div>
-  <div class="gif block md:hidden rounded-sm">
+  <div class="gif block md:hidden">
     <Image src={gif} alt={alt} loading="lazy" />
   </div>
 </Card>
