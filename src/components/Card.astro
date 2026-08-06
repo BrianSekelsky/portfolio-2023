@@ -13,10 +13,10 @@ const { href, title, types, year, description = "" } = Astro.props;
 ---
 
 <a
-  class=`group flex flex-col col-span-6 md:col-span-3 cursor-pointer bg-purewhite card h-full`
+  class=`group flex flex-col col-span-6 md:col-span-6 cursor-pointer bg-purewhite card h-full`
   href={href}
 >
-  <div class="md:aspect-18/10 overflow-hidden w-full bg-white card-media">
+  <div class="w-full bg-white card-media">
     <slot />
   </div>
   <div class="py-4 flex-1">
@@ -35,37 +35,6 @@ const { href, title, types, year, description = "" } = Astro.props;
 </script>
 
 <style>
-  .card {
-    position: relative;
-    overflow: hidden;
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease,
-      border-radius 0.25s ease;
-    will-change: transform;
-  }
-
-  .card:hover {
-    z-index: 60;
-  }
-
-  .card-media > :global(div) {
-    height: auto;
-  }
-
-  .card-media :global(img),
-  .card-media :global(video) {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-
-  .card:hover .card-media :global(img),
-  .card:hover .card-media :global(video) {
-    transform: scale(1.05);
-  }
-
   @media (min-width: 768px) {
     .card-media > :global(div) {
       height: 100%;

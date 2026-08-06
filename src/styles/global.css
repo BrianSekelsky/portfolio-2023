@@ -385,6 +385,207 @@
   }
 }
 
+:root {
+  --site-padding-mobile: 2rem;
+  --site-padding-desktop: 8rem;
+  --site-content-width: 1085px;
+  --site-gutter: max(var(--site-padding-mobile),
+      (100vw - var(--site-content-width)) / 2);
+  --rail-gutter: var(--site-padding-mobile);
+  --rail-content-gap: 3.5rem;
+  --border-color: #d6daff;
+  --border-color-subtle: #bfb8b0;
+  --card-shadow-color: #e0e0e0;
+  --transition-overlay-bg: rgba(249, 249, 249, 0.6);
+}
+
+/* Keep the length unit (0px, not 0): a unitless 0 makes the max() in
+   --site-gutter mix <number> with <length>, collapsing the gutter to 0. */
+@media (max-width: 1023.98px) {
+  :root {
+    --site-padding-mobile: 0px;
+  }
+}
+
+@media (min-width: 640px) {
+  :root {
+    --rail-gutter: var(--site-padding-desktop);
+    --rail-content-gap: 2rem;
+  }
+}
+
+.dark {
+  --border-color: #1e1e3a;
+  --border-color-subtle: #141428;
+  --card-shadow-color: oklch(20% 0.003 286.286);
+  --transition-overlay-bg: rgba(15, 18, 20, 0.8);
+}
+
+@utility site-padding {
+  padding-inline: calc(var(--site-gutter) + var(--rail-content-gap));
+}
+
+@utility site-padding-flush {
+  padding-inline: var(--site-gutter);
+}
+
+@utility site-padding-children {
+  &>* {
+    padding-inline: calc(var(--site-gutter) + var(--rail-content-gap));
+  }
+}
+
+@utility site-border {
+  border-color: var(--border-color);
+}
+
+@utility site-border-subtle {
+  border-color: var(--border-color-subtle);
+}
+
+@utility header-card {
+  @apply relative overflow-hidden rounded-none border-x border-x-[var(--border-color)] bg-purewhite dark:bg-dark-surface;
+}
+
+@utility project-hero {
+  @apply w-full overflow-hidden border-y border-y-[var(--border-color)];
+}
+
+@utility load-in {
+  opacity: 0;
+  animation: loadIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes loadIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.load-in:nth-of-type(2) {
+  animation-delay: 0.1s;
+}
+
+.load-in:nth-of-type(3) {
+  animation-delay: 0.2s;
+}
+
+.load-in:nth-of-type(4) {
+  animation-delay: 0.3s;
+}
+
+:is(.project-grid, #gallery)>* {
+  animation: loadIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-fill);
+  animation-delay: calc(var(--stagger-base) + var(--stagger-step, 0.45s));
+}
+
+.project-grid>* {
+  opacity: 0;
+  --stagger-base: 0s;
+  --stagger-fill: forwards;
+}
+
+/* `backwards` so the entrance animation stops holding a transform once it
+   finishes, which would otherwise override the JS hover tilt on .card. */
+#gallery>* {
+  --stagger-base: 0.05s;
+  --stagger-fill: backwards;
+}
+
+:is(.project-grid, #gallery)>*:nth-child(1) {
+  --stagger-step: 0.05s;
+}
+
+:is(.project-grid, #gallery)>*:nth-child(2) {
+  --stagger-step: 0.1s;
+}
+
+:is(.project-grid, #gallery)>*:nth-child(3) {
+  --stagger-step: 0.15s;
+}
+
+:is(.project-grid, #gallery)>*:nth-child(4) {
+  --stagger-step: 0.2s;
+}
+
+:is(.project-grid, #gallery)>*:nth-child(5) {
+  --stagger-step: 0.25s;
+}
+
+:is(.project-grid, #gallery)>*:nth-child(6) {
+  --stagger-step: 0.3s;
+}
+
+:is(.project-grid, #gallery)>*:nth-child(7) {
+  --stagger-step: 0.35s;
+}
+
+:is(.project-grid, #gallery)>*:nth-child(8) {
+  --stagger-step: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .load-in,
+  :is(.project-grid, #gallery)>* {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.project-grid p {
+  padding-bottom: 2rem;
+}
+
+/* Stripe-style margin rails: fixed vertical guides at the content gutter,
+   overlaying content without affecting layout or blocking clicks. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed #d6daff;
+  z-index: 50;
+  pointer-events: none;
+  display: none;
+}
+
+body::before {
+  left: var(--site-gutter);
+}
+
+body::after {
+  right: var(--site-gutter);
+}
+
+@media (min-width: 1024px) {
+
+  body::before,
+  body::after {
+    display: block;
+  }
+}
+
+#transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--transition-overlay-bg);
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.3s ease;
+}
+
 /* Floating pill that replaces the pointer while hovering a project card. */
 .card-cursor {
   position: fixed;
@@ -394,7 +595,8 @@
   align-items: center;
   justify-content: center;
   padding: 0.55rem 1rem;
-  margin: 18px 0 0 18px; /* sit at the bottom-right of the pointer */
+  margin: 18px 0 0 18px;
+  /* sit at the bottom-right of the pointer */
   border: 1px solid var(--border-color);
   border-radius: 9999px;
   background: #fff;
