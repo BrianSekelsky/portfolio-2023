@@ -50,16 +50,14 @@ const { title } = Astro.props;
     </noscript>
   </head>
   <body
-    class="flex h-full flex-col overflow-x-hidden text-black dark:bg-dark-bg dark:text-dark-text"
+    class="flex h-full flex-col overflow-x-clip text-black dark:bg-dark-bg dark:text-dark-text"
   >
     <ClientRouter />
     <div id="transition-overlay"></div>
 
     <div class="w-full">
-      <div class="flex h-screen w-full flex-col">
-        <div class="bg-purewhite">
-          <Nav />
-        </div>
+      <div class="flex min-h-screen w-full flex-col">
+        <Nav />
         <main data-astro-transition>
           <slot />
         </main>
