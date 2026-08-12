@@ -381,7 +381,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: #d6daff;
+    border-color: var(--color-black);
   }
 }
 
@@ -393,8 +393,8 @@
       (100vw - var(--site-content-width)) / 2);
   --rail-gutter: var(--site-padding-mobile);
   --rail-content-gap: 1.5rem;
-  --border-color: #d6daff;
-  --border-color-subtle: #bfb8b0;
+  --border-color: #050517;
+  --border-color-subtle: #050517;
   --card-shadow-color: #e0e0e0;
   --transition-overlay-bg: rgba(249, 249, 249, 0.6);
 }
@@ -553,7 +553,7 @@ body::after {
   top: 0;
   bottom: 0;
   width: 0;
-  border-left: 1px dashed #d6daff;
+  border-left: 1px solid var(--border-color);
   z-index: 50;
   pointer-events: none;
   display: none;
@@ -584,34 +584,4 @@ body::after {
   opacity: 0;
   backdrop-filter: blur(0px);
   transition: backdrop-filter 0.3s ease;
-}
-
-/* Floating pill that replaces the pointer while hovering a project card. */
-.card-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.55rem 1rem;
-  margin: 18px 0 0 18px;
-  /* sit at the bottom-right of the pointer */
-  border: 1px solid var(--border-color);
-  border-radius: 9999px;
-  background: #fff;
-  color: #000;
-  font-size: 0.75rem;
-  line-height: 1;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  transition: opacity 0.2s ease;
-  will-change: transform;
-}
-
-.card-cursor.is-visible {
-  opacity: 1;
 }
