@@ -6,7 +6,7 @@ export interface Props {
 const { text = "OPEN TO WORK", speed = 10 } = Astro.props;
 ---
 
-<div class="marquee-container border-b py-4 font-light text-xs bg-accent-yellow text-black font-mono">
+<div class="marquee-container border-b py-4 font-light text-xs bg-accent-yellow text-black">
   <div class="marquee" data-speed={speed}>
     <span class="marquee-content">{text}</span>
     <span class="marquee-content">{text}</span>
@@ -64,6 +64,18 @@ const { text = "OPEN TO WORK", speed = 10 } = Astro.props;
     }
     100% {
       transform: translateX(calc(-100% - 2rem));
+    }
+  }
+
+  /* Infinite horizontal motion is exactly what WCAG 2.2.2 and reduced-motion
+     preferences are about, so hold it still and show the text in place. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-content {
+      animation: none;
+    }
+
+    .marquee {
+      overflow-x: auto;
     }
   }
 </style>

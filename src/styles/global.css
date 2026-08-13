@@ -6,6 +6,7 @@
   --font-*: initial;
   --font-serif: "Crimson Pro", Georgia, serif;
   --font-sans: neue-haas-grotesk, Helvetica, sans-serif;
+  --font-mono: "Source Code Pro", ui-monospace, monospace;
 
   --container-*: initial;
   --container-1\/4: 25%;

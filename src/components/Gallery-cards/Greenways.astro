@@ -1,5 +1,6 @@
 ---
 import Card from "../Card.astro";
+import { CARD_WIDTHS, CARD_SIZES } from "./card-image.js";
 import { Image } from "astro:assets";
 import video from "../../images/greenways/homepage-thumb.webm";
 import videoMp4 from "../../images/greenways/homepage-thumb.mp4";
@@ -13,7 +14,7 @@ const props = {
   types: [
     { text: "Website", special: false },
     { text: "Branding", special: false },
-    { text: "Development", special: false },
+    { text: "Wordpress Development", special: false },
   ],
   size: "medium",
   href: "projects/greenways",
@@ -32,6 +33,7 @@ const props = {
       preload="none"
       poster={poster.src}
       data-lazy-video
+      aria-hidden="true"
     >
       <source src={video} type="video/webm" />
       <source src={videoMp4} type="video/mp4" />
@@ -43,8 +45,8 @@ const props = {
       src={poster}
       alt={props.alt}
       loading="lazy"
-      widths={[320, 480, 640, 960]}
-      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+      widths={CARD_WIDTHS}
+      sizes={CARD_SIZES}
     />
   </div>
 </Card>

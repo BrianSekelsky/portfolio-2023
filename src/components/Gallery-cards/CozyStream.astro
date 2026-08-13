@@ -1,5 +1,6 @@
 ---
 import Card from "../Card.astro";
+import { CARD_WIDTHS, CARD_SIZES } from "./card-image.js";
 import { Image } from "astro:assets";
 import video from "../../images/cozystream/homepage-thumb.webm";
 import videoMp4 from "../../images/cozystream/homepage-thumb.mp4";
@@ -9,10 +10,11 @@ const title = "Cozystream";
 const year = "2026";
 const types = [
   { text: "Product Design", special: false },
-  { text: "Engineering", special: false },
+  { text: "Design Engineering", special: false },
 ];
 const alt = "Cozystream media server browse interface";
-const description = "Designing and building a self-hosted media streaming platform for web, Smart TV, and desktop.";
+const description =
+  "Designing and building a self-hosted media streaming platform for web, Smart TV, and desktop.";
 ---
 
 <Card
@@ -31,6 +33,7 @@ const description = "Designing and building a self-hosted media streaming platfo
       preload="none"
       poster={poster.src}
       data-lazy-video
+      aria-hidden="true"
     >
       <source src={video} type="video/webm" />
       <source src={videoMp4} type="video/mp4" />
@@ -43,8 +46,8 @@ const description = "Designing and building a self-hosted media streaming platfo
       alt={alt}
       loading="eager"
       fetchpriority="high"
-      widths={[320, 480, 640, 960]}
-      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+      widths={CARD_WIDTHS}
+      sizes={CARD_SIZES}
     />
   </div>
 </Card>

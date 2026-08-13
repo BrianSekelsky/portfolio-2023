@@ -2,6 +2,7 @@
 import CardLabel from "../Card-label.astro";
 import { Image } from "astro:assets";
 import Card from "../Card.astro";
+import { CARD_WIDTHS, CARD_SIZES } from "./card-image.js";
 
 import gif from "../../images/homepage/fidelity2.png";
 import video from "../../images/homepage/fidelity.webm";
@@ -11,7 +12,7 @@ const title = "Fidelity Student Debt";
 const description = "asdf";
 const year = "2024";
 const types = [
-  { text: "UX", special: false },
+  { text: "User experience", special: false },
   { text: "Research", special: false },
   { text: "Website", special: false },
 ];
@@ -37,6 +38,7 @@ const alt = "Screenshot of user experience work in figma";
       loop
       preload="none"
       data-lazy-video
+      aria-hidden="true"
     >
       <source src={video} type="video/webm" />
     </video>
@@ -46,8 +48,8 @@ const alt = "Screenshot of user experience work in figma";
       src={preview}
       alt={alt}
       loading="lazy"
-      widths={[320, 480, 640, 960]}
-      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+      widths={CARD_WIDTHS}
+      sizes={CARD_SIZES}
     />
   </div>
 </Card>

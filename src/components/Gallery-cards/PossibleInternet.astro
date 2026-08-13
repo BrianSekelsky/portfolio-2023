@@ -19,7 +19,8 @@ const types = [
 const collaborators = ["Jeff Wilkinson"];
 const size = "small";
 const hasVideo = true;
-const alt = "";
+const alt =
+  "Extended-reality reading environment with text panels arranged around a room";
 ---
 
 <Card
@@ -40,6 +41,7 @@ const alt = "";
       preload="none"
       poster={poster.src}
       data-lazy-video
+      aria-hidden="true"
     >
       <source
         src={video}

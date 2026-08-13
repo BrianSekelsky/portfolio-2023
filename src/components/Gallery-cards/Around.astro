@@ -29,10 +29,11 @@ const alt = "Flowers swirling in and out in a psychadelic way";
     <video
       class="transition-all"
       playsinline
-      autoplay
       muted
       loop
       preload="none"
+      aria-hidden="true"
+      data-lazy-video
     >
       <source src={video} type="video/webm" />
       <source src={videomp4} type="video/mp4" />

@@ -1,6 +1,7 @@
 ---
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
+import { CARD_WIDTHS, CARD_SIZES } from "./card-image.js";
 import { Image } from "astro:assets";
 
 import gif from "../../images/homepage/deliberate.gif";
@@ -12,8 +13,9 @@ const description = "asdf";
 const year = "2022";
 const types = [
   { text: "Design System", special: false },
-  { text: "UX", special: false },
+  { text: "User experience", special: false },
   { text: "AI", special: false },
+  { text: "Product Design", special: false },
 ];
 const size = "small";
 const hasVideo = false;
@@ -36,8 +38,8 @@ const alt =
       alt={alt}
       class=""
       loading="lazy"
-      widths={[320, 480, 640, 960]}
-      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+      widths={CARD_WIDTHS}
+      sizes={CARD_SIZES}
     />
   </div>
 </Card>

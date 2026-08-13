@@ -1,6 +1,7 @@
 ---
 import CardLabel from "../Card-label.astro";
 import Card from "../Card.astro";
+import { CARD_WIDTHS, CARD_SIZES } from "./card-image.js";
 import video from "../../images/homepage/glaciers.webm";
 import videomp4 from "../../images/homepage/glaciers.mp4";
 import poster from "../../images/homepage/glaciers-poster.jpg";
@@ -13,6 +14,7 @@ const year = "2022";
 const types = [
   { text: "Website", special: false },
   { text: "Branding", special: false },
+  { text: "Design engineering", special: false },
 ];
 const size = "medium";
 const hasVideo = true;
@@ -38,15 +40,10 @@ const alt =
       preload="none"
       poster={poster.src}
       data-lazy-video
+      aria-hidden="true"
     >
-      <source
-        src={video}
-        type="video/webm"
-      />
-      <source
-        src={videomp4}
-        type="video/mp4"
-      />
+      <source src={video} type="video/webm" />
+      <source src={videomp4} type="video/mp4" />
     </video>
   </div>
   <div class="gif block md:hidden">
@@ -55,8 +52,8 @@ const alt =
       src={gif}
       alt={alt}
       loading="lazy"
-      widths={[320, 480, 640, 960]}
-      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+      widths={CARD_WIDTHS}
+      sizes={CARD_SIZES}
     />
   </div>
 </Card>

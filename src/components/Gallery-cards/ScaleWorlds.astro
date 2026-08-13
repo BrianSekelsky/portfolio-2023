@@ -1,5 +1,6 @@
 ---
 import Card from "../Card.astro";
+import { CARD_WIDTHS, CARD_SIZES } from "./card-image.js";
 import { Image } from "astro:assets";
 import image from "../../images/homepage/size-scale-still.png";
 import video from "../../images/homepage/size&scale.webm";
@@ -9,12 +10,14 @@ import poster from "../../images/homepage/size&scale-poster.jpg";
 const title = "Scale Worlds";
 const year = "2021–2023";
 const types = [
-  { text: "VR", special: false },
+  { text: "Virtual Reality", special: false },
   { text: "Web", special: false },
   { text: "Research", special: false },
+  { text: "design engineering", special: false },
 ];
 const alt = "Scale Worlds web interface showing size comparison across scales";
-const description = "Designing immersive learning environments, first in VR and then adapted for the web, to help students understand size and scale.";
+const description =
+  "Designing immersive learning environments, first in VR and then adapted for the web, to help students understand size and scale.";
 ---
 
 <Card
@@ -33,6 +36,7 @@ const description = "Designing immersive learning environments, first in VR and 
       preload="none"
       poster={poster.src}
       data-lazy-video
+      aria-hidden="true"
     >
       <source src={video} type="video/webm" />
       <source src={videomp4} type="video/mp4" />
@@ -44,8 +48,8 @@ const description = "Designing immersive learning environments, first in VR and 
       src={image}
       alt={alt}
       loading="lazy"
-      widths={[320, 480, 640, 960]}
-      sizes="(min-width: 1536px) 500px, (min-width: 768px) 50vw, 100vw"
+      widths={CARD_WIDTHS}
+      sizes={CARD_SIZES}
     />
   </div>
 </Card>
