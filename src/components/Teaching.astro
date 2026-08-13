@@ -48,11 +48,12 @@ import smile from "../images/studentwork/tech/smile.gif";
     <div class="content-section p-6 sm:p-8">
       <SmallHeading text="Classes" />
       <div class="overflow-x-auto">
-        <table class="w-full text-sm">
+        <table class="w-full">
           <tbody>
             <tr class="">
               <td class="py-2 pr-4">Foundations of Graphic Design</td>
-              <td class="py-2 px-4">University of North Carolina Chapel Hill</td>
+              <td class="py-2 px-4">University of North Carolina Chapel Hill</td
+              >
               <td class="py-2 px-4">Fall 2024</td>
               <td class="py-2 pl-4">
                 <Link
@@ -122,7 +123,7 @@ import smile from "../images/studentwork/tech/smile.gif";
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
         Foundations of Graphic Design - University of North Carolina Chapel Hill
       </p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
         <Image src={bumpkiss1} alt="Student work - Bumpkiss" />
         <Image src={bumpkiss2} alt="Student work - Bumpkiss" />
         <Image src={bumpkiss3} alt="Student work - Bumpkiss" />
@@ -145,7 +146,7 @@ import smile from "../images/studentwork/tech/smile.gif";
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 mt-8">
         Tech Tinkering - North Carolina State University
       </p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
         <Image src={ar} alt="Student work - AR" />
         <Image src={combative} alt="Student work - Combative" />
         <Image src={cupcake} alt="Student work - Cupcake" />
@@ -159,42 +160,40 @@ import smile from "../images/studentwork/tech/smile.gif";
     <!-- Teaching Philosophy section -->
     <div class="content-section p-6 sm:p-8">
       <SmallHeading text="Teaching Philosophy" />
-      <ol class="list-decimal list-inside space-y-2 sm:w-3/4">
-        <li>
-          The tools that designers use are constantly changing
-          so design education should be tool agnostic.
-        </li>
-        <li>
-          There is no single right way to approach a design
-          problem. It is useful to study and understand design
-          methods but I don't expect or want students to
-          follow step-by-step instructions when they design.
-        </li>
-        <li>
-          I want students to analyze the way that they work,
-          so that they may develop their own understanding
-          about what designers do and how they work and
-          perhaps uncover new ways of working.
-        </li>
-        <li>
-          A lot can be learned through creating. I encourage
-          students to start creating, and creating in lots of
-          different ways, right away.
-        </li>
-        <li>
-          Job readiness is important to most students but the
-          types of jobs that designers do is varied and
-          constantly changing. So preparing students for
-          current jobs must be balanced with a holistic
-          education that will prepare them for future design
-          jobs as well.
-        </li>
-        <li>
-          The most important aspect of my teaching is to treat
-          every student with respect, remain open minded, and
-          be equitable in my approach.
-        </li>
-      </ol>
+      <div class="grid grid-cols-12 gap-x-8">
+        <ol
+          class="col-span-12 lg:col-span-9 list-decimal list-inside space-y-2"
+        >
+          <li>
+            The tools that designers use are constantly changing so design
+            education should be tool agnostic.
+          </li>
+          <li>
+            There is no single right way to approach a design problem. It is
+            useful to study and understand design methods but I don't expect or
+            want students to follow step-by-step instructions when they design.
+          </li>
+          <li>
+            I want students to analyze the way that they work, so that they may
+            develop their own understanding about what designers do and how they
+            work and perhaps uncover new ways of working.
+          </li>
+          <li>
+            A lot can be learned through creating. I encourage students to start
+            creating, and creating in lots of different ways, right away.
+          </li>
+          <li>
+            Job readiness is important to most students but the types of jobs
+            that designers do is varied and constantly changing. So preparing
+            students for current jobs must be balanced with a holistic education
+            that will prepare them for future design jobs as well.
+          </li>
+          <li>
+            The most important aspect of my teaching is to treat every student
+            with respect, remain open minded, and be equitable in my approach.
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>

@@ -4,18 +4,16 @@ import NavLink from "./Nav-link.astro";
 
 <nav class="static z-51 border-b bg-purewhite text-black lg:sticky lg:top-0">
   <div class="nav-load-in mx-auto">
-    <div
-      class="flex flex-wrap justify-between gap-4 lg:flex-nowrap py-4 site-padding"
-    >
-      <div class="w-full">
+    <div class="grid grid-cols-12 gap-x-8 gap-y-2 py-4 site-padding">
+      <div class="col-span-12 lg:col-span-6">
         <a
           href="/#"
-          class="w-full bold lg:first:ml-0 flex justify-start hover:underline transition-all dark:text-dark-text"
+          class="w-full bold flex justify-start hover:underline transition-all dark:text-dark-text"
           >Brian Sekelsky</a
         >
       </div>
       <div
-        class="flex flex-wrap justify-start lg:justify-end gap-8 pt-2 sm:pt-0 w-full"
+        class="col-span-12 lg:col-span-6 flex flex-wrap gap-8 lg:justify-start pt-2 lg:pt-0"
       >
         <NavLink href="/" name="Projects" />
         <NavLink href="/about/" name="About" />

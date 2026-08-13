@@ -18,12 +18,12 @@ import brianImage from "../images/about/brian-lake.JPG";
     </div> -->
 
     <!-- Content grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2">
+    <div class="grid grid-cols-12 gap-x-8 px-6 sm:px-8">
       <!-- Left column: Info sections -->
-      <div class="flex flex-col">
-        <div class="p-6 sm:p-8 border-b border-(--border-color)">
+      <div class="col-span-12 lg:col-span-6 flex flex-col">
+        <div class="card-bleed py-6 sm:py-8 border-b site-border">
           <SmallHeading text="Basics" />
-          <div class="sm:flex gap-12">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
             <div>
               <div class="mb-0">he/him</div>
               <div class="mb-0">briansekelsky@gmail.com</div>
@@ -31,7 +31,7 @@ import brianImage from "../images/about/brian-lake.JPG";
                 <Link newtab href="/Sekelsky-Resume-2026.pdf" name="Résumé" />
               </div>
             </div>
-            <div class="mt-4 sm:mt-0">
+            <div>
               <!-- <div>
                 <Link
                   href="https://www.instagram.com/briansekelsky/"
@@ -60,7 +60,7 @@ import brianImage from "../images/about/brian-lake.JPG";
           </div>
         </div>
 
-        <div class="p-6 sm:p-8 border-b border-(--border-color)">
+        <div class="card-bleed py-6 sm:py-8 border-b site-border">
           <SmallHeading text="Bio" />
           <p>
             I'm a designer, developer, and teacher. I spent two years in the
@@ -95,7 +95,7 @@ import brianImage from "../images/about/brian-lake.JPG";
           </p>
         </div>
 
-        <div class="p-6 sm:p-8 grow">
+        <div class="card-bleed py-6 sm:py-8 grow">
           <SmallHeading text="About this site" />
           <p>
             This site is a portfolio and archive for my designs, art, and music.
@@ -113,7 +113,9 @@ import brianImage from "../images/about/brian-lake.JPG";
       </div>
 
       <!-- Right column: Image -->
-      <div class="border-t lg:border-t-0 lg:border-l border-(--border-color)">
+      <div
+        class="col-span-12 lg:col-span-6 card-bleed-media border-t lg:border-t-0 lg:border-l site-border"
+      >
         <Image
           class="w-full h-full object-cover"
           src={brianImage}

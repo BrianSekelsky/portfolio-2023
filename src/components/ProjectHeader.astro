@@ -46,7 +46,7 @@ const hasCollaborators = collaborators.length > 0;
         >← Back to projects</a
       > -->
       <h1
-        class="font-serif font-extralight text-4xl sm:text-5xl wrap-break-word sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
+        class="font-serif text-4xl sm:text-5xl wrap-break-word sm:break-normal hyphens-auto sm:hyphens-manual leading-[1.1]"
       >
         {title}
       </h1>
@@ -54,70 +54,35 @@ const hasCollaborators = collaborators.length > 0;
 
     <!-- Project details bar at bottom -->
     <div class="project-details-bar p-6 sm:p-8 mt-auto">
-      <div class="flex flex-col sm:flex-row flex-wrap gap-8 sm:gap-16 pb-8">
-        <div class="flex-1 min-w-[200px] sm:max-w-3/5">
-          <p
-            class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
-          >
-            Overview
-          </p>
-          <p class="text-sm sm:text-base">{objective}</p>
+      <div class="grid grid-cols-12 gap-x-8 gap-y-8 pb-8">
+        <div class="col-span-12 sm:col-span-6">
+          <p class="font-bold pb-2">Overview</p>
+          <p class="">{objective}</p>
           <slot />
         </div>
-        <div class="flex gap-8 sm:gap-16 flex-wrap">
-          {
-            hasCollaborators ? (
+        {
+          hasCollaborators && (
+            <div class="col-span-6 sm:col-span-2">
+              <p class="font-bold pb-2">Collaborators</p>
               <div>
-                <p class="text-xs font-serif font-medium uppercase pb-2 tracking-widest">
-                  Collaborators
-                </p>
-                <div>
-                  {collaborators.map((collaborator) => (
-                    <p class="text-sm">{collaborator}</p>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div>
-                <p class="text-xs font-serif font-medium uppercase pb-2 tracking-widest">
-                  Year
-                </p>
-                <p class="text-sm">{year}</p>
-              </div>
-            )
-          }
-          <div class="flex flex-col gap-6">
-            <div class={music === false ? "block" : "hidden"}>
-              <p
-                class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
-              >
-                Type
-              </p>
-              <div class={types.length > 0 ? "block" : "hidden"}>
-                {types.map((type) => <p class="text-sm">{type}</p>)}
+                {collaborators.map((collaborator) => (
+                  <p class="">{collaborator}</p>
+                ))}
               </div>
             </div>
-            <div class={music === true ? "block" : "hidden"}>
-              <p
-                class="text-xs font-serif font-medium uppercase pb-2 tracking-widest"
-              >
-                Genres
-              </p>
-              <div class={types.length > 0 ? "block" : "hidden"}>
-                {types.map((type) => <p class="text-sm">{type}</p>)}
-              </div>
-            </div>
-            {
-              hasCollaborators && (
-                <div>
-                  <p class="text-xs font-serif font-medium uppercase pb-2 tracking-widest">
-                    Year
-                  </p>
-                  <p class="text-sm">{year}</p>
-                </div>
-              )
-            }
+          )
+        }
+        <div
+          class={`col-span-6 sm:col-span-2 ${types.length > 0 ? "block" : "hidden"}`}
+        >
+          <p class="font-bold pb-2">{music ? "Genres" : "Type"}</p>
+          <div>
+            {types.map((type) => <p class="">{type}</p>)}
           </div>
+        </div>
+        <div class="col-span-6 sm:col-span-2">
+          <p class="font-bold pb-2">Year</p>
+          <p class="">{year}</p>
         </div>
       </div>
     </div>

@@ -452,6 +452,36 @@
   @apply w-full overflow-hidden border-y border-y-[var(--border-color)];
 }
 
+/* Card grids carry their horizontal padding on the grid itself, so content
+   lands on the same 12 tracks the nav uses. These two undo that padding for
+   elements that should still reach the card's edge: `card-bleed` stretches a
+   row's divider back out while holding its text on the track, and
+   `card-bleed-media` lets full-bleed media escape the padding entirely. Above
+   lg the inner edge stops at the column boundary, where the vertical rule is. */
+@utility card-bleed {
+  margin-inline: -1.5rem;
+  padding-inline: 1.5rem;
+
+  /* Above lg the right edge lands on the grid's column gutter, so this same
+     -2rem bridges it and meets the media column's leading edge. */
+  @media (min-width: 40rem) {
+    margin-inline: -2rem;
+    padding-inline: 2rem;
+  }
+}
+
+@utility card-bleed-media {
+  margin-inline: -1.5rem;
+
+  @media (min-width: 40rem) {
+    margin-inline: -2rem;
+  }
+
+  @media (min-width: 64rem) {
+    margin-left: 0;
+  }
+}
+
 @utility load-in {
   opacity: 0;
   animation: loadIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;

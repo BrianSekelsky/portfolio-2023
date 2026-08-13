@@ -15,11 +15,11 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
     </div>
 
     <!-- Details bar -->
-    <div class="details-bar p-6 sm:p-8">
-      <div class="flex flex-wrap gap-6 sm:gap-12">
-        <div class="flex-1 min-w-[200px]">
+    <div class="details-bar p-6 sm:p-8 pt-12">
+      <div class="grid grid-cols-12 gap-x-8 gap-y-8">
+        <div class="col-span-12 sm:col-span-6">
           <SmallHeading text="About" />
-          <p class="text-sm sm:text-base">
+          <p class="pb-8">
             Winter Foe is a music project that I have been working on since
             around 2018. I am searching for new ways to combine digital sounds,
             electronics, acoustic instruments, and field recordings. Through
@@ -41,17 +41,15 @@ let types = ["Electronic", "Ambient", "Experimental", "Folk", "Pop"];
             <Link href="https://soundcloud.com/winter-foe" name="Soundcloud" />
           </div>
         </div>
-        <div class="flex gap-6 sm:gap-10 flex-wrap">
+        <div class="col-span-6 sm:col-span-2">
+          <SmallHeading text="Genres" />
           <div>
-            <SmallHeading text="Genres" />
-            <div>
-              {types.map((type) => <p class="text-sm">{type}</p>)}
-            </div>
+            {types.map((type) => <p class="">{type}</p>)}
           </div>
-          <div>
-            <SmallHeading text="Year" />
-            <p class="text-sm">2018 – Present</p>
-          </div>
+        </div>
+        <div class="col-span-6 sm:col-span-2">
+          <SmallHeading text="Year" />
+          <p class="">2018 – Present</p>
         </div>
       </div>
     </div>
