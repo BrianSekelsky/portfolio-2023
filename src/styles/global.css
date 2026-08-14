@@ -575,12 +575,18 @@
   padding-bottom: 2rem;
 }
 
-/* Stripe-style margin rails: fixed vertical guides at the content gutter,
-   overlaying content without affecting layout or blocking clicks. */
+/* Stripe-style margin rails: vertical guides at the content gutter, overlaying
+   content without affecting layout or blocking clicks.
+
+   Positioned against the document rather than the viewport. Fixed positioning
+   leaves them pinned during rubber-band overscroll while the nav and footer
+   travel with the document, so Chrome exposes them past the top and bottom of
+   the page. Spanning body keeps them in the same coordinate space as the
+   elements that cover them. */
 body::before,
 body::after {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   width: 0;
