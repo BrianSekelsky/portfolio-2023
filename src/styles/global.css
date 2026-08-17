@@ -386,6 +386,15 @@
   }
 }
 
+/* Always reserve the scrollbar's space. --site-gutter resolves against 100vw,
+   which counts the scrollbar, while the content box does not — so a page short
+   enough not to scroll got a content box a scrollbar wider than every other
+   page, pushing grid columns (and the nav links) to the right. Reserving the
+   gutter keeps the measure identical whether or not a page scrolls. */
+html {
+  scrollbar-gutter: stable;
+}
+
 :root {
   --site-padding-mobile: 2rem;
   --site-padding-desktop: 8rem;
