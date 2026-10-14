@@ -389,7 +389,7 @@
 :root {
   --site-padding-mobile: 2rem;
   --site-padding-desktop: 8rem;
-  --site-content-width: 1085px;
+  --site-content-width: 9999px;
   /* 100% (not 100vw) so the gutter measures the space actually available.
      100vw counts the scrollbar while the content box does not, which made a
      page short enough to avoid scrolling render a scrollbar wider than every

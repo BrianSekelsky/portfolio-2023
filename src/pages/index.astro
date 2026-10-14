@@ -1,18 +1,75 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Gallery from "../components/Gallery.astro";
-import Header from "../components/Header.astro";
+import ScatteredField from "../components/ScatteredField.astro";
 ---
 
 <Layout title="Brian Sekelsky">
-  <main>
-    <div class="load-in bg-purewhite border-b-black">
-      <div class="site-padding-flush">
-        <Header />
+  <div class="scattered-homepage">
+    <div class="bio-column load-in">
+      <div class="bio-inner site-padding py-6 sm:py-8">
+        <h1 class="text-black">
+          <p
+            class="text-4xl md:text-5xl font-serif font-extralight tracking-tight leading-11 md:leading-14"
+          >
+            I'm an NYC-based designer working across user experience, visual
+            design, & code.
+          </p>
+          <p class="font-sans pt-4 leading-8">
+            I'm currently a Senior UX Designer at Fidelity Investments,
+            designing products that help people understand and pay down student
+            debt. On the side, I volunteer with U.S. Digital Response, helping
+            cities redesign their websites around the residents who use them.
+          </p>
+        </h1>
       </div>
     </div>
-    <div class="load-in">
-      <Gallery />
+    <div class="field-column load-in">
+      <ScatteredField />
     </div>
-  </main>
+  </div>
 </Layout>
+
+<style is:global>
+  /* Make main a flex container so scattered-homepage fills
+     exactly the space between nav and footer */
+  body:has(.scattered-homepage) #main-content {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<style>
+  .scattered-homepage {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .bio-column {
+    width: 38%;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--color-purewhite);
+  }
+
+  .field-column {
+    flex: 1;
+    position: relative;
+    background: var(--color-purewhite);
+  }
+
+  /* Mobile: hide bio, scatter field fills viewport */
+  @media (max-width: 767px) {
+    .bio-column {
+      display: none;
+    }
+
+    .field-column {
+      width: 100%;
+    }
+  }
+</style>
