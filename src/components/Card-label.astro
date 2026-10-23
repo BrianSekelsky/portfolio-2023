@@ -11,11 +11,12 @@ const { value, types, year, description } = Astro.props;
 ---
 
 <div class="grid grid-cols-12 gap-x-4 sm:gap-x-8">
-  <h3
-    class="col-span-12 font-serif font-extralight text-4xl transition-all pt-2"
-  >
-    {value}
-  </h3>
+  <div class="col-span-12 flex flex-wrap items-baseline gap-x-3 pt-2">
+    <h3 class="font-serif font-extralight text-4xl transition-all">
+      {value}
+    </h3>
+    <!-- <span class="text-2xl font-light text-gray">{year}</span> -->
+  </div>
   <p class="col-span-12 md:col-span-6 pt-2">{description}</p>
   <div class="col-span-12 flex flex-wrap gap-2 pt-4">
     {

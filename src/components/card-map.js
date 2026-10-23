@@ -15,10 +15,10 @@ import FriendsOfTanzania from "./Gallery-cards/FriendsOfTanzania.astro";
 import LAS from "./Gallery-cards/LAS.astro";
 
 export const caseStudies = [
-  // { Component: CozyStream, typeClass: "ux development" },
-  // { Component: Greenways, typeClass: "branding wordpress ux development" },
+  { Component: Greenways, typeClass: "branding wordpress ux development" },
   { Component: ScaleWorlds, typeClass: "vr website ux research education" },
-  // { Component: Fidelity, typeClass: "website ux research" },
+  { Component: Fidelity, typeClass: "website ux research" },
+  { Component: CozyStream, typeClass: "ux development" },
   { Component: WitnessingGlaciers, typeClass: "website branding development" },
   { Component: DeliberateAI, typeClass: "website userExperience" },
 
