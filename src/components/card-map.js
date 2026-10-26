@@ -26,13 +26,13 @@ export const caseStudies = [
 
 export const otherProjects = [
   { Component: FriendsOfTanzania, typeClass: "wordpress website ux" },
-  { Component: LAS, typeClass: "ux research" },
   { Component: NPCA, typeClass: "website" },
   { Component: PossibleInternet, typeClass: "userExperience" },
   { Component: Vespertine, typeClass: "branding website branding" },
   { Component: TerraFirma, typeClass: "branding website branding" },
   { Component: ImaginePublicTransit, typeClass: "branding" },
   { Component: CriticalImages, typeClass: "branding" },
+  { Component: LAS, typeClass: "ux research" },
   { Component: Nothing, typeClass: "userExperience" },
 ];
 
